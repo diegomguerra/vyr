@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import { Sun, Moon } from "lucide-react";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RegisterDose from "./pages/RegisterDose";
@@ -14,9 +15,24 @@ import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import { NavSidebar } from "./components/nzt";
 import { signOut, getParticipante, createParticipante } from "./lib/api";
+import { ThemeProvider, useTheme } from "./hooks/use-theme";
 import type { Participante } from "./lib/types";
 
 const queryClient = new QueryClient();
+
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  
+  return (
+    <button
+      onClick={toggleTheme}
+      className="nzt-btn p-2 rounded-full"
+      aria-label={theme === "dark" ? "Mudar para modo claro" : "Mudar para modo escuro"}
+    >
+      {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
+  );
+}
 
 function Header({ codigo }: { codigo?: string }) {
   const handleLogout = async () => {
@@ -32,9 +48,12 @@ function Header({ codigo }: { codigo?: string }) {
             {codigo ? `Código: ${codigo}` : "Carregando..."}
           </p>
         </div>
-        <button className="nzt-btn text-sm" onClick={handleLogout}>
-          Sair
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button className="nzt-btn text-sm" onClick={handleLogout}>
+            Sair
+          </button>
+        </div>
       </div>
     </header>
   );
@@ -135,15 +154,17 @@ const App = () => {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          {user ? <AuthenticatedApp /> : <Login />}
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            {user ? <AuthenticatedApp /> : <Login />}
+          </BrowserRouter>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

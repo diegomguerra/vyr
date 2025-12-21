@@ -6,14 +6,15 @@
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 95%;
+    /* Light mode */
+    --background: 210 20% 98%;
+    --foreground: 240 10% 10%;
 
-    --card: 240 6% 8%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
 
-    --popover: 240 6% 8%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
 
     --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
@@ -21,8 +22,8 @@
     --secondary: 160 84% 39%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 5% 18%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 240 5% 45%;
 
     --accent: 237 74% 60%;
     --accent-foreground: 0 0% 100%;
@@ -36,25 +37,25 @@
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 0%;
 
-    --border: 240 6% 15%;
-    --input: 240 6% 12%;
+    --border: 210 20% 88%;
+    --input: 210 20% 94%;
     --ring: 262 83% 58%;
 
     --radius: 1rem;
 
     /* Custom NZT tokens */
-    --glass: 240 6% 8% / 0.65;
-    --glass-border: 0 0% 100% / 0.08;
-    --glow-primary: 262 83% 58% / 0.3;
-    --glow-success: 160 84% 39% / 0.3;
+    --glass: 0 0% 100% / 0.75;
+    --glass-border: 0 0% 0% / 0.08;
+    --glow-primary: 262 83% 58% / 0.2;
+    --glow-success: 160 84% 39% / 0.2;
 
-    --sidebar-background: 240 6% 6%;
-    --sidebar-foreground: 0 0% 95%;
+    --sidebar-background: 210 20% 96%;
+    --sidebar-foreground: 240 10% 10%;
     --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 6% 15%;
+    --sidebar-accent: 210 20% 92%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 210 20% 88%;
     --sidebar-ring: 262 83% 58%;
   }
 
@@ -86,6 +87,12 @@
     --border: 240 6% 15%;
     --input: 240 6% 12%;
     --ring: 262 83% 58%;
+
+    /* Custom NZT tokens */
+    --glass: 240 6% 8% / 0.65;
+    --glass-border: 0 0% 100% / 0.08;
+    --glow-primary: 262 83% 58% / 0.3;
+    --glow-success: 160 84% 39% / 0.3;
 
     --sidebar-background: 240 6% 6%;
     --sidebar-foreground: 0 0% 95%;
