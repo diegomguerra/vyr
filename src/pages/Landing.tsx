@@ -2,11 +2,10 @@ import {
   LandingNav,
   Hero,
   SupplementsSection,
-  SystemSection,
-  PremiumShowcase,
+  PlatformSection,
+  SmartRingSection,
   ProductCard,
   HowItWorks,
-  BenefitSection,
   FAQ,
   Footer,
   GradientBanner,
@@ -19,16 +18,20 @@ export default function Landing() {
     <div className="min-h-screen bg-background">
       <LandingNav />
       <Hero />
+      {/* 1. Suplementos - O produto base */}
       <SupplementsSection />
-      <SystemSection />
-      <PremiumShowcase />
+      {/* 2. Plataforma - Como mensuramos via relatos */}
+      <PlatformSection />
+      {/* 3. Smart Ring - Dados precisos, ciclo completo */}
+      <SmartRingSection />
+      {/* 4. Visualização do App/Ring integrado */}
       <AppShowcase />
+      {/* 5. Pacotes/Ofertas */}
       <ProductCard />
       <GradientBanner variant="newsletter" />
       <HowItWorks />
       <Testimonials />
       <GradientBanner variant="info" />
-      <BenefitSection />
       <GradientBanner variant="cta" />
       <FAQ />
       <Footer />

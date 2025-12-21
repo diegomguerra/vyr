@@ -1,4 +1,6 @@
 export { LandingNav } from "./LandingNav";
+export { PlatformSection } from "./PlatformSection";
+export { SmartRingSection } from "./SmartRingSection";
 export { Hero } from "./Hero";
 export { SystemSection } from "./SystemSection";
 export { PremiumShowcase } from "./PremiumShowcase";
