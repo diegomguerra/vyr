@@ -1,4 +1,5 @@
 export { LandingNav } from "./LandingNav";
+export { SystemSection } from "./SystemSection";
 export { GradientBanner } from "./GradientBanner";
 export { Hero } from "./Hero";
 export { ProductCard } from "./ProductCard";

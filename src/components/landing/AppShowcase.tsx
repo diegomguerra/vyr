@@ -1,4 +1,4 @@
-import { TrendingUp, Moon, Brain, Zap } from "lucide-react";
+import { TrendingUp, Moon, Brain, Zap, Activity } from "lucide-react";
 
 // Simulated Dashboard Screen
 function DashboardScreen() {
@@ -171,28 +171,75 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
   );
 }
 
+// Smart Ring Visual Component
+function SmartRingVisual() {
+  return (
+    <div className="relative w-32 h-32 flex items-center justify-center">
+      {/* Outer glow */}
+      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/20 to-indigo-500/20 rounded-full blur-xl" />
+      
+      {/* Ring */}
+      <div className="relative w-24 h-24">
+        {/* Ring body - gradient metallic look */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 shadow-2xl shadow-black/50" />
+        
+        {/* Inner circle (hole) */}
+        <div className="absolute inset-[30%] rounded-full bg-slate-950 shadow-inner" />
+        
+        {/* Highlight arc */}
+        <svg className="absolute inset-0 w-full h-full -rotate-45" viewBox="0 0 100 100">
+          <circle
+            cx="50"
+            cy="50"
+            r="38"
+            fill="none"
+            stroke="url(#ringHighlight)"
+            strokeWidth="4"
+            strokeDasharray="60 180"
+            strokeLinecap="round"
+          />
+          <defs>
+            <linearGradient id="ringHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#c084fc" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        {/* Subtle inner glow */}
+        <div className="absolute inset-[25%] rounded-full border border-fuchsia-500/20" />
+      </div>
+      
+      {/* Floating metrics */}
+      <div className="absolute -top-2 -right-2 px-2 py-1 bg-slate-800/90 rounded-lg border border-fuchsia-500/30 text-[10px]">
+        <Activity className="w-3 h-3 text-fuchsia-400 inline mr-1" />
+        <span className="text-white font-medium">24/7</span>
+      </div>
+    </div>
+  );
+}
+
 export function AppShowcase() {
   const features = [
-    { icon: Brain, label: "Performance Cognitiva", value: "+23%" },
-    { icon: Moon, label: "Qualidade do Sono", value: "82%" },
-    { icon: TrendingUp, label: "Evolução Contínua", value: "30 dias" },
-    { icon: Zap, label: "Insights em Tempo Real", value: "24/7" },
+    { icon: Brain, label: "Performance Cognitiva", value: "Mensurável" },
+    { icon: Moon, label: "Qualidade do Sono", value: "Rastreada" },
+    { icon: TrendingUp, label: "Evolução Individual", value: "30+ dias" },
+    { icon: Zap, label: "Correlações AI", value: "Tempo real" },
   ];
 
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-600 via-slate-500 to-cyan-600" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-violet-900" />
       
       {/* Bokeh Effects */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-cyan-300/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-300/20 rounded-full blur-3xl" />
-      <div className="absolute top-40 right-1/4 w-48 h-48 bg-amber-200/20 rounded-full blur-2xl" />
-      <div className="absolute bottom-40 left-1/4 w-56 h-56 bg-emerald-300/15 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-violet-400/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-fuchsia-400/15 rounded-full blur-3xl" />
+      <div className="absolute top-40 right-1/4 w-48 h-48 bg-indigo-300/15 rounded-full blur-2xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Phone Mockups */}
+          {/* Phone Mockups + Ring */}
           <div className="relative flex justify-center lg:justify-center">
             {/* Phones Container */}
             <div className="relative flex items-end">
@@ -202,27 +249,41 @@ export function AppShowcase() {
               <PhoneFrame className="transform rotate-6 -translate-x-12 z-10 hover:-translate-y-4 transition-transform duration-500">
                 <SleepScreen />
               </PhoneFrame>
+              
+              {/* Smart Ring - floating near phones */}
+              <div className="absolute -bottom-8 -right-4 z-20 transform hover:scale-110 transition-transform duration-300">
+                <SmartRingVisual />
+              </div>
             </div>
           </div>
 
           {/* Content */}
           <div className="text-center lg:text-left">
+            <p className="text-sm text-fuchsia-400 uppercase tracking-widest mb-3 font-medium">
+              Plataforma + Smart Ring
+            </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Os insights mais detalhados sobre sua{" "}
-              <span className="text-cyan-200">performance cognitiva</span>
+              Dados precisos para{" "}
+              <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent">
+                evolução mensurável
+              </span>
             </h2>
             
-            <p className="text-lg text-white/80 mb-8 max-w-xl">
-              Acompanhe sua suplementação com dados precisos sobre sono, foco e energia. 
-              Visualize sua evolução ao longo do tempo com dashboards intuitivos e 
-              recomendações personalizadas baseadas em seus dados.
+            <p className="text-lg text-white/80 mb-4 max-w-xl">
+              Smart Ring discreto e elegante que coleta dados fisiológicos 24/7. 
+              Não substitui relógios sociais. Não possui estética esportiva.
+            </p>
+
+            <p className="text-base text-white/60 mb-8 max-w-xl">
+              Dashboard cognitivo com evolução histórica e correlação entre rotina, 
+              suplementos, recuperação e desempenho. Comparação apenas consigo mesmo.
             </p>
 
             {/* Feature Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {features.map((feature) => (
                 <div key={feature.label} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                  <feature.icon className="w-5 h-5 text-cyan-300" />
+                  <feature.icon className="w-5 h-5 text-fuchsia-300" />
                   <div>
                     <div className="text-xs text-white/70">{feature.label}</div>
                     <div className="text-sm font-semibold text-white">{feature.value}</div>
@@ -230,9 +291,8 @@ export function AppShowcase() {
                 </div>
               ))}
             </div>
-
-            </div>
           </div>
+        </div>
       </div>
     </section>
   );

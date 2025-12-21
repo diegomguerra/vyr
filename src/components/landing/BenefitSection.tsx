@@ -1,53 +1,55 @@
-import { Brain, Moon, TrendingUp, Shield, Zap, Target, Clock, BarChart3 } from "lucide-react";
+import { Brain, Moon, TrendingUp, Shield, Activity, Target, BarChart3, Sparkles } from "lucide-react";
 
 const benefits = [
   {
     icon: Brain,
-    title: "Clareza Sob Pressão",
-    description: "Tome decisões críticas com lucidez, mesmo em cenários de alta volatilidade e deadlines apertados",
+    title: "Clareza Mental Sustentada",
+    description: "Tome decisões críticas com lucidez constante. Sem picos, sem quedas. Performance previsível.",
     color: "text-violet-400",
     bgColor: "bg-violet-500/10",
   },
   {
-    icon: Target,
-    title: "Deep Work Elevado",
-    description: "Entre em estado de flow mais rápido e mantenha foco absoluto por sessões longas sem fadiga mental",
+    icon: Activity,
+    title: "Consistência Cognitiva",
+    description: "Mantenha alto desempenho ao longo do tempo. Estrutura, dados e rotina como pilares.",
     color: "text-fuchsia-400",
     bgColor: "bg-fuchsia-500/10",
   },
   {
-    icon: Clock,
-    title: "Produtividade 24h",
-    description: "Manhãs produtivas e reuniões noturnas. Performance consistente independente do horário",
+    icon: TrendingUp,
+    title: "Evolução Mensurável",
+    description: "Acompanhe sua progressão com dados reais. Saiba exatamente o que funciona para você.",
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-500/10",
+  },
+  {
+    icon: Target,
+    title: "Vantagem Competitiva Silenciosa",
+    description: "Performance intelectual de elite que não se ostenta. O diferencial está nos resultados.",
     color: "text-amber-400",
     bgColor: "bg-amber-500/10",
   },
   {
     icon: Moon,
-    title: "Sono Reparador",
-    description: "Otimize a recuperação do seu cérebro durante a noite para acordar pronto para performar",
+    title: "Recuperação Otimizada",
+    description: "Sono reparador que prepara seu cérebro para o próximo dia de alta demanda cognitiva.",
     color: "text-indigo-400",
     bgColor: "bg-indigo-500/10",
   },
   {
-    icon: Zap,
-    title: "Zero Crash",
-    description: "Energia sustentada sem os picos e quedas do café. Sem dependência, sem abstinência",
-    color: "text-emerald-400",
-    bgColor: "bg-emerald-500/10",
-  },
-  {
     icon: BarChart3,
-    title: "Dados Precisos",
-    description: "Acompanhe sua evolução com métricas reais. Saiba exatamente o que funciona para você",
+    title: "Correlações Inteligentes",
+    description: "Entenda como rotina, suplementação e recuperação impactam sua performance individual.",
     color: "text-cyan-400",
     bgColor: "bg-cyan-500/10",
   },
 ];
 
-const comparisons = [
-  { label: "Café tradicional", cons: ["Picos de energia", "Crash às 14h", "Ansiedade", "Dependência"] },
-  { label: "NZT Performance", pros: ["Energia sustentada", "Foco por 12h+", "Calma focada", "Sem dependência"] },
+const differentiators = [
+  "Primeiro sistema focado exclusivamente em desempenho intelectual",
+  "Não orientado a atletas físicos",
+  "Smart Ring discreto, sem estética esportiva",
+  "Comparação apenas do usuário consigo mesmo",
 ];
 
 export function BenefitSection() {
@@ -57,15 +59,15 @@ export function BenefitSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-6">
-            <TrendingUp className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm text-emerald-300 font-medium">Performance Comprovada</span>
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span className="text-sm text-emerald-300 font-medium">O Strava do Cérebro</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Por que os melhores escolhem NZT
+            Performance Intelectual Mensurável
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Desenvolvido para quem não pode se dar ao luxo de um dia medíocre. 
-            Traders, founders e desenvolvedores de elite confiam na nossa fórmula.
+            O mesmo rigor aplicado ao desempenho físico, agora para sua mente. 
+            Traders, founders e desenvolvedores de elite.
           </p>
         </div>
 
@@ -89,54 +91,21 @@ export function BenefitSection() {
           ))}
         </div>
 
-        {/* Comparison Section */}
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold text-white text-center mb-8">
-            A diferença que você vai sentir
-          </h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Traditional */}
-            <div className="p-6 rounded-2xl bg-slate-800/20 border border-slate-700/30">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
-                  <span className="text-red-400 text-lg">☕</span>
+        {/* Differentiators */}
+        <div className="max-w-3xl mx-auto">
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-violet-900/20 to-fuchsia-900/20 border border-violet-500/30">
+            <h3 className="text-xl font-bold text-white text-center mb-6">
+              Diferenciais Únicos
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {differentiators.map((diff, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full bg-violet-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-violet-400 text-xs">✓</span>
+                  </span>
+                  <span className="text-slate-300 text-sm">{diff}</span>
                 </div>
-                <span className="text-lg font-semibold text-slate-300">{comparisons[0].label}</span>
-              </div>
-              <ul className="space-y-3">
-                {comparisons[0].cons?.map((con, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <span className="w-5 h-5 rounded-full bg-red-500/10 flex items-center justify-center">
-                      <span className="text-red-400 text-xs">✕</span>
-                    </span>
-                    <span className="text-slate-400">{con}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* NZT */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-900/20 to-fuchsia-900/20 border border-violet-500/30 relative overflow-hidden">
-              <div className="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs font-semibold rounded-bl-xl">
-                RECOMENDADO
-              </div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-violet-500/15 flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-violet-400" />
-                </div>
-                <span className="text-lg font-semibold text-white">{comparisons[1].label}</span>
-              </div>
-              <ul className="space-y-3">
-                {comparisons[1].pros?.map((pro, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <span className="w-5 h-5 rounded-full bg-emerald-500/15 flex items-center justify-center">
-                      <span className="text-emerald-400 text-xs">✓</span>
-                    </span>
-                    <span className="text-slate-200">{pro}</span>
-                  </li>
-                ))}
-              </ul>
+              ))}
             </div>
           </div>
         </div>

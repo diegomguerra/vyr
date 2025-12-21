@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Brain, TrendingUp, Zap } from "lucide-react";
+import { ArrowRight, Brain, TrendingUp, Activity, BarChart3 } from "lucide-react";
 
 export function Hero() {
   return (
@@ -29,30 +29,33 @@ export function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 mb-8 backdrop-blur-sm">
           <Brain className="w-4 h-4 text-violet-400" />
-          <span className="text-sm text-violet-300 font-medium tracking-wide">Nootrópicos de Alta Performance</span>
+          <span className="text-sm text-violet-300 font-medium tracking-wide">Cognitive Performance System</span>
         </div>
 
         {/* Main Heading */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-          Seu cérebro no{" "}
           <span className="relative">
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
-              modo peak
+              Sustente. Meça. Evolua.
             </span>
-            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full opacity-60" />
           </span>
         </h1>
 
         {/* Subtitle - Speaking to the target audience */}
         <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-6 leading-relaxed">
-          Para quem compete com a mente. Traders, founders, desenvolvedores e profissionais 
-          que não podem se dar ao luxo de um dia ruim.
+          O sistema de performance intelectual para profissionais de elite. 
+          Traders, founders, desenvolvedores e estudantes de alto rendimento.
+        </p>
+
+        {/* Key phrase */}
+        <p className="text-base text-slate-400 max-w-2xl mx-auto mb-4 italic">
+          "Alta performance intelectual não se ostenta. Se mede."
         </p>
 
         {/* Secondary tagline */}
-        <p className="text-base text-slate-400 max-w-2xl mx-auto mb-10">
-          Suplementação cognitiva com tracking científico. Saiba exatamente como seu corpo 
-          responde e otimize seus resultados ao longo do tempo.
+        <p className="text-sm text-slate-500 max-w-xl mx-auto mb-10">
+          Suplementação por ciclo + Plataforma digital + Smart Ring. 
+          Evolução mensurável baseada em dados.
         </p>
 
         {/* CTA Buttons */}
@@ -66,26 +69,26 @@ export function Hero() {
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
-          <a href="#produto">
+          <a href="#sistema">
             <Button 
               size="lg" 
               variant="outline" 
               className="bg-transparent px-10 py-7 text-lg rounded-full border-slate-600 text-slate-300 hover:bg-slate-800/50 hover:border-slate-500 hover:text-white"
             >
-              Ver produto
+              Conhecer o sistema
             </Button>
           </a>
         </div>
 
-        {/* Performance Metrics Bar */}
+        {/* Performance Pillars Bar */}
         <div className="inline-flex items-center gap-0 rounded-2xl bg-slate-800/60 backdrop-blur-xl border border-slate-700/50 overflow-hidden">
           <div className="flex items-center gap-4 px-6 sm:px-8 py-5">
             <div className="w-12 h-12 rounded-full bg-emerald-500/15 flex items-center justify-center">
               <TrendingUp className="w-6 h-6 text-emerald-400" />
             </div>
             <div className="text-left">
-              <div className="text-2xl font-bold text-white">+37%</div>
-              <div className="text-sm text-slate-400">Foco médio</div>
+              <div className="text-lg font-bold text-white">Clareza</div>
+              <div className="text-sm text-slate-400">Mental sustentada</div>
             </div>
           </div>
           
@@ -93,11 +96,11 @@ export function Hero() {
           
           <div className="flex items-center gap-4 px-6 sm:px-8 py-5">
             <div className="w-12 h-12 rounded-full bg-violet-500/15 flex items-center justify-center">
-              <Brain className="w-6 h-6 text-violet-400" />
+              <Activity className="w-6 h-6 text-violet-400" />
             </div>
             <div className="text-left">
-              <div className="text-2xl font-bold text-white">89%</div>
-              <div className="text-sm text-slate-400">Clareza mental</div>
+              <div className="text-lg font-bold text-white">Consistência</div>
+              <div className="text-sm text-slate-400">Cognitiva ao tempo</div>
             </div>
           </div>
           
@@ -105,11 +108,11 @@ export function Hero() {
           
           <div className="flex items-center gap-4 px-6 sm:px-8 py-5">
             <div className="w-12 h-12 rounded-full bg-amber-500/15 flex items-center justify-center">
-              <Zap className="w-6 h-6 text-amber-400" />
+              <BarChart3 className="w-6 h-6 text-amber-400" />
             </div>
             <div className="text-left">
-              <div className="text-2xl font-bold text-white">12h</div>
-              <div className="text-sm text-slate-400">Energia sustentada</div>
+              <div className="text-lg font-bold text-white">Evolução</div>
+              <div className="text-sm text-slate-400">Mensurável</div>
             </div>
           </div>
         </div>

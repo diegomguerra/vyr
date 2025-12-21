@@ -1,209 +1,239 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Check, Sparkles, Shield, Clock, TrendingUp } from "lucide-react";
+import { Check, Sparkles, Shield, Circle, Monitor, Sun, Moon, Sunset, Star } from "lucide-react";
 
-const products = [
+const individualProducts = [
   {
     id: "dia",
     name: "NZT Dia",
-    tagline: "Performance Diurna",
-    description: "Fórmula para máxima performance cognitiva durante o dia. Ideal para trabalho intenso e tomada de decisões.",
-    gradient: "from-amber-500/20 via-orange-500/10 to-transparent",
-    accentColor: "text-amber-600",
-    borderAccent: "border-amber-500/30",
-    features: ["Foco intenso", "Clareza mental", "Energia sustentada"],
-    originalPrice: "R$ 197,00",
-    price: "R$ 147,00",
-    discount: "25% OFF",
+    icon: Sun,
+    tagline: "Ativação & Clareza",
+    description: "Máxima performance cognitiva durante o dia. Ideal para trabalho intenso e tomada de decisões.",
+    color: "text-amber-500",
+    borderColor: "border-amber-500/30",
+    bgColor: "bg-amber-500/10",
   },
   {
     id: "tarde",
     name: "NZT Tarde",
-    tagline: "Criatividade & Flow",
-    description: "Potencializa o pensamento criativo e mantém o flow produtivo até o final do expediente.",
-    gradient: "from-purple-500/20 via-pink-500/10 to-transparent",
-    accentColor: "text-purple-600",
-    borderAccent: "border-purple-500/30",
-    features: ["Estado de flow", "Criatividade", "Resistência mental"],
-    originalPrice: "R$ 197,00",
-    price: "R$ 147,00",
-    discount: "25% OFF",
+    icon: Sunset,
+    tagline: "Sustentação & Resiliência",
+    description: "Mantém o flow produtivo e resistência mental até o final do expediente.",
+    color: "text-purple-500",
+    borderColor: "border-purple-500/30",
+    bgColor: "bg-purple-500/10",
   },
   {
     id: "noite",
     name: "NZT Noite",
-    tagline: "Recuperação & Memória",
-    description: "Otimiza a consolidação da memória e prepara o cérebro para uma recuperação profunda.",
-    gradient: "from-indigo-500/20 via-blue-500/10 to-transparent",
-    accentColor: "text-indigo-600",
-    borderAccent: "border-indigo-500/30",
-    features: ["Memória consolidada", "Sono reparador", "Recuperação neural"],
-    originalPrice: "R$ 197,00",
-    price: "R$ 147,00",
-    discount: "25% OFF",
+    icon: Moon,
+    tagline: "Recuperação Cognitiva",
+    description: "Otimiza consolidação da memória e prepara o cérebro para recuperação profunda.",
+    color: "text-indigo-500",
+    borderColor: "border-indigo-500/30",
+    bgColor: "bg-indigo-500/10",
   },
 ];
 
-const bundleBenefits = [
-  { icon: Sparkles, text: "Otimização 24 horas por dia" },
-  { icon: TrendingUp, text: "Resultados potencializados" },
-  { icon: Shield, text: "Garantia de 30 dias" },
-  { icon: Clock, text: "Entrega expressa grátis" },
+const offers = [
+  {
+    id: "unitario",
+    tier: "Porta de Entrada",
+    name: "Produto Unitário",
+    description: "Escolha um produto individual para começar sua jornada de performance cognitiva.",
+    price: "R$ 147",
+    priceNote: "por produto",
+    includes: ["1 produto à escolha (Dia, Tarde ou Noite)", "Acesso à plataforma digital", "30 dias de suprimento"],
+    cta: "Escolher Produto",
+    highlight: false,
+  },
+  {
+    id: "rotina",
+    tier: "Mais Vendido",
+    name: "Rotina Cognitiva",
+    description: "A combinação completa para otimização 24 horas. O sistema como foi desenhado.",
+    originalPrice: "R$ 441",
+    price: "R$ 397",
+    priceNote: "por mês",
+    discount: "10% OFF",
+    includes: ["NZT Dia + Tarde + Noite", "Acesso à plataforma digital", "30 dias de suprimento", "Entrega expressa grátis"],
+    cta: "Quero a Rotina Completa",
+    highlight: true,
+  },
+  {
+    id: "premium",
+    tier: "Experiência Completa",
+    name: "Plano Premium",
+    description: "O sistema completo de performance intelectual. Suplementação + Smart Ring + Plataforma.",
+    originalPrice: "R$ 1.797",
+    price: "R$ 1.297",
+    priceNote: "investimento único",
+    discount: "28% OFF",
+    includes: [
+      "NZT Dia + Tarde + Noite",
+      "Smart Ring (sensor contínuo)",
+      "Acesso premium à plataforma",
+      "Dashboard cognitivo avançado",
+      "Correlações e insights AI",
+      "Entrega expressa grátis",
+    ],
+    cta: "Quero o Sistema Completo",
+    highlight: false,
+    premium: true,
+  },
 ];
 
 export function ProductCard() {
   return (
-    <section id="produto" className="py-24 bg-muted/20">
+    <section id="produto" className="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm text-muted-foreground uppercase tracking-widest mb-3">
-            Nossa Linha
+          <p className="text-sm text-violet-400 uppercase tracking-widest mb-3 font-medium">
+            Modelo Simplificado
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-foreground">
-            Suplementação Cognitiva Avançada
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Escolha sua Entrada no Sistema
           </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Poucas opções. Clareza imediata. Escada simples de valor.
+          </p>
         </div>
 
-        {/* Bundle CTA - Hero Product */}
-        <div className="mb-16">
-          <div className="relative overflow-hidden bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600 rounded-3xl p-1">
-            {/* Glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/50 via-purple-500/50 to-fuchsia-500/50 blur-xl" />
-            
-            <div className="relative bg-card/95 backdrop-blur-sm rounded-[22px] p-8 md:p-12">
-              {/* Badge */}
-              <div className="flex justify-center mb-6">
-                <span className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Mais Vendido
-                </span>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                {/* Left - Content */}
-                <div className="text-center md:text-left">
-                  <p className="text-sm text-muted-foreground uppercase tracking-widest mb-2">
-                    Protocolo Completo
-                  </p>
-                  <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent mb-3">
-                    Pacote Completo
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    A solução definitiva para quem busca performance cognitiva de elite. 
-                    Combine os três suplementos e experimente o potencial máximo do seu cérebro.
-                  </p>
-
-                  {/* Benefits */}
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    {bundleBenefits.map((benefit, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <benefit.icon className="w-4 h-4 text-purple-500" />
-                        <span>{benefit.text}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Included products */}
-                  <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
-                    <span className="inline-flex items-center gap-1.5 text-xs bg-amber-500/10 text-amber-600 px-3 py-1.5 rounded-full border border-amber-500/20">
-                      <Check className="w-3 h-3" /> NZT Dia
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs bg-purple-500/10 text-purple-600 px-3 py-1.5 rounded-full border border-purple-500/20">
-                      <Check className="w-3 h-3" /> NZT Tarde
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs bg-indigo-500/10 text-indigo-600 px-3 py-1.5 rounded-full border border-indigo-500/20">
-                      <Check className="w-3 h-3" /> NZT Noite
-                    </span>
-                  </div>
-                </div>
-
-                {/* Right - Pricing & CTA */}
-                <div className="bg-muted/30 rounded-2xl p-8 text-center border border-border/50">
-                  <p className="text-sm text-muted-foreground mb-4">Economia de R$ 194,00</p>
-                  
-                  <div className="mb-2">
-                    <span className="text-lg text-muted-foreground line-through">R$ 591,00</span>
-                  </div>
-                  
-                  <div className="flex items-baseline justify-center gap-3 mb-2">
-                    <span className="text-5xl font-bold text-foreground">R$ 397</span>
-                    <span className="text-2xl text-muted-foreground">,00</span>
-                  </div>
-                  
-                  <div className="inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-6">
-                    33% OFF
-                  </div>
-
-                  <p className="text-xs text-muted-foreground mb-6">
-                    ou 12x de R$ 39,08 sem juros
-                  </p>
-
-                  <Link to="/login?signup=true" className="block">
-                    <Button className="w-full bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 hover:from-violet-700 hover:via-purple-700 hover:to-fuchsia-700 text-white py-6 text-lg font-semibold rounded-xl shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30 hover:scale-[1.02]">
-                      Quero o Protocolo Completo
-                    </Button>
-                  </Link>
-
-                  <p className="text-xs text-muted-foreground mt-4 flex items-center justify-center gap-1.5">
-                    <Shield className="w-3.5 h-3.5" />
-                    Compra 100% segura • Satisfação garantida
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Individual Products */}
-        <div className="text-center mb-8">
-          <p className="text-sm text-muted-foreground">Ou escolha individualmente</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {products.map((product) => (
-            <div 
-              key={product.id} 
-              className={`bg-card border ${product.borderAccent} rounded-2xl p-8 flex flex-col h-full hover:shadow-lg transition-all duration-300`}
+        {/* Offers Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
+          {offers.map((offer) => (
+            <div
+              key={offer.id}
+              className={`relative rounded-2xl p-1 ${
+                offer.premium 
+                  ? "bg-gradient-to-br from-fuchsia-600 via-violet-600 to-indigo-600" 
+                  : offer.highlight 
+                    ? "bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-600"
+                    : "bg-slate-700/50"
+              }`}
             >
-              {/* Tag */}
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                {product.tagline}
-              </p>
-              
-              {/* Product Name */}
-              <h3 className={`text-xl font-semibold ${product.accentColor} mb-4`}>
-                {product.name}
-              </h3>
+              {/* Glow for premium/highlight */}
+              {(offer.premium || offer.highlight) && (
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/30 via-purple-500/30 to-fuchsia-500/30 blur-xl rounded-2xl" />
+              )}
 
-              {/* Product Visual - Clean placeholder for future product image */}
-              <div className={`w-full h-48 mb-6 rounded-xl bg-gradient-to-br ${product.gradient} border border-border/30 flex items-center justify-center`}>
-                <span className="text-4xl font-light text-muted-foreground/50">NZT</span>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-                {product.description}
-              </p>
-
-              {/* Price */}
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-sm text-muted-foreground line-through">{product.originalPrice}</span>
+              <div className={`relative bg-slate-900 rounded-xl p-6 h-full flex flex-col ${
+                offer.premium ? "border border-fuchsia-500/20" : ""
+              }`}>
+                {/* Tier Badge */}
+                <div className="mb-4">
+                  <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider ${
+                    offer.premium 
+                      ? "bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white"
+                      : offer.highlight
+                        ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white"
+                        : "bg-slate-700 text-slate-300"
+                  }`}>
+                    {offer.premium && <Star className="w-3 h-3" />}
+                    {offer.highlight && <Sparkles className="w-3 h-3" />}
+                    {offer.tier}
+                  </span>
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-semibold text-foreground">{product.price}</span>
-                  <span className="text-xs font-medium text-secondary">{product.discount}</span>
-                </div>
-              </div>
 
-              {/* CTA */}
-              <Link to="/login?signup=true" className="mt-auto">
-                <Button variant="outline" className="w-full py-5 rounded-lg">
-                  Saiba mais
-                </Button>
-              </Link>
+                {/* Name & Description */}
+                <h3 className={`text-2xl font-bold mb-2 ${
+                  offer.premium 
+                    ? "bg-gradient-to-r from-fuchsia-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent"
+                    : "text-white"
+                }`}>
+                  {offer.name}
+                </h3>
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                  {offer.description}
+                </p>
+
+                {/* Pricing */}
+                <div className="mb-6">
+                  {offer.originalPrice && (
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm text-slate-500 line-through">{offer.originalPrice}</span>
+                      <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                        {offer.discount}
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex items-baseline gap-2">
+                    <span className={`text-4xl font-bold ${offer.premium ? "text-fuchsia-400" : "text-white"}`}>
+                      {offer.price}
+                    </span>
+                    <span className="text-slate-500 text-sm">{offer.priceNote}</span>
+                  </div>
+                </div>
+
+                {/* Includes */}
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {offer.includes.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3 text-sm">
+                      <Check className={`w-4 h-4 mt-0.5 ${
+                        offer.premium ? "text-fuchsia-400" : offer.highlight ? "text-violet-400" : "text-emerald-400"
+                      }`} />
+                      <span className="text-slate-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <Link to="/login?signup=true">
+                  <Button 
+                    className={`w-full py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
+                      offer.premium
+                        ? "bg-gradient-to-r from-fuchsia-600 via-violet-600 to-indigo-600 hover:from-fuchsia-700 hover:via-violet-700 hover:to-indigo-700 text-white shadow-lg shadow-fuchsia-500/25 hover:shadow-xl hover:shadow-fuchsia-500/30 hover:scale-[1.02]"
+                        : offer.highlight
+                          ? "bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 hover:from-violet-700 hover:via-purple-700 hover:to-fuchsia-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 hover:scale-[1.02]"
+                          : "bg-slate-700 hover:bg-slate-600 text-white"
+                    }`}
+                  >
+                    {offer.cta}
+                  </Button>
+                </Link>
+
+                {/* Security note for premium */}
+                {offer.premium && (
+                  <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1.5">
+                    <Shield className="w-3.5 h-3.5" />
+                    Compra 100% segura • Garantia de 30 dias
+                  </p>
+                )}
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Individual Products Reference */}
+        <div className="text-center mb-8">
+          <p className="text-slate-500 text-sm">Conheça cada produto do ciclo cognitivo</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4">
+          {individualProducts.map((product) => (
+            <div
+              key={product.id}
+              className={`p-5 rounded-xl bg-slate-800/30 border ${product.borderColor} flex items-center gap-4`}
+            >
+              <div className={`w-12 h-12 rounded-xl ${product.bgColor} flex items-center justify-center`}>
+                <product.icon className={`w-6 h-6 ${product.color}`} />
+              </div>
+              <div>
+                <h4 className={`font-semibold ${product.color}`}>{product.name}</h4>
+                <p className="text-slate-400 text-sm">{product.tagline}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Platform note */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-slate-800/30 border border-slate-700/50">
+            <Monitor className="w-5 h-5 text-violet-400" />
+            <span className="text-slate-300 text-sm">
+              <span className="text-white font-medium">Plataforma digital</span> inclusa em todos os planos
+            </span>
+          </div>
         </div>
       </div>
     </section>
