@@ -113,22 +113,6 @@ export function Hero() {
             </div>
           </div>
         </div>
-
-        {/* Trust Indicators */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-slate-500">
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-            Usado por profissionais da Faria Lima
-          </span>
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-violet-400 rounded-full" />
-            Fórmula científica comprovada
-          </span>
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-amber-400 rounded-full" />
-            Sem crash de energia
-          </span>
-        </div>
       </div>
     </section>
   );
