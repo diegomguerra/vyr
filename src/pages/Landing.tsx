@@ -7,6 +7,7 @@ import {
   FAQ,
   Footer,
   GradientBanner,
+  AppShowcase,
 } from "@/components/landing";
 
 export default function Landing() {
@@ -14,6 +15,7 @@ export default function Landing() {
     <div className="min-h-screen bg-background">
       <LandingNav />
       <Hero />
+      <AppShowcase />
       <ProductCard />
       <GradientBanner variant="newsletter" />
       <HowItWorks />
