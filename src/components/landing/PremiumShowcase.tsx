@@ -1,5 +1,4 @@
 import { Sparkles, Eye, BarChart3, TrendingUp, Star } from "lucide-react";
-import smartRingImage from "@/assets/smart-ring.png";
 
 // Os GANHOS são o centro - resultados que o usuário busca
 const cognitiveGains = [
@@ -128,12 +127,6 @@ export function PremiumShowcase() {
                   <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-fuchsia-500 border-4 border-slate-900 z-10" />
                   
                   <div className={`relative p-8 rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-fuchsia-500/30 transition-all ${index === 1 ? 'lg:scale-105 lg:z-10 border-fuchsia-500/30' : ''}`}>
-                    {/* Se for o item do meio (Ring), mostra a imagem */}
-                    {index === 2 && (
-                      <div className="absolute -top-6 -right-6 w-24 h-24 opacity-30 group-hover:opacity-50 transition-opacity">
-                        <img src={smartRingImage} alt="" className="w-full h-full object-contain" />
-                      </div>
-                    )}
                     
                     <div className="text-center">
                       <span className="text-xs text-fuchsia-400 uppercase tracking-wider font-medium">{component.sublabel}</span>
