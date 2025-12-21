@@ -18,14 +18,29 @@ export type Database = {
         Row: {
           altura_cm: number | null
           codigo: string
+          condicoes_saude: string[] | null
+          consumo_alcool: string | null
+          consumo_cafeina: string | null
           created_at: string
           data_nascimento: string
+          frequencia_exercicio: string | null
+          horario_acordar: string | null
+          horario_dormir: string | null
+          horas_sono_media: number | null
           id: string
+          medicamentos_uso: string | null
+          nivel_estresse_geral: number | null
+          nivel_experiencia_suplementos: string | null
           nome_publico: string
+          objetivo_principal: string | null
+          onboarding_completo: boolean | null
+          onboarding_etapa: number | null
           perfil_atividade:
             | Database["public"]["Enums"]["perfil_atividade"]
             | null
           peso_kg: number | null
+          pratica_exercicio: boolean | null
+          qualidade_sono_geral: number | null
           rotina_trabalho: Database["public"]["Enums"]["rotina_trabalho"] | null
           sexo: Database["public"]["Enums"]["sexo_tipo"]
           updated_at: string
@@ -34,14 +49,29 @@ export type Database = {
         Insert: {
           altura_cm?: number | null
           codigo: string
+          condicoes_saude?: string[] | null
+          consumo_alcool?: string | null
+          consumo_cafeina?: string | null
           created_at?: string
           data_nascimento: string
+          frequencia_exercicio?: string | null
+          horario_acordar?: string | null
+          horario_dormir?: string | null
+          horas_sono_media?: number | null
           id?: string
+          medicamentos_uso?: string | null
+          nivel_estresse_geral?: number | null
+          nivel_experiencia_suplementos?: string | null
           nome_publico: string
+          objetivo_principal?: string | null
+          onboarding_completo?: boolean | null
+          onboarding_etapa?: number | null
           perfil_atividade?:
             | Database["public"]["Enums"]["perfil_atividade"]
             | null
           peso_kg?: number | null
+          pratica_exercicio?: boolean | null
+          qualidade_sono_geral?: number | null
           rotina_trabalho?:
             | Database["public"]["Enums"]["rotina_trabalho"]
             | null
@@ -52,14 +82,29 @@ export type Database = {
         Update: {
           altura_cm?: number | null
           codigo?: string
+          condicoes_saude?: string[] | null
+          consumo_alcool?: string | null
+          consumo_cafeina?: string | null
           created_at?: string
           data_nascimento?: string
+          frequencia_exercicio?: string | null
+          horario_acordar?: string | null
+          horario_dormir?: string | null
+          horas_sono_media?: number | null
           id?: string
+          medicamentos_uso?: string | null
+          nivel_estresse_geral?: number | null
+          nivel_experiencia_suplementos?: string | null
           nome_publico?: string
+          objetivo_principal?: string | null
+          onboarding_completo?: boolean | null
+          onboarding_etapa?: number | null
           perfil_atividade?:
             | Database["public"]["Enums"]["perfil_atividade"]
             | null
           peso_kg?: number | null
+          pratica_exercicio?: boolean | null
+          qualidade_sono_geral?: number | null
           rotina_trabalho?:
             | Database["public"]["Enums"]["rotina_trabalho"]
             | null

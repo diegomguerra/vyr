@@ -1,115 +1,251 @@
 import { useEffect, useState } from "react";
-import { Card, Chip } from "@/components/nzt";
-import { PERFIS } from "@/lib/microcopy";
+import { useNavigate } from "react-router-dom";
+import { Card } from "@/components/nzt";
+import { 
+  OnboardingProgress, 
+  StepObjetivo, 
+  StepPerfil, 
+  StepSaude, 
+  StepSono, 
+  StepEstilo 
+} from "@/components/onboarding";
 import { getParticipante, updateParticipante } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
-import type { Participante, PerfilAtividade, RotinaTrabalho } from "@/lib/types";
+import { ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
+import type { 
+  Participante, 
+  PerfilAtividade, 
+  RotinaTrabalho, 
+  NivelExperiencia,
+  FrequenciaExercicio,
+  ConsumoSubstancia
+} from "@/lib/types";
 
 export default function Onboarding() {
   const [participante, setParticipante] = useState<Participante | null>(null);
+  const [step, setStep] = useState(1);
+  const [saving, setSaving] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
+
+  // Form state
+  const [objetivo, setObjetivo] = useState<string | null>(null);
+  const [experiencia, setExperiencia] = useState<NivelExperiencia | null>(null);
+  const [perfil, setPerfil] = useState<PerfilAtividade | null>(null);
+  const [rotina, setRotina] = useState<RotinaTrabalho | null>(null);
+  const [condicoes, setCondicoes] = useState<string[]>([]);
+  const [medicamentos, setMedicamentos] = useState("");
+  const [qualidadeSono, setQualidadeSono] = useState<number | null>(5);
+  const [horasSono, setHorasSono] = useState<number | null>(null);
+  const [horarioAcordar, setHorarioAcordar] = useState("07:00");
+  const [horarioDormir, setHorarioDormir] = useState("23:00");
+  const [nivelEstresse, setNivelEstresse] = useState<number | null>(5);
+  const [frequenciaExercicio, setFrequenciaExercicio] = useState<FrequenciaExercicio | null>(null);
+  const [consumoCafeina, setConsumoCafeina] = useState<ConsumoSubstancia | null>(null);
+  const [consumoAlcool, setConsumoAlcool] = useState<ConsumoSubstancia | null>(null);
 
   useEffect(() => {
     async function load() {
-      console.log("Onboarding: Carregando participante...");
       const p = await getParticipante();
-      console.log("Onboarding: Participante carregado:", p);
-      console.log("Onboarding: PERFIS disponíveis:", PERFIS);
-      setParticipante(p);
+      if (p) {
+        setParticipante(p);
+        // Load existing data
+        setObjetivo(p.objetivo_principal);
+        setExperiencia(p.nivel_experiencia_suplementos as NivelExperiencia | null);
+        setPerfil(p.perfil_atividade);
+        setRotina(p.rotina_trabalho);
+        setCondicoes(p.condicoes_saude || []);
+        setMedicamentos(p.medicamentos_uso || "");
+        setQualidadeSono(p.qualidade_sono_geral);
+        setHorasSono(p.horas_sono_media);
+        setHorarioAcordar(p.horario_acordar || "07:00");
+        setHorarioDormir(p.horario_dormir || "23:00");
+        setNivelEstresse(p.nivel_estresse_geral);
+        setFrequenciaExercicio(p.frequencia_exercicio as FrequenciaExercicio | null);
+        setConsumoCafeina(p.consumo_cafeina as ConsumoSubstancia | null);
+        setConsumoAlcool(p.consumo_alcool as ConsumoSubstancia | null);
+        setStep(p.onboarding_etapa > 0 ? p.onboarding_etapa : 1);
+      }
     }
     load();
   }, []);
 
+  const saveProgress = async (nextStep: number, complete = false) => {
+    if (!participante) return;
+    setSaving(true);
+
+    try {
+      await updateParticipante(participante.id, {
+        objetivo_principal: objetivo,
+        nivel_experiencia_suplementos: experiencia,
+        perfil_atividade: perfil,
+        rotina_trabalho: rotina,
+        condicoes_saude: condicoes,
+        medicamentos_uso: medicamentos || null,
+        qualidade_sono_geral: qualidadeSono,
+        horas_sono_media: horasSono,
+        horario_acordar: horarioAcordar || null,
+        horario_dormir: horarioDormir || null,
+        pratica_exercicio: frequenciaExercicio !== "NUNCA" && frequenciaExercicio !== null,
+        frequencia_exercicio: frequenciaExercicio,
+        nivel_estresse_geral: nivelEstresse,
+        consumo_cafeina: consumoCafeina,
+        consumo_alcool: consumoAlcool,
+        onboarding_etapa: nextStep,
+        onboarding_completo: complete,
+      });
+
+      setParticipante({
+        ...participante,
+        onboarding_etapa: nextStep,
+        onboarding_completo: complete,
+      });
+      setStep(nextStep);
+
+      if (complete) {
+        toast({
+          title: "Anamnese completa!",
+          description: "Suas informações foram salvas. Bom acompanhamento!",
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Erro ao salvar:", error);
+      toast({
+        title: "Erro ao salvar",
+        description: "Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleNext = () => {
+    if (step < 5) {
+      saveProgress(step + 1);
+    } else {
+      saveProgress(5, true);
+    }
+  };
+
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
+
   if (!participante) {
     return (
-      <div className="text-muted-foreground text-sm">Carregando…</div>
+      <div className="flex items-center justify-center min-h-[200px]">
+        <div className="text-muted-foreground text-sm animate-pulse">Carregando…</div>
+      </div>
     );
   }
 
-  console.log("Onboarding: Renderizando com participante:", participante.id);
-
-  async function setPerfil(v: PerfilAtividade) {
-    if (!participante) return;
-    await updateParticipante(participante.id, { perfil_atividade: v });
-    setParticipante({ ...participante, perfil_atividade: v });
-  }
-
-  async function setRotina(v: RotinaTrabalho) {
-    if (!participante) return;
-    await updateParticipante(participante.id, { rotina_trabalho: v });
-    setParticipante({ ...participante, rotina_trabalho: v });
-  }
-
-  function concluir() {
-    toast({
-      title: "Anamnese salva",
-      description: "Agora é consistência. Continue registrando!",
-    });
-  }
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return (
+          <StepObjetivo
+            objetivo={objetivo}
+            experiencia={experiencia}
+            onObjetivoChange={setObjetivo}
+            onExperienciaChange={setExperiencia}
+          />
+        );
+      case 2:
+        return (
+          <StepPerfil
+            perfil={perfil}
+            rotina={rotina}
+            onPerfilChange={setPerfil}
+            onRotinaChange={setRotina}
+          />
+        );
+      case 3:
+        return (
+          <StepSaude
+            condicoes={condicoes}
+            medicamentos={medicamentos}
+            onCondicoesChange={setCondicoes}
+            onMedicamentosChange={setMedicamentos}
+          />
+        );
+      case 4:
+        return (
+          <StepSono
+            qualidadeSono={qualidadeSono}
+            horasSono={horasSono}
+            horarioAcordar={horarioAcordar}
+            horarioDormir={horarioDormir}
+            onQualidadeSonoChange={setQualidadeSono}
+            onHorasSonoChange={setHorasSono}
+            onHorarioAcordarChange={setHorarioAcordar}
+            onHorarioDormirChange={setHorarioDormir}
+          />
+        );
+      case 5:
+        return (
+          <StepEstilo
+            nivelEstresse={nivelEstresse}
+            frequenciaExercicio={frequenciaExercicio}
+            consumoCafeina={consumoCafeina}
+            consumoAlcool={consumoAlcool}
+            onNivelEstresseChange={setNivelEstresse}
+            onFrequenciaExercicioChange={setFrequenciaExercicio}
+            onConsumoCafeinaChange={setConsumoCafeina}
+            onConsumoAlcoolChange={setConsumoAlcool}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <Card
-      title="Vamos conhecer sua forma de atuação"
-      subtitle="Sem hierarquia • sem rótulos • com respeito"
+      title="Anamnese Completa"
+      subtitle="Conheça-se melhor • Resultados personalizados"
     >
-      <p className="text-sm text-foreground/80 leading-relaxed">
-        Cada pessoa exerce atenção, clareza e energia de uma forma única.
-        Aqui não existe atividade mais ou menos importante — apenas{" "}
-        <strong className="text-foreground">formas diferentes de contribuir</strong>.
-        Suas respostas nos ajudam a falar com você da maneira mais adequada ao seu dia a dia.
-      </p>
+      <OnboardingProgress currentStep={step} />
 
-      <h4 className="font-bold mt-6 mb-3">
-        Qual tipo de atividade ocupa a maior parte do seu dia?
-      </h4>
-      <div className="space-y-3">
-        {PERFIS.map((opt) => (
-          <button
-            key={opt.value}
-            className={`w-full p-4 rounded-xl border text-left transition-all duration-200 ${
-              participante.perfil_atividade === opt.value
-                ? "border-primary/70 bg-primary/10"
-                : "border-border bg-muted/30 hover:bg-muted/50"
-            }`}
-            onClick={() => setPerfil(opt.value)}
-          >
-            <div className="font-bold text-sm text-foreground">{opt.title}</div>
-            <div className="text-xs text-muted-foreground mt-1">{opt.desc}</div>
-          </button>
-        ))}
+      <div className="min-h-[400px]">
+        {renderStep()}
       </div>
 
-      <p className="text-xs text-muted-foreground mt-4">
-        Todas as opções exigem alto nível de atenção, energia e clareza — apenas de maneiras diferentes.
-      </p>
+      <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
+        <button
+          onClick={handleBack}
+          disabled={step === 1}
+          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-muted-foreground hover:text-foreground hover:bg-muted"
+        >
+          <ChevronLeft size={18} />
+          Voltar
+        </button>
 
-      <h4 className="font-bold mt-6 mb-3">
-        Seu dia costuma ser mais composto por:
-      </h4>
-      <div className="flex flex-wrap gap-3">
-        <Chip 
-          active={participante.rotina_trabalho === "REUNIOES"} 
-          onClick={() => setRotina("REUNIOES")}
-        >
-          Reuniões e interações
-        </Chip>
-        <Chip 
-          active={participante.rotina_trabalho === "FOCO"} 
-          onClick={() => setRotina("FOCO")}
-        >
-          Foco individual
-        </Chip>
-        <Chip 
-          active={participante.rotina_trabalho === "MISTO"} 
-          onClick={() => setRotina("MISTO")}
-        >
-          Combinação dos dois
-        </Chip>
-      </div>
+        <div className="text-sm text-muted-foreground">
+          Etapa {step} de 5
+        </div>
 
-      <div className="mt-6">
-        <button className="nzt-btn-primary" onClick={concluir}>
-          Concluir
+        <button
+          onClick={handleNext}
+          disabled={saving}
+          className="flex items-center gap-2 px-6 py-2 rounded-lg text-sm font-bold transition-all bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
+        >
+          {saving ? (
+            "Salvando..."
+          ) : step === 5 ? (
+            <>
+              Concluir
+              <CheckCircle2 size={18} />
+            </>
+          ) : (
+            <>
+              Próximo
+              <ChevronRight size={18} />
+            </>
+          )}
         </button>
       </div>
     </Card>

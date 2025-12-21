@@ -1,32 +1,7 @@
 import type { JanelaDose, PerfilAtividade } from "./types";
 
-export const PERFIS: { value: PerfilAtividade; title: string; desc: string }[] = [
-  { 
-    value: "CONDUCAO", 
-    title: "Condução e organização de pessoas e decisões", 
-    desc: "Planejar, coordenar, decidir, acompanhar processos e pessoas." 
-  },
-  { 
-    value: "ANALISE", 
-    title: "Análise, raciocínio e resolução de problemas", 
-    desc: "Estruturar ideias, interpretar dados, estudar cenários e construir soluções." 
-  },
-  { 
-    value: "ENSINO", 
-    title: "Ensino, orientação e desenvolvimento de pessoas", 
-    desc: "Educar, orientar, acompanhar e apoiar o desenvolvimento de outros." 
-  },
-  { 
-    value: "EXECUCAO", 
-    title: "Ação prática, presença física e execução", 
-    desc: "Atuar com ritmo, coordenação, presença e execução no mundo real." 
-  },
-  { 
-    value: "CRIACAO", 
-    title: "Criação, comunicação e expressão de ideias", 
-    desc: "Criar, comunicar, escrever, apresentar ou expressar conceitos." 
-  },
-];
+// Re-export from centralized onboarding data
+export { PERFIS, ROTINAS } from "./onboarding-data";
 
 export const JANELAS: Record<JanelaDose, { titulo: string; subtitulo: string }> = {
   DIA: { titulo: "Dia (Core)", subtitulo: "Clareza • Atenção • Energia mental estável" },
