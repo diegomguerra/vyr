@@ -39,25 +39,40 @@ export default function RegisterDose() {
   async function salvar() {
     if (!participante) return;
     
-    await upsertRegistroDose({
-      participante_id: participante.id,
-      data,
-      janela,
-      tomou,
-      horario_tomada: tomou ? new Date().toISOString() : null,
-      escala_1: e1,
-      escala_2: e2,
-      escala_3: e3,
-      efeito_indesejado: sev,
-      sintomas,
-      observacoes: obs || null,
-    });
+    // Formata horario como HH:MM:SS para o tipo time do PostgreSQL
+    const now = new Date();
+    const horario = tomou 
+      ? `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`
+      : null;
     
-    toast({
-      title: "Registro salvo",
-      description: "Consistência > intensidade. Continue assim!",
-    });
-    setObs("");
+    try {
+      await upsertRegistroDose({
+        participante_id: participante.id,
+        data,
+        janela,
+        tomou,
+        horario_tomada: horario,
+        escala_1: e1,
+        escala_2: e2,
+        escala_3: e3,
+        efeito_indesejado: sev,
+        sintomas,
+        observacoes: obs || null,
+      });
+      
+      toast({
+        title: "Registro salvo",
+        description: "Consistência > intensidade. Continue assim!",
+      });
+      setObs("");
+    } catch (error) {
+      console.error("Erro ao salvar:", error);
+      toast({
+        title: "Erro ao salvar",
+        description: "Tente novamente.",
+        variant: "destructive",
+      });
+    }
   }
 
   function toggleSintoma(k: string) {
