@@ -2,6 +2,7 @@ import {
   LandingNav,
   Hero,
   SystemSection,
+  PremiumShowcase,
   ProductCard,
   HowItWorks,
   BenefitSection,
@@ -18,6 +19,7 @@ export default function Landing() {
       <LandingNav />
       <Hero />
       <SystemSection />
+      <PremiumShowcase />
       <AppShowcase />
       <ProductCard />
       <GradientBanner variant="newsletter" />

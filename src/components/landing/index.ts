@@ -2,6 +2,7 @@ export { LandingNav } from "./LandingNav";
 export { SystemSection } from "./SystemSection";
 export { GradientBanner } from "./GradientBanner";
 export { Hero } from "./Hero";
+export { PremiumShowcase } from "./PremiumShowcase";
 export { ProductCard } from "./ProductCard";
 export { HowItWorks } from "./HowItWorks";
 export { BenefitSection } from "./BenefitSection";

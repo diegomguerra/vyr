@@ -28,12 +28,12 @@ const layers = [
   {
     id: "ring",
     title: "Smart Ring",
-    description: "Sensor contínuo, discreto e elegante. Não substitui relógios sociais.",
+    description: "Discreto como uma aliança, poderoso como um laboratório. Mede HRV, sono e prontidão mental.",
     icon: Circle,
     color: "text-fuchsia-400",
     bgColor: "bg-fuchsia-500/10",
     borderColor: "border-fuchsia-500/30",
-    features: ["Monitoramento 24/7", "Design discreto", "Dados fisiológicos precisos"],
+    features: ["Sensor contínuo 24/7", "Design elegante e invisível", "HRV, sono e prontidão"],
   },
   {
     id: "dashboard",
