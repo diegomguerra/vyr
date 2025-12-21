@@ -1,49 +1,48 @@
-import { Circle, Brain, Activity, Heart, Moon, Zap, Target, TrendingUp, Shield, Star } from "lucide-react";
+import { Brain, Zap, Target, TrendingUp, Shield, Star, Sparkles, Eye, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import smartRingImage from "@/assets/smart-ring.png";
 
-const ringFeatures = [
+// Os GANHOS são o centro - resultados que o usuário busca
+const cognitiveGains = [
   {
-    icon: Moon,
-    title: "Análise de Sono",
-    description: "Estágios, latência, eficiência e qualidade do sono em detalhe",
+    icon: Sparkles,
+    title: "Clareza Mental Sustentada",
+    description: "Menos névoa, mais decisões precisas ao longo do dia inteiro",
   },
   {
-    icon: Activity,
-    title: "Monitoramento de Estresse",
-    description: "Identifica momentos de tensão e relaxamento ao longo do dia",
+    icon: BarChart3,
+    title: "Consistência Cognitiva",
+    description: "Performance estável, sem picos e quedas imprevisíveis",
   },
   {
-    icon: Heart,
-    title: "Variabilidade Cardíaca",
-    description: "HRV contínuo para medir recuperação e prontidão cognitiva",
+    icon: TrendingUp,
+    title: "Evolução Mensurável",
+    description: "Dados reais que mostram seu progresso semana após semana",
   },
   {
-    icon: Zap,
-    title: "Prontidão Mental",
-    description: "Score diário baseado em dados fisiológicos reais",
+    icon: Eye,
+    title: "Vantagem Competitiva Silenciosa",
+    description: "Opere em outro nível enquanto outros dependem de café e sorte",
   },
 ];
 
-const systemPillars = [
+// O sistema é o MEIO - as ferramentas integradas
+const systemComponents = [
   {
-    icon: Circle,
-    label: "Smart Ring",
-    description: "Sensor invisível e elegante",
-    color: "from-fuchsia-500 to-violet-500",
-  },
-  {
-    icon: Brain,
     label: "Suplementação",
-    description: "Ciclo cognitivo completo",
-    color: "from-amber-500 to-orange-500",
+    sublabel: "Dia • Tarde • Noite",
+    description: "Ciclo cognitivo completo que sustenta clareza do amanhecer ao sono",
   },
   {
-    icon: Target,
     label: "Plataforma",
-    description: "Dashboard inteligente",
-    color: "from-emerald-500 to-teal-500",
+    sublabel: "Dashboard Inteligente",
+    description: "Dados consolidados que revelam padrões e orientam evolução",
+  },
+  {
+    label: "Smart Ring",
+    sublabel: "Sensor 24/7",
+    description: "Coleta fisiológica contínua que alimenta insights precisos",
   },
 ];
 
@@ -51,125 +50,118 @@ export function PremiumShowcase() {
   return (
     <section className="py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
+        {/* Header - Foco nos GANHOS */}
+        <div className="text-center mb-20">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-fuchsia-500/20 to-violet-500/20 border border-fuchsia-500/30 mb-6">
             <Star className="w-4 h-4 text-fuchsia-400" />
-            <span className="text-sm font-medium text-fuchsia-300">Experiência Premium</span>
+            <span className="text-sm font-medium text-fuchsia-300">Sistema Completo de Performance</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            O Sistema Completo de
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            O que você ganha quando
             <span className="block bg-gradient-to-r from-fuchsia-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent">
-              Performance Intelectual
+              leva performance mental a sério
             </span>
           </h2>
-          <p className="text-slate-400 max-w-3xl mx-auto text-lg">
-            Precisão. Performance. Elegância. Três pilares integrados para quem leva 
-            performance mental tão a sério quanto atletas levam o corpo.
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Não vendemos suplementos. Não vendemos tecnologia. 
+            Entregamos <span className="text-white font-medium">resultados cognitivos mensuráveis</span> para quem 
+            compete com a própria mente.
           </p>
         </div>
 
-        {/* Main Visual: Ring + Pillars */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          {/* Ring Image */}
-          <div className="relative">
-            {/* Glow effects */}
-            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/20 to-indigo-500/20 blur-3xl rounded-full" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-fuchsia-500/10 rounded-full blur-3xl animate-pulse" />
-            
-            <div className="relative">
-              <img 
-                src={smartRingImage} 
-                alt="NZT Smart Ring" 
-                className="w-full max-w-md mx-auto relative z-10 drop-shadow-2xl"
-              />
-              
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-6 py-3 bg-slate-800/90 backdrop-blur-sm border border-slate-700/50 rounded-full">
-                <p className="text-sm text-slate-300">
-                  <span className="text-fuchsia-400 font-semibold">Design discreto</span> • Sensor contínuo 24/7
-                </p>
+        {/* Seção de GANHOS - Os resultados são o centro */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+          {cognitiveGains.map((gain, index) => (
+            <div 
+              key={gain.title}
+              className="relative group"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="h-full p-6 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 hover:border-fuchsia-500/40 transition-all duration-300 hover:translate-y-[-4px]">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-violet-500/20 border border-fuchsia-500/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <gain.icon className="w-6 h-6 text-fuchsia-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">{gain.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{gain.description}</p>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Content */}
-          <div className="space-y-8">
-            {/* Tagline */}
-            <div className="space-y-4">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                Elegância que mede. Precisão que evolui.
-              </h3>
-              <p className="text-slate-400 leading-relaxed">
-                O Smart Ring é a peça central do sistema. Discreto como uma aliança, 
-                poderoso como um laboratório. Não substitui relógios sociais — 
-                os complementa com dados que realmente importam para sua performance mental.
+        {/* Divisor com frase central */}
+        <div className="relative py-12 mb-20">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-slate-700/50" />
+          </div>
+          <div className="relative flex justify-center">
+            <div className="px-8 py-4 bg-slate-900 rounded-2xl border border-fuchsia-500/30">
+              <p className="text-xl sm:text-2xl font-medium text-white text-center">
+                "Alta performance intelectual não se ostenta.{" "}
+                <span className="text-fuchsia-400">Se mede.</span>"
               </p>
             </div>
+          </div>
+        </div>
 
-            {/* Ring Features */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              {ringFeatures.map((feature) => (
-                <div 
-                  key={feature.title}
-                  className="p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 hover:border-fuchsia-500/30 transition-colors group"
-                >
-                  <feature.icon className="w-5 h-5 text-fuchsia-400 mb-2 group-hover:scale-110 transition-transform" />
-                  <h4 className="text-white font-medium mb-1">{feature.title}</h4>
-                  <p className="text-slate-500 text-sm">{feature.description}</p>
+        {/* O SISTEMA - Os meios integrados */}
+        <div className="mb-20">
+          <div className="text-center mb-12">
+            <p className="text-sm text-violet-400 uppercase tracking-widest mb-2 font-medium">
+              O Sistema
+            </p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Três componentes. Um objetivo.
+            </h3>
+            <p className="text-slate-400 max-w-xl mx-auto">
+              Cada peça foi desenhada para trabalhar em conjunto, entregando 
+              os ganhos cognitivos que você busca.
+            </p>
+          </div>
+
+          {/* Visual do Sistema Integrado */}
+          <div className="relative">
+            {/* Linha conectora central */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fuchsia-500/50 to-transparent" />
+            
+            <div className="grid lg:grid-cols-3 gap-8 items-center">
+              {systemComponents.map((component, index) => (
+                <div key={component.label} className="relative">
+                  {/* Ponto de conexão */}
+                  <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-fuchsia-500 border-4 border-slate-900 z-10" />
+                  
+                  <div className={`relative p-8 rounded-2xl bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-slate-700/50 hover:border-fuchsia-500/30 transition-all ${index === 1 ? 'lg:scale-105 lg:z-10 border-fuchsia-500/30' : ''}`}>
+                    {/* Se for o item do meio (Ring), mostra a imagem */}
+                    {index === 2 && (
+                      <div className="absolute -top-6 -right-6 w-24 h-24 opacity-30 group-hover:opacity-50 transition-opacity">
+                        <img src={smartRingImage} alt="" className="w-full h-full object-contain" />
+                      </div>
+                    )}
+                    
+                    <div className="text-center">
+                      <span className="text-xs text-fuchsia-400 uppercase tracking-wider font-medium">{component.sublabel}</span>
+                      <h4 className="text-xl font-bold text-white mt-1 mb-3">{component.label}</h4>
+                      <p className="text-slate-400 text-sm">{component.description}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Three Pillars */}
-        <div className="mb-16">
-          <div className="text-center mb-10">
-            <p className="text-sm text-violet-400 uppercase tracking-widest mb-2 font-medium">
-              Três Pilares Integrados
-            </p>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
-              Um sistema. Uma missão.
-            </h3>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {systemPillars.map((pillar, index) => (
-              <div 
-                key={pillar.label}
-                className="relative group"
-              >
-                {/* Connection line */}
-                {index < systemPillars.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-slate-600 to-slate-700" />
-                )}
-                
-                <div className="p-8 rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 hover:border-fuchsia-500/30 transition-all hover:translate-y-[-4px]">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${pillar.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
-                    <pillar.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-2">{pillar.label}</h4>
-                  <p className="text-slate-400">{pillar.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Value Proposition Box */}
+        {/* CTA Box - Plano Premium */}
         <div className="relative rounded-3xl overflow-hidden">
-          {/* Background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/20 via-violet-600/10 to-indigo-600/20" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMjIiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/10 via-violet-600/5 to-indigo-600/10" />
           
           <div className="relative p-8 md:p-12 border border-fuchsia-500/20 rounded-3xl">
             <div className="grid md:grid-cols-2 gap-10 items-center">
+              {/* Pricing */}
               <div className="space-y-6">
                 <div>
                   <span className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white mb-4">
                     <Star className="w-3 h-3" />
-                    Plano Premium
+                    Experiência Completa
                   </span>
                   <h3 className="text-3xl sm:text-4xl font-bold text-white mb-3">
                     R$ 1.297
@@ -179,11 +171,10 @@ export function PremiumShowcase() {
                 
                 <ul className="space-y-3">
                   {[
-                    "Smart Ring com sensores de precisão",
                     "Suplementação completa (Dia + Tarde + Noite)",
+                    "Smart Ring com sensores de precisão",
                     "Plataforma digital premium",
-                    "Dashboard cognitivo avançado",
-                    "Correlações e insights com AI",
+                    "Dashboard cognitivo com correlações",
                     "Evolução individual mensurável",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-slate-300">
@@ -197,7 +188,7 @@ export function PremiumShowcase() {
 
                 <Link to="/login?signup=true">
                   <Button className="w-full md:w-auto px-8 py-6 text-base font-semibold rounded-xl bg-gradient-to-r from-fuchsia-600 via-violet-600 to-indigo-600 hover:from-fuchsia-700 hover:via-violet-700 hover:to-indigo-700 text-white shadow-lg shadow-fuchsia-500/25 hover:shadow-xl hover:shadow-fuchsia-500/30 hover:scale-[1.02] transition-all">
-                    Quero o Sistema Completo
+                    Quero Evoluir Minha Performance
                   </Button>
                 </Link>
 
@@ -207,21 +198,32 @@ export function PremiumShowcase() {
                 </p>
               </div>
 
-              {/* Quote */}
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-fuchsia-500/10 to-violet-500/10 blur-2xl rounded-full" />
-                <div className="relative p-8 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                  <blockquote className="text-xl sm:text-2xl font-medium text-white leading-relaxed mb-6">
-                    "Alta performance intelectual não se ostenta.
-                    <span className="block text-fuchsia-400 mt-2">Se mede."</span>
-                  </blockquote>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500 flex items-center justify-center">
-                      <Brain className="w-5 h-5 text-white" />
+              {/* Visual */}
+              <div className="relative hidden md:block">
+                <div className="absolute -inset-4 bg-gradient-to-r from-fuchsia-500/10 to-violet-500/10 blur-3xl rounded-full" />
+                <div className="relative flex items-center justify-center">
+                  <img 
+                    src={smartRingImage} 
+                    alt="Sistema NZT" 
+                    className="w-64 h-auto drop-shadow-2xl"
+                  />
+                  {/* Floating elements */}
+                  <div className="absolute -top-4 -left-4 px-3 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-amber-500/30">
+                    <div className="flex items-center gap-2">
+                      <Zap className="w-4 h-4 text-amber-400" />
+                      <span className="text-xs text-white font-medium">Dia</span>
                     </div>
-                    <div>
-                      <p className="text-white font-medium">Filosofia NZT</p>
-                      <p className="text-slate-500 text-sm">Cognitive Performance System</p>
+                  </div>
+                  <div className="absolute top-1/2 -right-8 px-3 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-emerald-500/30">
+                    <div className="flex items-center gap-2">
+                      <Target className="w-4 h-4 text-emerald-400" />
+                      <span className="text-xs text-white font-medium">Tarde</span>
+                    </div>
+                  </div>
+                  <div className="absolute -bottom-4 -left-2 px-3 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-indigo-500/30">
+                    <div className="flex items-center gap-2">
+                      <Brain className="w-4 h-4 text-indigo-400" />
+                      <span className="text-xs text-white font-medium">Noite</span>
                     </div>
                   </div>
                 </div>
