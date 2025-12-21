@@ -13,7 +13,8 @@ import SleepDay from "./pages/SleepDay";
 import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import { NavSidebar } from "./components/nzt";
-import { signOut, getParticipante } from "./lib/api";
+import { signOut, getParticipante, createParticipante } from "./lib/api";
+import type { Participante } from "./lib/types";
 
 const queryClient = new QueryClient();
 
@@ -40,22 +41,53 @@ function Header({ codigo }: { codigo?: string }) {
 }
 
 function AuthenticatedApp() {
-  const [codigo, setCodigo] = useState<string>();
+  const [participante, setParticipante] = useState<Participante | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getParticipante().then(p => {
-      if (p) setCodigo(p.codigo);
-    });
+    const initParticipante = async () => {
+      try {
+        let p = await getParticipante();
+        
+        // Se não existe participante, cria um novo
+        if (!p) {
+          await createParticipante({});
+          p = await getParticipante();
+        }
+        
+        setParticipante(p);
+      } catch (error) {
+        console.error("Error initializing participante:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initParticipante();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-muted-foreground">Inicializando perfil...</div>
+      </div>
+    );
+  }
+
+  // Se participante não tiver perfil_atividade, redireciona para onboarding
+  const needsOnboarding = participante && !participante.perfil_atividade;
 
   return (
     <>
-      <Header codigo={codigo} />
+      <Header codigo={participante?.codigo} />
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-4 p-4">
         <NavSidebar />
         <main className="flex flex-col gap-4 animate-fade-in">
           <Routes>
-            <Route path="/" element={<Navigate to="/painel" replace />} />
+            <Route 
+              path="/" 
+              element={<Navigate to={needsOnboarding ? "/anamnese" : "/painel"} replace />} 
+            />
             <Route path="/painel" element={<Dashboard />} />
             <Route path="/dose" element={<RegisterDose />} />
             <Route path="/sono" element={<SleepDay />} />
