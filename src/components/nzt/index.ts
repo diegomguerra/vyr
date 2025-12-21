@@ -1,8 +1,10 @@
 export { Badge } from "./Badge";
+export { BaselineEvolution } from "./BaselineEvolution";
 export { Card } from "./Card";
 export { Chip } from "./Chip";
 export { Field } from "./Field";
 export { KpiRow } from "./KpiRow";
 export { MiniLine } from "./MiniLine";
 export { NavSidebar } from "./NavSidebar";
+export { ProfileSummary } from "./ProfileSummary";
 export { ScaleBlock } from "./ScaleBlock";
