@@ -11,7 +11,10 @@ export default function Onboarding() {
 
   useEffect(() => {
     async function load() {
+      console.log("Onboarding: Carregando participante...");
       const p = await getParticipante();
+      console.log("Onboarding: Participante carregado:", p);
+      console.log("Onboarding: PERFIS disponíveis:", PERFIS);
       setParticipante(p);
     }
     load();
@@ -22,6 +25,8 @@ export default function Onboarding() {
       <div className="text-muted-foreground text-sm">Carregando…</div>
     );
   }
+
+  console.log("Onboarding: Renderizando com participante:", participante.id);
 
   async function setPerfil(v: PerfilAtividade) {
     if (!participante) return;
