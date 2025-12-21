@@ -197,6 +197,31 @@ export async function getSono60d(participante_id: string): Promise<{ data: strin
   }));
 }
 
+// Night dose data (Knight) for last 60 days
+export async function getNoite60d(participante_id: string): Promise<{ data: string; valor: number | null }[]> {
+  const sixtyDaysAgo = new Date();
+  sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+  const fromDate = sixtyDaysAgo.toISOString().split("T")[0];
+
+  const { data, error } = await supabase
+    .from("registros_dose")
+    .select("data, escala_1")
+    .eq("participante_id", participante_id)
+    .eq("janela", "NOITE")
+    .gte("data", fromDate)
+    .order("data", { ascending: true });
+
+  if (error) {
+    console.error("Error fetching noite data:", error);
+    return [];
+  }
+
+  return (data || []).map(r => ({
+    data: r.data,
+    valor: r.escala_1
+  }));
+}
+
 // Reference values
 export async function getReferencias(sexo: string, idade: number): Promise<ReferenciaPopulacional[]> {
   const { data, error } = await supabase
