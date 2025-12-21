@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { Sun, Moon } from "lucide-react";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import RegisterDose from "./pages/RegisterDose";
@@ -105,14 +106,14 @@ function AuthenticatedApp() {
           <Routes>
             <Route 
               path="/" 
-              element={<Navigate to={needsOnboarding ? "/anamnese" : "/painel"} replace />} 
+              element={<Navigate to={needsOnboarding ? "/app/anamnese" : "/app/painel"} replace />} 
             />
             <Route path="/painel" element={<Dashboard />} />
             <Route path="/dose" element={<RegisterDose />} />
             <Route path="/sono" element={<SleepDay />} />
             <Route path="/anamnese" element={<Onboarding />} />
             <Route path="/perfil" element={<Profile />} />
-            <Route path="*" element={<Navigate to="/painel" replace />} />
+            <Route path="*" element={<Navigate to="/app/painel" replace />} />
           </Routes>
         </main>
       </div>
@@ -160,7 +161,20 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {user ? <AuthenticatedApp /> : <Login />}
+            <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={user ? <Navigate to="/app" replace /> : <Login />} />
+              
+              {/* Protected routes */}
+              <Route 
+                path="/app/*" 
+                element={user ? <AuthenticatedApp /> : <Navigate to="/login" replace />} 
+              />
+              
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>

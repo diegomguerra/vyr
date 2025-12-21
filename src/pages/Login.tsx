@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/nzt";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { signInWithEmail, signUpWithEmail } from "@/lib/api";
+import { ArrowLeft } from "lucide-react";
 
 export default function Login() {
+  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (searchParams.get("signup") === "true") {
+      setIsSignUp(true);
+    }
+  }, [searchParams]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -81,54 +90,68 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <Card title="NZT • Plataforma de Teste" subtitle={isSignUp ? "Criar nova conta" : "Acesse sua conta"}>
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seu@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isLoading}
-              autoComplete="email"
-            />
+    <div className="min-h-screen flex items-center justify-center p-4 relative">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/5" />
+      
+      <div className="relative z-10 w-full max-w-md">
+        {/* Back Link */}
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm">Voltar para início</span>
+        </Link>
+
+        <Card title="NZT • Plataforma" subtitle={isSignUp ? "Criar nova conta" : "Acesse sua conta"}>
+          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isLoading}
+                autoComplete="email"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password">Senha</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
+                autoComplete={isSignUp ? "new-password" : "current-password"}
+              />
+            </div>
+
+            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
+              {isLoading ? "Aguarde..." : isSignUp ? "Criar conta" : "Entrar"}
+            </Button>
+          </form>
+
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsSignUp(!isSignUp)}
+            >
+              {isSignUp ? "Já tem conta? Faça login" : "Não tem conta? Cadastre-se"}
+            </button>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="password">Senha</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={isLoading}
-              autoComplete={isSignUp ? "new-password" : "current-password"}
-            />
-          </div>
-
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Aguarde..." : isSignUp ? "Criar conta" : "Entrar"}
-          </Button>
-        </form>
-
-        <div className="mt-4 text-center">
-          <button
-            type="button"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            onClick={() => setIsSignUp(!isSignUp)}
-          >
-            {isSignUp ? "Já tem conta? Faça login" : "Não tem conta? Cadastre-se"}
-          </button>
-        </div>
-
-        <p className="mt-4 text-xs text-muted-foreground text-center">
-          Plataforma de acompanhamento de suplementação cognitiva.
-        </p>
-      </Card>
+          <p className="mt-4 text-xs text-muted-foreground text-center">
+            Plataforma de acompanhamento de suplementação cognitiva.
+          </p>
+        </Card>
+      </div>
     </div>
   );
 }
