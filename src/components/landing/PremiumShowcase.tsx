@@ -1,6 +1,4 @@
-import { Brain, Zap, Target, TrendingUp, Shield, Star, Sparkles, Eye, BarChart3 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Sparkles, Eye, BarChart3, TrendingUp, Star } from "lucide-react";
 import smartRingImage from "@/assets/smart-ring.png";
 
 // Os GANHOS são o centro - resultados que o usuário busca
@@ -149,88 +147,6 @@ export function PremiumShowcase() {
           </div>
         </div>
 
-        {/* CTA Box - Plano Premium */}
-        <div className="relative rounded-3xl overflow-hidden">
-          {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/10 via-violet-600/5 to-indigo-600/10" />
-          
-          <div className="relative p-8 md:p-12 border border-fuchsia-500/20 rounded-3xl">
-            <div className="grid md:grid-cols-2 gap-10 items-center">
-              {/* Pricing */}
-              <div className="space-y-6">
-                <div>
-                  <span className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white mb-4">
-                    <Star className="w-3 h-3" />
-                    Experiência Completa
-                  </span>
-                  <h3 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-                    R$ 1.297
-                  </h3>
-                  <p className="text-slate-400 text-sm">investimento único no sistema completo</p>
-                </div>
-                
-                <ul className="space-y-3">
-                  {[
-                    "Suplementação completa (Dia + Tarde + Noite)",
-                    "Smart Ring com sensores de precisão",
-                    "Plataforma digital premium",
-                    "Dashboard cognitivo com correlações",
-                    "Evolução individual mensurável",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-slate-300">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-500 flex items-center justify-center flex-shrink-0">
-                        <TrendingUp className="w-3 h-3 text-white" />
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link to="/login?signup=true">
-                  <Button className="w-full md:w-auto px-8 py-6 text-base font-semibold rounded-xl bg-gradient-to-r from-fuchsia-600 via-violet-600 to-indigo-600 hover:from-fuchsia-700 hover:via-violet-700 hover:to-indigo-700 text-white shadow-lg shadow-fuchsia-500/25 hover:shadow-xl hover:shadow-fuchsia-500/30 hover:scale-[1.02] transition-all">
-                    Quero Evoluir Minha Performance
-                  </Button>
-                </Link>
-
-                <p className="text-xs text-slate-500 flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5" />
-                  Compra 100% segura • Garantia de 30 dias
-                </p>
-              </div>
-
-              {/* Visual */}
-              <div className="relative hidden md:block">
-                <div className="absolute -inset-4 bg-gradient-to-r from-fuchsia-500/10 to-violet-500/10 blur-3xl rounded-full" />
-                <div className="relative flex items-center justify-center">
-                  <img 
-                    src={smartRingImage} 
-                    alt="Sistema NZT" 
-                    className="w-64 h-auto drop-shadow-2xl"
-                  />
-                  {/* Floating elements */}
-                  <div className="absolute -top-4 -left-4 px-3 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-amber-500/30">
-                    <div className="flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-amber-400" />
-                      <span className="text-xs text-white font-medium">Dia</span>
-                    </div>
-                  </div>
-                  <div className="absolute top-1/2 -right-8 px-3 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-emerald-500/30">
-                    <div className="flex items-center gap-2">
-                      <Target className="w-4 h-4 text-emerald-400" />
-                      <span className="text-xs text-white font-medium">Tarde</span>
-                    </div>
-                  </div>
-                  <div className="absolute -bottom-4 -left-2 px-3 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-indigo-500/30">
-                    <div className="flex items-center gap-2">
-                      <Brain className="w-4 h-4 text-indigo-400" />
-                      <span className="text-xs text-white font-medium">Noite</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
