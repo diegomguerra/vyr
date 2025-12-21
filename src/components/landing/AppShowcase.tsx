@@ -1,4 +1,5 @@
-import { TrendingUp, Moon, Brain, Zap, Activity } from "lucide-react";
+import { TrendingUp, Moon, Brain, Zap } from "lucide-react";
+import smartRingImage from "@/assets/smart-ring.png";
 
 // Simulated Dashboard Screen
 function DashboardScreen() {
@@ -146,7 +147,7 @@ function SleepScreen() {
 function PhoneFrame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`relative ${className}`}>
-      {/* Phone Frame - More realistic with metallic edges */}
+      {/* Phone Frame */}
       <div className="relative bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 rounded-[3rem] p-[3px] shadow-2xl shadow-black/60">
         {/* Inner bezel */}
         <div className="bg-black rounded-[2.8rem] p-2">
@@ -166,54 +167,6 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
           {/* Bottom bar indicator */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-28 h-1 bg-slate-600 rounded-full" />
         </div>
-      </div>
-    </div>
-  );
-}
-
-// Smart Ring Visual Component
-function SmartRingVisual() {
-  return (
-    <div className="relative w-32 h-32 flex items-center justify-center">
-      {/* Outer glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/20 to-indigo-500/20 rounded-full blur-xl" />
-      
-      {/* Ring */}
-      <div className="relative w-24 h-24">
-        {/* Ring body - gradient metallic look */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 shadow-2xl shadow-black/50" />
-        
-        {/* Inner circle (hole) */}
-        <div className="absolute inset-[30%] rounded-full bg-slate-950 shadow-inner" />
-        
-        {/* Highlight arc */}
-        <svg className="absolute inset-0 w-full h-full -rotate-45" viewBox="0 0 100 100">
-          <circle
-            cx="50"
-            cy="50"
-            r="38"
-            fill="none"
-            stroke="url(#ringHighlight)"
-            strokeWidth="4"
-            strokeDasharray="60 180"
-            strokeLinecap="round"
-          />
-          <defs>
-            <linearGradient id="ringHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#c084fc" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
-        </svg>
-        
-        {/* Subtle inner glow */}
-        <div className="absolute inset-[25%] rounded-full border border-fuchsia-500/20" />
-      </div>
-      
-      {/* Floating metrics */}
-      <div className="absolute -top-2 -right-2 px-2 py-1 bg-slate-800/90 rounded-lg border border-fuchsia-500/30 text-[10px]">
-        <Activity className="w-3 h-3 text-fuchsia-400 inline mr-1" />
-        <span className="text-white font-medium">24/7</span>
       </div>
     </div>
   );
@@ -250,9 +203,21 @@ export function AppShowcase() {
                 <SleepScreen />
               </PhoneFrame>
               
-              {/* Smart Ring - floating near phones */}
-              <div className="absolute -bottom-8 -right-4 z-20 transform hover:scale-110 transition-transform duration-300">
-                <SmartRingVisual />
+              {/* Smart Ring - subtle floating image */}
+              <div className="absolute -bottom-16 -right-8 z-20">
+                <div className="relative group">
+                  {/* Subtle glow behind ring */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/30 to-violet-500/30 rounded-full blur-2xl scale-150 opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  <img 
+                    src={smartRingImage} 
+                    alt="Smart Ring" 
+                    className="w-28 h-auto relative z-10 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                  />
+                  {/* Small label */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-slate-900/80 backdrop-blur-sm rounded-full border border-fuchsia-500/30">
+                    <span className="text-[9px] text-fuchsia-300 font-medium whitespace-nowrap">Smart Ring</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
