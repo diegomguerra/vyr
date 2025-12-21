@@ -1,5 +1,5 @@
 import { TrendingUp, Moon, Brain, Zap } from "lucide-react";
-import smartRingImage from "@/assets/smart-ring.png";
+import smartRingImage from "@/assets/smart-ring-nobg.png";
 
 // Simulated Dashboard Screen
 function DashboardScreen() {
@@ -203,20 +203,16 @@ export function AppShowcase() {
                 <SleepScreen />
               </PhoneFrame>
               
-              {/* Smart Ring - subtle floating image */}
-              <div className="absolute -bottom-16 -right-8 z-20">
+              {/* Smart Ring - clean transparent image */}
+              <div className="absolute -bottom-12 -right-4 z-20">
                 <div className="relative group">
-                  {/* Subtle glow behind ring */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/30 to-violet-500/30 rounded-full blur-2xl scale-150 opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  {/* Subtle glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 to-violet-500/20 rounded-full blur-2xl scale-125 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                   <img 
                     src={smartRingImage} 
                     alt="Smart Ring" 
-                    className="w-28 h-auto relative z-10 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+                    className="w-32 h-auto relative z-10 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
                   />
-                  {/* Small label */}
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-slate-900/80 backdrop-blur-sm rounded-full border border-fuchsia-500/30">
-                    <span className="text-[9px] text-fuchsia-300 font-medium whitespace-nowrap">Smart Ring</span>
-                  </div>
                 </div>
               </div>
             </div>
