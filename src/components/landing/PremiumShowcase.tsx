@@ -1,5 +1,4 @@
 import { Sparkles, Eye, BarChart3, TrendingUp, Star } from "lucide-react";
-import smartRingImage from "@/assets/smart-ring-transparent.png";
 
 // Os GANHOS são o centro - resultados que o usuário busca
 const cognitiveGains = [
@@ -86,22 +85,8 @@ export function PremiumShowcase() {
           ))}
         </div>
 
-        {/* Ring Visual + Frase central */}
-        <div className="relative py-16 mb-20">
-          {/* Imagem do Ring centralizada */}
-          <div className="flex justify-center mb-12">
-            <div className="relative">
-              {/* Glow sutil atrás do ring */}
-              <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/15 to-indigo-500/20 blur-3xl scale-150 rounded-full" />
-              <img 
-                src={smartRingImage} 
-                alt="Smart Ring" 
-                className="relative z-10 w-64 sm:w-80 lg:w-96 h-auto drop-shadow-2xl"
-              />
-            </div>
-          </div>
-          
-          {/* Frase central */}
+        {/* Frase central */}
+        <div className="relative py-8 mb-16">
           <div className="relative flex justify-center">
             <div className="px-8 py-4 bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-fuchsia-500/30">
               <p className="text-xl sm:text-2xl font-medium text-white text-center">
