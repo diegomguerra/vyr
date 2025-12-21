@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Card, Badge, MiniLine, ProfileSummary, BaselineEvolution, InsightsCard } from "@/components/nzt";
 import { baselineInicial, mediaMovel } from "@/lib/baseline";
-import { getParticipante, getReferencias, getSeries30d, getSono60d } from "@/lib/api";
+import { getParticipante, getReferencias, getSeries30d, getSono60d, getNoite60d } from "@/lib/api";
 import { calcularIdade } from "@/lib/date";
 import type { Participante, SerieData } from "@/lib/types";
 
@@ -9,6 +9,7 @@ export default function Dashboard() {
   const [participante, setParticipante] = useState<Participante | null>(null);
   const [series, setSeries] = useState<SerieData[]>([]);
   const [sono, setSono] = useState<{ data: string; valor: number | null }[]>([]);
+  const [noite, setNoite] = useState<{ data: string; valor: number | null }[]>([]);
   const [refs, setRefs] = useState<Record<string, { min: number; max: number }>>({});
   const [loading, setLoading] = useState(true);
 
@@ -21,8 +22,12 @@ export default function Dashboard() {
       setSeries(s);
 
       if (p) {
-        const sonoData = await getSono60d(p.id);
+        const [sonoData, noiteData] = await Promise.all([
+          getSono60d(p.id),
+          getNoite60d(p.id),
+        ]);
         setSono(sonoData);
+        setNoite(noiteData);
 
         const idade = calcularIdade(p.data_nascimento);
         const refRows = await getReferencias(p.sexo, idade);
@@ -49,7 +54,8 @@ export default function Dashboard() {
     dia: { base: baselineInicial(serieDia), now: mediaMovel(serieDia) },
     tarde: { base: baselineInicial(serieTarde), now: mediaMovel(serieTarde) },
     sono: { base: baselineInicial(sono), now: mediaMovel(sono) },
-  }), [serieDia, serieTarde, sono]);
+    noite: { base: baselineInicial(noite), now: mediaMovel(noite) },
+  }), [serieDia, serieTarde, sono, noite]);
 
   // Evolution metrics combining anamnese baseline with tracking data
   const evolutionMetrics = useMemo(() => {
@@ -58,7 +64,7 @@ export default function Dashboard() {
     return [
       {
         label: "Clareza mental (dia)",
-        baselineAnamnese: null, // No anamnese equivalent
+        baselineAnamnese: null,
         baselineInicial: kpis.dia.base,
         atual: kpis.dia.now,
         refRange: refs["dia_clareza"],
@@ -71,6 +77,13 @@ export default function Dashboard() {
         refRange: refs["tarde_foco"],
       },
       {
+        label: "Desaceleração noturna",
+        baselineAnamnese: null,
+        baselineInicial: kpis.noite.base,
+        atual: kpis.noite.now,
+        refRange: refs["noite_desaceleracao"],
+      },
+      {
         label: "Qualidade do sono",
         baselineAnamnese: participante.qualidade_sono_geral,
         baselineInicial: kpis.sono.base,
@@ -80,7 +93,7 @@ export default function Dashboard() {
       {
         label: "Nível de estresse",
         baselineAnamnese: participante.nivel_estresse_geral,
-        baselineInicial: null, // Would need stress tracking data
+        baselineInicial: null,
         atual: null,
         inverted: true,
       },
@@ -97,7 +110,7 @@ export default function Dashboard() {
     return Math.floor((now.getTime() - first.getTime()) / (1000 * 60 * 60 * 24));
   }, [series, sono]);
 
-  const hasEnoughData = serieDia.length >= 3 || serieTarde.length >= 3 || sono.length >= 3;
+  const hasEnoughData = serieDia.length >= 3 || serieTarde.length >= 3 || sono.length >= 3 || noite.length >= 3;
 
   if (loading) {
     return (
@@ -172,44 +185,90 @@ export default function Dashboard() {
           </Card>
         )}
 
-        {/* Gráficos de tendência */}
-        <Card title="Clareza mental (dia)" subtitle="Tendência 30 dias" className="lg:col-span-1">
-          <MiniLine 
-            data={serieDia} 
-            refMin={refs["dia_clareza"]?.min} 
-            refMax={refs["dia_clareza"]?.max} 
-          />
-          {participante?.qualidade_sono_geral && kpis.dia.now && (
-            <p className="text-xs text-muted-foreground mt-2">
-              Sono inicial: {participante.qualidade_sono_geral}/10 → Clareza atual: {kpis.dia.now}/10
-            </p>
-          )}
+        {/* Gráficos de DOSE - resposta cognitiva */}
+        <Card 
+          title="📊 Resposta Cognitiva" 
+          subtitle="Efeito das doses (DIA + TARDE)"
+          className="lg:col-span-4"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                ☀️ Clareza mental (Dia)
+              </h4>
+              <MiniLine 
+                data={serieDia} 
+                refMin={refs["dia_clareza"]?.min} 
+                refMax={refs["dia_clareza"]?.max} 
+              />
+              {kpis.dia.base && kpis.dia.now && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  Baseline: {kpis.dia.base}/10 → Atual: {kpis.dia.now}/10
+                </p>
+              )}
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                🌅 Foco (Tarde)
+              </h4>
+              <MiniLine 
+                data={serieTarde} 
+                refMin={refs["tarde_foco"]?.min} 
+                refMax={refs["tarde_foco"]?.max} 
+              />
+              {kpis.tarde.base && kpis.tarde.now && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  Baseline: {kpis.tarde.base}/10 → Atual: {kpis.tarde.now}/10
+                </p>
+              )}
+            </div>
+          </div>
         </Card>
 
-        <Card title="Foco (tarde)" subtitle="Tendência 30 dias" className="lg:col-span-1">
-          <MiniLine 
-            data={serieTarde} 
-            refMin={refs["tarde_foco"]?.min} 
-            refMax={refs["tarde_foco"]?.max} 
-          />
-          {participante?.nivel_estresse_geral && kpis.tarde.now && (
-            <p className="text-xs text-muted-foreground mt-2">
-              Estresse inicial: {participante.nivel_estresse_geral}/10 → Foco atual: {kpis.tarde.now}/10
-            </p>
-          )}
-        </Card>
-
-        <Card title="Qualidade do sono" subtitle="Tendência 60 dias" className="lg:col-span-1">
-          <MiniLine 
-            data={sono} 
-            refMin={refs["sono_qualidade"]?.min} 
-            refMax={refs["sono_qualidade"]?.max} 
-          />
-          {participante?.qualidade_sono_geral && kpis.sono.now && (
-            <p className="text-xs text-muted-foreground mt-2">
-              Anamnese: {participante.qualidade_sono_geral}/10 → Atual: {kpis.sono.now}/10
-            </p>
-          )}
+        {/* Gráficos de SONO + NOITE - separados */}
+        <Card 
+          title="🌙 Sono & Desaceleração" 
+          subtitle="Dose noturna vs Qualidade do sono"
+          className="lg:col-span-4"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 rounded-xl bg-secondary/5 border border-secondary/20">
+              <h4 className="text-sm font-semibold text-secondary mb-2 flex items-center gap-2">
+                💊 Dose Noturna (Knight)
+              </h4>
+              <p className="text-xs text-muted-foreground mb-3">
+                Desaceleração, prontidão para dormir, tranquilidade
+              </p>
+              <MiniLine 
+                data={noite} 
+                refMin={refs["noite_desaceleracao"]?.min} 
+                refMax={refs["noite_desaceleracao"]?.max} 
+              />
+              {kpis.noite.base && kpis.noite.now && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  Baseline: {kpis.noite.base}/10 → Atual: {kpis.noite.now}/10
+                </p>
+              )}
+            </div>
+            <div className="p-4 rounded-xl bg-primary/5 border border-primary/20">
+              <h4 className="text-sm font-semibold text-primary mb-2 flex items-center gap-2">
+                😴 Qualidade do Sono
+              </h4>
+              <p className="text-xs text-muted-foreground mb-3">
+                Latência, despertares, recuperação ao acordar
+              </p>
+              <MiniLine 
+                data={sono} 
+                refMin={refs["sono_qualidade"]?.min} 
+                refMax={refs["sono_qualidade"]?.max} 
+              />
+              {participante?.qualidade_sono_geral && kpis.sono.now && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  Anamnese: {participante.qualidade_sono_geral}/10 → Atual: {kpis.sono.now}/10
+                </p>
+              )}
+            </div>
+          </div>
         </Card>
 
         {/* Grid de métricas adicionais */}
@@ -227,21 +286,19 @@ export default function Dashboard() {
               trend={kpis.dia.base && kpis.dia.now ? kpis.dia.now - kpis.dia.base : null}
             />
             <CorrelationTile 
+              label="Noite × Sono"
+              value={kpis.noite.now && kpis.sono.now 
+                ? `${kpis.noite.now} → ${kpis.sono.now}` 
+                : null}
+              trend={kpis.sono.base && kpis.sono.now ? kpis.sono.now - kpis.sono.base : null}
+            />
+            <CorrelationTile 
               label="Estresse × Foco"
               value={participante?.nivel_estresse_geral && kpis.tarde.now 
                 ? `${participante.nivel_estresse_geral} → ${kpis.tarde.now}` 
                 : null}
               trend={kpis.tarde.base && kpis.tarde.now ? kpis.tarde.now - kpis.tarde.base : null}
               inverted
-            />
-            <CorrelationTile 
-              label="Sono anamnese × atual"
-              value={participante?.qualidade_sono_geral && kpis.sono.now 
-                ? `${participante.qualidade_sono_geral} → ${kpis.sono.now}` 
-                : null}
-              trend={participante?.qualidade_sono_geral && kpis.sono.now 
-                ? kpis.sono.now - participante.qualidade_sono_geral 
-                : null}
             />
             <CorrelationTile 
               label="Dias registrados"
@@ -254,9 +311,8 @@ export default function Dashboard() {
 
       {/* Nota explicativa */}
       <p className="text-xs text-muted-foreground text-center max-w-2xl mx-auto">
-        O painel compara seu estado atual com o baseline definido nos primeiros dias de uso e com 
-        os dados informados na anamnese. Um dia "fora do padrão" não define você — 
-        priorizamos tendência e consistência.
+        O painel separa <strong>resposta cognitiva</strong> (doses dia/tarde) de <strong>sono</strong> (qualidade + dose noturna). 
+        Priorizamos tendência e consistência, não dias isolados.
       </p>
     </div>
   );

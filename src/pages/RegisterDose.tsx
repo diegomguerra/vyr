@@ -6,6 +6,9 @@ import { getParticipante, upsertRegistroDose } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 import type { JanelaDose, Severidade, Participante } from "@/lib/types";
 
+// Janelas específicas para resposta cognitiva (sem NOITE que vai para sono)
+const JANELAS_DOSE: JanelaDose[] = ["DIA", "TARDE"];
+
 export default function RegisterDose() {
   const [participante, setParticipante] = useState<Participante | null>(null);
   const [data, setData] = useState(hojeISO());
@@ -39,7 +42,6 @@ export default function RegisterDose() {
   async function salvar() {
     if (!participante) return;
     
-    // Formata horario como HH:MM:SS para o tipo time do PostgreSQL
     const now = new Date();
     const horario = tomou 
       ? `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`
@@ -82,121 +84,138 @@ export default function RegisterDose() {
   }
 
   return (
-    <Card 
-      title="Registrar dose" 
-      subtitle={`${JANELAS[janela].titulo} • ${JANELAS[janela].subtitulo}`}
-    >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Field label="Data">
-          <input
-            type="date"
-            className="nzt-input"
-            value={data}
-            onChange={(e) => setData(e.target.value)}
+    <div className="space-y-6">
+      {/* Header explicativo */}
+      <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
+        <h2 className="text-sm font-semibold text-primary mb-1">
+          📊 Registro de Resposta Cognitiva
+        </h2>
+        <p className="text-xs text-muted-foreground">
+          Aqui você registra como a dose afetou sua <strong>clareza, foco e energia</strong> durante o dia.
+          Para registrar <strong>qualidade do sono</strong>, use o menu "Sono" na navegação.
+        </p>
+      </div>
+
+      <Card 
+        title="Registrar dose" 
+        subtitle={`${JANELAS[janela].titulo} • ${JANELAS[janela].subtitulo}`}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Field label="Data">
+            <input
+              type="date"
+              className="nzt-input"
+              value={data}
+              onChange={(e) => setData(e.target.value)}
+            />
+          </Field>
+          <Field label="Janela do dia">
+            <div className="flex gap-2">
+              {JANELAS_DOSE.map((j) => (
+                <button
+                  key={j}
+                  onClick={() => setJanela(j)}
+                  className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                    janela === j 
+                      ? "bg-primary text-primary-foreground shadow-md" 
+                      : "bg-muted/50 text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  {j === "DIA" ? "☀️ Manhã/Dia" : "🌅 Tarde"}
+                </button>
+              ))}
+            </div>
+          </Field>
+        </div>
+
+        <div className="flex items-center gap-3 mt-4 p-3 rounded-lg bg-muted/30">
+          <span className="text-sm text-foreground font-medium">Tomou a dose?</span>
+          <Chip active={tomou} onClick={() => setTomou(true)}>✓ Sim</Chip>
+          <Chip active={!tomou} onClick={() => setTomou(false)}>✗ Não</Chip>
+        </div>
+
+        <div className="mt-6 space-y-4">
+          <div className="bg-muted/20 rounded-lg p-4 space-y-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                Escalas de resposta cognitiva
+              </span>
+            </div>
+            <ScaleBlock 
+              title={defs[0].nome} 
+              question={defs[0].pergunta} 
+              anchor={defs[0].ancora} 
+              example={exemplo} 
+              value={e1} 
+              onChange={setE1} 
+            />
+            <div className="h-px bg-border" />
+            <ScaleBlock 
+              title={defs[1].nome} 
+              question={defs[1].pergunta} 
+              anchor={defs[1].ancora} 
+              value={e2} 
+              onChange={setE2} 
+            />
+            <div className="h-px bg-border" />
+            <ScaleBlock 
+              title={defs[2].nome} 
+              question={defs[2].pergunta} 
+              anchor={defs[2].ancora} 
+              value={e3} 
+              onChange={setE3} 
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <Field label="Efeito indesejado">
+            <select
+              className="nzt-input"
+              value={sev}
+              onChange={(e) => setSev(e.target.value as Severidade)}
+            >
+              <option value="NENHUM">Nenhum</option>
+              <option value="LEVE">Leve</option>
+              <option value="MODERADO">Moderado</option>
+              <option value="FORTE">Forte</option>
+            </select>
+          </Field>
+
+          <Field label="Sintomas (toque para marcar)">
+            <div className="flex flex-wrap gap-2">
+              {SINTOMAS.map((s) => (
+                <button
+                  key={s.k}
+                  className={`nzt-pill ${sintomas.includes(s.k) ? "nzt-pill-active" : ""}`}
+                  onClick={() => toggleSintoma(s.k)}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </Field>
+        </div>
+
+        <Field label="Observações (opcional)">
+          <textarea
+            className="nzt-input min-h-[90px] resize-none"
+            value={obs}
+            onChange={(e) => setObs(e.target.value)}
+            placeholder="Algum contexto relevante do dia..."
           />
         </Field>
-        <Field label="Janela">
-          <select
-            className="nzt-input"
-            value={janela}
-            onChange={(e) => setJanela(e.target.value as JanelaDose)}
-          >
-            <option value="DIA">Dia</option>
-            <option value="TARDE">Tarde</option>
-            <option value="NOITE">Noite</option>
-          </select>
-        </Field>
-      </div>
 
-      <div className="flex items-center gap-3 mt-4">
-        <span className="text-xs text-muted-foreground">Tomou?</span>
-        <Chip active={tomou} onClick={() => setTomou(true)}>Sim</Chip>
-        <Chip active={!tomou} onClick={() => setTomou(false)}>Não</Chip>
-      </div>
+        <div className="flex gap-3 mt-5">
+          <button className="nzt-btn-primary" onClick={salvar}>
+            Salvar registro
+          </button>
+        </div>
 
-      <div className="mt-6 space-y-2">
-        <ScaleBlock 
-          title={defs[0].nome} 
-          question={defs[0].pergunta} 
-          anchor={defs[0].ancora} 
-          example={exemplo} 
-          value={e1} 
-          onChange={setE1} 
-        />
-        <div className="h-px bg-border" />
-        <ScaleBlock 
-          title={defs[1].nome} 
-          question={defs[1].pergunta} 
-          anchor={defs[1].ancora} 
-          value={e2} 
-          onChange={setE2} 
-        />
-        <div className="h-px bg-border" />
-        <ScaleBlock 
-          title={defs[2].nome} 
-          question={defs[2].pergunta} 
-          anchor={defs[2].ancora} 
-          value={e3} 
-          onChange={setE3} 
-        />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-        <Field label="Efeito indesejado">
-          <select
-            className="nzt-input"
-            value={sev}
-            onChange={(e) => setSev(e.target.value as Severidade)}
-          >
-            <option value="NENHUM">Nenhum</option>
-            <option value="LEVE">Leve</option>
-            <option value="MODERADO">Moderado</option>
-            <option value="FORTE">Forte</option>
-          </select>
-        </Field>
-
-        <Field label="Sintomas (toque para marcar)">
-          <div className="flex flex-wrap gap-2">
-            {SINTOMAS.map((s) => (
-              <button
-                key={s.k}
-                className={`nzt-pill ${sintomas.includes(s.k) ? "nzt-pill-active" : ""}`}
-                onClick={() => toggleSintoma(s.k)}
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-        </Field>
-      </div>
-
-      <Field label="Observações (opcional)">
-        <textarea
-          className="nzt-input min-h-[90px] resize-none"
-          value={obs}
-          onChange={(e) => setObs(e.target.value)}
-          placeholder="Algum contexto relevante do dia..."
-        />
-      </Field>
-
-      <div className="flex gap-3 mt-5">
-        <button className="nzt-btn-primary" onClick={salvar}>
-          Salvar registro
-        </button>
-        <button 
-          className="nzt-btn" 
-          onClick={() => toast({ 
-            title: "Dica", 
-            description: "Mantenha consistência por 7 dias antes de concluir algo." 
-          })}
-        >
-          Dica
-        </button>
-      </div>
-
-      <p className="text-xs text-muted-foreground mt-4">
-        Esta plataforma mede adaptação gradual com comparação justa. Não existe "milagre imediato".
-      </p>
-    </Card>
+        <p className="text-xs text-muted-foreground mt-4">
+          Esta plataforma mede adaptação gradual com comparação justa. Não existe "milagre imediato".
+        </p>
+      </Card>
+    </div>
   );
 }
