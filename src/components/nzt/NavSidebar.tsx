@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 
 const NAV_ITEMS = [
-  { to: "/painel", label: "Painel" },
-  { to: "/dose", label: "Registrar dose" },
-  { to: "/sono", label: "Sono & dia" },
-  { to: "/anamnese", label: "Anamnese" },
-  { to: "/perfil", label: "Perfil" },
+  { to: "/app/painel", label: "Painel" },
+  { to: "/app/dose", label: "Registrar dose" },
+  { to: "/app/sono", label: "Sono & dia" },
+  { to: "/app/anamnese", label: "Anamnese" },
+  { to: "/app/perfil", label: "Perfil" },
 ];
 
 export function NavSidebar() {
