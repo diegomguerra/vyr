@@ -6,3 +6,4 @@ export { HowItWorks } from "./HowItWorks";
 export { BenefitSection } from "./BenefitSection";
 export { FAQ } from "./FAQ";
 export { Footer } from "./Footer";
+export { AppShowcase } from "./AppShowcase";
