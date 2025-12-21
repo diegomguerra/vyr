@@ -1,6 +1,7 @@
 import {
   LandingNav,
   Hero,
+  SupplementsSection,
   SystemSection,
   PremiumShowcase,
   ProductCard,
@@ -18,6 +19,7 @@ export default function Landing() {
     <div className="min-h-screen bg-background">
       <LandingNav />
       <Hero />
+      <SupplementsSection />
       <SystemSection />
       <PremiumShowcase />
       <AppShowcase />

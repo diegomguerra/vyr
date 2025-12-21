@@ -1,12 +1,13 @@
 export { LandingNav } from "./LandingNav";
-export { SystemSection } from "./SystemSection";
-export { GradientBanner } from "./GradientBanner";
 export { Hero } from "./Hero";
+export { SystemSection } from "./SystemSection";
 export { PremiumShowcase } from "./PremiumShowcase";
+export { SupplementsSection } from "./SupplementsSection";
 export { ProductCard } from "./ProductCard";
 export { HowItWorks } from "./HowItWorks";
 export { BenefitSection } from "./BenefitSection";
+export { Testimonials } from "./Testimonials";
 export { FAQ } from "./FAQ";
 export { Footer } from "./Footer";
+export { GradientBanner } from "./GradientBanner";
 export { AppShowcase } from "./AppShowcase";
-export { Testimonials } from "./Testimonials";
