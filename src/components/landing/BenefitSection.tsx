@@ -1,4 +1,4 @@
-import { Brain, Moon, TrendingUp, Shield, Activity, Target, BarChart3, Sparkles } from "lucide-react";
+import { Brain, Moon, TrendingUp, Shield, Activity, Target, BarChart3 } from "lucide-react";
 
 const benefits = [
   {
@@ -54,14 +54,10 @@ const differentiators = [
 
 export function BenefitSection() {
   return (
-    <section id="beneficios" className="py-24 bg-gradient-to-b from-slate-950 to-slate-900">
+    <section id="beneficios" className="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-6">
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm text-emerald-300 font-medium">O Strava do Cérebro</span>
-          </div>
+        <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Performance Intelectual Mensurável
           </h2>
