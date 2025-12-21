@@ -3,11 +3,12 @@ interface ScaleBlockProps {
   question: string;
   anchor: string;
   example?: string;
+  nota?: string;
   value: number;
   onChange: (value: number) => void;
 }
 
-export function ScaleBlock({ title, question, anchor, example, value, onChange }: ScaleBlockProps) {
+export function ScaleBlock({ title, question, anchor, example, nota, value, onChange }: ScaleBlockProps) {
   return (
     <div className="py-3">
       <div className="flex justify-between items-center">
@@ -19,6 +20,9 @@ export function ScaleBlock({ title, question, anchor, example, value, onChange }
         <p className="mt-2 text-xs text-foreground/75 italic">{example}</p>
       )}
       <p className="mt-2 text-xs text-muted-foreground">{anchor}</p>
+      {nota && (
+        <p className="mt-2 text-xs text-primary/80 font-medium">{nota}</p>
+      )}
       <input
         type="range"
         min={0}

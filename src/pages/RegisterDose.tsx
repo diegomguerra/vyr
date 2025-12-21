@@ -6,8 +6,8 @@ import { getParticipante, upsertRegistroDose } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 import type { JanelaDose, Severidade, Participante } from "@/lib/types";
 
-// Janelas específicas para resposta cognitiva (sem NOITE que vai para sono)
-const JANELAS_DOSE: JanelaDose[] = ["DIA", "TARDE"];
+// Todas as janelas de dose
+const JANELAS_DOSE: JanelaDose[] = ["DIA", "TARDE", "NOITE"];
 
 export default function RegisterDose() {
   const [participante, setParticipante] = useState<Participante | null>(null);
@@ -18,6 +18,7 @@ export default function RegisterDose() {
   const [e1, setE1] = useState(6);
   const [e2, setE2] = useState(6);
   const [e3, setE3] = useState(6);
+  const [e4, setE4] = useState(6); // 4ª escala exclusiva da NOITE
 
   const [sev, setSev] = useState<Severidade>("NENHUM");
   const [sintomas, setSintomas] = useState<string[]>([]);
@@ -83,16 +84,19 @@ export default function RegisterDose() {
     );
   }
 
+  const isNoite = janela === "NOITE";
+
   return (
     <div className="space-y-6">
       {/* Header explicativo */}
       <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
         <h2 className="text-sm font-semibold text-primary mb-1">
-          📊 Registro de Resposta Cognitiva
+          {isNoite ? "🌙 Registro de Desaceleração Noturna" : "📊 Registro de Resposta Cognitiva"}
         </h2>
         <p className="text-xs text-muted-foreground">
-          Aqui você registra como a dose afetou sua <strong>clareza, foco e energia</strong> durante o dia.
-          Para registrar <strong>qualidade do sono</strong>, use o menu "Sono" na navegação.
+          {isNoite 
+            ? "Avalie como seu corpo e mente estão preparados para o descanso noturno."
+            : "Registre como a dose afetou sua clareza, foco e energia durante o dia."}
         </p>
       </div>
 
@@ -115,13 +119,13 @@ export default function RegisterDose() {
                 <button
                   key={j}
                   onClick={() => setJanela(j)}
-                  className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                  className={`flex-1 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                     janela === j 
                       ? "bg-primary text-primary-foreground shadow-md" 
                       : "bg-muted/50 text-muted-foreground hover:bg-muted"
                   }`}
                 >
-                  {j === "DIA" ? "☀️ Manhã/Dia" : "🌅 Tarde"}
+                  {j === "DIA" ? "☀️ Manhã" : j === "TARDE" ? "🌅 Tarde" : "🌙 Noite"}
                 </button>
               ))}
             </div>
@@ -138,7 +142,7 @@ export default function RegisterDose() {
           <div className="bg-muted/20 rounded-lg p-4 space-y-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                Escalas de resposta cognitiva
+                {isNoite ? "Escalas de desaceleração" : "Escalas de resposta cognitiva"}
               </span>
             </div>
             <ScaleBlock 
@@ -165,6 +169,19 @@ export default function RegisterDose() {
               value={e3} 
               onChange={setE3} 
             />
+            {isNoite && defs[3] && (
+              <>
+                <div className="h-px bg-border" />
+                <ScaleBlock 
+                  title={defs[3].nome} 
+                  question={defs[3].pergunta} 
+                  anchor={defs[3].ancora} 
+                  nota={defs[3].nota}
+                  value={e4} 
+                  onChange={setE4} 
+                />
+              </>
+            )}
           </div>
         </div>
 

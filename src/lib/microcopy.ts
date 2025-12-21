@@ -14,6 +14,7 @@ type EscalaDef = {
   pergunta: string;
   ancora: string;
   exemploPorPerfil?: Partial<Record<PerfilAtividade, string>>;
+  nota?: string;
 };
 
 export const ESCALAS: Record<JanelaDose, EscalaDef[]> = {
@@ -87,6 +88,12 @@ export const ESCALAS: Record<JanelaDose, EscalaDef[]> = {
       nome: "Tranquilidade emocional", 
       pergunta: "Como está meu estado emocional para encerrar o dia?", 
       ancora: "0=tenso • 10=calmo" 
+    },
+    { 
+      nome: "Como tenho acordado", 
+      pergunta: "Como tenho acordado nos últimos dias?", 
+      ancora: "0=cansado • 10=recuperado",
+      nota: "📌 Considere sua percepção geral, não apenas um dia isolado."
     },
   ],
 };
