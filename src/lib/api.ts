@@ -1,154 +1,219 @@
+import { supabase } from "@/integrations/supabase/client";
 import type { Participante, RegistroDose, ResumoDiario, SerieData, ReferenciaPopulacional } from "./types";
-import { hojeISO } from "./date";
 
-// Mock data for UI-only mode
-
-const MOCK_PARTICIPANTE: Participante = {
-  id: "mock-001",
-  user_id: "mock-user-001",
-  codigo: "P742",
-  nome_publico: "Participante Demo",
-  sexo: "NAO_INFORMAR",
-  data_nascimento: "1990-05-15",
-  altura_cm: 175,
-  peso_kg: 72,
-  perfil_atividade: "ANALISE",
-  rotina_trabalho: "MISTO",
-};
-
-function generateMockSeries(): SerieData[] {
-  const series: SerieData[] = [];
-  const today = new Date();
-  
-  for (let i = 29; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split("T")[0];
-    
-    // Add DIA entries
-    series.push({
-      data: dateStr,
-      janela: "DIA",
-      tomou: Math.random() > 0.1,
-      escala_1: Math.floor(5 + Math.random() * 4 + (29 - i) * 0.05),
-      escala_2: Math.floor(4 + Math.random() * 4 + (29 - i) * 0.04),
-      escala_3: Math.floor(5 + Math.random() * 3 + (29 - i) * 0.03),
-      qualidade_sono: Math.floor(5 + Math.random() * 3 + (29 - i) * 0.04),
-      recuperacao_ao_acordar: Math.floor(4 + Math.random() * 4 + (29 - i) * 0.03),
-    });
-    
-    // Add TARDE entries
-    series.push({
-      data: dateStr,
-      janela: "TARDE",
-      tomou: Math.random() > 0.15,
-      escala_1: Math.floor(4 + Math.random() * 4 + (29 - i) * 0.04),
-      escala_2: Math.floor(5 + Math.random() * 3 + (29 - i) * 0.03),
-      escala_3: Math.floor(4 + Math.random() * 4 + (29 - i) * 0.05),
-    });
-    
-    // Add NOITE entries
-    series.push({
-      data: dateStr,
-      janela: "NOITE",
-      tomou: Math.random() > 0.2,
-      escala_1: Math.floor(5 + Math.random() * 3 + (29 - i) * 0.03),
-      escala_2: Math.floor(5 + Math.random() * 4 + (29 - i) * 0.04),
-      escala_3: Math.floor(6 + Math.random() * 3 + (29 - i) * 0.02),
-    });
-  }
-  
-  return series;
-}
-
-function generateMockSono(): { data: string; valor: number | null }[] {
-  const sono: { data: string; valor: number | null }[] = [];
-  const today = new Date();
-  
-  for (let i = 59; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    sono.push({
-      data: date.toISOString().split("T")[0],
-      valor: Math.min(10, Math.floor(5 + Math.random() * 3 + (59 - i) * 0.03)),
-    });
-  }
-  
-  return sono;
-}
-
-const MOCK_REFERENCIAS: Record<string, { min: number; max: number }> = {
-  dia_clareza: { min: 5.4, max: 6.7 },
-  tarde_foco: { min: 4.9, max: 6.3 },
-  sono_qualidade: { min: 6.0, max: 7.2 },
-};
-
-let mockParticipante = { ...MOCK_PARTICIPANTE };
-let mockSeries = generateMockSeries();
-let mockSono = generateMockSono();
-let isLoggedIn = false;
-
-// API functions (mock implementations)
-
+// Auth functions
 export async function getSession() {
-  return { data: { session: isLoggedIn ? { user: { id: "mock-user-001" } } : null } };
+  return supabase.auth.getSession();
 }
 
-export async function signInMagicLink(email: string) {
-  // Simulate login
-  isLoggedIn = true;
-  return { error: null };
+export async function signInWithEmail(email: string, password: string) {
+  return supabase.auth.signInWithPassword({ email, password });
+}
+
+export async function signUpWithEmail(email: string, password: string) {
+  const redirectUrl = `${window.location.origin}/`;
+  return supabase.auth.signUp({
+    email,
+    password,
+    options: { emailRedirectTo: redirectUrl }
+  });
 }
 
 export async function signOut() {
-  isLoggedIn = false;
-  return { error: null };
+  return supabase.auth.signOut();
 }
 
+// Participante functions
 export async function getParticipante(): Promise<Participante | null> {
-  if (!isLoggedIn) return null;
-  return mockParticipante;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
+
+  const { data, error } = await supabase
+    .from("participantes")
+    .select("*")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Error fetching participante:", error);
+    return null;
+  }
+
+  return data as Participante | null;
 }
 
 export async function createParticipante(payload: Partial<Participante>) {
-  mockParticipante = { ...MOCK_PARTICIPANTE, ...payload } as Participante;
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error("User not authenticated");
+
+  const codigo = `P${Math.floor(100 + Math.random() * 900)}`;
+  
+  const { error } = await supabase
+    .from("participantes")
+    .insert({
+      user_id: user.id,
+      codigo,
+      nome_publico: payload.nome_publico || "Novo Participante",
+      sexo: payload.sexo || "NAO_INFORMAR",
+      data_nascimento: payload.data_nascimento || "1990-01-01",
+      altura_cm: payload.altura_cm,
+      peso_kg: payload.peso_kg,
+      perfil_atividade: payload.perfil_atividade,
+      rotina_trabalho: payload.rotina_trabalho,
+    });
+
+  if (error) throw error;
 }
 
 export async function updateParticipante(id: string, patch: Partial<Participante>) {
-  mockParticipante = { ...mockParticipante, ...patch };
+  const { error } = await supabase
+    .from("participantes")
+    .update(patch)
+    .eq("id", id);
+
+  if (error) throw error;
 }
 
+// Registro Dose functions
 export async function upsertRegistroDose(payload: RegistroDose) {
-  // In mock mode, just log the action
-  console.log("Mock: Registro de dose salvo", payload);
+  const { error } = await supabase
+    .from("registros_dose")
+    .upsert({
+      participante_id: payload.participante_id,
+      data: payload.data,
+      janela: payload.janela,
+      tomou: payload.tomou,
+      horario_tomada: payload.horario_tomada,
+      escala_1: payload.escala_1,
+      escala_2: payload.escala_2,
+      escala_3: payload.escala_3,
+      efeito_indesejado: payload.efeito_indesejado,
+      sintomas: payload.sintomas,
+      observacoes: payload.observacoes,
+    }, {
+      onConflict: "participante_id,data,janela"
+    });
+
+  if (error) throw error;
 }
 
+// Resumo Diário functions
 export async function upsertResumoDiario(payload: ResumoDiario) {
-  // In mock mode, just log the action
-  console.log("Mock: Resumo diário salvo", payload);
+  const { error } = await supabase
+    .from("resumos_diarios")
+    .upsert({
+      participante_id: payload.participante_id,
+      data: payload.data,
+      latencia_sono_min: payload.latencia_sono_min,
+      despertares: payload.despertares,
+      qualidade_sono: payload.qualidade_sono,
+      recuperacao_ao_acordar: payload.recuperacao_ao_acordar,
+      sonolencia_diurna: payload.sonolencia_diurna,
+      estresse_dia: payload.estresse_dia,
+      cafeina_doses: payload.cafeina_doses,
+    }, {
+      onConflict: "participante_id,data"
+    });
+
+  if (error) throw error;
 }
 
+// Series data (combines registros_dose + resumos_diarios for last 30 days)
 export async function getSeries30d(): Promise<SerieData[]> {
-  return mockSeries;
+  const participante = await getParticipante();
+  if (!participante) return [];
+
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const fromDate = thirtyDaysAgo.toISOString().split("T")[0];
+
+  const [registrosResult, resumosResult] = await Promise.all([
+    supabase
+      .from("registros_dose")
+      .select("data, janela, tomou, escala_1, escala_2, escala_3")
+      .eq("participante_id", participante.id)
+      .gte("data", fromDate)
+      .order("data", { ascending: true }),
+    supabase
+      .from("resumos_diarios")
+      .select("data, qualidade_sono, recuperacao_ao_acordar")
+      .eq("participante_id", participante.id)
+      .gte("data", fromDate)
+      .order("data", { ascending: true })
+  ]);
+
+  const series: SerieData[] = [];
+
+  // Add dose registros
+  if (registrosResult.data) {
+    for (const r of registrosResult.data) {
+      series.push({
+        data: r.data,
+        janela: r.janela,
+        tomou: r.tomou,
+        escala_1: r.escala_1,
+        escala_2: r.escala_2,
+        escala_3: r.escala_3,
+      });
+    }
+  }
+
+  // Add resumos (as "SONO" entries with janela = DIA for consistency)
+  if (resumosResult.data) {
+    for (const r of resumosResult.data) {
+      series.push({
+        data: r.data,
+        janela: "DIA",
+        qualidade_sono: r.qualidade_sono,
+        recuperacao_ao_acordar: r.recuperacao_ao_acordar,
+      });
+    }
+  }
+
+  return series;
 }
 
+// Sleep data for last 60 days
 export async function getSono60d(participante_id: string): Promise<{ data: string; valor: number | null }[]> {
-  return mockSono;
-}
+  const sixtyDaysAgo = new Date();
+  sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+  const fromDate = sixtyDaysAgo.toISOString().split("T")[0];
 
-export async function getReferencias(sexo: string, idade: number): Promise<ReferenciaPopulacional[]> {
-  return Object.entries(MOCK_REFERENCIAS).map(([metrica, faixa]) => ({
-    metrica,
-    faixa_min: faixa.min,
-    faixa_max: faixa.max,
+  const { data, error } = await supabase
+    .from("resumos_diarios")
+    .select("data, qualidade_sono")
+    .eq("participante_id", participante_id)
+    .gte("data", fromDate)
+    .order("data", { ascending: true });
+
+  if (error) {
+    console.error("Error fetching sono data:", error);
+    return [];
+  }
+
+  return (data || []).map(r => ({
+    data: r.data,
+    valor: r.qualidade_sono
   }));
 }
 
-// Helper to simulate login for demo
-export function setLoggedIn(value: boolean) {
-  isLoggedIn = value;
-}
+// Reference values
+export async function getReferencias(sexo: string, idade: number): Promise<ReferenciaPopulacional[]> {
+  const { data, error } = await supabase
+    .from("referencias_populacionais")
+    .select("metrica, faixa_min, faixa_max")
+    .or(`sexo.is.null,sexo.eq.${sexo}`)
+    .or(`idade_min.is.null,idade_min.lte.${idade}`)
+    .or(`idade_max.is.null,idade_max.gte.${idade}`);
 
-export function isUserLoggedIn() {
-  return isLoggedIn;
+  if (error) {
+    console.error("Error fetching referencias:", error);
+    return [];
+  }
+
+  return (data || []).map(r => ({
+    metrica: r.metrica,
+    faixa_min: Number(r.faixa_min),
+    faixa_max: Number(r.faixa_max),
+  }));
 }

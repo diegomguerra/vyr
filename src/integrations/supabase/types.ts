@@ -14,7 +14,197 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      participantes: {
+        Row: {
+          altura_cm: number | null
+          codigo: string
+          created_at: string
+          data_nascimento: string
+          id: string
+          nome_publico: string
+          perfil_atividade:
+            | Database["public"]["Enums"]["perfil_atividade"]
+            | null
+          peso_kg: number | null
+          rotina_trabalho: Database["public"]["Enums"]["rotina_trabalho"] | null
+          sexo: Database["public"]["Enums"]["sexo_tipo"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          altura_cm?: number | null
+          codigo: string
+          created_at?: string
+          data_nascimento: string
+          id?: string
+          nome_publico: string
+          perfil_atividade?:
+            | Database["public"]["Enums"]["perfil_atividade"]
+            | null
+          peso_kg?: number | null
+          rotina_trabalho?:
+            | Database["public"]["Enums"]["rotina_trabalho"]
+            | null
+          sexo?: Database["public"]["Enums"]["sexo_tipo"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          altura_cm?: number | null
+          codigo?: string
+          created_at?: string
+          data_nascimento?: string
+          id?: string
+          nome_publico?: string
+          perfil_atividade?:
+            | Database["public"]["Enums"]["perfil_atividade"]
+            | null
+          peso_kg?: number | null
+          rotina_trabalho?:
+            | Database["public"]["Enums"]["rotina_trabalho"]
+            | null
+          sexo?: Database["public"]["Enums"]["sexo_tipo"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      referencias_populacionais: {
+        Row: {
+          faixa_max: number
+          faixa_min: number
+          id: string
+          idade_max: number | null
+          idade_min: number | null
+          metrica: string
+          sexo: Database["public"]["Enums"]["sexo_tipo"] | null
+        }
+        Insert: {
+          faixa_max: number
+          faixa_min: number
+          id?: string
+          idade_max?: number | null
+          idade_min?: number | null
+          metrica: string
+          sexo?: Database["public"]["Enums"]["sexo_tipo"] | null
+        }
+        Update: {
+          faixa_max?: number
+          faixa_min?: number
+          id?: string
+          idade_max?: number | null
+          idade_min?: number | null
+          metrica?: string
+          sexo?: Database["public"]["Enums"]["sexo_tipo"] | null
+        }
+        Relationships: []
+      }
+      registros_dose: {
+        Row: {
+          created_at: string
+          data: string
+          efeito_indesejado: Database["public"]["Enums"]["severidade"]
+          escala_1: number | null
+          escala_2: number | null
+          escala_3: number | null
+          horario_tomada: string | null
+          id: string
+          janela: Database["public"]["Enums"]["janela_dose"]
+          observacoes: string | null
+          participante_id: string
+          sintomas: string[] | null
+          tomou: boolean
+        }
+        Insert: {
+          created_at?: string
+          data: string
+          efeito_indesejado?: Database["public"]["Enums"]["severidade"]
+          escala_1?: number | null
+          escala_2?: number | null
+          escala_3?: number | null
+          horario_tomada?: string | null
+          id?: string
+          janela: Database["public"]["Enums"]["janela_dose"]
+          observacoes?: string | null
+          participante_id: string
+          sintomas?: string[] | null
+          tomou?: boolean
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          efeito_indesejado?: Database["public"]["Enums"]["severidade"]
+          escala_1?: number | null
+          escala_2?: number | null
+          escala_3?: number | null
+          horario_tomada?: string | null
+          id?: string
+          janela?: Database["public"]["Enums"]["janela_dose"]
+          observacoes?: string | null
+          participante_id?: string
+          sintomas?: string[] | null
+          tomou?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "registros_dose_participante_id_fkey"
+            columns: ["participante_id"]
+            isOneToOne: false
+            referencedRelation: "participantes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      resumos_diarios: {
+        Row: {
+          cafeina_doses: number | null
+          created_at: string
+          data: string
+          despertares: number | null
+          estresse_dia: number | null
+          id: string
+          latencia_sono_min: number | null
+          participante_id: string
+          qualidade_sono: number | null
+          recuperacao_ao_acordar: number | null
+          sonolencia_diurna: number | null
+        }
+        Insert: {
+          cafeina_doses?: number | null
+          created_at?: string
+          data: string
+          despertares?: number | null
+          estresse_dia?: number | null
+          id?: string
+          latencia_sono_min?: number | null
+          participante_id: string
+          qualidade_sono?: number | null
+          recuperacao_ao_acordar?: number | null
+          sonolencia_diurna?: number | null
+        }
+        Update: {
+          cafeina_doses?: number | null
+          created_at?: string
+          data?: string
+          despertares?: number | null
+          estresse_dia?: number | null
+          id?: string
+          latencia_sono_min?: number | null
+          participante_id?: string
+          qualidade_sono?: number | null
+          recuperacao_ao_acordar?: number | null
+          sonolencia_diurna?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resumos_diarios_participante_id_fkey"
+            columns: ["participante_id"]
+            isOneToOne: false
+            referencedRelation: "participantes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +213,16 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      janela_dose: "DIA" | "TARDE" | "NOITE"
+      perfil_atividade:
+        | "CONDUCAO"
+        | "ANALISE"
+        | "ENSINO"
+        | "EXECUCAO"
+        | "CRIACAO"
+      rotina_trabalho: "REUNIOES" | "FOCO" | "MISTO"
+      severidade: "NENHUM" | "LEVE" | "MODERADO" | "FORTE"
+      sexo_tipo: "MASCULINO" | "FEMININO" | "OUTRO" | "NAO_INFORMAR"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +349,18 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      janela_dose: ["DIA", "TARDE", "NOITE"],
+      perfil_atividade: [
+        "CONDUCAO",
+        "ANALISE",
+        "ENSINO",
+        "EXECUCAO",
+        "CRIACAO",
+      ],
+      rotina_trabalho: ["REUNIOES", "FOCO", "MISTO"],
+      severidade: ["NENHUM", "LEVE", "MODERADO", "FORTE"],
+      sexo_tipo: ["MASCULINO", "FEMININO", "OUTRO", "NAO_INFORMAR"],
+    },
   },
 } as const
