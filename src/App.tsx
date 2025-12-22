@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Sun, Moon } from "lucide-react";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import Products from "./pages/Products";
 import Dashboard from "./pages/Dashboard";
 import RegisterDose from "./pages/RegisterDose";
 import SleepDay from "./pages/SleepDay";
@@ -164,6 +165,7 @@ const App = () => {
             <Routes>
               {/* Public routes */}
               <Route path="/" element={<Landing />} />
+              <Route path="/produtos" element={<Products />} />
               <Route path="/login" element={user ? <Navigate to="/app" replace /> : <Login />} />
               
               {/* Protected routes */}

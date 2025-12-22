@@ -178,7 +178,7 @@ export function ProductCard() {
                 </ul>
 
                 {/* CTA */}
-                <Link to="/login?signup=true">
+                <Link to={offer.id === "unitario" ? "/produtos" : "/login?signup=true"}>
                   <Button 
                     className={`w-full py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
                       offer.premium
