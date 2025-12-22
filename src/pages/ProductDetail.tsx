@@ -41,7 +41,6 @@ const products = {
       storage: "Conservar este produto ao abrigo da luz, calor e umidade. Após aberto, consumo imediato.",
     },
     ingredientsList: "Citicolina, Fosfatidilserina, Bacopa monnieri (extrato), Vitamina B6, Vitamina B9, Vitamina B12, L-teanina, Teacrina, PQQ (Pirroloquinolina quinona), Creatina. NÃO CONTÉM GLÚTEN. CONTÉM AROMATIZANTE.",
-    allergens: "ALÉRGICOS: PODE CONTER SOJA.",
     nutritionTable: [
       { nutrient: "Citicolina", amount: "250 mg", vd: "*" },
       { nutrient: "Fosfatidilserina", amount: "200 mg", vd: "*" },
@@ -87,7 +86,6 @@ const products = {
       storage: "Conservar este produto ao abrigo da luz, calor e umidade. Após aberto, consumo imediato.",
     },
     ingredientsList: "Teacrina, L-teanina, L-taurina, Cafeína, Bicarbonato de sódio, Edulcorante, Aromatizante q.s. NÃO CONTÉM GLÚTEN. CONTÉM AROMATIZANTE.",
-    allergens: "ALÉRGICOS: PODE CONTER SOJA.",
     nutritionTable: [
       { nutrient: "Teacrina", amount: "100 mg", vd: "*" },
       { nutrient: "L-teanina", amount: "100 mg", vd: "*" },
@@ -128,7 +126,6 @@ const products = {
       storage: "Conservar este produto ao abrigo da luz, calor e umidade. Após aberto, consumo imediato.",
     },
     ingredientsList: "N-acetilcisteína (NAC), Ashwagandha, Magnésio quelato. NÃO CONTÉM GLÚTEN. CONTÉM AROMATIZANTE.",
-    allergens: "ALÉRGICOS: PODE CONTER SOJA.",
     nutritionTable: [
       { nutrient: "N-acetilcisteína (NAC)", amount: "600 mg", vd: "*" },
       { nutrient: "Ashwagandha", amount: "300 mg", vd: "*" },
@@ -353,11 +350,8 @@ export default function ProductDetail() {
             {/* Ingredients List */}
             <div>
               <h2 className="text-3xl font-bold text-white mb-6">Ingredientes</h2>
-              <p className="text-white/80 leading-relaxed mb-6">
+              <p className="text-white/80 leading-relaxed">
                 {product.ingredientsList}
-              </p>
-              <p className="text-white font-semibold text-sm">
-                {product.allergens}
               </p>
             </div>
             
