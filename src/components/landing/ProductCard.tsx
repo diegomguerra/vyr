@@ -43,9 +43,10 @@ const offers = [
     description: "Escolha um produto individual para começar sua jornada de performance cognitiva.",
     price: "R$ 147",
     priceNote: "por produto",
-    includes: ["1 produto à escolha (Dia, Tarde ou Noite)", "Acesso à plataforma digital", "30 dias de suprimento"],
+    includes: ["1 produto à escolha (Dia, Tarde ou Noite)", "Acesso à plataforma digital básica", "30 dias de suprimento"],
     cta: "Escolher Produto",
     highlight: false,
+    link: "/produtos",
   },
   {
     id: "rotina",
@@ -56,30 +57,32 @@ const offers = [
     price: "R$ 397",
     priceNote: "por mês",
     discount: "10% OFF",
-    includes: ["NZT Dia + Tarde + Noite", "Acesso à plataforma digital", "30 dias de suprimento", "Entrega expressa grátis"],
+    includes: ["NZT Dia + Tarde + Noite", "Acesso à plataforma digital básica", "Registro de doses e evolução", "Entrega expressa grátis"],
     cta: "Quero a Rotina Completa",
     highlight: true,
+    link: "/rotina-completa",
   },
   {
     id: "premium",
     tier: "Experiência Completa",
-    name: "Plano Premium",
-    description: "O sistema completo de performance intelectual. Suplementação + Smart Ring + Plataforma.",
-    originalPrice: "R$ 1.797",
-    price: "R$ 1.297",
-    priceNote: "investimento único",
-    discount: "28% OFF",
+    name: "Sistema Completo",
+    description: "Performance máxima: Suplementação + Smart Ring + Plataforma Premium com AI.",
+    originalPrice: "R$ 6.561",
+    price: "R$ 3.937",
+    priceNote: "12 meses",
+    discount: "40% OFF",
     includes: [
-      "NZT Dia + Tarde + Noite",
+      "12 meses: NZT Dia + Tarde + Noite",
       "Smart Ring (sensor contínuo)",
-      "Acesso premium à plataforma",
-      "Dashboard cognitivo avançado",
-      "Correlações e insights AI",
+      "Plataforma Premium",
+      "Correlações inteligentes (exclusivo)",
+      "Insights de AI (exclusivo)",
       "Entrega expressa grátis",
     ],
     cta: "Quero o Sistema Completo",
     highlight: false,
     premium: true,
+    link: "/sistema-completo",
   },
 ];
 
@@ -178,7 +181,7 @@ export function ProductCard() {
                 </ul>
 
                 {/* CTA */}
-                <Link to={offer.id === "unitario" ? "/produtos" : "/login?signup=true"}>
+                <Link to={offer.link}>
                   <Button 
                     className={`w-full py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
                       offer.premium
@@ -228,10 +231,16 @@ export function ProductCard() {
 
         {/* Platform note */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-slate-800/30 border border-slate-700/50">
-            <Monitor className="w-5 h-5 text-violet-400" />
-            <span className="text-slate-300 text-sm">
-              <span className="text-white font-medium">Plataforma digital</span> inclusa em todos os planos
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-4 rounded-xl bg-slate-800/30 border border-slate-700/50">
+            <div className="flex items-center gap-2">
+              <Monitor className="w-5 h-5 text-violet-400" />
+              <span className="text-slate-300 text-sm">
+                <span className="text-white font-medium">Plataforma digital básica</span> inclusa em todos os planos
+              </span>
+            </div>
+            <span className="text-slate-500 hidden sm:inline">•</span>
+            <span className="text-slate-400 text-sm">
+              <span className="text-fuchsia-400 font-medium">Correlações e Insights AI</span> exclusivos do Sistema Completo
             </span>
           </div>
         </div>
