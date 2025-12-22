@@ -4,6 +4,7 @@ import { Check, Sun, Moon, Sunset, Shield, Sparkles, ArrowRight, Activity, Brain
 import { LandingNav, Footer } from "@/components/landing";
 
 import smartRing from "@/assets/smart-ring.png";
+import sistemaCompletoHero from "@/assets/sistema-completo-hero.png";
 import sachetDia from "@/assets/sachet-dia.png";
 import sachetTarde from "@/assets/sachet-tarde.png";
 import sachetNoite from "@/assets/sachet-noite.png";
@@ -145,13 +146,13 @@ export default function SistemaCompleto() {
               </div>
             </div>
 
-            {/* Ring Image */}
+            {/* Hero Image - System Complete */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/20 to-indigo-500/20 blur-3xl rounded-full" />
               <img
-                src={smartRing}
-                alt="Smart Ring NZT"
-                className="relative z-10 w-full max-w-lg mx-auto drop-shadow-2xl"
+                src={sistemaCompletoHero}
+                alt="Sistema Completo NZT - Sachês, Smart Ring e Plataforma"
+                className="relative z-10 w-full rounded-2xl shadow-2xl shadow-fuchsia-500/20"
               />
             </div>
           </div>
