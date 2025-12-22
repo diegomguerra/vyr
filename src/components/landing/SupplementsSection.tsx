@@ -1,5 +1,11 @@
 import { Sun, Moon, Sunset, Brain, Zap, Shield, Beaker } from "lucide-react";
 
+// Import product images
+import nztBoxesSachets from "@/assets/nzt-boxes-sachets.png";
+import sachetDia from "@/assets/sachet-dia.png";
+import sachetTarde from "@/assets/sachet-tarde.png";
+import sachetNoite from "@/assets/sachet-noite.png";
+
 const supplements = [
   {
     id: "dia",
@@ -14,6 +20,7 @@ const supplements = [
     borderColor: "border-amber-500/30",
     textColor: "text-amber-400",
     sachets: "30 sachês",
+    sachetImage: sachetDia,
   },
   {
     id: "tarde",
@@ -28,6 +35,7 @@ const supplements = [
     borderColor: "border-purple-500/30",
     textColor: "text-purple-400",
     sachets: "30 sachês",
+    sachetImage: sachetTarde,
   },
   {
     id: "noite",
@@ -42,6 +50,7 @@ const supplements = [
     borderColor: "border-indigo-500/30",
     textColor: "text-indigo-400",
     sachets: "30 sachês",
+    sachetImage: sachetNoite,
   },
 ];
 
@@ -51,14 +60,14 @@ function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
     <div className="relative group">
       {/* Caixa do suplemento */}
       <div className={`relative p-6 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900 border ${supplement.borderColor} transition-all duration-300 group-hover:border-opacity-60 group-hover:translate-y-[-4px]`}>
-        {/* Visual da caixa */}
+        {/* Visual da caixa com imagem real do sachê */}
         <div className="relative mb-6">
           {/* Caixa 3D simulada */}
           <div className={`relative w-full aspect-[4/3] rounded-xl bg-gradient-to-br ${supplement.color} p-[2px] shadow-lg`}>
             <div className="w-full h-full rounded-xl bg-slate-900 flex flex-col items-center justify-center p-4">
               {/* Logo/Icon */}
-              <div className={`w-16 h-16 rounded-full ${supplement.bgColor} flex items-center justify-center mb-3`}>
-                <supplement.icon className={`w-8 h-8 ${supplement.textColor}`} />
+              <div className={`w-14 h-14 rounded-full ${supplement.bgColor} flex items-center justify-center mb-2`}>
+                <supplement.icon className={`w-7 h-7 ${supplement.textColor}`} />
               </div>
               {/* Nome do produto */}
               <span className={`text-xl font-bold bg-gradient-to-r ${supplement.color} bg-clip-text text-transparent`}>
@@ -66,15 +75,13 @@ function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
               </span>
               <span className="text-xs text-slate-500 mt-1">{supplement.sachets}</span>
               
-              {/* Sachês ilustrativos */}
-              <div className="flex gap-1 mt-3">
-                {[1, 2, 3].map((i) => (
-                  <div 
-                    key={i}
-                    className={`w-6 h-8 rounded-sm bg-gradient-to-b ${supplement.color} opacity-60`}
-                    style={{ transform: `rotate(${(i - 2) * 5}deg)` }}
-                  />
-                ))}
+              {/* Imagem real do sachê (horizontal) */}
+              <div className="mt-3 w-full flex justify-center">
+                <img 
+                  src={supplement.sachetImage} 
+                  alt={`Sachê ${supplement.name}`}
+                  className="w-28 h-auto object-contain drop-shadow-lg hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           </div>
@@ -108,7 +115,7 @@ export function SupplementsSection() {
   return (
     <section id="suplementos" className="py-24 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Header com imagem das caixas */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-6">
             <Beaker className="w-4 h-4 text-emerald-400" />
@@ -117,10 +124,23 @@ export function SupplementsSection() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Ciclo Cognitivo Completo
           </h2>
-          <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+          <p className="text-slate-400 max-w-3xl mx-auto text-lg mb-10">
             Três fórmulas nootrópicas cientificamente dosadas para cada fase do seu dia. 
             <span className="text-white font-medium"> Não é estimulante. É otimização neural estruturada.</span>
           </p>
+          
+          {/* Imagem das caixas com sachês */}
+          <div className="flex justify-center mb-8">
+            <div className="relative max-w-2xl w-full">
+              <img 
+                src={nztBoxesSachets} 
+                alt="NZT Suplementos - Caixas Dia, Tarde e Noite com sachês"
+                className="w-full h-auto object-contain drop-shadow-2xl"
+              />
+              {/* Glow effect atrás da imagem */}
+              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-indigo-500/20 blur-3xl rounded-full scale-75" />
+            </div>
+          </div>
         </div>
 
         {/* Grid de suplementos */}
