@@ -28,11 +28,12 @@ const products = [
       "Redução da procrastinação matinal"
     ],
     ingredients: [
-      "Bacopa Monnieri 300mg",
-      "L-Teanina 200mg",
       "Citicolina 250mg",
-      "Rhodiola Rosea 150mg",
-      "Vitamina B12 1000mcg"
+      "Fosfatidilserina 200mg",
+      "Bacopa monnieri 400mg",
+      "L-teanina 100mg",
+      "Creatina 3g",
+      "PQQ 10mg"
     ],
     usage: "Tomar 1 sachê ao acordar, preferencialmente com o café da manhã.",
     price: "R$ 147",
@@ -57,11 +58,11 @@ const products = [
       "Melhora na tomada de decisões"
     ],
     ingredients: [
-      "Lion's Mane 500mg",
-      "Ashwagandha KSM-66 300mg",
-      "Alpha-GPC 200mg",
-      "Magnésio Treonato 144mg",
-      "Vitamina D3 2000UI"
+      "Teacrina 100mg",
+      "L-teanina 100mg",
+      "L-taurina 250mg",
+      "Cafeína 25mg",
+      "Bicarbonato de sódio 1,4g"
     ],
     usage: "Tomar 1 sachê após o almoço ou quando sentir queda de energia.",
     price: "R$ 147",
@@ -86,11 +87,9 @@ const products = [
       "Despertar revigorado"
     ],
     ingredients: [
-      "Glicina 3000mg",
-      "L-Triptofano 500mg",
-      "Fosfatidilserina 100mg",
-      "Zinco 15mg",
-      "Melatonina 0.5mg"
+      "N-acetilcisteína (NAC) 600mg",
+      "Ashwagandha 300mg",
+      "Magnésio quelato 200mg"
     ],
     usage: "Tomar 1 sachê 30-60 minutos antes de dormir.",
     price: "R$ 147",
