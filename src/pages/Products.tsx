@@ -214,14 +214,24 @@ export default function Products() {
                     </span>
                   </div>
                   
-                  <Link to="/login?signup=true">
-                    <Button 
-                      className={`w-full py-6 text-base font-semibold rounded-xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white shadow-lg transition-all duration-300`}
-                    >
-                      <ShoppingCart className="w-5 h-5 mr-2" />
-                      Adicionar ao Carrinho
-                    </Button>
-                  </Link>
+                  <div className="flex gap-3">
+                    <Link to={`/produtos/${product.id}`} className="flex-1">
+                      <Button 
+                        variant="outline"
+                        className={`w-full py-6 text-base font-semibold rounded-xl ${product.borderColor} ${product.textColor} hover:bg-slate-800 transition-all duration-300`}
+                      >
+                        Saiba Mais
+                      </Button>
+                    </Link>
+                    <Link to="/login?signup=true" className="flex-1">
+                      <Button 
+                        className={`w-full py-6 text-base font-semibold rounded-xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white shadow-lg transition-all duration-300`}
+                      >
+                        <ShoppingCart className="w-5 h-5 mr-2" />
+                        Comprar
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

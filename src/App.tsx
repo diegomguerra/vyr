@@ -10,6 +10,7 @@ import { Sun, Moon } from "lucide-react";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
 import Dashboard from "./pages/Dashboard";
 import RegisterDose from "./pages/RegisterDose";
 import SleepDay from "./pages/SleepDay";
@@ -166,6 +167,7 @@ const App = () => {
               {/* Public routes */}
               <Route path="/" element={<Landing />} />
               <Route path="/produtos" element={<Products />} />
+              <Route path="/produtos/:id" element={<ProductDetail />} />
               <Route path="/login" element={user ? <Navigate to="/app" replace /> : <Login />} />
               
               {/* Protected routes */}
