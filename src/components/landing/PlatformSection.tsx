@@ -1,4 +1,5 @@
 import { ClipboardCheck, TrendingUp, BarChart3, Brain, Zap, Moon, RefreshCw } from "lucide-react";
+import dashboardPreview from "@/assets/dashboard-preview.png";
 import { LineChart, Line, AreaChart, Area, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 const trackingPillars = [
@@ -118,6 +119,33 @@ export function PlatformSection() {
             única que revela como os nootrópicos impactam{" "}
             <span className="text-white font-medium">seu</span> desempenho específico.
           </p>
+        </div>
+
+        {/* Dashboard Preview Image */}
+        <div className="mb-20 relative">
+          <div className="relative mx-auto max-w-5xl">
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-violet-500/20 blur-3xl -z-10 scale-95" />
+            
+            {/* Dashboard image with frame */}
+            <div className="relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl shadow-violet-500/10">
+              <img 
+                src={dashboardPreview} 
+                alt="NZT Dashboard - Painel de Performance Cognitiva" 
+                className="w-full h-auto"
+              />
+              {/* Subtle overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none" />
+            </div>
+            
+            {/* Floating labels */}
+            <div className="absolute -left-4 top-1/4 px-3 py-2 rounded-lg bg-slate-800/90 border border-violet-500/30 hidden lg:block">
+              <span className="text-xs text-violet-400 font-medium">Métricas em tempo real</span>
+            </div>
+            <div className="absolute -right-4 top-1/3 px-3 py-2 rounded-lg bg-slate-800/90 border border-fuchsia-500/30 hidden lg:block">
+              <span className="text-xs text-fuchsia-400 font-medium">Evolução visível</span>
+            </div>
+          </div>
         </div>
 
         {/* Os 3 Eixos de Mensuração */}
