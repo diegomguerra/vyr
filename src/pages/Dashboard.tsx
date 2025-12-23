@@ -94,9 +94,9 @@ export default function Dashboard() {
       <div className="flex flex-col gap-3 sm:gap-4">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <h1 className="text-lg sm:text-2xl font-bold">NZT — Plataforma de Testes</h1>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">
-              Básico: percepção. Superior: percepção + SmartData.
+            <h1 className="text-lg sm:text-2xl font-bold text-white">Painel de Performance</h1>
+            <p className="text-slate-400 text-xs sm:text-sm mt-1">
+              Acompanhe sua evolução cognitiva diária
             </p>
           </div>
           <div className="flex-shrink-0">
@@ -193,8 +193,8 @@ export default function Dashboard() {
       )}
 
       {/* Footer note */}
-      <p className="text-xs text-muted-foreground text-center max-w-2xl mx-auto pt-6 border-t border-border/30">
-        Schema-agnostic: renderiza métricas conforme chegam. Gated: insights só liberam com qualidade mínima de dados.
+      <p className="text-xs text-slate-500 text-center max-w-2xl mx-auto pt-6 border-t border-slate-700/30">
+        Dados são processados localmente. Insights liberados com qualidade mínima de dados.
       </p>
     </div>
   );

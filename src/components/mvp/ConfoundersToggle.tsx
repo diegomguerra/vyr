@@ -20,7 +20,12 @@ export function ConfoundersToggle({ value, onChange }: ConfoundersToggleProps) {
       {CONFOUNDER_OPTIONS.map(({ key, label }) => (
         <button
           key={key}
-          className={`nzt-chip text-[10px] sm:text-xs px-2 py-1 sm:px-3 sm:py-2 ${value[key] ? "nzt-chip-active" : ""}`}
+          className={`
+            px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-[10px] sm:text-xs font-medium transition-all border
+            ${value[key] 
+              ? "bg-violet-500/20 text-violet-300 border-violet-500/30" 
+              : "bg-slate-800/30 text-slate-400 border-slate-700/30 hover:text-white"}
+          `}
           onClick={() => onChange({ ...value, [key]: !value[key] })}
         >
           {label}

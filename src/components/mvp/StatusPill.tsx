@@ -5,14 +5,14 @@ interface StatusPillProps {
 
 export function StatusPill({ children, variant = "default" }: StatusPillProps) {
   const variants = {
-    default: "nzt-badge",
-    success: "nzt-badge border-secondary/50 bg-secondary/10 text-secondary",
-    warning: "nzt-badge border-warning/50 bg-warning/10 text-warning",
-    info: "nzt-badge border-accent/50 bg-accent/10 text-accent",
+    default: "bg-slate-800/50 text-slate-300 border-slate-700/50",
+    success: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
+    warning: "bg-amber-500/10 text-amber-400 border-amber-500/30",
+    info: "bg-violet-500/10 text-violet-400 border-violet-500/30",
   };
 
   return (
-    <span className={variants[variant]}>
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium ${variants[variant]}`}>
       {children}
     </span>
   );

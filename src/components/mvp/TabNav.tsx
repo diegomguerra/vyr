@@ -19,11 +19,16 @@ export function TabNav({ active, onChange }: TabNavProps) {
       {tabs.map(({ key, label, icon }) => (
         <button
           key={key}
-          className={`nzt-pill flex items-center gap-1 sm:gap-2 px-2 py-1.5 sm:px-3 sm:py-2 ${active === key ? "nzt-pill-active" : ""}`}
+          className={`
+            flex items-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all border
+            ${active === key 
+              ? "bg-violet-500/20 text-white border-violet-500/30" 
+              : "bg-slate-800/30 text-slate-400 border-slate-700/30 hover:text-white hover:bg-slate-800/50"}
+          `}
           onClick={() => onChange(key)}
         >
           <span className="text-sm sm:text-base">{icon}</span>
-          <span className="text-[10px] sm:text-xs">{label}</span>
+          <span>{label}</span>
         </button>
       ))}
     </div>

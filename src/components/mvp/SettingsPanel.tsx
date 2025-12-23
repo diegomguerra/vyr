@@ -21,28 +21,37 @@ export function SettingsPanel({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
       {/* Config Ring */}
-      <div className="glass-card p-3 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3">Config — Ring</h3>
+      <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base text-white mb-2 sm:mb-3">Config — Ring</h3>
 
         {plan !== "pro" ? (
-          <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-muted/30 border border-border">
-            <p className="text-xs sm:text-sm text-muted-foreground">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/50 border border-slate-700/30">
+            <p className="text-xs sm:text-sm text-slate-400">
               🔒 Conexão com ring disponível no Plano Superior.
             </p>
           </div>
         ) : (
           <>
-            <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4">
+            <p className="text-[10px] sm:text-xs text-slate-400 mb-3 sm:mb-4">
               Fluxo do SDK: permissões, pareamento, sync e revogação.
             </p>
             <div className="flex gap-1.5 sm:gap-2 flex-wrap">
-              <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={onConnect}>
+              <button 
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+                onClick={onConnect}
+              >
                 {ringConnected ? "Reconectar" : "Conectar"}
               </button>
-              <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={onDisconnect}>
+              <button 
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+                onClick={onDisconnect}
+              >
                 Desconectar
               </button>
-              <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3 text-destructive" onClick={onClearData}>
+              <button 
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-rose-500/10 text-rose-400 border border-rose-500/30 hover:bg-rose-500/20 transition-all" 
+                onClick={onClearData}
+              >
                 Limpar
               </button>
             </div>
@@ -51,9 +60,9 @@ export function SettingsPanel({
       </div>
 
       {/* Config Baseline */}
-      <div className="glass-card p-3 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3">Config — Baseline</h3>
-        <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4">
+      <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base text-white mb-2 sm:mb-3">Config — Baseline</h3>
+        <p className="text-[10px] sm:text-xs text-slate-400 mb-3 sm:mb-4">
           Sem baseline, resultados são instáveis.
         </p>
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">

@@ -24,9 +24,9 @@ export function SmartDataPanel({
       : "default";
 
   return (
-    <div className="glass-card p-3 sm:p-5">
+    <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 sm:mb-4">
-        <h3 className="text-base sm:text-lg font-semibold">SmartData (J-Style)</h3>
+        <h3 className="text-base sm:text-lg font-semibold text-white">SmartData (J-Style)</h3>
         <div className="flex gap-1.5 sm:gap-2 flex-wrap">
           <StatusPill variant={ringConnected ? "success" : "default"}>
             Ring: {ringConnected ? "on" : "off"}
@@ -44,13 +44,22 @@ export function SmartDataPanel({
       </div>
 
       <div className="flex gap-1.5 sm:gap-2 flex-wrap mb-4 sm:mb-5">
-        <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={onConnect}>
+        <button 
+          className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+          onClick={onConnect}
+        >
           {ringConnected ? "Reconectar" : "Conectar"}
         </button>
-        <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={onSyncPartial}>
+        <button 
+          className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+          onClick={onSyncPartial}
+        >
           Sync parcial
         </button>
-        <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={onSyncFull}>
+        <button 
+          className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+          onClick={onSyncFull}
+        >
           Sync completo
         </button>
       </div>
@@ -63,7 +72,7 @@ export function SmartDataPanel({
 
       {ringDaily.metrics && ringDaily.metrics.length > 0 && (
         <>
-          <p className="text-xs text-muted-foreground mb-2">Métricas brutas</p>
+          <p className="text-xs text-slate-500 mb-2">Métricas brutas</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
             {ringDaily.metrics.map((m, i) => (
               <MetricCard key={i} metric={m} />
@@ -72,7 +81,7 @@ export function SmartDataPanel({
         </>
       )}
 
-      <p className="text-xs text-muted-foreground mt-3 sm:mt-4">
+      <p className="text-xs text-slate-500 mt-3 sm:mt-4">
         Nota: interpretação premium bloqueada se dado ausente/ruim.
       </p>
     </div>

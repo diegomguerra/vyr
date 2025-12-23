@@ -38,9 +38,9 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
       {/* Consistência */}
-      <div className="glass-card p-3 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">Consistência (7 dias)</h3>
-        <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4">
+      <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base text-white mb-1.5 sm:mb-2">Consistência (7 dias)</h3>
+        <p className="text-[10px] sm:text-xs text-slate-400 mb-3 sm:mb-4">
           Sem consistência, qualquer score vira ruído.
         </p>
         <div className="space-y-1.5 sm:space-y-2">
@@ -50,14 +50,14 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
             return (
               <div
                 key={d}
-                className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-2.5 sm:px-4 py-1.5 sm:py-2 ${
+                className={`flex items-center justify-between rounded-xl border px-3 sm:px-4 py-2 sm:py-2.5 ${
                   isComplete
-                    ? "border-secondary/50 bg-secondary/10"
-                    : "border-border bg-muted/20"
+                    ? "border-emerald-500/30 bg-emerald-500/10"
+                    : "border-slate-700/30 bg-slate-900/30"
                 }`}
               >
-                <span className="text-xs sm:text-sm">{formatDate(d)}</span>
-                <span className={`text-[10px] sm:text-xs ${isComplete ? "text-secondary" : "text-muted-foreground"}`}>
+                <span className="text-xs sm:text-sm text-white">{formatDate(d)}</span>
+                <span className={`text-[10px] sm:text-xs ${isComplete ? "text-emerald-400" : "text-slate-500"}`}>
                   {count}/3
                 </span>
               </div>
@@ -67,18 +67,18 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
       </div>
 
       {/* SmartData tendência */}
-      <div className="glass-card p-3 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">SmartData — tendência</h3>
+      <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base text-white mb-1.5 sm:mb-2">SmartData — tendência</h3>
 
         {plan !== "pro" ? (
-          <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-muted/30 border border-border">
-            <p className="text-xs sm:text-sm text-muted-foreground">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/50 border border-slate-700/30">
+            <p className="text-xs sm:text-sm text-slate-400">
               🔒 Disponível no Plano Superior.
             </p>
           </div>
         ) : (
           <>
-            <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4">
+            <p className="text-[10px] sm:text-xs text-slate-400 mb-3 sm:mb-4">
               Use os índices exportáveis como macro-sinal.
             </p>
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -86,8 +86,8 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
               <IndexCard label="Vitalidade" value={ringDaily.vitalityIndex} icon="⚡" />
               <IndexCard label="Equilíbrio" value={ringDaily.balanceIndex} icon="⚖️" />
             </div>
-            <p className="text-[10px] sm:text-xs text-muted-foreground mt-3 sm:mt-4">
-              Qualidade: <strong>{ringDaily.dataQuality}</strong>
+            <p className="text-[10px] sm:text-xs text-slate-500 mt-3 sm:mt-4">
+              Qualidade: <strong className="text-white">{ringDaily.dataQuality}</strong>
             </p>
           </>
         )}

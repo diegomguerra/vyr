@@ -47,9 +47,9 @@ export function CheckinPanel({ period, dateISO, onSave }: CheckinPanelProps) {
   };
 
   return (
-    <div className="glass-card p-3 sm:p-5">
+    <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h3 className="text-base sm:text-lg font-semibold">{periodLabel(period)}</h3>
+        <h3 className="text-base sm:text-lg font-semibold text-white">{periodLabel(period)}</h3>
         <StatusPill>{dateISO}</StatusPill>
       </div>
 
@@ -57,8 +57,8 @@ export function CheckinPanel({ period, dateISO, onSave }: CheckinPanelProps) {
         {fields.map((f) => (
           <div key={f}>
             <div className="flex items-center justify-between text-xs sm:text-sm mb-1.5 sm:mb-2">
-              <span className="text-muted-foreground">{fieldLabel(f)}</span>
-              <span className="text-foreground font-medium">{vals[f]}</span>
+              <span className="text-slate-400">{fieldLabel(f)}</span>
+              <span className="text-white font-medium">{vals[f]}</span>
             </div>
             <Slider
               value={[vals[f]]}
@@ -66,17 +66,21 @@ export function CheckinPanel({ period, dateISO, onSave }: CheckinPanelProps) {
               min={0}
               max={10}
               step={1}
+              className="[&_[role=slider]]:bg-violet-500 [&_[role=slider]]:border-violet-400"
             />
           </div>
         ))}
       </div>
 
       <div className="mt-4 sm:mt-5">
-        <p className="text-[10px] sm:text-xs text-muted-foreground mb-2">Contexto do dia</p>
+        <p className="text-[10px] sm:text-xs text-slate-500 mb-2">Contexto do dia</p>
         <ConfoundersToggle value={confounders} onChange={setConfounders} />
       </div>
 
-      <button className="nzt-btn-primary w-full mt-4 sm:mt-5 text-sm" onClick={handleSave}>
+      <button 
+        className="w-full mt-4 sm:mt-5 px-4 py-3 rounded-xl text-sm font-medium bg-violet-500/20 text-violet-300 border border-violet-500/30 hover:bg-violet-500/30 transition-all" 
+        onClick={handleSave}
+      >
         Salvar check-in
       </button>
     </div>
