@@ -103,30 +103,30 @@ export default function Products() {
       <LandingNav />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 relative overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-b from-violet-950/50 via-slate-950 to-slate-950" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-40 right-1/4 w-80 h-80 bg-fuchsia-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-violet-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-40 right-1/4 w-40 sm:w-80 h-40 sm:h-80 bg-fuchsia-500/10 rounded-full blur-3xl" />
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-6 sm:mb-8 transition-colors text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Voltar</span>
           </Link>
           
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6">
-            <Sparkles className="w-4 h-4 text-violet-400" />
-            <span className="text-violet-300 text-sm font-medium">Nootrópicos Premium</span>
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-4 sm:mb-6">
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-400" />
+            <span className="text-violet-300 text-xs sm:text-sm font-medium">Nootrópicos Premium</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Escolha seu <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent">Suplemento</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-2xl mx-auto px-2">
             Três fórmulas exclusivas desenvolvidas para otimizar cada fase do seu dia cognitivo. 
             Selecione o produto ideal para suas necessidades.
           </p>
@@ -134,29 +134,29 @@ export default function Products() {
       </section>
       
       {/* Products Grid */}
-      <section className="py-16 px-4">
+      <section className="py-12 sm:py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {products.map((product) => (
               <div 
                 key={product.id}
-                className={`relative rounded-3xl border ${product.borderColor} bg-slate-900/80 backdrop-blur-sm overflow-hidden group hover:scale-[1.02] transition-all duration-500`}
+                className={`relative rounded-2xl sm:rounded-3xl border ${product.borderColor} bg-slate-900/80 backdrop-blur-sm overflow-hidden group hover:scale-[1.02] transition-all duration-500`}
               >
                 {/* Glow effect */}
                 <div className={`absolute inset-0 ${product.bgGlow} opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500`} />
                 
                 {/* Content */}
-                <div className="relative z-10 p-6">
+                <div className="relative z-10 p-4 sm:p-6">
                   {/* Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${product.color} text-white`}>
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <span className={`px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-gradient-to-r ${product.color} text-white`}>
                       {product.period}
                     </span>
-                    <product.icon className={`w-5 h-5 ${product.textColor}`} />
+                    <product.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${product.textColor}`} />
                   </div>
                   
                   {/* Image */}
-                  <div className="relative h-72 mb-6 flex items-center justify-center">
+                  <div className="relative h-48 sm:h-72 mb-4 sm:mb-6 flex items-center justify-center">
                     <div className={`absolute inset-0 ${product.bgGlow} blur-2xl opacity-50`} />
                     <img 
                       src={product.image} 
@@ -166,67 +166,67 @@ export default function Products() {
                   </div>
                   
                   {/* Info */}
-                  <h3 className="text-2xl font-bold text-white mb-1">{product.name}</h3>
-                  <p className={`text-sm font-medium ${product.textColor} mb-3`}>{product.tagline}</p>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{product.description}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-0.5 sm:mb-1">{product.name}</h3>
+                  <p className={`text-xs sm:text-sm font-medium ${product.textColor} mb-2 sm:mb-3`}>{product.tagline}</p>
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{product.description}</p>
                   
                   {/* Benefits */}
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                     {product.benefits.map((benefit, index) => (
                       <div key={index} className="flex items-center gap-2">
-                        <Check className={`w-4 h-4 ${product.textColor} flex-shrink-0`} />
-                        <span className="text-sm text-slate-300">{benefit}</span>
+                        <Check className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${product.textColor} flex-shrink-0`} />
+                        <span className="text-xs sm:text-sm text-slate-300">{benefit}</span>
                       </div>
                     ))}
                   </div>
                   
                   {/* Ingredients */}
-                  <div className="mb-6">
-                    <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Composição Principal</h4>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-4 sm:mb-6">
+                    <h4 className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 sm:mb-3">Composição Principal</h4>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {product.ingredients.slice(0, 3).map((ing, index) => (
-                        <span key={index} className="px-2 py-1 rounded-md bg-slate-800/80 text-xs text-slate-400 border border-slate-700/50">
+                        <span key={index} className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-slate-800/80 text-[10px] sm:text-xs text-slate-400 border border-slate-700/50">
                           {ing}
                         </span>
                       ))}
-                      <span className="px-2 py-1 rounded-md bg-slate-800/80 text-xs text-slate-500 border border-slate-700/50">
+                      <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-slate-800/80 text-[10px] sm:text-xs text-slate-500 border border-slate-700/50">
                         +{product.ingredients.length - 3} mais
                       </span>
                     </div>
                   </div>
                   
                   {/* Usage */}
-                  <div className="flex items-start gap-2 p-3 rounded-xl bg-slate-800/50 border border-slate-700/30 mb-6">
-                    <Clock className="w-4 h-4 text-slate-500 mt-0.5 flex-shrink-0" />
-                    <p className="text-xs text-slate-400">{product.usage}</p>
+                  <div className="flex items-start gap-2 p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-slate-800/50 border border-slate-700/30 mb-4 sm:mb-6">
+                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 mt-0.5 flex-shrink-0" />
+                    <p className="text-[10px] sm:text-xs text-slate-400">{product.usage}</p>
                   </div>
                   
                   {/* Price and CTA */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <div>
-                      <span className="text-sm text-slate-500 line-through">{product.priceOld}</span>
-                      <span className="text-2xl font-bold text-white ml-2">{product.price}</span>
-                      <span className="text-sm text-slate-400 ml-1">/mês</span>
+                      <span className="text-xs sm:text-sm text-slate-500 line-through">{product.priceOld}</span>
+                      <span className="text-xl sm:text-2xl font-bold text-white ml-2">{product.price}</span>
+                      <span className="text-xs sm:text-sm text-slate-400 ml-1">/mês</span>
                     </div>
-                    <span className="px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                    <span className="px-2 py-0.5 sm:py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-[10px] sm:text-xs font-semibold">
                       -25% OFF
                     </span>
                   </div>
                   
-                  <div className="flex gap-3">
+                  <div className="flex gap-2 sm:gap-3">
                     <Link to={`/produtos/${product.id}`} className="flex-1">
                       <Button 
                         variant="outline"
-                        className={`w-full py-6 text-base font-semibold rounded-xl ${product.borderColor} ${product.textColor} hover:bg-slate-800 transition-all duration-300`}
+                        className={`w-full py-4 sm:py-6 text-xs sm:text-base font-semibold rounded-lg sm:rounded-xl ${product.borderColor} ${product.textColor} hover:bg-slate-800 transition-all duration-300`}
                       >
                         Saiba Mais
                       </Button>
                     </Link>
                     <Link to="/login?signup=true" className="flex-1">
                       <Button 
-                        className={`w-full py-6 text-base font-semibold rounded-xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white shadow-lg transition-all duration-300`}
+                        className={`w-full py-4 sm:py-6 text-xs sm:text-base font-semibold rounded-lg sm:rounded-xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white shadow-lg transition-all duration-300`}
                       >
-                        <ShoppingCart className="w-5 h-5 mr-2" />
+                        <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                         Comprar
                       </Button>
                     </Link>
@@ -239,64 +239,64 @@ export default function Products() {
       </section>
       
       {/* Info Section */}
-      <section className="py-16 px-4 border-t border-slate-800">
+      <section className="py-12 sm:py-16 px-4 border-t border-slate-800">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center">
-                <Brain className="w-7 h-7 text-violet-400" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center">
+                <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-violet-400" />
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">Formulação Científica</h4>
-              <p className="text-sm text-slate-400">Ingredientes em doses clínicas validadas por estudos científicos.</p>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">Formulação Científica</h4>
+              <p className="text-xs sm:text-sm text-slate-400">Ingredientes em doses clínicas validadas por estudos científicos.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center">
-                <Shield className="w-7 h-7 text-fuchsia-400" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center">
+                <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-fuchsia-400" />
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">Segurança Garantida</h4>
-              <p className="text-sm text-slate-400">Testado em laboratórios certificados. Sem efeitos colaterais severos.</p>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">Segurança Garantida</h4>
+              <p className="text-xs sm:text-sm text-slate-400">Testado em laboratórios certificados. Sem efeitos colaterais severos.</p>
             </div>
             
             <div className="text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                <Sparkles className="w-7 h-7 text-emerald-400" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-3 sm:mb-4 rounded-xl sm:rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-400" />
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">Plataforma Incluída</h4>
-              <p className="text-sm text-slate-400">Acesso à plataforma digital para rastrear seu progresso cognitivo.</p>
+              <h4 className="text-base sm:text-lg font-semibold text-white mb-1.5 sm:mb-2">Plataforma Incluída</h4>
+              <p className="text-xs sm:text-sm text-slate-400">Acesso à plataforma digital para rastrear seu progresso cognitivo.</p>
             </div>
           </div>
         </div>
       </section>
       
       {/* Full Package CTA */}
-      <section className="py-16 px-4">
+      <section className="py-12 sm:py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="relative rounded-3xl overflow-hidden border border-violet-500/30 bg-gradient-to-br from-violet-950/50 via-slate-900 to-fuchsia-950/50 p-8 md:p-12">
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-violet-500/30 bg-gradient-to-br from-violet-950/50 via-slate-900 to-fuchsia-950/50 p-6 sm:p-8 md:p-12">
             {/* Background glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-violet-500/10 blur-3xl" />
             
             <div className="relative z-10 text-center">
-              <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm font-semibold mb-6">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
                 MELHOR ESCOLHA
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
                 Rotina Cognitiva Completa
               </h2>
-              <p className="text-slate-400 max-w-2xl mx-auto mb-8">
+              <p className="text-slate-400 max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base">
                 Otimize seu cérebro 24h com os 3 suplementos integrados. 
                 Economia de 30% em relação aos produtos individuais.
               </p>
               
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <span className="text-2xl text-slate-500 line-through">R$ 441</span>
-                <span className="text-4xl font-bold text-white">R$ 297</span>
-                <span className="text-slate-400">/mês</span>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 flex-wrap">
+                <span className="text-lg sm:text-2xl text-slate-500 line-through">R$ 441</span>
+                <span className="text-3xl sm:text-4xl font-bold text-white">R$ 297</span>
+                <span className="text-slate-400 text-sm">/mês</span>
               </div>
               
               <Link to="/login?signup=true">
-                <Button className="px-8 py-6 text-lg font-semibold rounded-xl bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 hover:from-violet-700 hover:via-fuchsia-700 hover:to-violet-700 text-white shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all duration-300">
-                  <ShoppingCart className="w-5 h-5 mr-2" />
+                <Button className="px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg font-semibold rounded-xl bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 hover:from-violet-700 hover:via-fuchsia-700 hover:to-violet-700 text-white shadow-lg shadow-violet-500/25 hover:shadow-xl hover:shadow-violet-500/30 transition-all duration-300">
+                  <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Quero a Rotina Completa
                 </Button>
               </Link>
