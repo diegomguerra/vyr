@@ -156,6 +156,114 @@ export default function SistemaCompleto() {
               />
             </div>
           </div>
+
+          {/* Sachets Overview */}
+          <div className="mt-20">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Os 3 Sachês do Ciclo Cognitivo
+              </h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Fórmulas sincronizadas com seu ritmo circadiano para máximo desempenho ao longo do dia.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* NZT Dia */}
+              <div className="relative p-6 rounded-2xl bg-gradient-to-b from-amber-900/20 to-slate-900/50 border border-amber-500/20 overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-400 to-orange-500" />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-20 h-20 rounded-xl bg-amber-500/10 flex items-center justify-center p-2">
+                    <img src={sachetDia} alt="NZT Dia" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <Sun className="w-4 h-4 text-amber-400" />
+                      <span className="text-xs text-amber-400 font-medium uppercase">Manhã</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">NZT Dia</h3>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-400 leading-relaxed mb-4">
+                  <strong className="text-amber-400">Foco e energia cognitiva.</strong> Otimiza neurotransmissores para clareza mental e concentração nas primeiras horas do dia.
+                </p>
+                <ul className="space-y-2 text-xs text-slate-500">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-amber-400" />
+                    Bacopa, Lion's Mane, L-Tirosina
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-amber-400" />
+                    Vitaminas B6, B12, D3
+                  </li>
+                </ul>
+              </div>
+
+              {/* NZT Tarde */}
+              <div className="relative p-6 rounded-2xl bg-gradient-to-b from-purple-900/20 to-slate-900/50 border border-purple-500/20 overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-fuchsia-500" />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-20 h-20 rounded-xl bg-purple-500/10 flex items-center justify-center p-2">
+                    <img src={sachetTarde} alt="NZT Tarde" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <Sunset className="w-4 h-4 text-purple-400" />
+                      <span className="text-xs text-purple-400 font-medium uppercase">Tarde</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">NZT Tarde</h3>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-400 leading-relaxed mb-4">
+                  <strong className="text-purple-400">Sustentação e resiliência.</strong> Mantém a performance enquanto prepara a transição para o relaxamento noturno.
+                </p>
+                <ul className="space-y-2 text-xs text-slate-500">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-purple-400" />
+                    Rhodiola, Ashwagandha
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-purple-400" />
+                    Magnésio, L-Teanina
+                  </li>
+                </ul>
+              </div>
+
+              {/* NZT Noite */}
+              <div className="relative p-6 rounded-2xl bg-gradient-to-b from-indigo-900/20 to-slate-900/50 border border-indigo-500/20 overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-400 to-blue-500" />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-20 h-20 rounded-xl bg-indigo-500/10 flex items-center justify-center p-2">
+                    <img src={sachetNoite} alt="NZT Noite" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <Moon className="w-4 h-4 text-indigo-400" />
+                      <span className="text-xs text-indigo-400 font-medium uppercase">Noite</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">NZT Noite</h3>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-400 leading-relaxed mb-4">
+                  <strong className="text-indigo-400">Sono reparador.</strong> Promove relaxamento profundo e otimiza a consolidação da memória durante o sono.
+                </p>
+                <ul className="space-y-2 text-xs text-slate-500">
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-indigo-400" />
+                    GABA, Melatonina, Glicina
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-indigo-400" />
+                    Passiflora, Valeriana
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-center text-sm text-slate-500 mt-8">
+              <span className="text-fuchsia-400 font-medium">1.080 sachês</span> inclusos no Sistema Completo — suprimento para 12 meses.
+            </p>
+          </div>
         </div>
       </section>
 
