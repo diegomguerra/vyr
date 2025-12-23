@@ -59,7 +59,7 @@ export function Footer() {
               </div>
               <span className="font-bold text-xl text-foreground">NZT</span>
             </div>
-            <p className="text-muted-foreground text-sm max-w-sm mb-6">
+            <p className="text-foreground/70 text-sm max-w-sm mb-6">
               Plataforma de acompanhamento de suplementação cognitiva. 
               Otimize sua performance mental com dados e insights personalizados.
             </p>
@@ -71,7 +71,7 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-foreground/60 hover:text-foreground transition-colors"
                 >
                   <social.icon />
                 </a>
@@ -84,22 +84,22 @@ export function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Navegação</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#produto" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#produto" className="text-foreground/70 hover:text-foreground transition-colors">
                   Produto
                 </a>
               </li>
               <li>
-                <a href="#como-funciona" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#como-funciona" className="text-foreground/70 hover:text-foreground transition-colors">
                   Como Funciona
                 </a>
               </li>
               <li>
-                <a href="#beneficios" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#beneficios" className="text-foreground/70 hover:text-foreground transition-colors">
                   Benefícios
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#faq" className="text-foreground/70 hover:text-foreground transition-colors">
                   FAQ
                 </a>
               </li>
@@ -111,12 +111,12 @@ export function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Conta</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/login" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/login" className="text-foreground/70 hover:text-foreground transition-colors">
                   Entrar
                 </Link>
               </li>
               <li>
-                <Link to="/login?signup=true" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/login?signup=true" className="text-foreground/70 hover:text-foreground transition-colors">
                   Criar conta
                 </Link>
               </li>
@@ -126,10 +126,10 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-foreground/60">
             © {new Date().getFullYear()} NZT. Todos os direitos reservados.
           </p>
-          <div className="flex items-center gap-6 text-xs text-muted-foreground">
+          <div className="flex items-center gap-6 text-xs text-foreground/60">
             <a href="#" className="hover:text-foreground transition-colors">
               Termos de Uso
             </a>
