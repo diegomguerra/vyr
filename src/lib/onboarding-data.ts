@@ -1,12 +1,12 @@
 import type { PerfilAtividade, RotinaTrabalho, NivelExperiencia, FrequenciaExercicio, ConsumoSubstancia } from "./types";
 
 export const OBJETIVOS = [
-  { value: "FOCO_MENTAL", label: "Melhorar foco e clareza mental", icon: "🎯" },
-  { value: "ENERGIA_ESTAVEL", label: "Ter energia mais estável ao longo do dia", icon: "⚡" },
-  { value: "QUALIDADE_SONO", label: "Melhorar qualidade do sono", icon: "🌙" },
-  { value: "REDUZIR_ESTRESSE", label: "Reduzir estresse e ansiedade", icon: "🧘" },
-  { value: "PERFORMANCE", label: "Otimizar performance cognitiva", icon: "🧠" },
-  { value: "RECUPERACAO", label: "Melhorar recuperação física/mental", icon: "💪" },
+  { value: "FOCO_MENTAL", label: "Melhorar foco e clareza mental", icon: "Target" },
+  { value: "ENERGIA_ESTAVEL", label: "Ter energia mais estável ao longo do dia", icon: "Zap" },
+  { value: "QUALIDADE_SONO", label: "Melhorar qualidade do sono", icon: "Moon" },
+  { value: "REDUZIR_ESTRESSE", label: "Reduzir estresse e ansiedade", icon: "Heart" },
+  { value: "PERFORMANCE", label: "Otimizar performance cognitiva", icon: "Brain" },
+  { value: "RECUPERACAO", label: "Melhorar recuperação física/mental", icon: "Activity" },
 ] as const;
 
 export const EXPERIENCIA_SUPLEMENTOS: { value: NivelExperiencia; label: string; desc: string }[] = [
@@ -48,38 +48,38 @@ export const PERFIS: { value: PerfilAtividade; title: string; desc: string; icon
     value: "CONDUCAO", 
     title: "Condução e organização", 
     desc: "Planejar, coordenar, decidir e acompanhar pessoas.",
-    icon: "👔"
+    icon: "Briefcase"
   },
   { 
     value: "ANALISE", 
     title: "Análise e resolução", 
     desc: "Estruturar ideias, interpretar dados e construir soluções.",
-    icon: "📊"
+    icon: "BarChart3"
   },
   { 
     value: "ENSINO", 
     title: "Ensino e orientação", 
     desc: "Educar, orientar e apoiar o desenvolvimento de outros.",
-    icon: "📚"
+    icon: "GraduationCap"
   },
   { 
     value: "EXECUCAO", 
     title: "Execução prática", 
     desc: "Atuar com ritmo, coordenação e presença no mundo real.",
-    icon: "🔧"
+    icon: "Wrench"
   },
   { 
     value: "CRIACAO", 
     title: "Criação e expressão", 
     desc: "Criar, comunicar, escrever e expressar conceitos.",
-    icon: "🎨"
+    icon: "Palette"
   },
 ];
 
 export const ROTINAS: { value: RotinaTrabalho; label: string; icon: string }[] = [
-  { value: "REUNIOES", label: "Muitas reuniões e interações", icon: "👥" },
-  { value: "FOCO", label: "Foco individual profundo", icon: "🎧" },
-  { value: "MISTO", label: "Combinação dos dois", icon: "⚖️" },
+  { value: "REUNIOES", label: "Muitas reuniões e interações", icon: "Users" },
+  { value: "FOCO", label: "Foco individual profundo", icon: "Headphones" },
+  { value: "MISTO", label: "Combinação dos dois", icon: "Scale" },
 ];
 
 export const ONBOARDING_STEPS = [

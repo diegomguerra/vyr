@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Brain, User, ClipboardList, ChevronRight, Sparkles, Activity, BarChart3 } from "lucide-react";
+import { Brain, User, ClipboardList, ChevronRight, Sparkles, BarChart3 } from "lucide-react";
 import { getParticipante, updateParticipante } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 import type { Participante, PerfilAtividade, RotinaTrabalho, NivelExperiencia, FrequenciaExercicio, ConsumoSubstancia } from "@/lib/types";
@@ -13,7 +13,7 @@ import {
   PERFIS,
   ROTINAS 
 } from "@/lib/onboarding-data";
-import { ScaleBlock } from "@/components/nzt";
+import { DynamicIcon } from "@/components/DynamicIcon";
 
 type WelcomeStep = "intro" | "profile" | "goals" | "activity" | "health" | "lifestyle" | "complete";
 
@@ -343,8 +343,10 @@ export default function Welcome() {
                           : 'bg-slate-900/30 border-slate-700/50 text-slate-300 hover:border-slate-600'}
                       `}
                     >
-                      <span className="text-xl">{obj.icon}</span>
-                      {obj.label}
+                      <div className="w-9 h-9 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                        <DynamicIcon name={obj.icon} className="w-5 h-5 text-violet-400" />
+                      </div>
+                      <span>{obj.label}</span>
                     </button>
                   ))}
                 </div>
@@ -413,7 +415,9 @@ export default function Welcome() {
                           : 'bg-slate-900/30 border-slate-700/50 hover:border-slate-600'}
                       `}
                     >
-                      <span className="text-2xl">{p.icon}</span>
+                      <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                        <DynamicIcon name={p.icon} className="w-5 h-5 text-violet-400" />
+                      </div>
                       <div>
                         <div className={`font-medium ${perfil === p.value ? 'text-white' : 'text-slate-300'}`}>
                           {p.title}
@@ -439,7 +443,9 @@ export default function Welcome() {
                           : 'bg-slate-900/30 border-slate-700/50 text-slate-300 hover:border-slate-600'}
                       `}
                     >
-                      <span className="text-xl block mb-2">{r.icon}</span>
+                      <div className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center mx-auto mb-2">
+                        <DynamicIcon name={r.icon} className="w-5 h-5 text-violet-400" />
+                      </div>
                       <span className="text-xs">{r.label}</span>
                     </button>
                   ))}

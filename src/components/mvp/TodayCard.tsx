@@ -1,3 +1,4 @@
+import { Sun, Sunset, Moon } from "lucide-react";
 import type { Period } from "@/lib/mvp-types";
 import { periodLabel } from "@/lib/mvp-types";
 
@@ -8,17 +9,17 @@ interface TodayCardProps {
   onOpenCheckin: () => void;
 }
 
-const periodIcons: Record<Period, string> = {
-  day: "☀️",
-  afternoon: "🌅",
-  night: "🌙",
+const periodIcons: Record<Period, React.ReactNode> = {
+  day: <Sun className="w-5 h-5 text-amber-400" />,
+  afternoon: <Sunset className="w-5 h-5 text-orange-400" />,
+  night: <Moon className="w-5 h-5 text-indigo-400" />,
 };
 
 export function TodayCard({ period, done, subtitle, onOpenCheckin }: TodayCardProps) {
   return (
     <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
-      <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-        <span className="text-lg sm:text-xl">{periodIcons[period]}</span>
+      <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
+        {periodIcons[period]}
         <h3 className="font-semibold text-sm sm:text-base text-white">{periodLabel(period)}</h3>
       </div>
       <p className="text-[10px] sm:text-xs text-slate-400 mb-2 sm:mb-3">{subtitle}</p>
