@@ -15,15 +15,15 @@ const tabs: { key: Tab; label: string; icon: string }[] = [
 
 export function TabNav({ active, onChange }: TabNavProps) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-1.5 sm:gap-2">
       {tabs.map(({ key, label, icon }) => (
         <button
           key={key}
-          className={`nzt-pill flex items-center gap-2 ${active === key ? "nzt-pill-active" : ""}`}
+          className={`nzt-pill flex items-center gap-1 sm:gap-2 px-2 py-1.5 sm:px-3 sm:py-2 ${active === key ? "nzt-pill-active" : ""}`}
           onClick={() => onChange(key)}
         >
-          <span>{icon}</span>
-          <span className="hidden sm:inline">{label}</span>
+          <span className="text-sm sm:text-base">{icon}</span>
+          <span className="text-[10px] sm:text-xs">{label}</span>
         </button>
       ))}
     </div>

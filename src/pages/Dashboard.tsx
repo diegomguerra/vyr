@@ -89,33 +89,37 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold">NZT — Plataforma de Testes</h1>
-          <p className="text-muted-foreground text-sm mt-1">
-            Básico: percepção. Superior: percepção + SmartData (J-Style).
-          </p>
-          <div className="flex flex-wrap gap-2 mt-3">
-            <StatusPill variant={plan === "pro" ? "info" : "default"}>
-              Plano: {plan === "basic" ? "Básico" : "Superior"}
-            </StatusPill>
-            <StatusPill variant={baselineReady ? "success" : "warning"}>
-              Baseline: {baselineReady ? "OK" : `em construção (${baselineDays}/7)`}
-            </StatusPill>
-            {plan === "pro" && (
-              <>
-                <StatusPill variant={ringConnected ? "success" : "default"}>
-                  Ring: {ringConnected ? "conectado" : "desconectado"}
-                </StatusPill>
-                <StatusPill>SmartData: {ringDaily.dataQuality}</StatusPill>
-              </>
-            )}
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-lg sm:text-2xl font-bold">NZT — Plataforma de Testes</h1>
+            <p className="text-muted-foreground text-xs sm:text-sm mt-1">
+              Básico: percepção. Superior: percepção + SmartData.
+            </p>
+          </div>
+          <div className="flex-shrink-0">
+            <PlanSelector plan={plan} onChange={setPlan} />
           </div>
         </div>
-
-        <PlanSelector plan={plan} onChange={setPlan} />
+        
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+          <StatusPill variant={plan === "pro" ? "info" : "default"}>
+            {plan === "basic" ? "Básico" : "Superior"}
+          </StatusPill>
+          <StatusPill variant={baselineReady ? "success" : "warning"}>
+            Baseline: {baselineReady ? "OK" : `${baselineDays}/7`}
+          </StatusPill>
+          {plan === "pro" && (
+            <>
+              <StatusPill variant={ringConnected ? "success" : "default"}>
+                Ring: {ringConnected ? "on" : "off"}
+              </StatusPill>
+              <StatusPill>Data: {ringDaily.dataQuality}</StatusPill>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Navigation */}
@@ -123,8 +127,8 @@ export default function Dashboard() {
 
       {/* HOME TAB */}
       {tab === "home" && (
-        <div className="space-y-5">
-          <div className="grid md:grid-cols-3 gap-4">
+        <div className="space-y-3 sm:space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <TodayCard
               period="day"
               done={status.day}
@@ -159,7 +163,7 @@ export default function Dashboard() {
 
       {/* CHECK-IN TAB */}
       {tab === "checkin" && (
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {(["day", "afternoon", "night"] as Period[]).map((p) => (
             <CheckinPanel key={p} period={p} dateISO={todayISO} onSave={upsertCheckin} />
           ))}

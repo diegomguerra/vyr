@@ -48,21 +48,48 @@ function Header({ codigo }: { codigo?: string }) {
 
   return (
     <header className="glass-header sticky top-0 z-10">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div>
-          <h1 className="font-bold text-foreground">NZT • Plataforma de Teste</h1>
-          <p className="text-xs text-muted-foreground">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
+        <div className="min-w-0 flex-1">
+          <h1 className="font-bold text-foreground text-sm sm:text-base truncate">NZT • Plataforma de Teste</h1>
+          <p className="text-xs text-muted-foreground truncate">
             {codigo ? `Código: ${codigo}` : "Carregando..."}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           <ThemeToggle />
-          <button className="nzt-btn text-sm" onClick={handleLogout}>
+          <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={handleLogout}>
             Sair
           </button>
         </div>
       </div>
     </header>
+  );
+}
+
+const NAV_ITEMS = [
+  { to: "/app/painel", label: "Painel", icon: "📊" },
+  { to: "/app/dose", label: "Dose", icon: "💊" },
+  { to: "/app/sono", label: "Sono", icon: "🌙" },
+  { to: "/app/anamnese", label: "Anamnese", icon: "📋" },
+  { to: "/app/perfil", label: "Perfil", icon: "👤" },
+];
+
+function MobileNav() {
+  return (
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-header border-t border-border/50">
+      <div className="flex items-center justify-around py-2 px-1 safe-area-inset-bottom">
+        {NAV_ITEMS.map((item) => (
+          <a
+            key={item.to}
+            href={item.to}
+            className="flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg text-muted-foreground hover:text-foreground transition-colors min-w-0"
+          >
+            <span className="text-lg">{item.icon}</span>
+            <span className="text-[10px] truncate max-w-[48px]">{item.label}</span>
+          </a>
+        ))}
+      </div>
+    </nav>
   );
 }
 
@@ -106,9 +133,12 @@ function AuthenticatedApp() {
   return (
     <>
       <Header codigo={participante?.codigo} />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-4 p-4">
-        <NavSidebar />
-        <main className="flex flex-col gap-4 animate-fade-in">
+      <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-[220px_1fr] gap-4 p-3 sm:p-4 pb-24 lg:pb-4">
+        {/* Sidebar - hidden on mobile, shown on desktop */}
+        <div className="hidden lg:block">
+          <NavSidebar />
+        </div>
+        <main className="flex flex-col gap-4 animate-fade-in min-w-0">
           <Routes>
             <Route 
               path="/" 
@@ -123,6 +153,8 @@ function AuthenticatedApp() {
           </Routes>
         </main>
       </div>
+      {/* Mobile bottom navigation */}
+      <MobileNav />
     </>
   );
 }
