@@ -16,11 +16,11 @@ const CONFOUNDER_OPTIONS: { key: keyof Confounders; label: string }[] = [
 
 export function ConfoundersToggle({ value, onChange }: ConfoundersToggleProps) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-1.5 sm:gap-2">
       {CONFOUNDER_OPTIONS.map(({ key, label }) => (
         <button
           key={key}
-          className={`nzt-chip text-xs ${value[key] ? "nzt-chip-active" : ""}`}
+          className={`nzt-chip text-[10px] sm:text-xs px-2 py-1 sm:px-3 sm:py-2 ${value[key] ? "nzt-chip-active" : ""}`}
           onClick={() => onChange({ ...value, [key]: !value[key] })}
         >
           {label}

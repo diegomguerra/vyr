@@ -36,29 +36,29 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
   };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
       {/* Consistência */}
-      <div className="glass-card p-5">
-        <h3 className="font-semibold mb-2">Consistência (últimos 7 dias)</h3>
-        <p className="text-xs text-muted-foreground mb-4">
-          Sem consistência, qualquer score vira ruído. Aqui você força hábito.
+      <div className="glass-card p-3 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">Consistência (7 dias)</h3>
+        <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4">
+          Sem consistência, qualquer score vira ruído.
         </p>
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           {weekDates.map((d) => {
             const count = checkinCountByDate.get(d) ?? 0;
             const isComplete = count >= 3;
             return (
               <div
                 key={d}
-                className={`flex items-center justify-between rounded-xl border px-4 py-2 ${
+                className={`flex items-center justify-between rounded-lg sm:rounded-xl border px-2.5 sm:px-4 py-1.5 sm:py-2 ${
                   isComplete
                     ? "border-secondary/50 bg-secondary/10"
                     : "border-border bg-muted/20"
                 }`}
               >
-                <span className="text-sm">{formatDate(d)}</span>
-                <span className={`text-xs ${isComplete ? "text-secondary" : "text-muted-foreground"}`}>
-                  {count}/3 check-ins
+                <span className="text-xs sm:text-sm">{formatDate(d)}</span>
+                <span className={`text-[10px] sm:text-xs ${isComplete ? "text-secondary" : "text-muted-foreground"}`}>
+                  {count}/3
                 </span>
               </div>
             );
@@ -67,27 +67,27 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
       </div>
 
       {/* SmartData tendência */}
-      <div className="glass-card p-5">
-        <h3 className="font-semibold mb-2">SmartData — tendência macro</h3>
+      <div className="glass-card p-3 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">SmartData — tendência</h3>
 
         {plan !== "pro" ? (
-          <div className="p-4 rounded-xl bg-muted/30 border border-border">
-            <p className="text-sm text-muted-foreground">
+          <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-muted/30 border border-border">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               🔒 Disponível no Plano Superior.
             </p>
           </div>
         ) : (
           <>
-            <p className="text-xs text-muted-foreground mb-4">
-              Use os índices exportáveis como macro-sinal enquanto valida o schema.
+            <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4">
+              Use os índices exportáveis como macro-sinal.
             </p>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               <IndexCard label="Saúde" value={ringDaily.healthIndex} icon="❤️" />
               <IndexCard label="Vitalidade" value={ringDaily.vitalityIndex} icon="⚡" />
               <IndexCard label="Equilíbrio" value={ringDaily.balanceIndex} icon="⚖️" />
             </div>
-            <p className="text-xs text-muted-foreground mt-4">
-              Qualidade do dado: <strong>{ringDaily.dataQuality}</strong>
+            <p className="text-[10px] sm:text-xs text-muted-foreground mt-3 sm:mt-4">
+              Qualidade: <strong>{ringDaily.dataQuality}</strong>
             </p>
           </>
         )}

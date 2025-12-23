@@ -16,17 +16,17 @@ const periodIcons: Record<Period, string> = {
 
 export function TodayCard({ period, done, subtitle, onOpenCheckin }: TodayCardProps) {
   return (
-    <div className="glass-card p-5">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-xl">{periodIcons[period]}</span>
-        <h3 className="font-semibold">{periodLabel(period)}</h3>
+    <div className="glass-card p-3 sm:p-5">
+      <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+        <span className="text-lg sm:text-xl">{periodIcons[period]}</span>
+        <h3 className="font-semibold text-sm sm:text-base">{periodLabel(period)}</h3>
       </div>
-      <p className="text-xs text-muted-foreground mb-3">{subtitle}</p>
-      <div className="flex items-center justify-between">
-        <span className={`text-sm ${done ? "text-secondary" : "text-muted-foreground"}`}>
-          {done ? "✓ Concluído" : "Pendente"}
+      <p className="text-[10px] sm:text-xs text-muted-foreground mb-2 sm:mb-3">{subtitle}</p>
+      <div className="flex items-center justify-between gap-2">
+        <span className={`text-xs sm:text-sm ${done ? "text-secondary" : "text-muted-foreground"}`}>
+          {done ? "✓ Feito" : "Pendente"}
         </span>
-        <button className="nzt-btn text-sm" onClick={onOpenCheckin}>
+        <button className="nzt-btn text-xs sm:text-sm px-2.5 py-1.5 sm:px-4 sm:py-3" onClick={onOpenCheckin}>
           {done ? "Editar" : "Registrar"}
         </button>
       </div>
