@@ -26,7 +26,7 @@ import {
 import sachetDia from "@/assets/sachet-dia.png";
 import sachetTarde from "@/assets/sachet-tarde.png";
 import sachetNoite from "@/assets/sachet-noite.png";
-import smartRing from "@/assets/smart-ring.png";
+import smartRing from "@/assets/smart-ring-nobg.png";
 import sistemaIntegradoHero from "@/assets/sistema-integrado-hero.png";
 
 // ========== SEÇÃO 1: SACHÊS ==========
