@@ -11,7 +11,6 @@ import {
   Heart, 
   Thermometer,
   Wind,
-  Clock,
   TrendingUp,
   BarChart3,
   Target,
@@ -20,8 +19,14 @@ import {
   Check,
   Smartphone,
   Watch,
-  Database
+  Database,
+  Layers
 } from "lucide-react";
+
+import sachetDia from "@/assets/sachet-dia.png";
+import sachetTarde from "@/assets/sachet-tarde.png";
+import sachetNoite from "@/assets/sachet-noite.png";
+import smartRing from "@/assets/smart-ring.png";
 
 // ========== SEÇÃO 1: SACHÊS ==========
 const sachets = [
@@ -30,71 +35,80 @@ const sachets = [
     name: "NZT Dia",
     icon: Sun,
     color: "from-amber-400 to-orange-500",
-    bgColor: "bg-amber-500/10",
-    borderColor: "border-amber-500/30",
-    textColor: "text-amber-400",
+    bgGradient: "from-amber-900/20 to-slate-900/50",
+    borderColor: "border-amber-500/20",
+    accentColor: "text-amber-400",
+    topBar: "from-amber-400 to-orange-500",
+    periodo: "Manhã",
     objetivo: "Ativação & Clareza",
     descricao: "Atenção sustentada, foco executivo, memória de trabalho e clareza cognitiva.",
+    image: sachetDia,
     areas: [
       { name: "Córtex Pré-Frontal", funcao: "Controle executivo" },
       { name: "Hipocampo", funcao: "Memória" },
       { name: "Córtex Temporal Medial", funcao: "Aprendizado" }
     ],
     componentes: [
-      { nome: "Citicolina — 250 mg", area: "Córtex Pré-Frontal, Hipocampo", funcao: "Atenção executiva, memória de trabalho" },
-      { nome: "Fosfatidilserina — 200 mg", area: "Córtex Pré-Frontal, Hipocampo", funcao: "Velocidade cognitiva, processamento executivo" },
-      { nome: "Bacopa monnieri — 400 mg", area: "Hipocampo, Córtex Temporal Medial", funcao: "Consolidação de memória, aprendizado" },
-      { nome: "L-Teanina — 100 mg", area: "Córtex Pré-Frontal, Sistema Límbico", funcao: "Atenção calma, redução de ruído cognitivo" },
-      { nome: "Teacrina — 100 mg", area: "Sistema Reticular, Córtex Pré-Frontal", funcao: "Energia mental sustentada" },
-      { nome: "PQQ — 10 mg", area: "Hipocampo, Neocórtex", funcao: "Neuroplasticidade, suporte mitocondrial" },
-      { nome: "Creatina — 3 g", area: "Córtex Cerebral", funcao: "Reserva energética neuronal" },
-      { nome: "Vitamina B6 — 25 mg", area: "Sistema nervoso central", funcao: "Síntese de neurotransmissores" },
-      { nome: "Vitamina B9 — 400 mcg", area: "Sistema nervoso central", funcao: "Metilação e função neural" },
-      { nome: "Vitamina B12 — 500 mcg", area: "Sistema nervoso central", funcao: "Manutenção da mielina" }
+      { nome: "Citicolina — 250 mg", funcao: "Atenção executiva, memória de trabalho" },
+      { nome: "Fosfatidilserina — 200 mg", funcao: "Velocidade cognitiva, processamento executivo" },
+      { nome: "Bacopa monnieri — 400 mg", funcao: "Consolidação de memória, aprendizado" },
+      { nome: "L-Teanina — 100 mg", funcao: "Atenção calma, redução de ruído cognitivo" },
+      { nome: "Teacrina — 100 mg", funcao: "Energia mental sustentada" },
+      { nome: "PQQ — 10 mg", funcao: "Neuroplasticidade, suporte mitocondrial" },
+      { nome: "Creatina — 3 g", funcao: "Reserva energética neuronal" },
+      { nome: "Vitamina B6 — 25 mg", funcao: "Síntese de neurotransmissores" },
+      { nome: "Vitamina B9 — 400 mcg", funcao: "Metilação e função neural" },
+      { nome: "Vitamina B12 — 500 mcg", funcao: "Manutenção da mielina" }
     ]
   },
   {
     id: "tarde",
     name: "NZT Tarde",
     icon: Sunset,
-    color: "from-orange-400 to-rose-500",
-    bgColor: "bg-orange-500/10",
-    borderColor: "border-orange-500/30",
-    textColor: "text-orange-400",
+    color: "from-purple-400 to-fuchsia-500",
+    bgGradient: "from-purple-900/20 to-slate-900/50",
+    borderColor: "border-purple-500/20",
+    accentColor: "text-purple-400",
+    topBar: "from-purple-400 to-fuchsia-500",
+    periodo: "Tarde",
     objetivo: "Sustentação & Resiliência",
     descricao: "Sustentar desempenho mental, reduzir fadiga cognitiva e manter estabilidade emocional.",
+    image: sachetTarde,
     areas: [
       { name: "Tronco Encefálico", funcao: "Vigília" },
       { name: "Córtex Pré-Frontal", funcao: "Sustentação" },
       { name: "Amígdala", funcao: "Regulação emocional" }
     ],
     componentes: [
-      { nome: "Teacrina — 100 mg", area: "Sistema Reticular, Córtex Pré-Frontal", funcao: "Estado de alerta estável, energia mental" },
-      { nome: "L-Teanina — 100 mg", area: "Córtex Pré-Frontal, Amígdala", funcao: "Controle do estresse cognitivo, foco relaxado" },
-      { nome: "L-Taurina — 250 mg", area: "Sistema GABAérgico", funcao: "Modulação neural, redução de excitotoxicidade" },
-      { nome: "Cafeína — 25 mg", area: "Sistema Reticular Ativador", funcao: "Alerta suave, sem picos" },
-      { nome: "Bicarbonato de sódio — 1,4 g", area: "Sistema metabólico", funcao: "Tampão ácido-base, performance" }
+      { nome: "Teacrina — 100 mg", funcao: "Estado de alerta estável, energia mental" },
+      { nome: "L-Teanina — 100 mg", funcao: "Controle do estresse cognitivo, foco relaxado" },
+      { nome: "L-Taurina — 250 mg", funcao: "Modulação neural, redução de excitotoxicidade" },
+      { nome: "Cafeína — 25 mg", funcao: "Alerta suave, sem picos" },
+      { nome: "Bicarbonato de sódio — 1,4 g", funcao: "Tampão ácido-base, performance" }
     ]
   },
   {
     id: "noite",
     name: "NZT Noite",
     icon: Moon,
-    color: "from-indigo-400 to-violet-500",
-    bgColor: "bg-indigo-500/10",
-    borderColor: "border-indigo-500/30",
-    textColor: "text-indigo-400",
+    color: "from-indigo-400 to-blue-500",
+    bgGradient: "from-indigo-900/20 to-slate-900/50",
+    borderColor: "border-indigo-500/20",
+    accentColor: "text-indigo-400",
+    topBar: "from-indigo-400 to-blue-500",
+    periodo: "Noite",
     objetivo: "Recuperação Cognitiva",
     descricao: "Redução de hiperatividade mental, recuperação neural, consolidação de memória e qualidade do sono.",
+    image: sachetNoite,
     areas: [
       { name: "Hipotálamo", funcao: "Ritmo circadiano" },
       { name: "Sistema Límbico", funcao: "Amígdala" },
       { name: "Hipocampo", funcao: "Consolidação de memória" }
     ],
     componentes: [
-      { nome: "N-acetilcisteína (NAC) — 600 mg", area: "Córtex Pré-Frontal, Núcleo Accumbens", funcao: "Regulação glutamatérgica, recuperação sináptica" },
-      { nome: "Ashwagandha — 300 mg", area: "Eixo HPA, Amígdala", funcao: "Modulação do estresse, redução de ativação límbica" },
-      { nome: "Magnésio quelato — 200 mg", area: "Hipotálamo, Sistema GABAérgico", funcao: "Relaxamento neural, transição sono-vigília" }
+      { nome: "N-acetilcisteína (NAC) — 600 mg", funcao: "Regulação glutamatérgica, recuperação sináptica" },
+      { nome: "Ashwagandha — 300 mg", funcao: "Modulação do estresse, redução de ativação límbica" },
+      { nome: "Magnésio quelato — 200 mg", funcao: "Relaxamento neural, transição sono-vigília" }
     ]
   }
 ];
@@ -146,24 +160,26 @@ const integracaoNoite = [
 
 export default function ComoFunciona() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-slate-950">
       <LandingNav />
       
       {/* Hero */}
-      <section className="pt-32 pb-16 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <Brain className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">Sistema Integrado</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+      <section className="pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-violet-600/10 via-fuchsia-600/5 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/30 via-transparent to-transparent" />
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-medium mb-6">
+            <Layers className="w-4 h-4" />
+            Sistema Integrado de Performance
+          </span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
             Como Funciona o{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent">
               NZT System
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Três pilares integrados: Sachês que modulam o cérebro, SmartRing que capta respostas fisiológicas, 
             e Plataforma que transforma dados em clareza, resiliência e recuperação mensuráveis.
           </p>
@@ -171,93 +187,106 @@ export default function ComoFunciona() {
       </section>
 
       {/* Quick Nav */}
-      <section className="py-8 px-4 border-y border-border bg-muted/30">
+      <section className="py-6 px-4 border-y border-slate-800 bg-slate-900/50">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#saches" className="px-6 py-3 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors flex items-center gap-2">
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="#saches" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-amber-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
               <Zap className="w-4 h-4 text-amber-400" />
-              <span className="text-sm font-medium">Sachês</span>
+              <span>Sachês</span>
             </a>
-            <a href="#dados" className="px-6 py-3 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors flex items-center gap-2">
-              <Smartphone className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium">Entrada de Dados</span>
+            <a href="#dados" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-violet-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
+              <Smartphone className="w-4 h-4 text-violet-400" />
+              <span>Entrada de Dados</span>
             </a>
-            <a href="#ring" className="px-6 py-3 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors flex items-center gap-2">
-              <Watch className="w-4 h-4 text-violet-400" />
-              <span className="text-sm font-medium">SmartRing</span>
+            <a href="#ring" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
+              <Watch className="w-4 h-4 text-fuchsia-400" />
+              <span>SmartRing</span>
             </a>
-            <a href="#integracao" className="px-6 py-3 rounded-xl bg-background border border-border hover:border-primary/50 transition-colors flex items-center gap-2">
+            <a href="#integracao" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
               <Database className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-medium">Sistema Integrado</span>
+              <span>Sistema Integrado</span>
             </a>
           </div>
         </div>
       </section>
 
       {/* SEÇÃO 1: SACHÊS */}
-      <section id="saches" className="py-24 px-4">
+      <section id="saches" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Como Funcionam os Sachês
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-slate-400 max-w-2xl mx-auto">
               Os sachês atuam modulando sistemas neurofuncionais, não "sintomas". 
               Cada período tem um objetivo fisiológico distinto, alinhado ao ritmo circadiano.
             </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-8">
             {sachets.map((sachet) => (
-              <div key={sachet.id} className={`rounded-3xl border ${sachet.borderColor} ${sachet.bgColor} p-8 md:p-12`}>
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Header */}
-                  <div className="lg:w-1/3">
-                    <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r ${sachet.color} mb-4`}>
-                      <sachet.icon className="w-5 h-5 text-white" />
-                      <span className="font-semibold text-white">{sachet.name}</span>
-                    </div>
-                    <h3 className={`text-2xl font-bold ${sachet.textColor} mb-3`}>
-                      {sachet.objetivo}
-                    </h3>
-                    <p className="text-foreground/80 mb-6">
-                      {sachet.descricao}
-                    </p>
-                    
-                    {/* Áreas do cérebro */}
-                    <div className="space-y-3">
-                      <h4 className="text-sm font-semibold text-foreground/60 uppercase tracking-wide">
-                        Áreas Cerebrais Moduladas
-                      </h4>
-                      {sachet.areas.map((area, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <Brain className={`w-4 h-4 ${sachet.textColor}`} />
-                          <span className="text-foreground font-medium">{area.name}</span>
-                          <span className="text-muted-foreground text-sm">— {area.funcao}</span>
+              <div 
+                key={sachet.id} 
+                className={`relative rounded-2xl bg-gradient-to-b ${sachet.bgGradient} border ${sachet.borderColor} overflow-hidden`}
+              >
+                {/* Top bar */}
+                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${sachet.topBar}`} />
+                
+                <div className="p-6 md:p-8">
+                  <div className="flex flex-col lg:flex-row gap-8">
+                    {/* Header */}
+                    <div className="lg:w-1/3">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`w-20 h-20 rounded-xl ${sachet.accentColor.replace('text-', 'bg-')}/10 flex items-center justify-center p-2`}>
+                          <img src={sachet.image} alt={sachet.name} className="w-full h-full object-contain" />
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <sachet.icon className={`w-4 h-4 ${sachet.accentColor}`} />
+                            <span className={`text-xs ${sachet.accentColor} font-medium uppercase`}>{sachet.periodo}</span>
+                          </div>
+                          <h3 className="text-xl font-bold text-white">{sachet.name}</h3>
+                        </div>
+                      </div>
 
-                  {/* Componentes */}
-                  <div className="lg:w-2/3">
-                    <h4 className="text-sm font-semibold text-foreground/60 uppercase tracking-wide mb-4">
-                      Componentes & Funções Neurofuncionais
-                    </h4>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      {sachet.componentes.map((comp, i) => (
-                        <div key={i} className="bg-background/50 rounded-xl p-4 border border-border/50">
-                          <div className={`font-semibold ${sachet.textColor} mb-1`}>
-                            {comp.nome}
+                      <p className={`text-sm mb-2`}>
+                        <strong className={sachet.accentColor}>{sachet.objetivo}.</strong>
+                      </p>
+                      <p className="text-sm text-slate-400 leading-relaxed mb-6">
+                        {sachet.descricao}
+                      </p>
+                      
+                      {/* Áreas do cérebro */}
+                      <div className="space-y-2">
+                        <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">
+                          Áreas Cerebrais Moduladas
+                        </h4>
+                        {sachet.areas.map((area, i) => (
+                          <div key={i} className="flex items-center gap-2 text-sm">
+                            <Brain className={`w-3.5 h-3.5 ${sachet.accentColor}`} />
+                            <span className="text-white font-medium">{area.name}</span>
+                            <span className="text-slate-500">— {area.funcao}</span>
                           </div>
-                          <div className="text-xs text-muted-foreground mb-2">
-                            {comp.area}
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Componentes */}
+                    <div className="lg:w-2/3">
+                      <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">
+                        Componentes & Funções
+                      </h4>
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {sachet.componentes.map((comp, i) => (
+                          <div key={i} className="flex items-start gap-2 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                            <Check className={`w-4 h-4 ${sachet.accentColor} mt-0.5 flex-shrink-0`} />
+                            <div>
+                              <div className="text-sm text-white font-medium">{comp.nome}</div>
+                              <div className="text-xs text-slate-500">{comp.funcao}</div>
+                            </div>
                           </div>
-                          <div className="text-sm text-foreground/80">
-                            {comp.funcao}
-                          </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -268,69 +297,69 @@ export default function ComoFunciona() {
       </section>
 
       {/* SEÇÃO 2: ENTRADA DE DADOS */}
-      <section id="dados" className="py-24 px-4 bg-muted/30">
+      <section id="dados" className="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-              <Smartphone className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-medium">Sem SmartRing</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-medium mb-6">
+              <Smartphone className="w-4 h-4" />
+              Sem SmartRing
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Entrada de Dados na Plataforma
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Usuários sem SmartRing alimentam a plataforma via <strong className="text-foreground">percepção consciente</strong>, 
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Usuários sem SmartRing alimentam a plataforma via <strong className="text-white">percepção consciente</strong>, 
               o que é fundamental para criar um baseline subjetivo.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {entradaDados.map((item, i) => (
-              <div key={i} className="bg-background rounded-2xl p-6 border border-border hover:border-primary/30 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-primary" />
+              <div key={i} className="p-5 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-violet-500/30 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center mb-3">
+                  <item.icon className="w-5 h-5 text-violet-400" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-1">{item.label}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <h3 className="font-semibold text-white mb-1">{item.label}</h3>
+                <p className="text-sm text-slate-500">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-background rounded-2xl p-8 border border-border">
-            <h3 className="text-xl font-semibold text-foreground mb-4">
+          <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700/50">
+            <h3 className="text-xl font-semibold text-white mb-6">
               Por que a percepção é importante?
             </h3>
-            <div className="space-y-4">
+            <div className="grid sm:grid-cols-3 gap-6">
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <span className="font-medium text-foreground">Baseline subjetivo</span>
-                  <span className="text-muted-foreground"> — A percepção é seu ponto de partida pessoal</span>
+                  <span className="font-medium text-white block mb-1">Baseline subjetivo</span>
+                  <span className="text-sm text-slate-500">A percepção é seu ponto de partida pessoal</span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <span className="font-medium text-foreground">Controle interno</span>
-                  <span className="text-muted-foreground"> — Serve como referência para comparação futura</span>
+                  <span className="font-medium text-white block mb-1">Controle interno</span>
+                  <span className="text-sm text-slate-500">Referência para comparação futura</span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <span className="font-medium text-foreground">Integração com Ring</span>
-                  <span className="text-muted-foreground"> — Permite comparar sensação × dado fisiológico quando o Ring entra</span>
+                  <span className="font-medium text-white block mb-1">Integração com Ring</span>
+                  <span className="text-sm text-slate-500">Compare sensação × dado fisiológico</span>
                 </div>
               </div>
             </div>
-            <div className="mt-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
-              <p className="text-sm text-foreground/80 italic">
+            <div className="mt-8 p-4 rounded-xl bg-slate-900/50 border border-slate-700/50">
+              <p className="text-sm text-slate-400 italic text-center">
                 "A plataforma não desvaloriza o dado subjetivo — ela o usa como referência."
               </p>
             </div>
@@ -339,184 +368,153 @@ export default function ComoFunciona() {
       </section>
 
       {/* SEÇÃO 3: SMART RING */}
-      <section id="ring" className="py-24 px-4">
-        <div className="max-w-5xl mx-auto">
+      <section id="ring" className="py-20 px-4 bg-slate-900">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6">
-              <Watch className="w-4 h-4 text-violet-400" />
-              <span className="text-sm text-violet-400 font-medium">Wearable Estratégico</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 text-sm font-medium mb-6">
+              <Watch className="w-4 h-4" />
+              Wearable Estratégico
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Como Funciona o SmartRing
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              O SmartRing não mede pensamento — ele mede <strong className="text-foreground">respostas fisiológicas</strong> que 
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              O SmartRing não mede pensamento — ele mede <strong className="text-white">respostas fisiológicas</strong> que 
               refletem o estado cognitivo. São marcadores indiretos, porém objetivos.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {ringMetrics.map((metric, i) => (
-              <div key={i} className="bg-gradient-to-br from-violet-500/10 to-indigo-500/10 rounded-2xl p-5 border border-violet-500/20 hover:border-violet-500/40 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center mb-3">
-                  <metric.icon className="w-5 h-5 text-violet-400" />
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/20 to-indigo-500/20 blur-3xl rounded-full" />
+              <img
+                src={smartRing}
+                alt="NZT Smart Ring"
+                className="relative z-10 w-full max-w-md mx-auto"
+              />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {ringMetrics.map((metric, i) => (
+                <div key={i} className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/30 transition-colors">
+                  <div className="w-10 h-10 rounded-lg bg-fuchsia-500/10 flex items-center justify-center mb-3">
+                    <metric.icon className="w-5 h-5 text-fuchsia-400" />
+                  </div>
+                  <h3 className="font-semibold text-white text-sm mb-1">{metric.label}</h3>
+                  <p className="text-xs text-slate-500">{metric.desc}</p>
                 </div>
-                <h3 className="font-semibold text-foreground text-sm mb-1">{metric.label}</h3>
-                <p className="text-xs text-muted-foreground">{metric.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="bg-gradient-to-br from-violet-500/5 to-indigo-500/5 rounded-2xl p-8 border border-violet-500/20">
-            <h3 className="text-xl font-semibold text-foreground mb-4">
-              Vantagens do SmartRing
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-violet-500/20 flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-violet-400" />
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Contínuo</h4>
-                <p className="text-sm text-muted-foreground">Monitoramento 24/7 sem interrupções</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-violet-500/20 flex items-center justify-center mx-auto mb-4">
-                  <Sparkles className="w-8 h-8 text-violet-400" />
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Discreto</h4>
-                <p className="text-sm text-muted-foreground">Design elegante, sem estética esportiva</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-violet-500/20 flex items-center justify-center mx-auto mb-4">
-                  <Database className="w-8 h-8 text-violet-400" />
-                </div>
-                <h4 className="font-semibold text-foreground mb-2">Integrado</h4>
-                <p className="text-sm text-muted-foreground">Dados alimentam o dashboard cognitivo</p>
-              </div>
-            </div>
+          <div className="p-6 rounded-2xl bg-slate-800/30 border border-fuchsia-500/20">
+            <p className="text-center text-slate-400">
+              Esses dados são <strong className="text-fuchsia-400">marcadores indiretos, porém objetivos</strong>, do estado neurofisiológico.
+              O Ring não "mede foco", mas mede o <strong className="text-white">custo fisiológico do foco</strong>.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 4: INTEGRAÇÃO COMPLETA */}
-      <section id="integracao" className="py-24 px-4 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
+      {/* SEÇÃO 4: INTEGRAÇÃO */}
+      <section id="integracao" className="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-              <Database className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm text-emerald-400 font-medium">Sistema Completo</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Como Tudo Funciona Integrado
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
+              <Database className="w-4 h-4" />
+              Sistema Completo
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Sachê + SmartRing + Plataforma
             </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              Sachê + SmartRing + Plataforma: O usuário toma o sachê, os componentes atuam em áreas cerebrais, 
-              isso altera regulação autonômica, sono, estresse e recuperação. O SmartRing capta essas mudanças, 
-              e a plataforma interpreta cruzando percepção, dados do Ring e histórico individual.
+            <p className="text-slate-400 max-w-3xl mx-auto">
+              O que os sachês causam no cérebro × o que o Ring consegue medir. 
+              A plataforma cruza esses dados para mostrar <strong className="text-white">progresso cognitivo mensurável</strong>.
             </p>
           </div>
 
-          {/* Fluxo Visual */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
-            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30">
-              <Zap className="w-6 h-6 text-amber-400" />
-              <span className="font-semibold text-foreground">Sachê</span>
-            </div>
-            <ArrowRight className="w-6 h-6 text-muted-foreground hidden md:block" />
-            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-rose-500/20 to-pink-500/20 border border-rose-500/30">
-              <Brain className="w-6 h-6 text-rose-400" />
-              <span className="font-semibold text-foreground">Cérebro</span>
-            </div>
-            <ArrowRight className="w-6 h-6 text-muted-foreground hidden md:block" />
-            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-violet-500/20 to-indigo-500/20 border border-violet-500/30">
-              <Watch className="w-6 h-6 text-violet-400" />
-              <span className="font-semibold text-foreground">SmartRing</span>
-            </div>
-            <ArrowRight className="w-6 h-6 text-muted-foreground hidden md:block" />
-            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30">
-              <BarChart3 className="w-6 h-6 text-emerald-400" />
-              <span className="font-semibold text-foreground">Plataforma</span>
-            </div>
+          {/* Fluxo */}
+          <div className="grid sm:grid-cols-4 gap-4 mb-16">
+            {[
+              { icon: Zap, label: "Usuário toma o Sachê", color: "text-amber-400", bg: "bg-amber-500/10" },
+              { icon: Brain, label: "Componentes atuam no cérebro", color: "text-violet-400", bg: "bg-violet-500/10" },
+              { icon: Activity, label: "SmartRing capta mudanças", color: "text-fuchsia-400", bg: "bg-fuchsia-500/10" },
+              { icon: BarChart3, label: "Plataforma interpreta", color: "text-emerald-400", bg: "bg-emerald-500/10" }
+            ].map((step, i) => (
+              <div key={i} className="text-center p-4">
+                <div className={`w-12 h-12 rounded-xl ${step.bg} flex items-center justify-center mx-auto mb-3`}>
+                  <step.icon className={`w-6 h-6 ${step.color}`} />
+                </div>
+                <p className="text-sm text-white font-medium">{step.label}</p>
+                {i < 3 && (
+                  <ArrowRight className="w-4 h-4 text-slate-600 mx-auto mt-4 hidden sm:block" />
+                )}
+              </div>
+            ))}
           </div>
 
           {/* Tabelas de Integração */}
-          <div className="space-y-12">
+          <div className="space-y-8">
             {/* DIA */}
-            <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 overflow-hidden">
-              <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 px-6 py-4 border-b border-amber-500/30">
-                <div className="flex items-center gap-3">
-                  <Sun className="w-6 h-6 text-amber-400" />
-                  <div>
-                    <h3 className="font-bold text-foreground">Ativação & Clareza</h3>
-                    <p className="text-sm text-muted-foreground">Sachê DIA — O Ring não "mede foco", mas mede o custo fisiológico do foco.</p>
-                  </div>
-                </div>
+            <div className="rounded-2xl overflow-hidden border border-amber-500/20">
+              <div className="bg-gradient-to-r from-amber-900/30 to-slate-900/50 px-6 py-4 flex items-center gap-3">
+                <Sun className="w-5 h-5 text-amber-400" />
+                <h3 className="font-semibold text-white">Ativação & Clareza — NZT Dia</h3>
               </div>
-              <div className="p-6">
-                <div className="grid md:grid-cols-3 gap-4 text-sm font-semibold text-muted-foreground mb-4 px-4">
-                  <div>Ação no Cérebro</div>
-                  <div>Impacto Fisiológico</div>
-                  <div>Métrica do Ring</div>
+              <div className="bg-slate-900/50 p-4">
+                <div className="grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
+                  <span>Ação no Cérebro</span>
+                  <span>Impacto Fisiológico</span>
+                  <span>Métrica do Ring</span>
                 </div>
-                {integracaoDia.map((item, i) => (
-                  <div key={i} className="grid md:grid-cols-3 gap-4 p-4 rounded-xl bg-background/50 border border-border/50 mb-2">
-                    <div className="text-foreground">{item.acao}</div>
-                    <div className="text-foreground/80">{item.impacto}</div>
-                    <div className="text-amber-400 font-medium">{item.metrica}</div>
+                {integracaoDia.map((row, i) => (
+                  <div key={i} className="grid grid-cols-3 gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
+                    <span className="text-sm text-white">{row.acao}</span>
+                    <span className="text-sm text-slate-400">{row.impacto}</span>
+                    <span className="text-sm text-amber-400 font-medium">{row.metrica}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* TARDE */}
-            <div className="rounded-2xl border border-orange-500/30 bg-orange-500/5 overflow-hidden">
-              <div className="bg-gradient-to-r from-orange-500/20 to-rose-500/20 px-6 py-4 border-b border-orange-500/30">
-                <div className="flex items-center gap-3">
-                  <Sunset className="w-6 h-6 text-orange-400" />
-                  <div>
-                    <h3 className="font-bold text-foreground">Sustentação & Resiliência</h3>
-                    <p className="text-sm text-muted-foreground">Sachê TARDE — Aqui o Ring quantifica resiliência, não estímulo.</p>
-                  </div>
-                </div>
+            <div className="rounded-2xl overflow-hidden border border-purple-500/20">
+              <div className="bg-gradient-to-r from-purple-900/30 to-slate-900/50 px-6 py-4 flex items-center gap-3">
+                <Sunset className="w-5 h-5 text-purple-400" />
+                <h3 className="font-semibold text-white">Sustentação & Resiliência — NZT Tarde</h3>
               </div>
-              <div className="p-6">
-                <div className="grid md:grid-cols-3 gap-4 text-sm font-semibold text-muted-foreground mb-4 px-4">
-                  <div>Ação no Cérebro</div>
-                  <div>Impacto Fisiológico</div>
-                  <div>Métrica do Ring</div>
+              <div className="bg-slate-900/50 p-4">
+                <div className="grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
+                  <span>Ação no Cérebro</span>
+                  <span>Impacto Fisiológico</span>
+                  <span>Métrica do Ring</span>
                 </div>
-                {integracaoTarde.map((item, i) => (
-                  <div key={i} className="grid md:grid-cols-3 gap-4 p-4 rounded-xl bg-background/50 border border-border/50 mb-2">
-                    <div className="text-foreground">{item.acao}</div>
-                    <div className="text-foreground/80">{item.impacto}</div>
-                    <div className="text-orange-400 font-medium">{item.metrica}</div>
+                {integracaoTarde.map((row, i) => (
+                  <div key={i} className="grid grid-cols-3 gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
+                    <span className="text-sm text-white">{row.acao}</span>
+                    <span className="text-sm text-slate-400">{row.impacto}</span>
+                    <span className="text-sm text-purple-400 font-medium">{row.metrica}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* NOITE */}
-            <div className="rounded-2xl border border-indigo-500/30 bg-indigo-500/5 overflow-hidden">
-              <div className="bg-gradient-to-r from-indigo-500/20 to-violet-500/20 px-6 py-4 border-b border-indigo-500/30">
-                <div className="flex items-center gap-3">
-                  <Moon className="w-6 h-6 text-indigo-400" />
-                  <div>
-                    <h3 className="font-bold text-foreground">Recuperação Cognitiva</h3>
-                    <p className="text-sm text-muted-foreground">Sachê NOITE — Aqui o Ring é extremamente forte, pois sono é fisiologia pura.</p>
-                  </div>
-                </div>
+            <div className="rounded-2xl overflow-hidden border border-indigo-500/20">
+              <div className="bg-gradient-to-r from-indigo-900/30 to-slate-900/50 px-6 py-4 flex items-center gap-3">
+                <Moon className="w-5 h-5 text-indigo-400" />
+                <h3 className="font-semibold text-white">Recuperação Cognitiva — NZT Noite</h3>
               </div>
-              <div className="p-6">
-                <div className="grid md:grid-cols-3 gap-4 text-sm font-semibold text-muted-foreground mb-4 px-4">
-                  <div>Ação no Cérebro</div>
-                  <div>Impacto Fisiológico</div>
-                  <div>Métrica do Ring</div>
+              <div className="bg-slate-900/50 p-4">
+                <div className="grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
+                  <span>Ação no Cérebro</span>
+                  <span>Impacto Fisiológico</span>
+                  <span>Métrica do Ring</span>
                 </div>
-                {integracaoNoite.map((item, i) => (
-                  <div key={i} className="grid md:grid-cols-3 gap-4 p-4 rounded-xl bg-background/50 border border-border/50 mb-2">
-                    <div className="text-foreground">{item.acao}</div>
-                    <div className="text-foreground/80">{item.impacto}</div>
-                    <div className="text-indigo-400 font-medium">{item.metrica}</div>
+                {integracaoNoite.map((row, i) => (
+                  <div key={i} className="grid grid-cols-3 gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
+                    <span className="text-sm text-white">{row.acao}</span>
+                    <span className="text-sm text-slate-400">{row.impacto}</span>
+                    <span className="text-sm text-indigo-400 font-medium">{row.metrica}</span>
                   </div>
                 ))}
               </div>
@@ -525,68 +523,61 @@ export default function ComoFunciona() {
         </div>
       </section>
 
-      {/* O que a plataforma faz */}
-      <section className="py-24 px-4">
+      {/* SEÇÃO 5: O QUE A PLATAFORMA FAZ */}
+      <section className="py-20 px-4 bg-slate-950">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            O Que a Plataforma Faz com Tudo Isso
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            O Que a Plataforma Faz
           </h2>
-          <p className="text-lg text-muted-foreground mb-12">
-            A plataforma não mostra dados crus apenas. Ela transforma informação em inteligência.
+          <p className="text-slate-400 mb-12 max-w-2xl mx-auto">
+            A plataforma não mostra dados crus apenas. Ela cria inteligência sobre sua performance.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
-            <div className="bg-background rounded-2xl p-6 border border-border text-left">
-              <TrendingUp className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-semibold text-foreground mb-2">Cria tendências individuais</h3>
-              <p className="text-sm text-muted-foreground">Evolução histórica baseada no seu próprio progresso</p>
-            </div>
-            <div className="bg-background rounded-2xl p-6 border border-border text-left">
-              <Activity className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-semibold text-foreground mb-2">Compara percepção × fisiologia</h3>
-              <p className="text-sm text-muted-foreground">Correlação entre o que você sente e o que seu corpo mostra</p>
-            </div>
-            <div className="bg-background rounded-2xl p-6 border border-border text-left">
-              <BarChart3 className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-semibold text-foreground mb-2">Mostra resposta aos sachês</h3>
-              <p className="text-sm text-muted-foreground">Impacto mensurável da suplementação no seu desempenho</p>
-            </div>
-            <div className="bg-background rounded-2xl p-6 border border-border text-left">
-              <Target className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-semibold text-foreground mb-2">Identifica padrões</h3>
-              <p className="text-sm text-muted-foreground">Melhora de ativação, sustentação e qualidade de recuperação</p>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {[
+              { label: "Tendências individuais", desc: "Evolução ao longo do tempo" },
+              { label: "Percepção × Fisiologia", desc: "Compare sensação com dados" },
+              { label: "Resposta aos sachês", desc: "Impacto mensurável" },
+              { label: "Insights personalizados", desc: "Recomendações baseadas em AI" }
+            ].map((item, i) => (
+              <div key={i} className="p-5 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                <h4 className="font-semibold text-white mb-1">{item.label}</h4>
+                <p className="text-xs text-slate-500">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-2xl p-8 border border-primary/20">
-            <p className="text-xl md:text-2xl font-medium text-foreground italic">
+          {/* Quote */}
+          <div className="p-8 rounded-2xl bg-gradient-to-r from-violet-900/20 via-fuchsia-900/20 to-amber-900/20 border border-violet-500/20">
+            <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
               "Os sachês modulam o cérebro.<br />
               O SmartRing capta as respostas do corpo.<br />
-              A plataforma transforma isso em clareza, resiliência e recuperação mensuráveis."
+              A plataforma transforma isso em <span className="text-fuchsia-400">clareza</span>, <span className="text-violet-400">resiliência</span> e <span className="text-indigo-400">recuperação</span> mensuráveis."
             </p>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-4 bg-gradient-to-b from-muted/30 to-background">
+      <section className="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Pronto para evoluir seu desempenho cognitivo?
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+            Pronto para começar?
           </h2>
-          <p className="text-muted-foreground mb-8">
-            O usuário passa a ver progresso cognitivo mensurável — algo raríssimo no mercado.
+          <p className="text-slate-400 mb-8">
+            Escolha o plano ideal para seus objetivos de performance cognitiva.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/sistema-completo">
-              <Button size="lg" className="w-full sm:w-auto">
-                Ver Sistema Completo
-                <ArrowRight className="w-4 h-4 ml-2" />
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/rotina-completa">
+              <Button className="px-8 py-6 text-base font-semibold bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-xl">
+                Ver Rotina Completa
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <Link to="/login">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                Começar Agora
+            <Link to="/sistema-completo">
+              <Button variant="outline" className="px-8 py-6 text-base font-semibold border-fuchsia-500/50 text-fuchsia-400 hover:bg-fuchsia-500/10 rounded-xl">
+                Conhecer Sistema Completo
+                <Sparkles className="w-5 h-5 ml-2" />
               </Button>
             </Link>
           </div>
