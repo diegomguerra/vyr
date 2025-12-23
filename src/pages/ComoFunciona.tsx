@@ -165,22 +165,22 @@ export default function ComoFunciona() {
       <LandingNav />
       
       {/* Hero */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-violet-600/10 via-fuchsia-600/5 to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/30 via-transparent to-transparent" />
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-medium mb-6">
-            <Layers className="w-4 h-4" />
+          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+            <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             Sistema Integrado de Performance
           </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Como Funciona o{" "}
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent">
               NZT System
             </span>
           </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed px-2">
             Três pilares integrados: Sachês que modulam o cérebro, SmartRing que capta respostas fisiológicas, 
             e Plataforma que transforma dados em clareza, resiliência e recuperação mensuráveis.
           </p>
@@ -188,24 +188,24 @@ export default function ComoFunciona() {
       </section>
 
       {/* Quick Nav */}
-      <section className="py-6 px-4 border-y border-slate-800 bg-slate-900/50">
+      <section className="py-4 sm:py-6 px-4 border-y border-slate-800 bg-slate-900/50 overflow-x-auto">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-3">
-            <a href="#saches" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-amber-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
-              <Zap className="w-4 h-4 text-amber-400" />
+          <div className="flex justify-start sm:justify-center gap-2 sm:gap-3 min-w-max sm:min-w-0">
+            <a href="#saches" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-amber-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
+              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
               <span>Sachês</span>
             </a>
-            <a href="#dados" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-violet-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
-              <Smartphone className="w-4 h-4 text-violet-400" />
-              <span>Entrada de Dados</span>
+            <a href="#dados" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-violet-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
+              <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-400" />
+              <span>Dados</span>
             </a>
-            <a href="#ring" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
-              <Watch className="w-4 h-4 text-fuchsia-400" />
+            <a href="#ring" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
+              <Watch className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-fuchsia-400" />
               <span>SmartRing</span>
             </a>
-            <a href="#integracao" className="px-5 py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/50 transition-colors flex items-center gap-2 text-sm text-slate-300 hover:text-white">
-              <Database className="w-4 h-4 text-emerald-400" />
-              <span>Sistema Integrado</span>
+            <a href="#integracao" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
+              <Database className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+              <span>Integração</span>
             </a>
           </div>
         </div>
@@ -438,44 +438,41 @@ export default function ComoFunciona() {
           </div>
 
           {/* Fluxo */}
-          <div className="grid sm:grid-cols-4 gap-4 mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-16">
             {[
               { icon: Zap, label: "Usuário toma o Sachê", color: "text-amber-400", bg: "bg-amber-500/10" },
               { icon: Brain, label: "Componentes atuam no cérebro", color: "text-violet-400", bg: "bg-violet-500/10" },
               { icon: Activity, label: "SmartRing capta mudanças", color: "text-fuchsia-400", bg: "bg-fuchsia-500/10" },
               { icon: BarChart3, label: "Plataforma interpreta", color: "text-emerald-400", bg: "bg-emerald-500/10" }
             ].map((step, i) => (
-              <div key={i} className="text-center p-4">
-                <div className={`w-12 h-12 rounded-xl ${step.bg} flex items-center justify-center mx-auto mb-3`}>
-                  <step.icon className={`w-6 h-6 ${step.color}`} />
+              <div key={i} className="text-center p-3 sm:p-4">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${step.bg} flex items-center justify-center mx-auto mb-2 sm:mb-3`}>
+                  <step.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${step.color}`} />
                 </div>
-                <p className="text-sm text-white font-medium">{step.label}</p>
-                {i < 3 && (
-                  <ArrowRight className="w-4 h-4 text-slate-600 mx-auto mt-4 hidden sm:block" />
-                )}
+                <p className="text-xs sm:text-sm text-white font-medium">{step.label}</p>
               </div>
             ))}
           </div>
 
           {/* Tabelas de Integração */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* DIA */}
             <div className="rounded-2xl overflow-hidden border border-amber-500/20">
-              <div className="bg-gradient-to-r from-amber-900/30 to-slate-900/50 px-6 py-4 flex items-center gap-3">
-                <Sun className="w-5 h-5 text-amber-400" />
-                <h3 className="font-semibold text-white">Ativação & Clareza — NZT Dia</h3>
+              <div className="bg-gradient-to-r from-amber-900/30 to-slate-900/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+                <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+                <h3 className="font-semibold text-white text-sm sm:text-base">Ativação & Clareza — NZT Dia</h3>
               </div>
-              <div className="bg-slate-900/50 p-4">
-                <div className="grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
+              <div className="bg-slate-900/50 p-3 sm:p-4 overflow-x-auto">
+                <div className="hidden sm:grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
                   <span>Ação no Cérebro</span>
                   <span>Impacto Fisiológico</span>
                   <span>Métrica do Ring</span>
                 </div>
                 {integracaoDia.map((row, i) => (
-                  <div key={i} className="grid grid-cols-3 gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
-                    <span className="text-sm text-white">{row.acao}</span>
-                    <span className="text-sm text-slate-400">{row.impacto}</span>
-                    <span className="text-sm text-amber-400 font-medium">{row.metrica}</span>
+                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors border-b border-slate-800 sm:border-0 last:border-0">
+                    <span className="text-xs sm:text-sm text-white"><span className="sm:hidden text-slate-500">Ação: </span>{row.acao}</span>
+                    <span className="text-xs sm:text-sm text-slate-400"><span className="sm:hidden text-slate-500">Impacto: </span>{row.impacto}</span>
+                    <span className="text-xs sm:text-sm text-amber-400 font-medium"><span className="sm:hidden text-slate-500">Métrica: </span>{row.metrica}</span>
                   </div>
                 ))}
               </div>
@@ -483,21 +480,21 @@ export default function ComoFunciona() {
 
             {/* TARDE */}
             <div className="rounded-2xl overflow-hidden border border-purple-500/20">
-              <div className="bg-gradient-to-r from-purple-900/30 to-slate-900/50 px-6 py-4 flex items-center gap-3">
-                <Sunset className="w-5 h-5 text-purple-400" />
-                <h3 className="font-semibold text-white">Sustentação & Resiliência — NZT Tarde</h3>
+              <div className="bg-gradient-to-r from-purple-900/30 to-slate-900/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+                <Sunset className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
+                <h3 className="font-semibold text-white text-sm sm:text-base">Sustentação & Resiliência — NZT Tarde</h3>
               </div>
-              <div className="bg-slate-900/50 p-4">
-                <div className="grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
+              <div className="bg-slate-900/50 p-3 sm:p-4 overflow-x-auto">
+                <div className="hidden sm:grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
                   <span>Ação no Cérebro</span>
                   <span>Impacto Fisiológico</span>
                   <span>Métrica do Ring</span>
                 </div>
                 {integracaoTarde.map((row, i) => (
-                  <div key={i} className="grid grid-cols-3 gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
-                    <span className="text-sm text-white">{row.acao}</span>
-                    <span className="text-sm text-slate-400">{row.impacto}</span>
-                    <span className="text-sm text-purple-400 font-medium">{row.metrica}</span>
+                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors border-b border-slate-800 sm:border-0 last:border-0">
+                    <span className="text-xs sm:text-sm text-white"><span className="sm:hidden text-slate-500">Ação: </span>{row.acao}</span>
+                    <span className="text-xs sm:text-sm text-slate-400"><span className="sm:hidden text-slate-500">Impacto: </span>{row.impacto}</span>
+                    <span className="text-xs sm:text-sm text-purple-400 font-medium"><span className="sm:hidden text-slate-500">Métrica: </span>{row.metrica}</span>
                   </div>
                 ))}
               </div>
@@ -505,21 +502,21 @@ export default function ComoFunciona() {
 
             {/* NOITE */}
             <div className="rounded-2xl overflow-hidden border border-indigo-500/20">
-              <div className="bg-gradient-to-r from-indigo-900/30 to-slate-900/50 px-6 py-4 flex items-center gap-3">
-                <Moon className="w-5 h-5 text-indigo-400" />
-                <h3 className="font-semibold text-white">Recuperação Cognitiva — NZT Noite</h3>
+              <div className="bg-gradient-to-r from-indigo-900/30 to-slate-900/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
+                <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400" />
+                <h3 className="font-semibold text-white text-sm sm:text-base">Recuperação Cognitiva — NZT Noite</h3>
               </div>
-              <div className="bg-slate-900/50 p-4">
-                <div className="grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
+              <div className="bg-slate-900/50 p-3 sm:p-4 overflow-x-auto">
+                <div className="hidden sm:grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
                   <span>Ação no Cérebro</span>
                   <span>Impacto Fisiológico</span>
                   <span>Métrica do Ring</span>
                 </div>
                 {integracaoNoite.map((row, i) => (
-                  <div key={i} className="grid grid-cols-3 gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors">
-                    <span className="text-sm text-white">{row.acao}</span>
-                    <span className="text-sm text-slate-400">{row.impacto}</span>
-                    <span className="text-sm text-indigo-400 font-medium">{row.metrica}</span>
+                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors border-b border-slate-800 sm:border-0 last:border-0">
+                    <span className="text-xs sm:text-sm text-white"><span className="sm:hidden text-slate-500">Ação: </span>{row.acao}</span>
+                    <span className="text-xs sm:text-sm text-slate-400"><span className="sm:hidden text-slate-500">Impacto: </span>{row.impacto}</span>
+                    <span className="text-xs sm:text-sm text-indigo-400 font-medium"><span className="sm:hidden text-slate-500">Métrica: </span>{row.metrica}</span>
                   </div>
                 ))}
               </div>

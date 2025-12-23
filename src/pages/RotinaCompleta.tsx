@@ -94,29 +94,29 @@ export default function RotinaCompleta() {
       <LandingNav />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 relative overflow-hidden">
+      <section className="pt-24 sm:pt-32 pb-10 sm:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-violet-600/10 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4" />
+          <div className="text-center mb-8 sm:mb-12">
+            <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Rotina Cognitiva Completa
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
               Otimização Cognitiva
               <span className="block bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
                 24 Horas por Dia
               </span>
             </h1>
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto px-2">
               Os 3 sachês trabalhando em sinergia: ativação pela manhã, sustentação à tarde e recuperação à noite. O sistema como foi desenhado para funcionar.
             </p>
           </div>
 
           {/* 3 Sachets Overview */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
             {sachets.map((sachet) => (
               <div
                 key={sachet.id}
@@ -175,19 +175,19 @@ export default function RotinaCompleta() {
       </section>
 
       {/* Plans Selection */}
-      <section className="py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-slate-950 to-slate-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
               Escolha seu Plano
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto px-2">
               Quanto maior o período, maior o desconto. Todos os planos incluem os 3 sachês e acesso à plataforma digital.
             </p>
           </div>
 
           {/* Plans Grid */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
             {plans.map((plan) => (
               <button
                 key={plan.id}
@@ -252,9 +252,9 @@ export default function RotinaCompleta() {
           </div>
 
           {/* What's included */}
-          <div className="bg-slate-900/50 rounded-2xl p-8 border border-slate-700/50 mb-8">
-            <h3 className="text-xl font-bold text-white mb-6">O que está incluído:</h3>
-            <div className="grid sm:grid-cols-2 gap-4">
+          <div className="bg-slate-900/50 rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-slate-700/50 mb-6 sm:mb-8">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6">O que está incluído:</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {[
                 "NZT Dia + NZT Tarde + NZT Noite",
                 "Acesso à plataforma digital",
@@ -263,15 +263,15 @@ export default function RotinaCompleta() {
                 "Entrega expressa grátis",
                 "Garantia de 30 dias",
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-violet-400" />
-                  <span className="text-slate-300">{item}</span>
+                <div key={idx} className="flex items-center gap-2 sm:gap-3">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-violet-400 flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-slate-300">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
-              <p className="text-sm text-slate-400">
+            <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-slate-800/50 border border-slate-700/50">
+              <p className="text-xs sm:text-sm text-slate-400">
                 <span className="text-amber-400 font-medium">Nota:</span> Para recursos avançados como Correlações Inteligentes e Insights de AI, confira o{" "}
                 <Link to="/sistema-completo" className="text-violet-400 hover:underline">
                   Sistema Completo
@@ -284,13 +284,13 @@ export default function RotinaCompleta() {
           {/* CTA */}
           <div className="text-center">
             <Link to="/login?signup=true">
-              <Button className="px-12 py-6 text-lg font-semibold bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 hover:from-violet-700 hover:via-purple-700 hover:to-fuchsia-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 rounded-xl transition-all duration-300 hover:scale-[1.02]">
+              <Button className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg font-semibold bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 hover:from-violet-700 hover:via-purple-700 hover:to-fuchsia-700 text-white shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30 rounded-xl transition-all duration-300 hover:scale-[1.02]">
                 Começar Rotina Completa
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </Link>
-            <p className="text-sm text-slate-500 mt-4 flex items-center justify-center gap-2">
-              <Shield className="w-4 h-4" />
+            <p className="text-xs sm:text-sm text-slate-500 mt-4 flex items-center justify-center gap-2">
+              <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Compra 100% segura • Garantia de 30 dias
             </p>
           </div>
@@ -298,16 +298,16 @@ export default function RotinaCompleta() {
       </section>
 
       {/* Upgrade Banner */}
-      <section className="py-16 bg-gradient-to-r from-fuchsia-900/20 via-violet-900/20 to-indigo-900/20 border-y border-fuchsia-500/20">
+      <section className="py-10 sm:py-16 bg-gradient-to-r from-fuchsia-900/20 via-violet-900/20 to-indigo-900/20 border-y border-fuchsia-500/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
             Quer o máximo de performance?
           </h3>
-          <p className="text-slate-400 mb-6 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-slate-400 mb-5 sm:mb-6 max-w-2xl mx-auto px-2">
             O Sistema Completo inclui Smart Ring para monitoramento biométrico contínuo, correlações inteligentes entre suas métricas e insights personalizados por AI.
           </p>
           <Link to="/sistema-completo">
-            <Button variant="outline" className="border-fuchsia-500/50 text-fuchsia-400 hover:bg-fuchsia-500/10 px-8 py-5 text-base">
+            <Button variant="outline" className="w-full sm:w-auto border-fuchsia-500/50 text-fuchsia-400 hover:bg-fuchsia-500/10 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base">
               Conhecer Sistema Completo
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
