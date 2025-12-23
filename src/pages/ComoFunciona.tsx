@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { LandingNav, Footer } from "@/components/landing";
+import { BrainDiagram } from "@/components/landing/BrainDiagram";
 import { Button } from "@/components/ui/button";
 import { 
   Brain, 
@@ -234,11 +235,11 @@ export default function ComoFunciona() {
                 <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${sachet.topBar}`} />
                 
                 <div className="p-6 md:p-8">
-                  <div className="flex flex-col lg:flex-row gap-8">
-                    {/* Header */}
-                    <div className="lg:w-1/3">
+                  <div className="flex flex-col xl:flex-row gap-8">
+                    {/* Header + Brain Diagram */}
+                    <div className="xl:w-2/5">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-20 h-20 rounded-xl ${sachet.accentColor.replace('text-', 'bg-')}/10 flex items-center justify-center p-2`}>
+                        <div className={`w-16 h-16 rounded-xl ${sachet.accentColor.replace('text-', 'bg-')}/10 flex items-center justify-center p-2`}>
                           <img src={sachet.image} alt={sachet.name} className="w-full h-full object-contain" />
                         </div>
                         <div>
@@ -250,32 +251,27 @@ export default function ComoFunciona() {
                         </div>
                       </div>
 
-                      <p className={`text-sm mb-2`}>
+                      <p className="text-sm mb-2">
                         <strong className={sachet.accentColor}>{sachet.objetivo}.</strong>
                       </p>
                       <p className="text-sm text-slate-400 leading-relaxed mb-6">
                         {sachet.descricao}
                       </p>
                       
-                      {/* Áreas do cérebro */}
-                      <div className="space-y-2">
-                        <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">
-                          Áreas Cerebrais Moduladas
-                        </h4>
-                        {sachet.areas.map((area, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm">
-                            <Brain className={`w-3.5 h-3.5 ${sachet.accentColor}`} />
-                            <span className="text-white font-medium">{area.name}</span>
-                            <span className="text-slate-500">— {area.funcao}</span>
-                          </div>
-                        ))}
+                      {/* Brain Diagram */}
+                      <div className="hidden md:block">
+                        <BrainDiagram 
+                          areas={sachet.areas} 
+                          accentColor={sachet.accentColor}
+                          variant={sachet.id as "dia" | "tarde" | "noite"}
+                        />
                       </div>
                     </div>
 
                     {/* Componentes */}
-                    <div className="lg:w-2/3">
+                    <div className="xl:w-3/5">
                       <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">
-                        Componentes & Funções
+                        Componentes & Funções Neurofuncionais
                       </h4>
                       <div className="grid sm:grid-cols-2 gap-3">
                         {sachet.componentes.map((comp, i) => (
@@ -287,6 +283,18 @@ export default function ComoFunciona() {
                             </div>
                           </div>
                         ))}
+                      </div>
+
+                      {/* Mobile Brain Diagram */}
+                      <div className="md:hidden mt-8">
+                        <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">
+                          Áreas Cerebrais Moduladas
+                        </h4>
+                        <BrainDiagram 
+                          areas={sachet.areas} 
+                          accentColor={sachet.accentColor}
+                          variant={sachet.id as "dia" | "tarde" | "noite"}
+                        />
                       </div>
                     </div>
                   </div>
