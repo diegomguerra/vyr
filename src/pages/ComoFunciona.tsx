@@ -385,16 +385,20 @@ export default function ComoFunciona() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 via-violet-500/20 to-indigo-500/20 blur-3xl rounded-full" />
-              <img
-                src={smartRing}
-                alt="NZT Smart Ring"
-                className="relative z-10 w-full max-w-md mx-auto"
-              />
+          <div className="grid lg:grid-cols-2 gap-8 items-center mb-16">
+            <div className="relative flex items-center justify-center order-2 lg:order-1">
+              <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/30 via-violet-500/20 to-indigo-500/30 blur-[80px] rounded-full scale-75" />
+              <div className="relative z-10 w-48 h-48 md:w-56 md:h-56">
+                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-transparent rounded-full" />
+                <img
+                  src={smartRing}
+                  alt="NZT Smart Ring"
+                  className="w-full h-full object-contain drop-shadow-2xl"
+                  style={{ filter: 'drop-shadow(0 0 40px rgba(217, 70, 239, 0.3))' }}
+                />
+              </div>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-3 order-1 lg:order-2">
               {ringMetrics.map((metric, i) => (
                 <div key={i} className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/30 transition-colors">
                   <div className="w-10 h-10 rounded-lg bg-fuchsia-500/10 flex items-center justify-center mb-3">
