@@ -2,8 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 
 const NAV_ITEMS = [
   { to: "/app/painel", label: "Painel" },
-  { to: "/app/dose", label: "Registrar dose" },
-  { to: "/app/sono", label: "Sono & dia" },
   { to: "/app/anamnese", label: "Anamnese" },
   { to: "/app/perfil", label: "Perfil" },
 ];
