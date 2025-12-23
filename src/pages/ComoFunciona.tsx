@@ -27,6 +27,7 @@ import sachetDia from "@/assets/sachet-dia.png";
 import sachetTarde from "@/assets/sachet-tarde.png";
 import sachetNoite from "@/assets/sachet-noite.png";
 import smartRing from "@/assets/smart-ring.png";
+import sistemaIntegradoHero from "@/assets/sistema-integrado-hero.png";
 
 // ========== SEÇÃO 1: SACHÊS ==========
 const sachets = [
@@ -545,6 +546,16 @@ export default function ComoFunciona() {
                 <p className="text-xs text-slate-500">{item.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Hero Image */}
+          <div className="relative mb-12">
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-amber-500/20 blur-3xl rounded-full" />
+            <img 
+              src={sistemaIntegradoHero} 
+              alt="Sistema Integrado NZT - Sachês, SmartRing e Plataforma" 
+              className="relative z-10 w-full max-w-3xl mx-auto rounded-2xl shadow-2xl shadow-fuchsia-500/20"
+            />
           </div>
 
           {/* Quote */}
