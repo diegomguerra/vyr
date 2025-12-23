@@ -16,8 +16,6 @@ import RotinaCompleta from "./pages/RotinaCompleta";
 import SistemaCompleto from "./pages/SistemaCompleto";
 import ComoFunciona from "./pages/ComoFunciona";
 import Dashboard from "./pages/Dashboard";
-import RegisterDose from "./pages/RegisterDose";
-import SleepDay from "./pages/SleepDay";
 import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import { NavSidebar } from "./components/nzt";
@@ -68,8 +66,6 @@ function Header({ codigo }: { codigo?: string }) {
 
 const NAV_ITEMS = [
   { to: "/app/painel", label: "Painel", icon: "📊" },
-  { to: "/app/dose", label: "Dose", icon: "💊" },
-  { to: "/app/sono", label: "Sono", icon: "🌙" },
   { to: "/app/anamnese", label: "Anamnese", icon: "📋" },
   { to: "/app/perfil", label: "Perfil", icon: "👤" },
 ];
@@ -145,8 +141,6 @@ function AuthenticatedApp() {
               element={<Navigate to={needsOnboarding ? "/app/anamnese" : "/app/painel"} replace />} 
             />
             <Route path="/painel" element={<Dashboard />} />
-            <Route path="/dose" element={<RegisterDose />} />
-            <Route path="/sono" element={<SleepDay />} />
             <Route path="/anamnese" element={<Onboarding />} />
             <Route path="/perfil" element={<Profile />} />
             <Route path="*" element={<Navigate to="/app/painel" replace />} />
