@@ -45,7 +45,7 @@ const socialLinks = [{
   label: "TikTok"
 }];
 export function Footer() {
-  return <footer className="py-12 bg-muted/30 border-t border-border/50">
+  return <footer className="py-12 bg-[#4a4e5a] border-t border-[#5a5e6a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -54,16 +54,16 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">N</span>
               </div>
-              <span className="font-bold text-xl text-slate-400">NZT</span>
+              <span className="font-bold text-xl text-white">NZT</span>
             </div>
-            <p className="text-sm max-w-sm mb-6 text-gray-200">
+            <p className="text-sm max-w-sm mb-6 text-[#c5c7cc]">
               Plataforma de acompanhamento de suplementação cognitiva. 
               Otimize sua performance mental com dados e insights personalizados.
             </p>
             
             {/* Social Media Icons */}
             <div className="flex items-center gap-4">
-              {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="text-muted-foreground hover:text-foreground transition-colors">
+              {socialLinks.map(social => <a key={social.label} href={social.href} aria-label={social.label} className="text-[#c5c7cc] hover:text-white transition-colors">
                   <social.icon />
                 </a>)}
             </div>
@@ -71,25 +71,25 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-slate-400">Navegação</h4>
-            <ul className="space-y-2 text-sm text-slate-200">
+            <h4 className="font-semibold mb-4 text-white">Navegação</h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="#produto" className="transition-colors text-slate-200">
+                <a href="#produto" className="text-[#c5c7cc] hover:text-white transition-colors">
                   Produto
                 </a>
               </li>
               <li>
-                <a href="#como-funciona" className="transition-colors text-slate-200">
+                <a href="#como-funciona" className="text-[#c5c7cc] hover:text-white transition-colors">
                   Como Funciona
                 </a>
               </li>
               <li>
-                <a href="#beneficios" className="transition-colors text-slate-200">
+                <a href="#beneficios" className="text-[#c5c7cc] hover:text-white transition-colors">
                   Benefícios
                 </a>
               </li>
               <li>
-                <a href="#faq" className="transition-colors text-slate-200">
+                <a href="#faq" className="text-[#c5c7cc] hover:text-white transition-colors">
                   FAQ
                 </a>
               </li>
@@ -98,15 +98,15 @@ export function Footer() {
 
           {/* Account */}
           <div>
-            <h4 className="font-semibold mb-4 text-slate-400">Conta</h4>
+            <h4 className="font-semibold mb-4 text-white">Conta</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/login" className="transition-colors text-slate-200">
+                <Link to="/login" className="text-[#c5c7cc] hover:text-white transition-colors">
                   Entrar
                 </Link>
               </li>
               <li>
-                <Link to="/login?signup=true" className="transition-colors text-slate-200">
+                <Link to="/login?signup=true" className="text-[#c5c7cc] hover:text-white transition-colors">
                   Criar conta
                 </Link>
               </li>
@@ -115,15 +115,15 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-200">
+        <div className="mt-12 pt-8 border-t border-[#5a5e6a] flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-[#c5c7cc]">
             © {new Date().getFullYear()} NZT. Todos os direitos reservados.
           </p>
-          <div className="flex items-center gap-6 text-xs text-muted-foreground">
-            <a href="#" className="transition-colors text-slate-200">
+          <div className="flex items-center gap-6 text-xs">
+            <a href="#" className="text-[#c5c7cc] hover:text-white transition-colors">
               Termos de Uso
             </a>
-            <a href="#" className="transition-colors text-slate-200">
+            <a href="#" className="text-[#c5c7cc] hover:text-white transition-colors">
               Política de Privacidade
             </a>
           </div>
