@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { User, Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Brain } from "lucide-react";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
@@ -18,6 +18,7 @@ import ComoFunciona from "./pages/ComoFunciona";
 import Dashboard from "./pages/Dashboard";
 import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
+import Welcome from "./pages/Welcome";
 import { NavSidebar } from "./components/nzt";
 import { signOut, getParticipante, createParticipante } from "./lib/api";
 import { ThemeProvider, useTheme } from "./hooks/use-theme";
@@ -45,17 +46,25 @@ function Header({ codigo }: { codigo?: string }) {
   };
 
   return (
-    <header className="glass-header sticky top-0 z-10">
+    <header className="sticky top-0 z-10 bg-gradient-to-r from-slate-900 via-slate-900/95 to-indigo-950/90 backdrop-blur-xl border-b border-slate-700/50">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between">
-        <div className="min-w-0 flex-1">
-          <h1 className="font-bold text-foreground text-sm sm:text-base truncate">NZT • Plataforma de Teste</h1>
-          <p className="text-xs text-muted-foreground truncate">
-            {codigo ? `Código: ${codigo}` : "Carregando..."}
-          </p>
+        <div className="min-w-0 flex-1 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/20">
+            <Brain className="w-4 h-4 text-white" />
+          </div>
+          <div>
+            <h1 className="font-bold text-white text-sm sm:text-base">NZT Platform</h1>
+            <p className="text-[10px] sm:text-xs text-slate-400">
+              {codigo ? `ID: ${codigo}` : "Carregando..."}
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           <ThemeToggle />
-          <button className="nzt-btn text-xs sm:text-sm px-2.5 py-2 sm:px-4 sm:py-3" onClick={handleLogout}>
+          <button 
+            className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 border border-slate-700/50 transition-all" 
+            onClick={handleLogout}
+          >
             Sair
           </button>
         </div>
@@ -72,16 +81,16 @@ const NAV_ITEMS = [
 
 function MobileNav() {
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-header border-t border-border/50">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-xl border-t border-slate-700/50">
       <div className="flex items-center justify-around py-2 px-1 safe-area-inset-bottom">
         {NAV_ITEMS.map((item) => (
           <a
             key={item.to}
             href={item.to}
-            className="flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg text-muted-foreground hover:text-foreground transition-colors min-w-0"
+            className="flex flex-col items-center gap-0.5 px-4 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all min-w-0"
           >
             <span className="text-lg">{item.icon}</span>
-            <span className="text-[10px] truncate max-w-[48px]">{item.label}</span>
+            <span className="text-[10px] font-medium">{item.label}</span>
           </a>
         ))}
       </div>
@@ -123,11 +132,19 @@ function AuthenticatedApp() {
     );
   }
 
-  // Se participante não tiver perfil_atividade, redireciona para onboarding
-  const needsOnboarding = participante && !participante.perfil_atividade;
+  // Se participante não tiver onboarding completo, mostra Welcome em tela cheia
+  const needsOnboarding = participante && !participante.onboarding_completo;
+
+  if (needsOnboarding) {
+    return (
+      <Routes>
+        <Route path="/*" element={<Welcome />} />
+      </Routes>
+    );
+  }
 
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
       <Header codigo={participante?.codigo} />
       <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-[220px_1fr] gap-4 p-3 sm:p-4 pb-24 lg:pb-4">
         {/* Sidebar - hidden on mobile, shown on desktop */}
@@ -136,10 +153,7 @@ function AuthenticatedApp() {
         </div>
         <main className="flex flex-col gap-4 animate-fade-in min-w-0">
           <Routes>
-            <Route 
-              path="/" 
-              element={<Navigate to={needsOnboarding ? "/app/anamnese" : "/app/painel"} replace />} 
-            />
+            <Route path="/" element={<Navigate to="/app/painel" replace />} />
             <Route path="/painel" element={<Dashboard />} />
             <Route path="/anamnese" element={<Onboarding />} />
             <Route path="/perfil" element={<Profile />} />
@@ -149,7 +163,7 @@ function AuthenticatedApp() {
       </div>
       {/* Mobile bottom navigation */}
       <MobileNav />
-    </>
+    </div>
   );
 }
 
