@@ -13,6 +13,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import RotinaCompleta from "./pages/RotinaCompleta";
 import SistemaCompleto from "./pages/SistemaCompleto";
+import ComoFunciona from "./pages/ComoFunciona";
 import Dashboard from "./pages/Dashboard";
 import RegisterDose from "./pages/RegisterDose";
 import SleepDay from "./pages/SleepDay";
@@ -172,6 +173,7 @@ const App = () => {
               <Route path="/produtos/:id" element={<ProductDetail />} />
               <Route path="/rotina-completa" element={<RotinaCompleta />} />
               <Route path="/sistema-completo" element={<SistemaCompleto />} />
+              <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/login" element={user ? <Navigate to="/app" replace /> : <Login />} />
               
               {/* Protected routes */}
