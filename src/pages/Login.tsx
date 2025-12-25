@@ -90,24 +90,24 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/5" />
+    <div className="min-h-screen flex items-center justify-center p-4 relative bg-vyr-black">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#17171710_1px,transparent_1px),linear-gradient(to_bottom,#17171710_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
       <div className="relative z-10 w-full max-w-md">
         {/* Back Link */}
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+          className="inline-flex items-center gap-2 text-vyr-gray-500 hover:text-vyr-white transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           <span className="text-sm">Voltar para início</span>
         </Link>
 
-        <Card title="NZT • Plataforma" subtitle={isSignUp ? "Criar nova conta" : "Acesse sua conta"}>
+        <Card title="VYR • Plataforma" subtitle={isSignUp ? "Criar nova conta" : "Acesse sua conta"}>
           <form onSubmit={handleSubmit} className="space-y-4 mt-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-vyr-gray-100">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -116,11 +116,12 @@ export default function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isLoading}
                 autoComplete="email"
+                className="bg-vyr-gray-900 border-vyr-gray-500/30 text-vyr-white placeholder:text-vyr-gray-500"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
+              <Label htmlFor="password" className="text-vyr-gray-100">Senha</Label>
               <Input
                 id="password"
                 type="password"
@@ -129,10 +130,15 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={isLoading}
                 autoComplete={isSignUp ? "new-password" : "current-password"}
+                className="bg-vyr-gray-900 border-vyr-gray-500/30 text-vyr-white placeholder:text-vyr-gray-500"
               />
             </div>
 
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isLoading}>
+            <Button 
+              type="submit" 
+              className="w-full bg-vyr-gray-100 text-vyr-black hover:bg-vyr-white font-mono" 
+              disabled={isLoading}
+            >
               {isLoading ? "Aguarde..." : isSignUp ? "Criar conta" : "Entrar"}
             </Button>
           </form>
@@ -140,15 +146,15 @@ export default function Login() {
           <div className="mt-4 text-center">
             <button
               type="button"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-vyr-gray-500 hover:text-vyr-white transition-colors"
               onClick={() => setIsSignUp(!isSignUp)}
             >
               {isSignUp ? "Já tem conta? Faça login" : "Não tem conta? Cadastre-se"}
             </button>
           </div>
 
-          <p className="mt-4 text-xs text-muted-foreground text-center">
-            Plataforma de acompanhamento de suplementação cognitiva.
+          <p className="mt-4 text-xs text-vyr-gray-500 text-center">
+            Plataforma de acompanhamento de performance cognitiva.
           </p>
         </Card>
       </div>
