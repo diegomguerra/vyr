@@ -2,20 +2,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { VYRLogo } from "@/brand";
 
 export function LandingNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs sm:text-sm">N</span>
-            </div>
-            <span className="font-bold text-lg sm:text-xl text-foreground">NZT</span>
+          <Link to="/" className="flex items-center">
+            <VYRLogo variant="dark" size="md" />
           </Link>
 
           {/* Nav Links - Desktop */}
@@ -42,7 +40,7 @@ export function LandingNav() {
               </Button>
             </Link>
             <Link to="/login?signup=true">
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-xs sm:text-sm px-3 sm:px-4">
+              <Button size="sm" className="bg-foreground hover:bg-foreground/90 text-background text-xs sm:text-sm px-3 sm:px-4">
                 Começar
               </Button>
             </Link>
@@ -98,7 +96,7 @@ export function LandingNav() {
                 </Button>
               </Link>
               <Link to="/login?signup=true" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
-                <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-xs">
+                <Button size="sm" className="w-full bg-foreground hover:bg-foreground/90 text-background text-xs">
                   Começar
                 </Button>
               </Link>

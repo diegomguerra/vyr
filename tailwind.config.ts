@@ -65,6 +65,30 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // VYR Brand Colors
+        vyr: {
+          black: "hsl(var(--vyr-black))",
+          white: "hsl(var(--vyr-white))",
+          gray: {
+            100: "hsl(var(--vyr-gray-100))",
+            200: "hsl(var(--vyr-gray-200))",
+            300: "hsl(var(--vyr-gray-300))",
+            400: "hsl(var(--vyr-gray-400))",
+            500: "hsl(var(--vyr-gray-500))",
+            600: "hsl(var(--vyr-gray-600))",
+            700: "hsl(var(--vyr-gray-700))",
+            800: "hsl(var(--vyr-gray-800))",
+            900: "hsl(var(--vyr-gray-900))",
+          },
+          coldBlue: "hsl(var(--vyr-cold-blue))",
+          boot: "hsl(var(--vyr-boot))",
+          hold: "hsl(var(--vyr-hold))",
+          clear: "hsl(var(--vyr-clear))",
+        },
+      },
+      fontFamily: {
+        mono: ["'JetBrains Mono'", "monospace"],
+        sans: ["'Inter'", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

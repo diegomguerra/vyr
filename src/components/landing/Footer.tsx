@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { VYRLogo } from "@/brand";
 
 // Social media icons as simple SVG components
 const FacebookIcon = () => (
@@ -43,20 +44,17 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="py-8 sm:py-12 bg-[#4a4e5a] border-t border-[#5a5e6a]">
+    <footer className="py-8 sm:py-12 bg-vyr-gray-900 border-t border-vyr-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-3 sm:mb-4">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xs sm:text-sm">N</span>
-              </div>
-              <span className="font-bold text-lg sm:text-xl text-white">NZT</span>
+              <VYRLogo variant="light" size="md" />
             </div>
-            <p className="text-xs sm:text-sm max-w-sm mb-4 sm:mb-6 text-[#c5c7cc]">
-              Plataforma de acompanhamento de suplementação cognitiva. 
-              Otimize sua performance mental com dados e insights personalizados.
+            <p className="text-xs sm:text-sm max-w-sm mb-4 sm:mb-6 text-vyr-gray-400">
+              Sistema de performance intelectual. 
+              Otimize sua cognição com dados e insights personalizados.
             </p>
             
             {/* Social Media Icons */}
@@ -66,7 +64,7 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="text-[#c5c7cc] hover:text-white transition-colors"
+                  className="text-vyr-gray-400 hover:text-vyr-white transition-colors"
                 >
                   <social.icon />
                 </a>
@@ -76,25 +74,25 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Navegação</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-vyr-white text-sm sm:text-base">Navegação</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
               <li>
-                <a href="#produto" className="text-[#c5c7cc] hover:text-white transition-colors">
+                <a href="#produto" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
                   Produto
                 </a>
               </li>
               <li>
-                <Link to="/como-funciona" className="text-[#c5c7cc] hover:text-white transition-colors">
+                <Link to="/como-funciona" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
                   Como Funciona
                 </Link>
               </li>
               <li>
-                <a href="#beneficios" className="text-[#c5c7cc] hover:text-white transition-colors">
+                <a href="#beneficios" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
                   Benefícios
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-[#c5c7cc] hover:text-white transition-colors">
+                <a href="#faq" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
                   FAQ
                 </a>
               </li>
@@ -103,15 +101,15 @@ export function Footer() {
 
           {/* Account */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Conta</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-vyr-white text-sm sm:text-base">Conta</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
               <li>
-                <Link to="/login" className="text-[#c5c7cc] hover:text-white transition-colors">
+                <Link to="/login" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
                   Entrar
                 </Link>
               </li>
               <li>
-                <Link to="/login?signup=true" className="text-[#c5c7cc] hover:text-white transition-colors">
+                <Link to="/login?signup=true" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
                   Criar conta
                 </Link>
               </li>
@@ -120,15 +118,15 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#5a5e6a] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-          <p className="text-[10px] sm:text-xs text-[#c5c7cc] text-center sm:text-left">
-            © {new Date().getFullYear()} NZT. Todos os direitos reservados.
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-vyr-gray-800 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <p className="text-[10px] sm:text-xs text-vyr-gray-500 text-center sm:text-left">
+            © {new Date().getFullYear()} VYR. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-4 sm:gap-6 text-[10px] sm:text-xs">
-            <a href="#" className="text-[#c5c7cc] hover:text-white transition-colors">
+            <a href="#" className="text-vyr-gray-500 hover:text-vyr-white transition-colors">
               Termos de Uso
             </a>
-            <a href="#" className="text-[#c5c7cc] hover:text-white transition-colors">
+            <a href="#" className="text-vyr-gray-500 hover:text-vyr-white transition-colors">
               Política de Privacidade
             </a>
           </div>

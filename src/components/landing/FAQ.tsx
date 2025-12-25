@@ -7,9 +7,9 @@ import {
 
 const faqs = [
   {
-    question: "O que é o NZT?",
+    question: "O que é o VYR?",
     answer:
-      "NZT é um nootrópico avançado desenvolvido para otimização cognitiva. Combina ingredientes cientificamente validados para melhorar foco, memória e clareza mental de forma segura e sustentável.",
+      "VYR é um sistema de performance cognitiva que combina suplementação nootrópica (BOOT, HOLD, CLEAR), plataforma de mensuração e o VYR NODE para otimização intelectual baseada em dados.",
   },
   {
     question: "Como funciona a plataforma de acompanhamento?",
@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "Posso usar com outros suplementos?",
     answer:
-      "NZT foi desenvolvido para ser usado de forma isolada. Consulte um profissional de saúde antes de combinar com outros suplementos ou medicamentos.",
+      "O sistema VYR foi desenvolvido para ser usado de forma isolada. Consulte um profissional de saúde antes de combinar com outros suplementos ou medicamentos.",
   },
   {
     question: "Como faço para acessar minha área de acompanhamento?",
@@ -40,14 +40,14 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-background">
+    <section id="faq" className="py-24 bg-vyr-gray-900">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-medium text-vyr-white mb-4">
             Perguntas Frequentes
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Tire suas dúvidas sobre o NZT e a plataforma
+          <p className="text-vyr-gray-400 max-w-2xl mx-auto">
+            Tire suas dúvidas sobre o VYR e a plataforma
           </p>
         </div>
 
@@ -56,12 +56,12 @@ export function FAQ() {
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="glass-card px-6 border-none"
+              className="bg-vyr-gray-800 border border-vyr-gray-700 rounded-sm px-6"
             >
-              <AccordionTrigger className="text-foreground hover:no-underline py-6 text-left">
+              <AccordionTrigger className="text-vyr-white hover:no-underline py-6 text-left">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-6">
+              <AccordionContent className="text-vyr-gray-400 pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
