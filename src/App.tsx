@@ -20,6 +20,7 @@ import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import Welcome from "./pages/Welcome";
 import BrandPreview from "./pages/BrandPreview";
+import BrandExport from "./pages/BrandExport";
 import { NavSidebar } from "./components/nzt";
 import { signOut, getParticipante, createParticipante } from "./lib/api";
 import { ThemeProvider, useTheme } from "./hooks/use-theme";
@@ -213,6 +214,7 @@ const App = () => {
               {/* Public routes */}
               <Route path="/" element={<Landing />} />
               <Route path="/brand-preview" element={<BrandPreview />} />
+              <Route path="/brand-export" element={<BrandExport />} />
               <Route path="/produtos" element={<Products />} />
               <Route path="/produtos/:id" element={<ProductDetail />} />
               <Route path="/rotina-completa" element={<RotinaCompleta />} />
