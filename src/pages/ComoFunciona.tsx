@@ -33,13 +33,13 @@ import sistemaIntegradoHero from "@/assets/sistema-integrado-hero.png";
 const sachets = [
   {
     id: "dia",
-    name: "NZT Dia",
+    name: "VYR BOOT",
     icon: Sun,
-    color: "from-amber-400 to-orange-500",
-    bgGradient: "from-amber-900/20 to-slate-900/50",
-    borderColor: "border-amber-500/20",
-    accentColor: "text-amber-400",
-    topBar: "from-amber-400 to-orange-500",
+    color: "text-vyr-gray-100",
+    bgGradient: "from-vyr-gray-800/40 to-vyr-black/60",
+    borderColor: "border-vyr-gray-600/30",
+    accentColor: "text-vyr-gray-100",
+    topBar: "bg-vyr-gray-100",
     periodo: "Manhã",
     objetivo: "Ativação & Clareza",
     descricao: "Atenção sustentada, foco executivo, memória de trabalho e clareza cognitiva.",
@@ -64,13 +64,13 @@ const sachets = [
   },
   {
     id: "tarde",
-    name: "NZT Tarde",
+    name: "VYR HOLD",
     icon: Sunset,
-    color: "from-purple-400 to-fuchsia-500",
-    bgGradient: "from-purple-900/20 to-slate-900/50",
-    borderColor: "border-purple-500/20",
-    accentColor: "text-purple-400",
-    topBar: "from-purple-400 to-fuchsia-500",
+    color: "text-vyr-gray-400",
+    bgGradient: "from-vyr-gray-700/40 to-vyr-black/60",
+    borderColor: "border-vyr-gray-500/30",
+    accentColor: "text-vyr-gray-300",
+    topBar: "bg-vyr-gray-600",
     periodo: "Tarde",
     objetivo: "Sustentação & Resiliência",
     descricao: "Sustentar desempenho mental, reduzir fadiga cognitiva e manter estabilidade emocional.",
@@ -90,13 +90,13 @@ const sachets = [
   },
   {
     id: "noite",
-    name: "NZT Noite",
+    name: "VYR CLEAR",
     icon: Moon,
-    color: "from-indigo-400 to-blue-500",
-    bgGradient: "from-indigo-900/20 to-slate-900/50",
-    borderColor: "border-indigo-500/20",
-    accentColor: "text-indigo-400",
-    topBar: "from-indigo-400 to-blue-500",
+    color: "text-vyr-cold-blue",
+    bgGradient: "from-vyr-cold-blue/20 to-vyr-black/60",
+    borderColor: "border-vyr-cold-blue/30",
+    accentColor: "text-vyr-cold-blue",
+    topBar: "bg-vyr-cold-blue",
     periodo: "Noite",
     objetivo: "Recuperação Cognitiva",
     descricao: "Redução de hiperatividade mental, recuperação neural, consolidação de memória e qualidade do sono.",
@@ -161,50 +161,48 @@ const integracaoNoite = [
 
 export default function ComoFunciona() {
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-vyr-black">
       <LandingNav />
       
       {/* Hero */}
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-violet-600/10 via-fuchsia-600/5 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/30 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-vyr-gray-900/50 via-transparent to-transparent" />
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 text-vyr-gray-300 text-xs sm:text-sm font-mono mb-4 sm:mb-6">
             <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             Sistema Integrado de Performance
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-vyr-white mb-4 sm:mb-6">
             Como Funciona o{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-400 bg-clip-text text-transparent">
-              NZT System
-            </span>
+            <span className="font-mono tracking-wider">VYR SYSTEM</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed px-2">
-            Três pilares integrados: Sachês que modulam o cérebro, SmartRing que capta respostas fisiológicas, 
+          <p className="text-base sm:text-lg md:text-xl text-vyr-gray-400 max-w-3xl mx-auto leading-relaxed px-2">
+            Três pilares integrados: Sachês que modulam o cérebro, VYR NODE que capta respostas fisiológicas, 
             e Plataforma que transforma dados em clareza, resiliência e recuperação mensuráveis.
           </p>
         </div>
       </section>
 
       {/* Quick Nav */}
-      <section className="py-4 sm:py-6 px-4 border-y border-slate-800 bg-slate-900/50 overflow-x-auto">
+      <section className="py-4 sm:py-6 px-4 border-y border-vyr-gray-800 bg-vyr-gray-900/50 overflow-x-auto">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-start sm:justify-center gap-2 sm:gap-3 min-w-max sm:min-w-0">
-            <a href="#saches" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-amber-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
-              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400" />
+            <a href="#saches" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-vyr-gray-300 hover:text-vyr-white whitespace-nowrap">
+              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
               <span>Sachês</span>
             </a>
-            <a href="#dados" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-violet-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
-              <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-violet-400" />
+            <a href="#dados" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-vyr-gray-300 hover:text-vyr-white whitespace-nowrap">
+              <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
               <span>Dados</span>
             </a>
-            <a href="#ring" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
-              <Watch className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-fuchsia-400" />
-              <span>SmartRing</span>
+            <a href="#ring" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-vyr-gray-300 hover:text-vyr-white whitespace-nowrap">
+              <Watch className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
+              <span>VYR NODE</span>
             </a>
-            <a href="#integracao" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-slate-800/50 border border-slate-700/50 hover:border-emerald-500/50 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 hover:text-white whitespace-nowrap">
-              <Database className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+            <a href="#integracao" className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-vyr-gray-300 hover:text-vyr-white whitespace-nowrap">
+              <Database className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
               <span>Integração</span>
             </a>
           </div>
@@ -215,10 +213,10 @@ export default function ComoFunciona() {
       <section id="saches" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-vyr-white mb-4">
               Como Funcionam os Sachês
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <p className="text-vyr-gray-400 max-w-2xl mx-auto">
               Os sachês atuam modulando sistemas neurofuncionais, não "sintomas". 
               Cada período tem um objetivo fisiológico distinto, alinhado ao ritmo circadiano.
             </p>
@@ -231,42 +229,42 @@ export default function ComoFunciona() {
                 className={`relative rounded-2xl bg-gradient-to-b ${sachet.bgGradient} border ${sachet.borderColor} overflow-hidden`}
               >
                 {/* Top bar */}
-                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${sachet.topBar}`} />
+                <div className={`absolute top-0 left-0 w-full h-1 ${sachet.topBar}`} />
                 
                 <div className="p-6 md:p-8">
                   <div className="flex flex-col lg:flex-row gap-8">
                     {/* Header */}
                     <div className="lg:w-1/3">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-20 h-20 rounded-xl ${sachet.accentColor.replace('text-', 'bg-')}/10 flex items-center justify-center p-2`}>
+                        <div className="w-20 h-20 rounded-xl bg-vyr-gray-800/50 flex items-center justify-center p-2">
                           <img src={sachet.image} alt={sachet.name} className="w-full h-full object-contain" />
                         </div>
                         <div>
                           <div className="flex items-center gap-2 mb-1">
                             <sachet.icon className={`w-4 h-4 ${sachet.accentColor}`} />
-                            <span className={`text-xs ${sachet.accentColor} font-medium uppercase`}>{sachet.periodo}</span>
+                            <span className={`text-xs ${sachet.accentColor} font-mono uppercase tracking-wider`}>{sachet.periodo}</span>
                           </div>
-                          <h3 className="text-xl font-bold text-white">{sachet.name}</h3>
+                          <h3 className="text-xl font-mono font-bold text-vyr-white tracking-wide">{sachet.name}</h3>
                         </div>
                       </div>
 
                       <p className={`text-sm mb-2`}>
                         <strong className={sachet.accentColor}>{sachet.objetivo}.</strong>
                       </p>
-                      <p className="text-sm text-slate-400 leading-relaxed mb-6">
+                      <p className="text-sm text-vyr-gray-400 leading-relaxed mb-6">
                         {sachet.descricao}
                       </p>
                       
                       {/* Áreas do cérebro */}
                       <div className="space-y-2">
-                        <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">
+                        <h4 className="text-xs font-semibold text-vyr-gray-500 uppercase tracking-wide mb-3">
                           Áreas Cerebrais Moduladas
                         </h4>
                         {sachet.areas.map((area, i) => (
                           <div key={i} className="flex items-center gap-2 text-sm">
                             <Brain className={`w-3.5 h-3.5 ${sachet.accentColor}`} />
-                            <span className="text-white font-medium">{area.name}</span>
-                            <span className="text-slate-500">— {area.funcao}</span>
+                            <span className="text-vyr-white font-medium">{area.name}</span>
+                            <span className="text-vyr-gray-500">— {area.funcao}</span>
                           </div>
                         ))}
                       </div>
@@ -274,16 +272,16 @@ export default function ComoFunciona() {
 
                     {/* Componentes */}
                     <div className="lg:w-2/3">
-                      <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">
+                      <h4 className="text-xs font-semibold text-vyr-gray-500 uppercase tracking-wide mb-4">
                         Componentes & Funções
                       </h4>
                       <div className="grid sm:grid-cols-2 gap-3">
                         {sachet.componentes.map((comp, i) => (
-                          <div key={i} className="flex items-start gap-2 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                          <div key={i} className="flex items-start gap-2 p-3 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-700/50">
                             <Check className={`w-4 h-4 ${sachet.accentColor} mt-0.5 flex-shrink-0`} />
                             <div>
-                              <div className="text-sm text-white font-medium">{comp.nome}</div>
-                              <div className="text-xs text-slate-500">{comp.funcao}</div>
+                              <div className="text-sm text-vyr-white font-medium">{comp.nome}</div>
+                              <div className="text-xs text-vyr-gray-500">{comp.funcao}</div>
                             </div>
                           </div>
                         ))}
@@ -298,298 +296,203 @@ export default function ComoFunciona() {
       </section>
 
       {/* SEÇÃO 2: ENTRADA DE DADOS */}
-      <section id="dados" className="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+      <section id="dados" className="py-20 px-4 bg-gradient-to-b from-vyr-black to-vyr-gray-900">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 text-vyr-gray-300 text-sm font-mono mb-6">
               <Smartphone className="w-4 h-4" />
-              Sem SmartRing
+              Sem VYR NODE
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-vyr-white mb-4">
               Entrada de Dados na Plataforma
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Usuários sem SmartRing alimentam a plataforma via <strong className="text-white">percepção consciente</strong>, 
+            <p className="text-vyr-gray-400 max-w-2xl mx-auto">
+              Usuários sem VYR NODE alimentam a plataforma via <strong className="text-vyr-white">percepção consciente</strong>, 
               o que é fundamental para criar um baseline subjetivo.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {entradaDados.map((item, i) => (
-              <div key={i} className="p-5 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-violet-500/30 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-violet-500/10 flex items-center justify-center mb-3">
-                  <item.icon className="w-5 h-5 text-violet-400" />
+              <div key={i} className="p-5 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center mb-3">
+                  <item.icon className="w-5 h-5 text-vyr-gray-300" />
                 </div>
-                <h3 className="font-semibold text-white mb-1">{item.label}</h3>
-                <p className="text-sm text-slate-500">{item.desc}</p>
+                <h3 className="font-semibold text-vyr-white mb-1">{item.label}</h3>
+                <p className="text-sm text-vyr-gray-500">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700/50">
-            <h3 className="text-xl font-semibold text-white mb-6">
+          <div className="bg-vyr-gray-800/50 rounded-2xl p-8 border border-vyr-gray-700/50">
+            <h3 className="text-xl font-semibold text-vyr-white mb-6">
               Por que a percepção é importante?
             </h3>
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-violet-400" />
+                <div className="w-8 h-8 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-vyr-gray-300" />
                 </div>
                 <div>
-                  <span className="font-medium text-white block mb-1">Baseline subjetivo</span>
-                  <span className="text-sm text-slate-500">A percepção é seu ponto de partida pessoal</span>
+                  <span className="font-medium text-vyr-white block mb-1">Baseline subjetivo</span>
+                  <span className="text-sm text-vyr-gray-500">A percepção é seu ponto de partida pessoal</span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-violet-400" />
+                <div className="w-8 h-8 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-vyr-gray-300" />
                 </div>
                 <div>
-                  <span className="font-medium text-white block mb-1">Controle interno</span>
-                  <span className="text-sm text-slate-500">Referência para comparação futura</span>
+                  <span className="font-medium text-vyr-white block mb-1">Controle interno</span>
+                  <span className="text-sm text-vyr-gray-500">Referência para comparação futura</span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
-                  <Check className="w-4 h-4 text-violet-400" />
+                <div className="w-8 h-8 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
+                  <Check className="w-4 h-4 text-vyr-gray-300" />
                 </div>
                 <div>
-                  <span className="font-medium text-white block mb-1">Integração com Ring</span>
-                  <span className="text-sm text-slate-500">Compare sensação × dado fisiológico</span>
+                  <span className="font-medium text-vyr-white block mb-1">Validação cruzada</span>
+                  <span className="text-sm text-vyr-gray-500">Quando combinada com dados objetivos</span>
                 </div>
               </div>
-            </div>
-            <div className="mt-8 p-4 rounded-xl bg-slate-900/50 border border-slate-700/50">
-              <p className="text-sm text-slate-400 italic text-center">
-                "A plataforma não desvaloriza o dado subjetivo — ela o usa como referência."
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 3: SMART RING */}
-      <section id="ring" className="py-20 px-4 bg-slate-900">
-        <div className="max-w-6xl mx-auto">
+      {/* SEÇÃO 3: VYR NODE */}
+      <section id="ring" className="py-20 px-4 bg-vyr-gray-900">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 text-vyr-gray-300 text-sm font-mono mb-6">
               <Watch className="w-4 h-4" />
-              Wearable Estratégico
+              Monitoramento Fisiológico
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Como Funciona o SmartRing
+            <h2 className="text-3xl sm:text-4xl font-bold text-vyr-white mb-4">
+              <span className="font-mono tracking-wider">VYR NODE</span>
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              O SmartRing não mede pensamento — ele mede <strong className="text-white">respostas fisiológicas</strong> que 
-              refletem o estado cognitivo. São marcadores indiretos, porém objetivos.
+            <p className="text-vyr-gray-400 max-w-2xl mx-auto">
+              O VYR NODE é um instrumento técnico de coleta contínua, não um acessório. 
+              Capta marcadores fisiológicos objetivos que complementam seus registros subjetivos.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-center mb-16">
-            <div className="relative flex items-center justify-center order-2 lg:order-1">
-              <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/30 via-violet-500/20 to-indigo-500/30 blur-[80px] rounded-full scale-75" />
-              <div className="relative z-10 w-48 h-48 md:w-56 md:h-56">
-                <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-transparent rounded-full" />
-                <img
-                  src={smartRing}
-                  alt="NZT Smart Ring"
-                  className="w-full h-full object-contain drop-shadow-2xl"
-                  style={{ filter: 'drop-shadow(0 0 40px rgba(217, 70, 239, 0.3))' }}
-                />
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div className="order-2 md:order-1">
+              <img 
+                src={smartRing} 
+                alt="VYR NODE" 
+                className="w-full max-w-md mx-auto opacity-90"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {ringMetrics.map((metric, i) => (
+                  <div key={i} className="p-4 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors">
+                    <div className="w-10 h-10 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center mb-3">
+                      <metric.icon className="w-5 h-5 text-vyr-gray-300" />
+                    </div>
+                    <h3 className="font-semibold text-vyr-white text-sm mb-1">{metric.label}</h3>
+                    <p className="text-xs text-vyr-gray-500">{metric.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="grid sm:grid-cols-2 gap-3 order-1 lg:order-2">
-              {ringMetrics.map((metric, i) => (
-                <div key={i} className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-fuchsia-500/30 transition-colors">
-                  <div className="w-10 h-10 rounded-lg bg-fuchsia-500/10 flex items-center justify-center mb-3">
-                    <metric.icon className="w-5 h-5 text-fuchsia-400" />
-                  </div>
-                  <h3 className="font-semibold text-white text-sm mb-1">{metric.label}</h3>
-                  <p className="text-xs text-slate-500">{metric.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-slate-800/30 border border-fuchsia-500/20">
-            <p className="text-center text-slate-400">
-              Esses dados são <strong className="text-fuchsia-400">marcadores indiretos, porém objetivos</strong>, do estado neurofisiológico.
-              O Ring não "mede foco", mas mede o <strong className="text-white">custo fisiológico do foco</strong>.
-            </p>
           </div>
         </div>
       </section>
 
       {/* SEÇÃO 4: INTEGRAÇÃO */}
-      <section id="integracao" className="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
-        <div className="max-w-6xl mx-auto">
+      <section id="integracao" className="py-20 px-4 bg-vyr-black">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 text-vyr-gray-300 text-sm font-mono mb-6">
               <Database className="w-4 h-4" />
-              Sistema Completo
+              Correlações Inteligentes
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Sachê + SmartRing + Plataforma
+            <h2 className="text-3xl sm:text-4xl font-bold text-vyr-white mb-4">
+              Integração Sachê + VYR NODE
             </h2>
-            <p className="text-slate-400 max-w-3xl mx-auto">
-              O que os sachês causam no cérebro × o que o Ring consegue medir. 
-              A plataforma cruza esses dados para mostrar <strong className="text-white">progresso cognitivo mensurável</strong>.
+            <p className="text-vyr-gray-400 max-w-2xl mx-auto">
+              Quando o VYR NODE está ativo, cada sachet gera sinais fisiológicos rastreáveis. 
+              Aqui está o que esperamos observar em cada período.
             </p>
           </div>
 
-          {/* Fluxo */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-16">
-            {[
-              { icon: Zap, label: "Usuário toma o Sachê", color: "text-amber-400", bg: "bg-amber-500/10" },
-              { icon: Brain, label: "Componentes atuam no cérebro", color: "text-violet-400", bg: "bg-violet-500/10" },
-              { icon: Activity, label: "SmartRing capta mudanças", color: "text-fuchsia-400", bg: "bg-fuchsia-500/10" },
-              { icon: BarChart3, label: "Plataforma interpreta", color: "text-emerald-400", bg: "bg-emerald-500/10" }
-            ].map((step, i) => (
-              <div key={i} className="text-center p-3 sm:p-4">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${step.bg} flex items-center justify-center mx-auto mb-2 sm:mb-3`}>
-                  <step.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${step.color}`} />
+          {/* VYR BOOT Integration */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Sun className="w-6 h-6 text-vyr-gray-100" />
+              <h3 className="text-xl font-mono font-bold text-vyr-white tracking-wide">VYR BOOT + VYR NODE</h3>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {integracaoDia.map((item, i) => (
+                <div key={i} className="p-4 rounded-xl bg-vyr-gray-800/30 border border-vyr-gray-700/50">
+                  <div className="text-sm font-medium text-vyr-white mb-2">{item.acao}</div>
+                  <div className="text-xs text-vyr-gray-500 mb-2">{item.impacto}</div>
+                  <div className="text-xs text-vyr-gray-400 font-mono">{item.metrica}</div>
                 </div>
-                <p className="text-xs sm:text-sm text-white font-medium">{step.label}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Tabelas de Integração */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* DIA */}
-            <div className="rounded-2xl overflow-hidden border border-amber-500/20">
-              <div className="bg-gradient-to-r from-amber-900/30 to-slate-900/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
-                <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
-                <h3 className="font-semibold text-white text-sm sm:text-base">Ativação & Clareza — NZT Dia</h3>
-              </div>
-              <div className="bg-slate-900/50 p-3 sm:p-4 overflow-x-auto">
-                <div className="hidden sm:grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
-                  <span>Ação no Cérebro</span>
-                  <span>Impacto Fisiológico</span>
-                  <span>Métrica do Ring</span>
-                </div>
-                {integracaoDia.map((row, i) => (
-                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors border-b border-slate-800 sm:border-0 last:border-0">
-                    <span className="text-xs sm:text-sm text-white"><span className="sm:hidden text-slate-500">Ação: </span>{row.acao}</span>
-                    <span className="text-xs sm:text-sm text-slate-400"><span className="sm:hidden text-slate-500">Impacto: </span>{row.impacto}</span>
-                    <span className="text-xs sm:text-sm text-amber-400 font-medium"><span className="sm:hidden text-slate-500">Métrica: </span>{row.metrica}</span>
-                  </div>
-                ))}
-              </div>
+          {/* VYR HOLD Integration */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Sunset className="w-6 h-6 text-vyr-gray-400" />
+              <h3 className="text-xl font-mono font-bold text-vyr-white tracking-wide">VYR HOLD + VYR NODE</h3>
             </div>
-
-            {/* TARDE */}
-            <div className="rounded-2xl overflow-hidden border border-purple-500/20">
-              <div className="bg-gradient-to-r from-purple-900/30 to-slate-900/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
-                <Sunset className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
-                <h3 className="font-semibold text-white text-sm sm:text-base">Sustentação & Resiliência — NZT Tarde</h3>
-              </div>
-              <div className="bg-slate-900/50 p-3 sm:p-4 overflow-x-auto">
-                <div className="hidden sm:grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
-                  <span>Ação no Cérebro</span>
-                  <span>Impacto Fisiológico</span>
-                  <span>Métrica do Ring</span>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {integracaoTarde.map((item, i) => (
+                <div key={i} className="p-4 rounded-xl bg-vyr-gray-800/30 border border-vyr-gray-700/50">
+                  <div className="text-sm font-medium text-vyr-white mb-2">{item.acao}</div>
+                  <div className="text-xs text-vyr-gray-500 mb-2">{item.impacto}</div>
+                  <div className="text-xs text-vyr-gray-400 font-mono">{item.metrica}</div>
                 </div>
-                {integracaoTarde.map((row, i) => (
-                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors border-b border-slate-800 sm:border-0 last:border-0">
-                    <span className="text-xs sm:text-sm text-white"><span className="sm:hidden text-slate-500">Ação: </span>{row.acao}</span>
-                    <span className="text-xs sm:text-sm text-slate-400"><span className="sm:hidden text-slate-500">Impacto: </span>{row.impacto}</span>
-                    <span className="text-xs sm:text-sm text-purple-400 font-medium"><span className="sm:hidden text-slate-500">Métrica: </span>{row.metrica}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
+          </div>
 
-            {/* NOITE */}
-            <div className="rounded-2xl overflow-hidden border border-indigo-500/20">
-              <div className="bg-gradient-to-r from-indigo-900/30 to-slate-900/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
-                <Moon className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400" />
-                <h3 className="font-semibold text-white text-sm sm:text-base">Recuperação Cognitiva — NZT Noite</h3>
-              </div>
-              <div className="bg-slate-900/50 p-3 sm:p-4 overflow-x-auto">
-                <div className="hidden sm:grid grid-cols-3 gap-2 text-xs font-medium text-slate-500 uppercase mb-3 px-2">
-                  <span>Ação no Cérebro</span>
-                  <span>Impacto Fisiológico</span>
-                  <span>Métrica do Ring</span>
+          {/* VYR CLEAR Integration */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Moon className="w-6 h-6 text-vyr-cold-blue" />
+              <h3 className="text-xl font-mono font-bold text-vyr-white tracking-wide">VYR CLEAR + VYR NODE</h3>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {integracaoNoite.map((item, i) => (
+                <div key={i} className="p-4 rounded-xl bg-vyr-cold-blue/10 border border-vyr-cold-blue/30">
+                  <div className="text-sm font-medium text-vyr-white mb-2">{item.acao}</div>
+                  <div className="text-xs text-vyr-gray-500 mb-2">{item.impacto}</div>
+                  <div className="text-xs text-vyr-cold-blue font-mono">{item.metrica}</div>
                 </div>
-                {integracaoNoite.map((row, i) => (
-                  <div key={i} className="flex flex-col sm:grid sm:grid-cols-3 gap-1 sm:gap-2 p-3 rounded-lg hover:bg-slate-800/50 transition-colors border-b border-slate-800 sm:border-0 last:border-0">
-                    <span className="text-xs sm:text-sm text-white"><span className="sm:hidden text-slate-500">Ação: </span>{row.acao}</span>
-                    <span className="text-xs sm:text-sm text-slate-400"><span className="sm:hidden text-slate-500">Impacto: </span>{row.impacto}</span>
-                    <span className="text-xs sm:text-sm text-indigo-400 font-medium"><span className="sm:hidden text-slate-500">Métrica: </span>{row.metrica}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* SEÇÃO 5: O QUE A PLATAFORMA FAZ */}
-      <section className="py-20 px-4 bg-slate-950">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            O Que a Plataforma Faz
-          </h2>
-          <p className="text-slate-400 mb-12 max-w-2xl mx-auto">
-            A plataforma não mostra dados crus apenas. Ela cria inteligência sobre sua performance.
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {[
-              { label: "Tendências individuais", desc: "Evolução ao longo do tempo" },
-              { label: "Percepção × Fisiologia", desc: "Compare sensação com dados" },
-              { label: "Resposta aos sachês", desc: "Impacto mensurável" },
-              { label: "Insights personalizados", desc: "Recomendações baseadas em AI" }
-            ].map((item, i) => (
-              <div key={i} className="p-5 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <h4 className="font-semibold text-white mb-1">{item.label}</h4>
-                <p className="text-xs text-slate-500">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative mb-12">
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-amber-500/20 blur-3xl rounded-full" />
-            <img 
-              src={sistemaIntegradoHero} 
-              alt="Sistema Integrado NZT - Sachês, SmartRing e Plataforma" 
-              className="relative z-10 w-full max-w-3xl mx-auto rounded-2xl shadow-2xl shadow-fuchsia-500/20"
-            />
-          </div>
-
-          {/* Quote */}
-          <div className="p-8 rounded-2xl bg-gradient-to-r from-violet-900/20 via-fuchsia-900/20 to-amber-900/20 border border-violet-500/20">
-            <p className="text-lg md:text-xl text-white font-medium leading-relaxed">
-              "Os sachês modulam o cérebro.<br />
-              O SmartRing capta as respostas do corpo.<br />
-              A plataforma transforma isso em <span className="text-fuchsia-400">clareza</span>, <span className="text-violet-400">resiliência</span> e <span className="text-indigo-400">recuperação</span> mensuráveis."
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-4 bg-gradient-to-b from-slate-950 to-slate-900">
+      {/* CTA Final */}
+      <section className="py-20 px-4 bg-gradient-to-b from-vyr-gray-900 to-vyr-black border-t border-vyr-gray-800">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Pronto para começar?
+          <h2 className="text-3xl sm:text-4xl font-bold text-vyr-white mb-6">
+            Pronto para Otimizar sua Performance?
           </h2>
-          <p className="text-slate-400 mb-8">
-            Escolha o plano ideal para seus objetivos de performance cognitiva.
+          <p className="text-vyr-gray-400 mb-8 max-w-xl mx-auto">
+            Escolha o plano que melhor se adapta às suas necessidades e comece sua jornada de otimização cognitiva.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/rotina-completa">
-              <Button className="px-8 py-6 text-base font-semibold bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-xl">
-                Ver Rotina Completa
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono bg-vyr-gray-800 hover:bg-vyr-gray-700 text-vyr-white border border-vyr-gray-600 rounded-lg transition-all">
+                Rotina Completa
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <Link to="/sistema-completo">
-              <Button variant="outline" className="px-8 py-6 text-base font-semibold border-fuchsia-500/50 text-fuchsia-400 hover:bg-fuchsia-500/10 rounded-xl">
-                Conhecer Sistema Completo
-                <Sparkles className="w-5 h-5 ml-2" />
+              <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-lg transition-all">
+                VYR SYSTEM
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
