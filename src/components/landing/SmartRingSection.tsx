@@ -1,5 +1,4 @@
 import { Circle, Activity, Moon, Brain, Zap, TrendingUp, Sparkles } from "lucide-react";
-import smartRingImage from "@/assets/smart-ring-nobg.png";
 import { NodeVisual } from "@/brand";
 
 const ringCapabilities = [{
@@ -38,6 +37,32 @@ const evolutionSteps = [{
   highlight: true
 }];
 
+// Componente do VYR NODE com especificações técnicas
+function NodeShowcaseCompact() {
+  return (
+    <div className="flex flex-col items-center">
+      {/* Node Visual principal */}
+      <NodeVisual size="lg" showLabel={false} />
+      
+      {/* Especificações técnicas minimalistas */}
+      <div className="mt-8 flex gap-8 text-center">
+        <div>
+          <span className="text-[10px] font-mono tracking-[0.2em] block mb-1 text-vyr-gray-500">SENSORS</span>
+          <span className="text-xs text-vyr-gray-300">PPG · HRV · SpO2</span>
+        </div>
+        <div>
+          <span className="text-[10px] font-mono tracking-[0.2em] block mb-1 text-vyr-gray-500">MATERIAL</span>
+          <span className="text-xs text-vyr-gray-300">Titanium</span>
+        </div>
+        <div>
+          <span className="text-[10px] font-mono tracking-[0.2em] block mb-1 text-vyr-gray-500">BATTERY</span>
+          <span className="text-xs text-vyr-gray-300">7 Days</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function SmartRingSection() {
   return (
     <section id="smartring" className="py-24 bg-vyr-black overflow-hidden">
@@ -63,21 +88,21 @@ export function SmartRingSection() {
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Ring Visual */}
+          {/* Ring Visual - CSS-based NodeVisual */}
           <div className="relative flex justify-center">
             {/* Subtle glow */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 bg-vyr-gray-700/20 rounded-full blur-3xl" />
+              <div className="w-80 h-80 bg-vyr-gray-700/10 rounded-full blur-3xl" />
             </div>
 
-            {/* Ring Image */}
+            {/* VYR NODE Visual */}
             <div className="relative z-10">
-              <img src={smartRingImage} alt="VYR NODE Smart Ring" className="w-72 h-auto opacity-90" />
+              <NodeShowcaseCompact />
               
               {/* Floating badges */}
               <div className="absolute -top-4 -right-4 px-3 py-2 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-vyr-gray-400 rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-vyr-cold-blue rounded-full animate-pulse opacity-60" />
                   <span className="text-xs text-vyr-gray-300 font-mono">SENSOR 24/7</span>
                 </div>
               </div>

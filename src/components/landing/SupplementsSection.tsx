@@ -1,11 +1,5 @@
 import { Sun, Moon, Sunset, Zap, Shield, Beaker } from "lucide-react";
-import { Label as VYRLabel } from "@/brand";
-
-// Import product images
-import nztBoxesSachets from "@/assets/nzt-boxes-sachets.png";
-import sachetDia from "@/assets/sachet-dia.png";
-import sachetTarde from "@/assets/sachet-tarde.png";
-import sachetNoite from "@/assets/sachet-noite.png";
+import { Label as VYRLabel, SachetMockup } from "@/brand";
 
 const supplements = [
   {
@@ -19,9 +13,8 @@ const supplements = [
     benefits: ["Foco intensificado", "Clareza nas decisões", "Energia mental sustentada"],
     bgColor: "bg-vyr-gray-100",
     borderColor: "border-vyr-gray-300",
-    textColor: "text-vyr-gray-900",
+    textColor: "text-vyr-black",
     sachets: "30 sachês",
-    sachetImage: sachetDia,
   },
   {
     id: "hold",
@@ -36,7 +29,6 @@ const supplements = [
     borderColor: "border-vyr-gray-500",
     textColor: "text-vyr-white",
     sachets: "30 sachês",
-    sachetImage: sachetTarde,
   },
   {
     id: "clear",
@@ -51,32 +43,27 @@ const supplements = [
     borderColor: "border-vyr-gray-600",
     textColor: "text-vyr-white",
     sachets: "30 sachês",
-    sachetImage: sachetNoite,
   },
 ];
 
-// Componente visual de caixa de suplemento
+// Componente visual de caixa de suplemento usando mockups do brand
 function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
   return (
     <div className="relative group">
       {/* Caixa do suplemento */}
       <div className={`relative p-4 sm:p-6 rounded-sm bg-vyr-gray-800 border ${supplement.borderColor} transition-all duration-300 group-hover:border-vyr-gray-400 group-hover:translate-y-[-4px]`}>
-        {/* Visual da caixa com imagem real do sachê */}
+        {/* Visual da caixa com mockup do sachê */}
         <div className="relative mb-4 sm:mb-6">
-          {/* Caixa simulada */}
+          {/* Caixa simulada com borda do produto */}
           <div className={`relative w-full aspect-[4/3] rounded-sm ${supplement.bgColor} p-[2px]`}>
             <div className="w-full h-full rounded-sm bg-vyr-gray-900 flex flex-col items-center justify-center p-3 sm:p-4">
               {/* Label VYR */}
               <VYRLabel variant={supplement.variant} />
               <span className="text-[10px] sm:text-xs text-vyr-gray-500 mt-2 font-mono">{supplement.sachets}</span>
               
-              {/* Imagem real do sachê (horizontal) */}
-              <div className="mt-2 sm:mt-3 w-full flex justify-center">
-                <img 
-                  src={supplement.sachetImage} 
-                  alt={`Sachê ${supplement.name}`}
-                  className="w-20 sm:w-28 h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-                />
+              {/* Mockup visual do sachê (CSS-based) */}
+              <div className="mt-2 sm:mt-3 scale-75 sm:scale-90">
+                <SachetMockup variant={supplement.variant} />
               </div>
             </div>
           </div>
@@ -106,11 +93,54 @@ function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
   );
 }
 
+// Componente de visualização das 3 caixas VYR
+function AllBoxesPreview() {
+  return (
+    <div className="flex items-end justify-center gap-4 sm:gap-6 lg:gap-8 py-6">
+      {/* VYR BOOT Box */}
+      <div className="relative" style={{ perspective: "400px" }}>
+        <div 
+          className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-100 flex flex-col items-center justify-center"
+          style={{ transform: "rotateY(-8deg)", boxShadow: "6px 0 20px -5px rgba(0,0,0,0.5)" }}
+        >
+          <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-black font-medium">VYR</span>
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-500">BOOT</span>
+          <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
+        </div>
+      </div>
+      
+      {/* VYR HOLD Box */}
+      <div className="relative" style={{ perspective: "400px" }}>
+        <div 
+          className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-600 flex flex-col items-center justify-center"
+          style={{ boxShadow: "0 0 30px -5px rgba(0,0,0,0.5)" }}
+        >
+          <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">HOLD</span>
+          <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
+        </div>
+      </div>
+      
+      {/* VYR CLEAR Box */}
+      <div className="relative" style={{ perspective: "400px" }}>
+        <div 
+          className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-coldBlue flex flex-col items-center justify-center"
+          style={{ transform: "rotateY(8deg)", boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)" }}
+        >
+          <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">CLEAR</span>
+          <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function SupplementsSection() {
   return (
     <section id="suplementos" className="py-16 sm:py-24 bg-vyr-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header com imagem das caixas */}
+        {/* Header com visualização das caixas */}
         <div className="text-center mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700 mb-4 sm:mb-6">
             <Beaker className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
@@ -124,16 +154,8 @@ export function SupplementsSection() {
             <span className="text-vyr-white font-medium"> Não é estimulante. É otimização neural estruturada.</span>
           </p>
           
-          {/* Imagem das caixas com sachês */}
-          <div className="flex justify-center mb-6 sm:mb-8">
-            <div className="relative max-w-sm sm:max-w-lg lg:max-w-2xl w-full">
-              <img 
-                src={nztBoxesSachets} 
-                alt="VYR Suplementos - Caixas BOOT, HOLD e CLEAR com sachês"
-                className="w-full h-auto object-contain opacity-90"
-              />
-            </div>
-          </div>
+          {/* Preview das 3 caixas VYR (CSS-based) */}
+          <AllBoxesPreview />
         </div>
 
         {/* Grid de suplementos */}

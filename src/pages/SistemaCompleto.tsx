@@ -2,12 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Sun, Moon, Sunset, Shield, Sparkles, ArrowRight, Activity, Brain, Heart, Zap, BarChart3, Lightbulb, Wifi, BatteryCharging, Fingerprint } from "lucide-react";
 import { LandingNav, Footer } from "@/components/landing";
-
-import smartRing from "@/assets/smart-ring.png";
-import sistemaCompletoHero from "@/assets/sistema-completo-hero.png";
-import sachetDia from "@/assets/sachet-dia.png";
-import sachetTarde from "@/assets/sachet-tarde.png";
-import sachetNoite from "@/assets/sachet-noite.png";
+import { SachetMockup, NodeVisual } from "@/brand";
 
 const ringFeatures = [
   {
@@ -78,6 +73,49 @@ const included = [
   { text: "Suporte prioritário", icon: Shield, color: "text-vyr-gray-400" },
 ];
 
+// Componente de visualização das 3 caixas VYR
+function AllBoxesPreview() {
+  return (
+    <div className="flex items-end justify-center gap-4 sm:gap-6 py-6">
+      {/* VYR BOOT Box */}
+      <div className="relative" style={{ perspective: "400px" }}>
+        <div 
+          className="relative w-16 sm:w-24 lg:w-28 h-22 sm:h-32 lg:h-40 rounded-sm bg-vyr-gray-100 flex flex-col items-center justify-center"
+          style={{ transform: "rotateY(-8deg)", boxShadow: "6px 0 20px -5px rgba(0,0,0,0.5)" }}
+        >
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.35em] text-vyr-black font-medium">VYR</span>
+          <span className="font-mono text-[8px] sm:text-[10px] tracking-[0.25em] text-vyr-gray-500">BOOT</span>
+          <span className="font-mono text-[5px] sm:text-[6px] tracking-wider text-vyr-gray-400 mt-3 sm:mt-4 opacity-60">30 SACHETS</span>
+        </div>
+      </div>
+      
+      {/* VYR HOLD Box */}
+      <div className="relative" style={{ perspective: "400px" }}>
+        <div 
+          className="relative w-16 sm:w-24 lg:w-28 h-22 sm:h-32 lg:h-40 rounded-sm bg-vyr-gray-600 flex flex-col items-center justify-center"
+          style={{ boxShadow: "0 0 30px -5px rgba(0,0,0,0.5)" }}
+        >
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.35em] text-vyr-white font-medium">VYR</span>
+          <span className="font-mono text-[8px] sm:text-[10px] tracking-[0.25em] text-vyr-gray-300">HOLD</span>
+          <span className="font-mono text-[5px] sm:text-[6px] tracking-wider text-vyr-gray-400 mt-3 sm:mt-4 opacity-60">30 SACHETS</span>
+        </div>
+      </div>
+      
+      {/* VYR CLEAR Box */}
+      <div className="relative" style={{ perspective: "400px" }}>
+        <div 
+          className="relative w-16 sm:w-24 lg:w-28 h-22 sm:h-32 lg:h-40 rounded-sm bg-vyr-coldBlue flex flex-col items-center justify-center"
+          style={{ transform: "rotateY(8deg)", boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)" }}
+        >
+          <span className="font-mono text-[10px] sm:text-xs tracking-[0.35em] text-vyr-white font-medium">VYR</span>
+          <span className="font-mono text-[8px] sm:text-[10px] tracking-[0.25em] text-vyr-gray-300">CLEAR</span>
+          <span className="font-mono text-[5px] sm:text-[6px] tracking-wider text-vyr-gray-400 mt-3 sm:mt-4 opacity-60">30 SACHETS</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SistemaCompleto() {
   return (
     <div className="min-h-screen bg-vyr-black">
@@ -106,25 +144,25 @@ export default function SistemaCompleto() {
               </p>
 
               <div className="flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8">
-                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50">
+                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
                   <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
                   <span className="text-xs sm:text-sm text-vyr-gray-300 font-mono">VYR NODE</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50">
+                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
                   <Brain className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
                   <span className="text-xs sm:text-sm text-vyr-gray-300">Insights AI</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50">
+                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
                   <BarChart3 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
                   <span className="text-xs sm:text-sm text-vyr-gray-300">Correlações</span>
                 </div>
               </div>
 
               {/* Pricing */}
-              <div className="bg-vyr-gray-900/80 rounded-2xl p-4 sm:p-6 border border-vyr-gray-700/50 backdrop-blur-sm">
+              <div className="bg-vyr-gray-900/80 rounded-sm p-4 sm:p-6 border border-vyr-gray-700/50 backdrop-blur-sm">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xs sm:text-sm text-vyr-gray-500 line-through">R$ 6.561</span>
-                  <span className="text-xs sm:text-sm font-semibold text-vyr-gray-300 bg-vyr-gray-800 px-2 py-0.5 sm:py-1 rounded-full font-mono">
+                  <span className="text-xs sm:text-sm font-semibold text-vyr-gray-300 bg-vyr-gray-800 px-2 py-0.5 sm:py-1 rounded-sm font-mono">
                     -40% OFF
                   </span>
                 </div>
@@ -134,7 +172,7 @@ export default function SistemaCompleto() {
                 </div>
 
                 <Link to="/login?signup=true">
-                  <Button className="w-full py-4 sm:py-6 text-base sm:text-lg font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-xl transition-all duration-300 hover:scale-[1.02]">
+                  <Button className="w-full py-4 sm:py-6 text-base sm:text-lg font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-sm transition-all duration-300 hover:scale-[1.02]">
                     Quero o VYR SYSTEM
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
@@ -146,18 +184,17 @@ export default function SistemaCompleto() {
               </div>
             </div>
 
-            {/* Hero Image - System Complete */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-vyr-gray-800/20 via-vyr-gray-700/20 to-vyr-gray-800/20 blur-3xl rounded-full" />
-              <img
-                src={sistemaCompletoHero}
-                alt="VYR SYSTEM - Sachês, VYR NODE e Plataforma"
-                className="relative z-10 w-full rounded-2xl shadow-2xl shadow-vyr-black/50"
-              />
+            {/* Hero Visual - VYR NODE + Boxes CSS-based */}
+            <div className="relative flex flex-col items-center gap-8">
+              {/* VYR NODE Visual */}
+              <NodeVisual size="lg" />
+              
+              {/* 3 Boxes Preview */}
+              <AllBoxesPreview />
             </div>
           </div>
 
-          {/* Sachets Overview */}
+          {/* Sachets Overview com mockups CSS */}
           <div className="mt-12 sm:mt-20">
             <div className="text-center mb-8 sm:mb-10">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-vyr-white mb-3 sm:mb-4">
@@ -170,11 +207,11 @@ export default function SistemaCompleto() {
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {/* VYR BOOT */}
-              <div className="relative p-6 rounded-2xl bg-gradient-to-b from-vyr-gray-800/40 to-vyr-black/60 border border-vyr-gray-600/30 overflow-hidden group">
+              <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-gray-600/30 overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-vyr-gray-100" />
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-20 h-20 rounded-xl bg-vyr-gray-800/50 flex items-center justify-center p-2">
-                    <img src={sachetDia} alt="VYR BOOT" className="w-full h-full object-contain" />
+                  <div className="scale-75">
+                    <SachetMockup variant="BOOT" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -200,11 +237,11 @@ export default function SistemaCompleto() {
               </div>
 
               {/* VYR HOLD */}
-              <div className="relative p-6 rounded-2xl bg-gradient-to-b from-vyr-gray-700/40 to-vyr-black/60 border border-vyr-gray-500/30 overflow-hidden group">
+              <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-gray-500/30 overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-vyr-gray-600" />
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-20 h-20 rounded-xl bg-vyr-gray-700/50 flex items-center justify-center p-2">
-                    <img src={sachetTarde} alt="VYR HOLD" className="w-full h-full object-contain" />
+                  <div className="scale-75">
+                    <SachetMockup variant="HOLD" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -230,11 +267,11 @@ export default function SistemaCompleto() {
               </div>
 
               {/* VYR CLEAR */}
-              <div className="relative p-6 rounded-2xl bg-gradient-to-b from-vyr-cold-blue/20 to-vyr-black/60 border border-vyr-cold-blue/30 overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-1 bg-vyr-cold-blue" />
+              <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-cold-blue/30 overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-vyr-coldBlue" />
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-20 h-20 rounded-xl bg-vyr-cold-blue/10 flex items-center justify-center p-2">
-                    <img src={sachetNoite} alt="VYR CLEAR" className="w-full h-full object-contain" />
+                  <div className="scale-75">
+                    <SachetMockup variant="CLEAR" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -283,9 +320,9 @@ export default function SistemaCompleto() {
             {ringFeatures.map((feature, idx) => (
               <div
                 key={idx}
-                className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-vyr-gray-900/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors"
+                className="p-4 sm:p-6 rounded-sm bg-vyr-gray-900/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-vyr-gray-800/50 flex items-center justify-center mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-sm bg-vyr-gray-800/50 flex items-center justify-center mb-3 sm:mb-4">
                   <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-vyr-gray-300" />
                 </div>
                 <h3 className="text-sm sm:text-lg font-semibold text-vyr-white mb-1 sm:mb-2">{feature.title}</h3>
@@ -312,14 +349,14 @@ export default function SistemaCompleto() {
             {platformFeatures.map((feature, idx) => (
               <div
                 key={idx}
-                className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl border transition-colors ${
+                className={`p-4 sm:p-6 rounded-sm border transition-colors ${
                   feature.exclusive
                     ? "bg-vyr-gray-800/50 border-vyr-gray-600/50"
                     : "bg-vyr-gray-800/30 border-vyr-gray-700/50"
                 }`}
               >
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 ${
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-sm flex items-center justify-center flex-shrink-0 ${
                     feature.exclusive ? "bg-vyr-gray-700/50" : "bg-vyr-gray-700/30"
                   }`}>
                     <feature.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${
@@ -330,7 +367,7 @@ export default function SistemaCompleto() {
                     <div className="flex flex-wrap items-center gap-2 mb-1 sm:mb-2">
                       <h3 className="text-sm sm:text-lg font-semibold text-vyr-white">{feature.title}</h3>
                       {feature.exclusive && (
-                        <span className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-mono font-semibold bg-vyr-gray-700 text-vyr-white rounded-full">
+                        <span className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-xs font-mono font-semibold bg-vyr-gray-700 text-vyr-white rounded-sm">
                           Exclusivo
                         </span>
                       )}
@@ -360,9 +397,9 @@ export default function SistemaCompleto() {
             {included.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl bg-vyr-gray-900/50 border border-vyr-gray-700/50"
+                className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-sm bg-vyr-gray-900/50 border border-vyr-gray-700/50"
               >
-                <div className="w-10 h-10 rounded-lg bg-vyr-gray-800/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-sm bg-vyr-gray-800/50 flex items-center justify-center flex-shrink-0">
                   <item.icon className={`w-5 h-5 ${item.color}`} />
                 </div>
                 <span className="text-sm sm:text-base text-vyr-gray-300">{item.text}</span>
@@ -371,7 +408,7 @@ export default function SistemaCompleto() {
           </div>
 
           {/* Final CTA */}
-          <div className="bg-vyr-gray-900/80 rounded-2xl p-6 sm:p-10 border border-vyr-gray-700/50 text-center">
+          <div className="bg-vyr-gray-900/80 rounded-sm p-6 sm:p-10 border border-vyr-gray-700/50 text-center">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-vyr-white mb-3 sm:mb-4">
               Comece sua Jornada de Otimização
             </h3>
@@ -381,13 +418,13 @@ export default function SistemaCompleto() {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-4 sm:mb-6">
               <Link to="/login?signup=true">
-                <Button className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-xl transition-all duration-300 hover:scale-[1.02]">
+                <Button className="w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 text-base sm:text-lg font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-sm transition-all duration-300 hover:scale-[1.02]">
                   Quero o VYR SYSTEM
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
               </Link>
               <Link to="/rotina-completa">
-                <Button variant="outline" className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-mono border-vyr-gray-600 text-vyr-white hover:bg-vyr-gray-800 rounded-xl">
+                <Button variant="outline" className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-mono border-vyr-gray-600 text-vyr-white hover:bg-vyr-gray-800 rounded-sm">
                   Ver Rotina Completa
                 </Button>
               </Link>

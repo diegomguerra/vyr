@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { LandingNav, Footer } from "@/components/landing";
 import { Button } from "@/components/ui/button";
+import { SachetMockup, NodeVisual } from "@/brand";
 import { 
   Brain, 
   Zap, 
@@ -23,27 +24,20 @@ import {
   Layers
 } from "lucide-react";
 
-import sachetDia from "@/assets/sachet-dia.png";
-import sachetTarde from "@/assets/sachet-tarde.png";
-import sachetNoite from "@/assets/sachet-noite.png";
-import smartRing from "@/assets/smart-ring-nobg.png";
-import sistemaIntegradoHero from "@/assets/sistema-integrado-hero.png";
-
 // ========== SEÇÃO 1: SACHÊS ==========
 const sachets = [
   {
     id: "dia",
     name: "VYR BOOT",
+    variant: "BOOT" as const,
     icon: Sun,
-    color: "text-vyr-gray-100",
-    bgGradient: "from-vyr-gray-800/40 to-vyr-black/60",
-    borderColor: "border-vyr-gray-600/30",
-    accentColor: "text-vyr-gray-100",
-    topBar: "bg-vyr-gray-100",
+    bgColor: "bg-vyr-gray-100",
+    textColor: "text-vyr-black",
+    accentColor: "text-vyr-gray-600",
+    borderColor: "border-vyr-gray-300",
     periodo: "Manhã",
     objetivo: "Ativação & Clareza",
     descricao: "Atenção sustentada, foco executivo, memória de trabalho e clareza cognitiva.",
-    image: sachetDia,
     areas: [
       { name: "Córtex Pré-Frontal", funcao: "Controle executivo" },
       { name: "Hipocampo", funcao: "Memória" },
@@ -65,16 +59,15 @@ const sachets = [
   {
     id: "tarde",
     name: "VYR HOLD",
+    variant: "HOLD" as const,
     icon: Sunset,
-    color: "text-vyr-gray-400",
-    bgGradient: "from-vyr-gray-700/40 to-vyr-black/60",
-    borderColor: "border-vyr-gray-500/30",
+    bgColor: "bg-vyr-gray-600",
+    textColor: "text-vyr-white",
     accentColor: "text-vyr-gray-300",
-    topBar: "bg-vyr-gray-600",
+    borderColor: "border-vyr-gray-500",
     periodo: "Tarde",
     objetivo: "Sustentação & Resiliência",
     descricao: "Sustentar desempenho mental, reduzir fadiga cognitiva e manter estabilidade emocional.",
-    image: sachetTarde,
     areas: [
       { name: "Tronco Encefálico", funcao: "Vigília" },
       { name: "Córtex Pré-Frontal", funcao: "Sustentação" },
@@ -91,16 +84,15 @@ const sachets = [
   {
     id: "noite",
     name: "VYR CLEAR",
+    variant: "CLEAR" as const,
     icon: Moon,
-    color: "text-vyr-cold-blue",
-    bgGradient: "from-vyr-cold-blue/20 to-vyr-black/60",
-    borderColor: "border-vyr-cold-blue/30",
-    accentColor: "text-vyr-cold-blue",
-    topBar: "bg-vyr-cold-blue",
+    bgColor: "bg-vyr-coldBlue",
+    textColor: "text-vyr-white",
+    accentColor: "text-vyr-gray-300",
+    borderColor: "border-vyr-cold-blue/50",
     periodo: "Noite",
     objetivo: "Recuperação Cognitiva",
     descricao: "Redução de hiperatividade mental, recuperação neural, consolidação de memória e qualidade do sono.",
-    image: sachetNoite,
     areas: [
       { name: "Hipotálamo", funcao: "Ritmo circadiano" },
       { name: "Sistema Límbico", funcao: "Amígdala" },
@@ -124,7 +116,7 @@ const entradaDados = [
   { icon: Sun, label: "Despertar mental", desc: "Clareza ao acordar" }
 ];
 
-// ========== SEÇÃO 3: SMART RING ==========
+// ========== SEÇÃO 3: VYR NODE ==========
 const ringMetrics = [
   { icon: Heart, label: "Frequência cardíaca 24/7", desc: "Monitoramento contínuo" },
   { icon: Activity, label: "HRV", desc: "Variabilidade da frequência cardíaca" },
@@ -226,18 +218,19 @@ export default function ComoFunciona() {
             {sachets.map((sachet) => (
               <div 
                 key={sachet.id} 
-                className={`relative rounded-2xl bg-gradient-to-b ${sachet.bgGradient} border ${sachet.borderColor} overflow-hidden`}
+                className={`relative rounded-sm bg-vyr-gray-900/80 border ${sachet.borderColor} overflow-hidden`}
               >
                 {/* Top bar */}
-                <div className={`absolute top-0 left-0 w-full h-1 ${sachet.topBar}`} />
+                <div className={`absolute top-0 left-0 w-full h-1 ${sachet.bgColor}`} />
                 
                 <div className="p-6 md:p-8">
                   <div className="flex flex-col lg:flex-row gap-8">
                     {/* Header */}
                     <div className="lg:w-1/3">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-20 h-20 rounded-xl bg-vyr-gray-800/50 flex items-center justify-center p-2">
-                          <img src={sachet.image} alt={sachet.name} className="w-full h-full object-contain" />
+                        {/* Mockup visual do sachê */}
+                        <div className="scale-75">
+                          <SachetMockup variant={sachet.variant} />
                         </div>
                         <div>
                           <div className="flex items-center gap-2 mb-1">
@@ -277,7 +270,7 @@ export default function ComoFunciona() {
                       </h4>
                       <div className="grid sm:grid-cols-2 gap-3">
                         {sachet.componentes.map((comp, i) => (
-                          <div key={i} className="flex items-start gap-2 p-3 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-700/50">
+                          <div key={i} className="flex items-start gap-2 p-3 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
                             <Check className={`w-4 h-4 ${sachet.accentColor} mt-0.5 flex-shrink-0`} />
                             <div>
                               <div className="text-sm text-vyr-white font-medium">{comp.nome}</div>
@@ -314,8 +307,8 @@ export default function ComoFunciona() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {entradaDados.map((item, i) => (
-              <div key={i} className="p-5 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center mb-3">
+              <div key={i} className="p-5 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors">
+                <div className="w-10 h-10 rounded-sm bg-vyr-gray-700/50 flex items-center justify-center mb-3">
                   <item.icon className="w-5 h-5 text-vyr-gray-300" />
                 </div>
                 <h3 className="font-semibold text-vyr-white mb-1">{item.label}</h3>
@@ -324,13 +317,13 @@ export default function ComoFunciona() {
             ))}
           </div>
 
-          <div className="bg-vyr-gray-800/50 rounded-2xl p-8 border border-vyr-gray-700/50">
+          <div className="bg-vyr-gray-800/50 rounded-sm p-8 border border-vyr-gray-700/50">
             <h3 className="text-xl font-semibold text-vyr-white mb-6">
               Por que a percepção é importante?
             </h3>
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-sm bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-vyr-gray-300" />
                 </div>
                 <div>
@@ -339,7 +332,7 @@ export default function ComoFunciona() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-sm bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-vyr-gray-300" />
                 </div>
                 <div>
@@ -348,7 +341,7 @@ export default function ComoFunciona() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-sm bg-vyr-gray-700/50 flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-vyr-gray-300" />
                 </div>
                 <div>
@@ -379,18 +372,15 @@ export default function ComoFunciona() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div className="order-2 md:order-1">
-              <img 
-                src={smartRing} 
-                alt="VYR NODE" 
-                className="w-full max-w-md mx-auto opacity-90"
-              />
+            <div className="order-2 md:order-1 flex justify-center">
+              {/* VYR NODE Visual CSS-based */}
+              <NodeVisual size="lg" />
             </div>
             <div className="order-1 md:order-2">
               <div className="grid sm:grid-cols-2 gap-4">
                 {ringMetrics.map((metric, i) => (
-                  <div key={i} className="p-4 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors">
-                    <div className="w-10 h-10 rounded-lg bg-vyr-gray-700/50 flex items-center justify-center mb-3">
+                  <div key={i} className="p-4 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50 hover:border-vyr-gray-500 transition-colors">
+                    <div className="w-10 h-10 rounded-sm bg-vyr-gray-700/50 flex items-center justify-center mb-3">
                       <metric.icon className="w-5 h-5 text-vyr-gray-300" />
                     </div>
                     <h3 className="font-semibold text-vyr-white text-sm mb-1">{metric.label}</h3>
@@ -428,7 +418,7 @@ export default function ComoFunciona() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {integracaoDia.map((item, i) => (
-                <div key={i} className="p-4 rounded-xl bg-vyr-gray-800/30 border border-vyr-gray-700/50">
+                <div key={i} className="p-4 rounded-sm bg-vyr-gray-800/30 border border-vyr-gray-700/50">
                   <div className="text-sm font-medium text-vyr-white mb-2">{item.acao}</div>
                   <div className="text-xs text-vyr-gray-500 mb-2">{item.impacto}</div>
                   <div className="text-xs text-vyr-gray-400 font-mono">{item.metrica}</div>
@@ -445,7 +435,7 @@ export default function ComoFunciona() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {integracaoTarde.map((item, i) => (
-                <div key={i} className="p-4 rounded-xl bg-vyr-gray-800/30 border border-vyr-gray-700/50">
+                <div key={i} className="p-4 rounded-sm bg-vyr-gray-800/30 border border-vyr-gray-700/50">
                   <div className="text-sm font-medium text-vyr-white mb-2">{item.acao}</div>
                   <div className="text-xs text-vyr-gray-500 mb-2">{item.impacto}</div>
                   <div className="text-xs text-vyr-gray-400 font-mono">{item.metrica}</div>
@@ -462,7 +452,7 @@ export default function ComoFunciona() {
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {integracaoNoite.map((item, i) => (
-                <div key={i} className="p-4 rounded-xl bg-vyr-cold-blue/10 border border-vyr-cold-blue/30">
+                <div key={i} className="p-4 rounded-sm bg-vyr-cold-blue/10 border border-vyr-cold-blue/30">
                   <div className="text-sm font-medium text-vyr-white mb-2">{item.acao}</div>
                   <div className="text-xs text-vyr-gray-500 mb-2">{item.impacto}</div>
                   <div className="text-xs text-vyr-cold-blue font-mono">{item.metrica}</div>
@@ -484,13 +474,13 @@ export default function ComoFunciona() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/rotina-completa">
-              <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono bg-vyr-gray-800 hover:bg-vyr-gray-700 text-vyr-white border border-vyr-gray-600 rounded-lg transition-all">
+              <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono bg-vyr-gray-800 hover:bg-vyr-gray-700 text-vyr-white border border-vyr-gray-600 rounded-sm transition-all">
                 Rotina Completa
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <Link to="/sistema-completo">
-              <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-lg transition-all">
+              <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black rounded-sm transition-all">
                 VYR SYSTEM
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
