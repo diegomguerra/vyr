@@ -4,55 +4,55 @@ import smartRingImage from "@/assets/smart-ring-nobg.png";
 // Simulated Dashboard Screen
 function DashboardScreen() {
   return (
-    <div className="bg-slate-900 rounded-2xl p-3 h-full">
+    <div className="bg-vyr-gray-900 rounded-2xl p-3 h-full">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg" />
-          <span className="text-white text-xs font-semibold">NZT Dashboard</span>
+          <div className="w-6 h-6 bg-vyr-gray-500 rounded-lg" />
+          <span className="text-vyr-white text-xs font-semibold font-mono">VYR Dashboard</span>
         </div>
-        <div className="w-6 h-6 bg-slate-700 rounded-full" />
+        <div className="w-6 h-6 bg-vyr-gray-500 rounded-full" />
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 gap-2 mb-3">
-        <div className="bg-slate-800 rounded-lg p-2">
-          <div className="text-[8px] text-slate-400">Performance</div>
-          <div className="text-sm font-bold text-emerald-400">+23%</div>
+        <div className="bg-vyr-black rounded-lg p-2 border border-vyr-gray-500/20">
+          <div className="text-[8px] text-vyr-gray-100/60">Performance</div>
+          <div className="text-sm font-bold text-vyr-white">+23%</div>
           <div className="flex gap-0.5 mt-1">
             {[40, 55, 45, 60, 75, 65, 80].map((h, i) => (
-              <div key={i} className="w-1.5 bg-emerald-500/50 rounded-sm" style={{ height: `${h * 0.2}px` }} />
+              <div key={i} className="w-1.5 bg-vyr-gray-100/30 rounded-sm" style={{ height: `${h * 0.2}px` }} />
             ))}
           </div>
         </div>
-        <div className="bg-slate-800 rounded-lg p-2">
-          <div className="text-[8px] text-slate-400">Qualidade do Sono</div>
-          <div className="text-sm font-bold text-violet-400">8.2h</div>
+        <div className="bg-vyr-black rounded-lg p-2 border border-vyr-gray-500/20">
+          <div className="text-[8px] text-vyr-gray-100/60">Qualidade do Sono</div>
+          <div className="text-sm font-bold text-vyr-cold-blue">8.2h</div>
           <div className="flex gap-0.5 mt-1">
             {[60, 70, 65, 80, 75, 85, 90].map((h, i) => (
-              <div key={i} className="w-1.5 bg-violet-500/50 rounded-sm" style={{ height: `${h * 0.2}px` }} />
+              <div key={i} className="w-1.5 bg-vyr-cold-blue/30 rounded-sm" style={{ height: `${h * 0.2}px` }} />
             ))}
           </div>
         </div>
       </div>
 
       {/* Main Chart */}
-      <div className="bg-slate-800 rounded-lg p-2 mb-3">
+      <div className="bg-vyr-black rounded-lg p-2 mb-3 border border-vyr-gray-500/20">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-[8px] text-slate-400">Evolução Cognitiva</span>
-          <span className="text-[8px] text-emerald-400">+15%</span>
+          <span className="text-[8px] text-vyr-gray-100/60">Evolução Cognitiva</span>
+          <span className="text-[8px] text-vyr-white">+15%</span>
         </div>
         <svg viewBox="0 0 200 60" className="w-full h-12">
           <defs>
             <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
+              <stop offset="0%" stopColor="#525252" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#525252" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path
             d="M0,50 Q25,45 50,40 T100,30 T150,25 T200,15"
             fill="none"
-            stroke="#8b5cf6"
+            stroke="#E5E5E5"
             strokeWidth="2"
           />
           <path
@@ -64,13 +64,13 @@ function DashboardScreen() {
 
       {/* Stats Row */}
       <div className="flex gap-2">
-        <div className="flex-1 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 rounded-lg p-2 border border-violet-500/30">
-          <div className="text-[8px] text-slate-300">Foco</div>
-          <div className="text-xs font-bold text-white">Alto</div>
+        <div className="flex-1 bg-vyr-gray-900 rounded-lg p-2 border border-vyr-gray-500/30">
+          <div className="text-[8px] text-vyr-gray-100/60">Foco</div>
+          <div className="text-xs font-bold text-vyr-white">Alto</div>
         </div>
-        <div className="flex-1 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-lg p-2 border border-emerald-500/30">
-          <div className="text-[8px] text-slate-300">Energia</div>
-          <div className="text-xs font-bold text-white">+18%</div>
+        <div className="flex-1 bg-vyr-gray-900 rounded-lg p-2 border border-vyr-gray-500/30">
+          <div className="text-[8px] text-vyr-gray-100/60">Energia</div>
+          <div className="text-xs font-bold text-vyr-white">+18%</div>
         </div>
       </div>
     </div>
@@ -80,64 +80,58 @@ function DashboardScreen() {
 // Simulated Sleep Tracking Screen
 function SleepScreen() {
   return (
-    <div className="bg-gradient-to-b from-indigo-950 to-slate-900 rounded-2xl p-3 h-full">
+    <div className="bg-vyr-gray-900 rounded-2xl p-3 h-full">
       {/* Header */}
       <div className="text-center mb-3">
-        <Moon className="w-5 h-5 text-indigo-400 mx-auto mb-1" />
-        <span className="text-white text-xs font-semibold">Análise do Sono</span>
+        <Moon className="w-5 h-5 text-vyr-cold-blue mx-auto mb-1" />
+        <span className="text-vyr-white text-xs font-semibold font-mono">Análise do Sono</span>
       </div>
 
       {/* Sleep Circle */}
       <div className="relative w-24 h-24 mx-auto mb-3">
         <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#334155" strokeWidth="8" />
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#171717" strokeWidth="8" />
           <circle
             cx="50"
             cy="50"
             r="40"
             fill="none"
-            stroke="url(#sleepGradient)"
+            stroke="#1E293B"
             strokeWidth="8"
             strokeDasharray="220"
             strokeDashoffset="44"
             strokeLinecap="round"
           />
-          <defs>
-            <linearGradient id="sleepGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#818cf8" />
-              <stop offset="100%" stopColor="#c084fc" />
-            </linearGradient>
-          </defs>
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold text-white">82%</span>
-          <span className="text-[8px] text-indigo-300">Qualidade</span>
+          <span className="text-xl font-bold text-vyr-white">82%</span>
+          <span className="text-[8px] text-vyr-cold-blue">Qualidade</span>
         </div>
       </div>
 
       {/* Sleep Phases */}
       <div className="space-y-1.5">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-indigo-400 rounded-full" />
-          <span className="text-[8px] text-slate-300 flex-1">REM</span>
-          <span className="text-[8px] text-white font-medium">1h 45m</span>
+          <div className="w-2 h-2 bg-vyr-cold-blue rounded-full" />
+          <span className="text-[8px] text-vyr-gray-100/60 flex-1">REM</span>
+          <span className="text-[8px] text-vyr-white font-medium">1h 45m</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-violet-400 rounded-full" />
-          <span className="text-[8px] text-slate-300 flex-1">Profundo</span>
-          <span className="text-[8px] text-white font-medium">2h 30m</span>
+          <div className="w-2 h-2 bg-vyr-gray-500 rounded-full" />
+          <span className="text-[8px] text-vyr-gray-100/60 flex-1">Profundo</span>
+          <span className="text-[8px] text-vyr-white font-medium">2h 30m</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-purple-400 rounded-full" />
-          <span className="text-[8px] text-slate-300 flex-1">Leve</span>
-          <span className="text-[8px] text-white font-medium">3h 15m</span>
+          <div className="w-2 h-2 bg-vyr-gray-100 rounded-full" />
+          <span className="text-[8px] text-vyr-gray-100/60 flex-1">Leve</span>
+          <span className="text-[8px] text-vyr-white font-medium">3h 15m</span>
         </div>
       </div>
 
       {/* Bottom Stat */}
-      <div className="mt-3 bg-indigo-900/50 rounded-lg p-2 text-center">
-        <span className="text-[8px] text-indigo-300">Tempo Total</span>
-        <div className="text-sm font-bold text-white">7h 30m</div>
+      <div className="mt-3 bg-vyr-black rounded-lg p-2 text-center border border-vyr-gray-500/20">
+        <span className="text-[8px] text-vyr-cold-blue">Tempo Total</span>
+        <div className="text-sm font-bold text-vyr-white">7h 30m</div>
       </div>
     </div>
   );
@@ -148,16 +142,16 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
   return (
     <div className={`relative ${className}`}>
       {/* Phone Frame */}
-      <div className="relative bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 rounded-[2rem] sm:rounded-[3rem] p-[2px] sm:p-[3px] shadow-2xl shadow-black/60">
+      <div className="relative bg-gradient-to-b from-vyr-gray-500 via-vyr-gray-900 to-vyr-black rounded-[2rem] sm:rounded-[3rem] p-[2px] sm:p-[3px] shadow-2xl shadow-black/60">
         {/* Inner bezel */}
-        <div className="bg-black rounded-[1.8rem] sm:rounded-[2.8rem] p-1.5 sm:p-2">
+        <div className="bg-vyr-black rounded-[1.8rem] sm:rounded-[2.8rem] p-1.5 sm:p-2">
           {/* Dynamic Island */}
-          <div className="absolute top-3 sm:top-5 left-1/2 -translate-x-1/2 w-16 sm:w-24 h-5 sm:h-7 bg-black rounded-full z-10 flex items-center justify-center gap-1.5 sm:gap-2">
-            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-slate-800 rounded-full" />
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-slate-900 rounded-full ring-1 ring-slate-700" />
+          <div className="absolute top-3 sm:top-5 left-1/2 -translate-x-1/2 w-16 sm:w-24 h-5 sm:h-7 bg-vyr-black rounded-full z-10 flex items-center justify-center gap-1.5 sm:gap-2">
+            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-vyr-gray-900 rounded-full" />
+            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-vyr-gray-900 rounded-full ring-1 ring-vyr-gray-500/50" />
           </div>
           {/* Screen */}
-          <div className="relative bg-slate-900 rounded-[2.5rem] overflow-hidden w-40 h-[340px] sm:w-56 sm:h-[480px]">
+          <div className="relative bg-vyr-gray-900 rounded-[2.5rem] overflow-hidden w-40 h-[340px] sm:w-56 sm:h-[480px]">
             <div className="pt-10 px-2 h-full">
               {children}
             </div>
@@ -165,7 +159,7 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
           </div>
           {/* Bottom bar indicator */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-28 h-1 bg-slate-600 rounded-full" />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-28 h-1 bg-vyr-gray-500 rounded-full" />
         </div>
       </div>
     </div>
@@ -182,13 +176,11 @@ export function AppShowcase() {
 
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-violet-900" />
+      {/* Background - Neutral VYR */}
+      <div className="absolute inset-0 bg-vyr-gray-900" />
       
-      {/* Bokeh Effects */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-violet-400/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-fuchsia-400/15 rounded-full blur-3xl" />
-      <div className="absolute top-40 right-1/4 w-48 h-48 bg-indigo-300/15 rounded-full blur-2xl" />
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#17171710_1px,transparent_1px),linear-gradient(to_bottom,#17171710_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -203,14 +195,14 @@ export function AppShowcase() {
                 <SleepScreen />
               </PhoneFrame>
               
-              {/* Smart Ring - clean transparent image */}
+              {/* VYR NODE - clean transparent image */}
               <div className="absolute -bottom-8 sm:-bottom-12 -right-2 sm:-right-4 z-20">
                 <div className="relative group">
                   {/* Subtle glow */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/20 to-violet-500/20 rounded-full blur-2xl scale-125 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-vyr-gray-500/20 rounded-full blur-2xl scale-125 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                   <img 
                     src={smartRingImage} 
-                    alt="Smart Ring" 
+                    alt="VYR NODE" 
                     className="w-20 sm:w-32 h-auto relative z-10 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -220,22 +212,22 @@ export function AppShowcase() {
 
           {/* Content */}
           <div className="text-center lg:text-left">
-            <p className="text-sm text-fuchsia-400 uppercase tracking-widest mb-3 font-medium">
-              Plataforma + Smart Ring
+            <p className="text-sm text-vyr-gray-100 uppercase tracking-widest mb-3 font-mono">
+              Plataforma + VYR NODE
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-vyr-white mb-6 leading-tight">
               Dados precisos para{" "}
-              <span className="bg-gradient-to-r from-fuchsia-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              <span className="text-vyr-gray-100">
                 evolução mensurável
               </span>
             </h2>
             
-            <p className="text-lg text-white/80 mb-4 max-w-xl">
-              Smart Ring discreto e elegante que coleta dados fisiológicos 24/7. 
+            <p className="text-lg text-vyr-gray-100/80 mb-4 max-w-xl">
+              VYR NODE discreto e técnico que coleta dados fisiológicos 24/7. 
               Não substitui relógios sociais. Não possui estética esportiva.
             </p>
 
-            <p className="text-base text-white/60 mb-8 max-w-xl">
+            <p className="text-base text-vyr-gray-500 mb-8 max-w-xl">
               Dashboard cognitivo com evolução histórica e correlação entre rotina, 
               suplementos, recuperação e desempenho. Comparação apenas consigo mesmo.
             </p>
@@ -243,11 +235,11 @@ export function AppShowcase() {
             {/* Feature Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {features.map((feature) => (
-                <div key={feature.label} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
-                  <feature.icon className="w-5 h-5 text-fuchsia-300" />
+                <div key={feature.label} className="flex items-center gap-3 bg-vyr-black/50 backdrop-blur-sm rounded-xl p-3 border border-vyr-gray-500/20">
+                  <feature.icon className="w-5 h-5 text-vyr-gray-100" />
                   <div>
-                    <div className="text-xs text-white/70">{feature.label}</div>
-                    <div className="text-sm font-semibold text-white">{feature.value}</div>
+                    <div className="text-xs text-vyr-gray-500">{feature.label}</div>
+                    <div className="text-sm font-semibold text-vyr-white font-mono">{feature.value}</div>
                   </div>
                 </div>
               ))}

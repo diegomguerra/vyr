@@ -22,10 +22,10 @@ export function TabNav({ active, onChange }: TabNavProps) {
         <button
           key={key}
           className={`
-            flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all border
+            flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all border font-mono
             ${active === key 
-              ? "bg-violet-500/20 text-white border-violet-500/30" 
-              : "bg-slate-800/30 text-slate-400 border-slate-700/30 hover:text-white hover:bg-slate-800/50"}
+              ? "bg-vyr-gray-100/10 text-vyr-white border-vyr-gray-100/30" 
+              : "bg-vyr-gray-900/30 text-vyr-gray-500 border-vyr-gray-500/20 hover:text-vyr-white hover:bg-vyr-gray-900/50"}
           `}
           onClick={() => onChange(key)}
         >

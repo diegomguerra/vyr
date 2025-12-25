@@ -94,8 +94,8 @@ export default function Dashboard() {
       <div className="flex flex-col gap-3 sm:gap-4">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <h1 className="text-lg sm:text-2xl font-bold text-white">Painel de Performance</h1>
-            <p className="text-slate-400 text-xs sm:text-sm mt-1">
+            <h1 className="text-lg sm:text-2xl font-bold text-vyr-white font-mono">Painel de Performance</h1>
+            <p className="text-vyr-gray-500 text-xs sm:text-sm mt-1">
               Acompanhe sua evolução cognitiva diária
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function Dashboard() {
           {plan === "pro" && (
             <>
               <StatusPill variant={ringConnected ? "success" : "default"}>
-                Ring: {ringConnected ? "on" : "off"}
+                NODE: {ringConnected ? "on" : "off"}
               </StatusPill>
               <StatusPill>Data: {ringDaily.dataQuality}</StatusPill>
             </>
@@ -193,7 +193,7 @@ export default function Dashboard() {
       )}
 
       {/* Footer note */}
-      <p className="text-xs text-slate-500 text-center max-w-2xl mx-auto pt-6 border-t border-slate-700/30">
+      <p className="text-xs text-vyr-gray-500 text-center max-w-2xl mx-auto pt-6 border-t border-vyr-gray-500/20">
         Dados são processados localmente. Insights liberados com qualidade mínima de dados.
       </p>
     </div>

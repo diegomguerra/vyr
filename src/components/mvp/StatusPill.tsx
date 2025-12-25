@@ -5,14 +5,14 @@ interface StatusPillProps {
 
 export function StatusPill({ children, variant = "default" }: StatusPillProps) {
   const variants = {
-    default: "bg-slate-800/50 text-slate-300 border-slate-700/50",
-    success: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30",
-    warning: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-    info: "bg-violet-500/10 text-violet-400 border-violet-500/30",
+    default: "bg-vyr-gray-900/50 text-vyr-gray-100 border-vyr-gray-500/20",
+    success: "bg-vyr-gray-100/10 text-vyr-gray-100 border-vyr-gray-100/30",
+    warning: "bg-vyr-gray-500/10 text-vyr-gray-500 border-vyr-gray-500/30",
+    info: "bg-vyr-cold-blue/10 text-vyr-cold-blue border-vyr-cold-blue/30",
   };
 
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium ${variants[variant]}`}>
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium font-mono ${variants[variant]}`}>
       {children}
     </span>
   );
