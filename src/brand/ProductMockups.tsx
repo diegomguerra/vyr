@@ -10,9 +10,9 @@ export function SachetMockup({ variant, className = "" }: SachetMockupProps) {
   
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      {/* Sachet */}
+      {/* Sachet - Larger and more prominent */}
       <div 
-        className="relative w-24 h-40 rounded-sm overflow-hidden"
+        className="relative w-32 h-52 rounded-sm overflow-hidden shadow-lg"
         style={{ 
           backgroundColor: label.color,
           fontFamily: VYR_TYPOGRAPHY.logo.fontFamily 
@@ -20,15 +20,15 @@ export function SachetMockup({ variant, className = "" }: SachetMockupProps) {
       >
         {/* Top seal */}
         <div 
-          className="absolute top-0 left-0 right-0 h-3"
+          className="absolute top-0 left-0 right-0 h-4"
           style={{ backgroundColor: VYR_COLORS.gray[700] }}
         />
         
         {/* Content area */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-3">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
           {/* VYR Logo */}
           <span 
-            className="text-xs tracking-[0.3em] mb-1"
+            className="text-sm tracking-[0.35em] mb-1.5 font-bold"
             style={{ 
               color: variant === "BOOT" ? VYR_COLORS.black : VYR_COLORS.white,
               fontWeight: VYR_TYPOGRAPHY.logo.fontWeight 
@@ -39,10 +39,10 @@ export function SachetMockup({ variant, className = "" }: SachetMockupProps) {
           
           {/* Label */}
           <span 
-            className="text-[10px] tracking-[0.2em]"
+            className="text-xs tracking-[0.25em]"
             style={{ 
               color: variant === "BOOT" ? VYR_COLORS.gray[500] : VYR_COLORS.gray[300],
-              fontWeight: 400 
+              fontWeight: 500 
             }}
           >
             {label.name.split(" ")[1]}
@@ -50,9 +50,9 @@ export function SachetMockup({ variant, className = "" }: SachetMockupProps) {
         </div>
         
         {/* Bottom info */}
-        <div className="absolute bottom-2 left-0 right-0 text-center">
+        <div className="absolute bottom-3 left-0 right-0 text-center">
           <span 
-            className="text-[6px] tracking-wider opacity-50"
+            className="text-[8px] tracking-widest opacity-60"
             style={{ color: variant === "BOOT" ? VYR_COLORS.black : VYR_COLORS.white }}
           >
             30 DOSES
@@ -62,9 +62,9 @@ export function SachetMockup({ variant, className = "" }: SachetMockupProps) {
       
       {/* Label below */}
       <span 
-        className="mt-3 text-xs tracking-[0.15em]"
+        className="mt-4 text-sm tracking-[0.2em] font-medium"
         style={{ 
-          color: VYR_COLORS.gray[400],
+          color: VYR_COLORS.gray[300],
           fontFamily: VYR_TYPOGRAPHY.logo.fontFamily 
         }}
       >

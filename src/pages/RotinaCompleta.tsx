@@ -119,9 +119,9 @@ export default function RotinaCompleta() {
                 key={sachet.id}
                 className={`relative rounded-sm p-6 bg-vyr-gray-900/80 border ${sachet.borderColor} backdrop-blur-sm`}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  {/* Mockup CSS do sachê */}
-                  <div className="scale-75">
+                <div className="flex items-center gap-6 mb-4">
+                  {/* Mockup CSS do sachê - Larger */}
+                  <div className="scale-90 sm:scale-100">
                     <SachetMockup variant={sachet.variant} />
                   </div>
                   <div>

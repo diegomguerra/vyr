@@ -61,8 +61,8 @@ function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
               <VYRLabel variant={supplement.variant} />
               <span className="text-[10px] sm:text-xs text-vyr-gray-500 mt-2 font-mono">{supplement.sachets}</span>
               
-              {/* Mockup visual do sachê (CSS-based) */}
-              <div className="mt-2 sm:mt-3 scale-75 sm:scale-90">
+              {/* Mockup visual do sachê (CSS-based) - Larger and more prominent */}
+              <div className="mt-3 sm:mt-4 scale-90 sm:scale-100">
                 <SachetMockup variant={supplement.variant} />
               </div>
             </div>
