@@ -21,35 +21,35 @@ export function SettingsPanel({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
       {/* Config Ring */}
-      <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base text-white mb-2 sm:mb-3">Config — Ring</h3>
+      <div className="vyr-card-graphite p-4 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base text-vyr-white mb-2 sm:mb-3 font-mono">Config — Ring</h3>
 
         {plan !== "pro" ? (
-          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/50 border border-slate-700/30">
-            <p className="text-xs sm:text-sm text-slate-400">
+          <div className="p-3 sm:p-4 rounded-sm bg-vyr-gray-900/50 border border-vyr-gray-700/30">
+            <p className="text-xs sm:text-sm text-vyr-gray-400 font-mono">
               🔒 Conexão com ring disponível no Plano Superior.
             </p>
           </div>
         ) : (
           <>
-            <p className="text-[10px] sm:text-xs text-slate-400 mb-3 sm:mb-4">
+            <p className="text-[10px] sm:text-xs text-vyr-gray-400 mb-3 sm:mb-4 font-mono">
               Fluxo do SDK: permissões, pareamento, sync e revogação.
             </p>
             <div className="flex gap-1.5 sm:gap-2 flex-wrap">
               <button 
-                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-sm text-xs sm:text-sm font-medium font-mono bg-vyr-gray-700/50 text-vyr-gray-300 border border-vyr-gray-600/50 hover:bg-vyr-gray-700 transition-all" 
                 onClick={onConnect}
               >
                 {ringConnected ? "Reconectar" : "Conectar"}
               </button>
               <button 
-                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-slate-700/50 text-slate-300 border border-slate-600/50 hover:bg-slate-700 transition-all" 
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-sm text-xs sm:text-sm font-medium font-mono bg-vyr-gray-700/50 text-vyr-gray-300 border border-vyr-gray-600/50 hover:bg-vyr-gray-700 transition-all" 
                 onClick={onDisconnect}
               >
                 Desconectar
               </button>
               <button 
-                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-rose-500/10 text-rose-400 border border-rose-500/30 hover:bg-rose-500/20 transition-all" 
+                className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-sm text-xs sm:text-sm font-medium font-mono bg-red-500/10 text-red-400/80 border border-red-500/30 hover:bg-red-500/20 transition-all" 
                 onClick={onClearData}
               >
                 Limpar
@@ -60,9 +60,9 @@ export function SettingsPanel({
       </div>
 
       {/* Config Baseline */}
-      <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base text-white mb-2 sm:mb-3">Config — Baseline</h3>
-        <p className="text-[10px] sm:text-xs text-slate-400 mb-3 sm:mb-4">
+      <div className="vyr-card-graphite p-4 sm:p-5">
+        <h3 className="font-semibold text-sm sm:text-base text-vyr-white mb-2 sm:mb-3 font-mono">Config — Baseline</h3>
+        <p className="text-[10px] sm:text-xs text-vyr-gray-400 mb-3 sm:mb-4 font-mono">
           Sem baseline, resultados são instáveis.
         </p>
         <div className="flex items-center gap-2 sm:gap-3 flex-wrap">

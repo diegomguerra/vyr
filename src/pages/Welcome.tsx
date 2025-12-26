@@ -394,33 +394,33 @@ export default function Welcome() {
         {step === "activity" && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">Perfil de atividade</h2>
-              <p className="text-slate-400 text-sm">Como é seu dia a dia profissional?</p>
+              <h2 className="text-2xl font-bold text-vyr-white mb-2 font-mono">Perfil de atividade</h2>
+              <p className="text-vyr-gray-400 text-sm">Como é seu dia a dia profissional?</p>
             </div>
 
-            <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 space-y-6">
+            <div className="vyr-card-glow p-6 space-y-6">
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Tipo de atividade principal</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Tipo de atividade principal</label>
                 <div className="grid grid-cols-1 gap-2">
                   {PERFIS.map((p) => (
                     <button
                       key={p.value}
                       onClick={() => setPerfil(p.value as PerfilAtividade)}
                       className={`
-                        p-4 rounded-xl text-left transition-all border flex items-start gap-4
+                        p-4 rounded-sm text-left transition-all border flex items-start gap-4
                         ${perfil === p.value 
-                          ? 'bg-violet-500/20 border-violet-500/50' 
-                          : 'bg-slate-900/30 border-slate-700/50 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 hover:border-vyr-gray-600'}
                       `}
                     >
-                      <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
-                        <DynamicIcon name={p.icon} className="w-5 h-5 text-violet-400" />
+                      <div className="w-10 h-10 rounded-sm bg-vyr-accent/10 flex items-center justify-center flex-shrink-0">
+                        <DynamicIcon name={p.icon} className="w-5 h-5 text-vyr-accent vyr-icon-glow" />
                       </div>
                       <div>
-                        <div className={`font-medium ${perfil === p.value ? 'text-white' : 'text-slate-300'}`}>
+                        <div className={`font-medium font-mono ${perfil === p.value ? 'text-vyr-white' : 'text-vyr-gray-300'}`}>
                           {p.title}
                         </div>
-                        <div className="text-xs text-slate-500 mt-0.5">{p.desc}</div>
+                        <div className="text-xs text-vyr-gray-500 mt-0.5">{p.desc}</div>
                       </div>
                     </button>
                   ))}
@@ -428,23 +428,23 @@ export default function Welcome() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Rotina de trabalho</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Rotina de trabalho</label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {ROTINAS.map((r) => (
                     <button
                       key={r.value}
                       onClick={() => setRotina(r.value as RotinaTrabalho)}
                       className={`
-                        p-4 rounded-xl text-center transition-all border
+                        p-4 rounded-sm text-center transition-all border
                         ${rotina === r.value 
-                          ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                          : 'bg-slate-900/30 border-slate-700/50 text-slate-300 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-300 hover:border-vyr-gray-600'}
                       `}
                     >
-                      <div className="w-10 h-10 rounded-lg bg-slate-800/50 flex items-center justify-center mx-auto mb-2">
-                        <DynamicIcon name={r.icon} className="w-5 h-5 text-violet-400" />
+                      <div className="w-10 h-10 rounded-sm bg-vyr-gray-800/50 flex items-center justify-center mx-auto mb-2">
+                        <DynamicIcon name={r.icon} className="w-5 h-5 text-vyr-accent vyr-icon-glow" />
                       </div>
-                      <span className="text-xs">{r.label}</span>
+                      <span className="text-xs font-mono">{r.label}</span>
                     </button>
                   ))}
                 </div>
@@ -454,14 +454,14 @@ export default function Welcome() {
             <div className="flex justify-between">
               <button
                 onClick={() => setStep("goals")}
-                className="px-6 py-3 rounded-xl text-slate-400 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-sm text-vyr-gray-400 hover:text-vyr-white transition-colors font-mono"
               >
                 Voltar
               </button>
               <button
                 onClick={() => saveAndContinue("health")}
                 disabled={saving || !perfil}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="vyr-btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-sm font-mono disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? "Salvando..." : "Continuar"}
                 <ChevronRight className="w-4 h-4" />
@@ -474,23 +474,23 @@ export default function Welcome() {
         {step === "health" && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">Condições de saúde</h2>
-              <p className="text-slate-400 text-sm">Informações importantes para segurança</p>
+              <h2 className="text-2xl font-bold text-vyr-white mb-2 font-mono">Condições de saúde</h2>
+              <p className="text-vyr-gray-400 text-sm">Informações importantes para segurança</p>
             </div>
 
-            <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 space-y-6">
+            <div className="vyr-card-glow p-6 space-y-6">
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Possui alguma condição? (selecione as aplicáveis)</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Possui alguma condição? (selecione as aplicáveis)</label>
                 <div className="flex flex-wrap gap-2">
                   {CONDICOES_SAUDE.map((c) => (
                     <button
                       key={c.k}
                       onClick={() => toggleCondicao(c.k)}
                       className={`
-                        px-4 py-2 rounded-full text-sm transition-all border
+                        px-4 py-2 rounded-sm text-sm transition-all border font-mono
                         ${condicoes.includes(c.k) 
-                          ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                          : 'bg-slate-900/30 border-slate-700/50 text-slate-400 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-400 hover:border-vyr-gray-600'}
                       `}
                     >
                       {c.label}
@@ -500,9 +500,9 @@ export default function Welcome() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-2">Medicamentos em uso (opcional)</label>
+                <label className="block text-xs text-vyr-gray-400 mb-2 font-mono">Medicamentos em uso (opcional)</label>
                 <textarea
-                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white placeholder:text-slate-500 focus:border-violet-500/50 focus:outline-none transition-colors resize-none h-20"
+                  className="vyr-input rounded-sm resize-none h-20"
                   value={medicamentos}
                   onChange={(e) => setMedicamentos(e.target.value)}
                   placeholder="Liste medicamentos que usa regularmente..."
@@ -513,14 +513,14 @@ export default function Welcome() {
             <div className="flex justify-between">
               <button
                 onClick={() => setStep("activity")}
-                className="px-6 py-3 rounded-xl text-slate-400 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-sm text-vyr-gray-400 hover:text-vyr-white transition-colors font-mono"
               >
                 Voltar
               </button>
               <button
                 onClick={() => saveAndContinue("lifestyle")}
                 disabled={saving}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="vyr-btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-sm font-mono disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? "Salvando..." : "Continuar"}
                 <ChevronRight className="w-4 h-4" />
@@ -533,14 +533,14 @@ export default function Welcome() {
         {step === "lifestyle" && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">Estilo de vida</h2>
-              <p className="text-slate-400 text-sm">Fatores que influenciam sua performance</p>
+              <h2 className="text-2xl font-bold text-vyr-white mb-2 font-mono">Estilo de vida</h2>
+              <p className="text-vyr-gray-400 text-sm">Fatores que influenciam sua performance</p>
             </div>
 
-            <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 space-y-6">
+            <div className="vyr-card-glow p-6 space-y-6">
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-3">Qualidade geral do sono (0-10)</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Qualidade geral do sono (0-10)</label>
                   <div className="flex items-center gap-3">
                     <input
                       type="range"
@@ -548,18 +548,18 @@ export default function Welcome() {
                       max="10"
                       value={qualidadeSono}
                       onChange={(e) => setQualidadeSono(Number(e.target.value))}
-                      className="flex-1 accent-violet-500"
+                      className="flex-1 accent-vyr-accent"
                     />
-                    <span className="text-white font-medium w-8 text-center">{qualidadeSono}</span>
+                    <span className="text-vyr-white font-medium w-8 text-center font-mono">{qualidadeSono}</span>
                   </div>
-                  <div className="flex justify-between text-[10px] text-slate-500 mt-1">
+                  <div className="flex justify-between text-[10px] text-vyr-gray-500 mt-1">
                     <span>Péssimo</span>
                     <span>Excelente</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs text-slate-400 mb-3">Nível de estresse geral (0-10)</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Nível de estresse geral (0-10)</label>
                   <div className="flex items-center gap-3">
                     <input
                       type="range"
@@ -567,11 +567,11 @@ export default function Welcome() {
                       max="10"
                       value={nivelEstresse}
                       onChange={(e) => setNivelEstresse(Number(e.target.value))}
-                      className="flex-1 accent-violet-500"
+                      className="flex-1 accent-vyr-accent"
                     />
-                    <span className="text-white font-medium w-8 text-center">{nivelEstresse}</span>
+                    <span className="text-vyr-white font-medium w-8 text-center font-mono">{nivelEstresse}</span>
                   </div>
-                  <div className="flex justify-between text-[10px] text-slate-500 mt-1">
+                  <div className="flex justify-between text-[10px] text-vyr-gray-500 mt-1">
                     <span>Tranquilo</span>
                     <span>Muito estressado</span>
                   </div>
@@ -579,17 +579,17 @@ export default function Welcome() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Horas de sono por noite</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Horas de sono por noite</label>
                 <div className="flex flex-wrap gap-2">
                   {[5, 6, 7, 8, 9].map((h) => (
                     <button
                       key={h}
                       onClick={() => setHorasSono(h)}
                       className={`
-                        px-5 py-2 rounded-xl text-sm transition-all border
+                        px-5 py-2 rounded-sm text-sm transition-all border font-mono
                         ${horasSono === h 
-                          ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                          : 'bg-slate-900/30 border-slate-700/50 text-slate-400 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-400 hover:border-vyr-gray-600'}
                       `}
                     >
                       {h}h
@@ -599,17 +599,17 @@ export default function Welcome() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Frequência de exercícios</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Frequência de exercícios</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {FREQUENCIA_EXERCICIO.map((f) => (
                     <button
                       key={f.value}
                       onClick={() => setFrequenciaExercicio(f.value as FrequenciaExercicio)}
                       className={`
-                        p-3 rounded-xl text-xs transition-all border
+                        p-3 rounded-sm text-xs transition-all border font-mono
                         ${frequenciaExercicio === f.value 
-                          ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                          : 'bg-slate-900/30 border-slate-700/50 text-slate-400 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-400 hover:border-vyr-gray-600'}
                       `}
                     >
                       {f.label}
@@ -620,17 +620,17 @@ export default function Welcome() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-3">Consumo de cafeína</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Consumo de cafeína</label>
                   <div className="grid grid-cols-2 gap-2">
                     {CONSUMO_OPTIONS.map((c) => (
                       <button
                         key={c.value}
                         onClick={() => setConsumoCafeina(c.value as ConsumoSubstancia)}
                         className={`
-                          p-2 rounded-xl text-xs transition-all border
+                          p-2 rounded-sm text-xs transition-all border font-mono
                           ${consumoCafeina === c.value 
-                            ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                            : 'bg-slate-900/30 border-slate-700/50 text-slate-400 hover:border-slate-600'}
+                            ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                            : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-400 hover:border-vyr-gray-600'}
                         `}
                       >
                         {c.label}
@@ -639,17 +639,17 @@ export default function Welcome() {
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-3">Consumo de álcool</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Consumo de álcool</label>
                   <div className="grid grid-cols-2 gap-2">
                     {CONSUMO_OPTIONS.map((c) => (
                       <button
                         key={c.value}
                         onClick={() => setConsumoAlcool(c.value as ConsumoSubstancia)}
                         className={`
-                          p-2 rounded-xl text-xs transition-all border
+                          p-2 rounded-sm text-xs transition-all border font-mono
                           ${consumoAlcool === c.value 
-                            ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                            : 'bg-slate-900/30 border-slate-700/50 text-slate-400 hover:border-slate-600'}
+                            ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                            : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-400 hover:border-vyr-gray-600'}
                         `}
                       >
                         {c.label}
@@ -663,14 +663,14 @@ export default function Welcome() {
             <div className="flex justify-between">
               <button
                 onClick={() => setStep("health")}
-                className="px-6 py-3 rounded-xl text-slate-400 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-sm text-vyr-gray-400 hover:text-vyr-white transition-colors font-mono"
               >
                 Voltar
               </button>
               <button
                 onClick={() => saveAndContinue("complete", true)}
                 disabled={saving}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 text-white font-semibold shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all disabled:opacity-50"
+                className="vyr-btn-accent inline-flex items-center gap-2 px-8 py-3 rounded-sm font-mono shadow-[0_0_20px_hsl(var(--vyr-accent)/0.3)] hover:shadow-[0_0_30px_hsl(var(--vyr-accent)/0.4)] transition-all disabled:opacity-50"
               >
                 {saving ? "Salvando..." : (
                   <>
