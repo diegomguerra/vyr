@@ -84,6 +84,10 @@ export default {
           boot: "hsl(var(--vyr-boot))",
           hold: "hsl(var(--vyr-hold))",
           clear: "hsl(var(--vyr-clear))",
+          accent: "hsl(var(--vyr-accent))",
+          accentGlow: "hsl(var(--vyr-accent-glow))",
+          cyan: "hsl(var(--vyr-cyan))",
+          cyanGlow: "hsl(var(--vyr-cyan-glow))",
         },
       },
       fontFamily: {

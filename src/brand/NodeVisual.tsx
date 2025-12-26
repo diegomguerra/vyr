@@ -17,11 +17,20 @@ export function NodeVisual({ size = "md", showLabel = true, className = "" }: No
   
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      {/* Ring representation - technical, minimal */}
+      {/* Ring representation - technical, minimal with accent glow */}
       <div className="relative">
+        {/* Accent glow behind the ring */}
+        <div 
+          className="absolute inset-0 rounded-full blur-xl opacity-30"
+          style={{
+            background: `radial-gradient(circle, hsl(210 100% 50% / 0.4) 0%, hsl(185 100% 50% / 0.2) 50%, transparent 70%)`,
+            transform: 'scale(1.3)'
+          }}
+        />
+        
         {/* Outer ring */}
         <div 
-          className="rounded-full"
+          className="relative rounded-full"
           style={{
             width: dim.ring,
             height: dim.ring,
@@ -29,7 +38,8 @@ export function NodeVisual({ size = "md", showLabel = true, className = "" }: No
             boxShadow: `
               inset 0 2px 4px rgba(255,255,255,0.05),
               inset 0 -2px 4px rgba(0,0,0,0.3),
-              0 10px 30px -10px ${VYR_COLORS.black}
+              0 10px 30px -10px ${VYR_COLORS.black},
+              0 0 30px hsl(210 100% 50% / 0.15)
             `
           }}
         >
@@ -46,16 +56,17 @@ export function NodeVisual({ size = "md", showLabel = true, className = "" }: No
             }}
           />
           
-          {/* Subtle sensor indicator - very minimal */}
+          {/* Sensor indicator with glow */}
           <div 
-            className="absolute rounded-full opacity-30"
+            className="absolute rounded-full animate-pulse"
             style={{
               width: 4,
               height: 4,
               bottom: dim.thickness + 4,
               left: "50%",
               transform: "translateX(-50%)",
-              backgroundColor: VYR_COLORS.coldBlue
+              backgroundColor: 'hsl(210 100% 50%)',
+              boxShadow: '0 0 8px hsl(210 100% 60% / 0.8)'
             }}
           />
         </div>

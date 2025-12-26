@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* VYR Design System - Technical, neutral, minimal */
+/* VYR Design System - Technical, neutral, minimal with subtle accent glows */
 
 @layer base {
   :root {
@@ -27,7 +27,7 @@
     --muted: 0 0% 90%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 215 25% 27%;
+    --accent: 210 100% 50%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -41,7 +41,7 @@
 
     --border: 0 0% 88%;
     --input: 0 0% 90%;
-    --ring: 0 0% 9%;
+    --ring: 210 100% 50%;
 
     --radius: 0.5rem;
 
@@ -58,6 +58,12 @@
     --vyr-gray-800: 0 0% 10%;
     --vyr-gray-900: 0 0% 9%;
     --vyr-cold-blue: 215 25% 17%;
+
+    /* Accent colors - vibrant but technical */
+    --vyr-accent: 210 100% 50%;
+    --vyr-accent-glow: 210 100% 60%;
+    --vyr-cyan: 185 100% 50%;
+    --vyr-cyan-glow: 185 100% 60%;
 
     /* Product tokens */
     --vyr-boot: 0 0% 90%;
@@ -93,7 +99,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 64%;
 
-    --accent: 215 25% 27%;
+    --accent: 210 100% 50%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
@@ -101,7 +107,7 @@
 
     --border: 0 0% 15%;
     --input: 0 0% 10%;
-    --ring: 0 0% 98%;
+    --ring: 210 100% 50%;
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 98%;
@@ -137,7 +143,7 @@
   .vyr-input {
     @apply w-full px-4 py-3 rounded-lg border border-border bg-input/50 text-foreground 
            placeholder:text-muted-foreground outline-none transition-all duration-200
-           focus:border-foreground/50 focus:ring-1 focus:ring-foreground/20;
+           focus:border-accent/50 focus:ring-1 focus:ring-accent/30;
   }
 
   .vyr-btn {
@@ -150,18 +156,37 @@
            cursor-pointer transition-all duration-200 hover:bg-foreground/90;
   }
 
+  .vyr-btn-accent {
+    @apply px-4 py-3 rounded-lg border-0 text-background 
+           cursor-pointer transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--vyr-accent)) 0%, hsl(var(--vyr-cyan)) 100%);
+    box-shadow: 0 4px 20px hsl(var(--vyr-accent) / 0.3);
+  }
+
+  .vyr-btn-accent:hover {
+    box-shadow: 0 6px 30px hsl(var(--vyr-accent) / 0.5);
+    transform: translateY(-1px);
+  }
+
   .vyr-chip {
     @apply px-3 py-2 rounded-full border border-border bg-muted/30 text-muted-foreground 
            cursor-pointer transition-all duration-200 hover:bg-muted/50 hover:text-foreground;
   }
 
   .vyr-chip-active {
-    @apply border-foreground/70 bg-foreground/10 text-foreground;
+    @apply border-accent/50 bg-accent/10 text-foreground;
   }
 
   .vyr-badge {
     @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-sm border border-border 
            bg-muted/30 text-xs text-muted-foreground font-mono tracking-wider;
+  }
+
+  .vyr-badge-accent {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-sm border text-xs font-mono tracking-wider;
+    border-color: hsl(var(--vyr-accent) / 0.3);
+    background: linear-gradient(135deg, hsl(var(--vyr-accent) / 0.1) 0%, hsl(var(--vyr-cyan) / 0.1) 100%);
+    color: hsl(var(--vyr-accent-glow));
   }
 
   .vyr-pill {
@@ -170,7 +195,7 @@
   }
 
   .vyr-pill-active {
-    @apply border-foreground/50 bg-foreground/10 text-foreground;
+    @apply border-accent/30 bg-accent/10 text-foreground;
   }
 
   .vyr-navlink {
@@ -179,7 +204,7 @@
   }
 
   .vyr-navlink-active {
-    @apply border-foreground/30 bg-foreground/5 text-foreground;
+    @apply border-accent/20 bg-accent/5 text-foreground;
   }
 
   /* VYR Logo Typography */
@@ -201,6 +226,68 @@
   .delta-negative {
     @apply text-rose-500;
   }
+
+  /* Glow effects */
+  .vyr-glow {
+    box-shadow: 0 0 40px hsl(var(--vyr-accent) / 0.15),
+                0 0 80px hsl(var(--vyr-cyan) / 0.1);
+  }
+
+  .vyr-glow-intense {
+    box-shadow: 0 0 30px hsl(var(--vyr-accent) / 0.3),
+                0 0 60px hsl(var(--vyr-cyan) / 0.2),
+                0 0 100px hsl(var(--vyr-accent) / 0.1);
+  }
+
+  .vyr-icon-glow {
+    filter: drop-shadow(0 0 8px hsl(var(--vyr-accent) / 0.5));
+  }
+
+  .vyr-text-glow {
+    text-shadow: 0 0 20px hsl(var(--vyr-accent) / 0.5),
+                 0 0 40px hsl(var(--vyr-cyan) / 0.3);
+  }
+
+  /* Gradient backgrounds */
+  .vyr-gradient-bg {
+    background: linear-gradient(180deg, 
+      hsl(var(--vyr-gray-900)) 0%, 
+      hsl(215 30% 8%) 50%,
+      hsl(var(--vyr-gray-900)) 100%);
+  }
+
+  .vyr-gradient-radial {
+    background: radial-gradient(ellipse at 50% 0%, 
+      hsl(var(--vyr-accent) / 0.08) 0%, 
+      transparent 50%);
+  }
+
+  .vyr-gradient-accent {
+    background: linear-gradient(135deg, 
+      hsl(var(--vyr-accent)) 0%, 
+      hsl(var(--vyr-cyan)) 100%);
+  }
+
+  /* Card with subtle glow */
+  .vyr-card-glow {
+    @apply bg-card/80 backdrop-blur-xl border rounded-lg transition-all duration-300;
+    border-color: hsl(var(--border) / 0.5);
+  }
+
+  .vyr-card-glow:hover {
+    border-color: hsl(var(--vyr-accent) / 0.3);
+    box-shadow: 0 0 30px hsl(var(--vyr-accent) / 0.1);
+  }
+
+  /* Accent border line */
+  .vyr-accent-line {
+    @apply w-full h-px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsl(var(--vyr-accent) / 0.5) 20%,
+      hsl(var(--vyr-cyan) / 0.5) 80%,
+      transparent 100%);
+  }
 }
 
 @layer utilities {
@@ -210,5 +297,14 @@
   
   .safe-area-inset-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(135deg, 
+      hsl(var(--vyr-accent-glow)) 0%, 
+      hsl(var(--vyr-cyan-glow)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

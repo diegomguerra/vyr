@@ -83,7 +83,7 @@ function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
         <ul className="space-y-1.5 sm:space-y-2">
           {supplement.benefits.map((benefit) => (
             <li key={benefit} className="flex items-center gap-2 text-xs sm:text-sm text-vyr-gray-300">
-              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-vyr-gray-400 flex-shrink-0" />
+              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-vyr-cyan vyr-icon-glow flex-shrink-0" />
               {benefit}
             </li>
           ))}
@@ -138,16 +138,19 @@ function AllBoxesPreview() {
 
 export function SupplementsSection() {
   return (
-    <section id="suplementos" className="py-16 sm:py-24 bg-vyr-gray-900 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="suplementos" className="relative py-16 sm:py-24 bg-vyr-gray-900 overflow-hidden">
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 vyr-gradient-radial opacity-50" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header com visualização das caixas */}
         <div className="text-center mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700 mb-4 sm:mb-6">
-            <Beaker className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
-            <span className="text-xs sm:text-sm font-mono text-vyr-gray-300 tracking-wider">SUPLEMENTAÇÃO NOOTRÓPICA</span>
+          <div className="vyr-badge-accent mb-4 sm:mb-6">
+            <Beaker className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm font-mono tracking-wider">SUPLEMENTAÇÃO NOOTRÓPICA</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium text-vyr-white mb-3 sm:mb-4">
-            Ciclo Cognitivo Completo
+            Ciclo <span className="text-gradient-accent">Cognitivo</span> Completo
           </h2>
           <p className="text-vyr-gray-400 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 px-2">
             Três fórmulas nootrópicas cientificamente dosadas para cada fase do seu dia. 

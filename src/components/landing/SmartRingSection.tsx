@@ -65,17 +65,21 @@ function NodeShowcaseCompact() {
 
 export function SmartRingSection() {
   return (
-    <section id="smartring" className="py-24 bg-vyr-black overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="smartring" className="relative py-24 bg-vyr-black overflow-hidden">
+      {/* Gradient background */}
+      <div className="absolute inset-0 vyr-gradient-bg" />
+      <div className="absolute inset-0 vyr-gradient-radial opacity-40" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700 mb-6">
-            <Circle className="w-4 h-4 text-vyr-gray-400" />
-            <span className="text-sm font-mono text-vyr-gray-300 tracking-wider">VYR NODE — O DIFERENCIAL</span>
+          <div className="vyr-badge-accent mb-6">
+            <Circle className="w-4 h-4" />
+            <span className="text-sm font-mono tracking-wider">VYR NODE — O DIFERENCIAL</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
             De percepção a{" "}
-            <span className="text-vyr-gray-400">
+            <span className="text-gradient-accent">
               precisão científica
             </span>
           </h2>
@@ -90,9 +94,9 @@ export function SmartRingSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Ring Visual - CSS-based NodeVisual */}
           <div className="relative flex justify-center">
-            {/* Subtle glow */}
+            {/* Accent glow */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 bg-vyr-gray-700/10 rounded-full blur-3xl" />
+              <div className="w-80 h-80 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, hsl(var(--vyr-accent) / 0.15) 0%, hsl(var(--vyr-cyan) / 0.1) 50%, transparent 70%)' }} />
             </div>
 
             {/* VYR NODE Visual */}
@@ -129,9 +133,9 @@ export function SmartRingSection() {
 
             <div className="grid gap-4">
               {ringCapabilities.map(cap => (
-                <div key={cap.title} className="flex items-start gap-4 p-4 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700 hover:border-vyr-gray-600 transition-colors">
+                <div key={cap.title} className="vyr-card-glow flex items-start gap-4 p-4">
                   <div className="w-10 h-10 rounded-sm bg-vyr-gray-700 flex items-center justify-center flex-shrink-0">
-                    <cap.icon className="w-5 h-5 text-vyr-gray-300" />
+                    <cap.icon className="w-5 h-5 text-vyr-accent vyr-icon-glow" />
                   </div>
                   <div>
                     <h4 className="text-vyr-white font-medium mb-1">{cap.title}</h4>
