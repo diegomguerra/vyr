@@ -227,9 +227,9 @@ export default function ComoFunciona() {
                   <div className="flex flex-col lg:flex-row gap-8">
                     {/* Header */}
                     <div className="lg:w-1/3">
-                      <div className="flex items-center gap-4 mb-4">
-                        {/* Mockup visual do sachê */}
-                        <div className="scale-75">
+                      <div className="flex items-center gap-6 mb-4">
+                        {/* Mockup visual do sachê - Larger */}
+                        <div className="scale-90 sm:scale-100">
                           <SachetMockup variant={sachet.variant} />
                         </div>
                         <div>

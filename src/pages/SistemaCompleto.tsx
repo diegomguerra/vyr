@@ -209,8 +209,8 @@ export default function SistemaCompleto() {
               {/* VYR BOOT */}
               <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-gray-600/30 overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-vyr-gray-100" />
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="scale-75">
+                <div className="flex items-center gap-6 mb-4">
+                  <div className="scale-90 sm:scale-100">
                     <SachetMockup variant="BOOT" />
                   </div>
                   <div>
@@ -239,8 +239,8 @@ export default function SistemaCompleto() {
               {/* VYR HOLD */}
               <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-gray-500/30 overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-vyr-gray-600" />
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="scale-75">
+                <div className="flex items-center gap-6 mb-4">
+                  <div className="scale-90 sm:scale-100">
                     <SachetMockup variant="HOLD" />
                   </div>
                   <div>
@@ -269,8 +269,8 @@ export default function SistemaCompleto() {
               {/* VYR CLEAR */}
               <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-cold-blue/30 overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-vyr-coldBlue" />
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="scale-75">
+                <div className="flex items-center gap-6 mb-4">
+                  <div className="scale-90 sm:scale-100">
                     <SachetMockup variant="CLEAR" />
                   </div>
                   <div>
