@@ -90,15 +90,18 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative bg-vyr-black">
+    <div className="min-h-screen flex items-center justify-center p-4 relative vyr-gradient-bg">
       {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#17171710_1px,transparent_1px),linear-gradient(to_bottom,#17171710_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--vyr-gray-700)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--vyr-gray-700)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      
+      {/* Accent glow */}
+      <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full blur-[150px] opacity-20" style={{ background: 'radial-gradient(circle, hsl(var(--vyr-accent)) 0%, transparent 70%)' }} />
       
       <div className="relative z-10 w-full max-w-md">
         {/* Back Link */}
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 text-vyr-gray-500 hover:text-vyr-white transition-colors mb-6"
+          className="inline-flex items-center gap-2 text-vyr-gray-500 hover:text-vyr-accent transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           <span className="text-sm">Voltar para início</span>
@@ -136,7 +139,7 @@ export default function Login() {
 
             <Button 
               type="submit" 
-              className="w-full bg-vyr-gray-100 text-vyr-black hover:bg-vyr-white font-mono" 
+              className="w-full vyr-btn-accent font-mono" 
               disabled={isLoading}
             >
               {isLoading ? "Aguarde..." : isSignUp ? "Criar conta" : "Entrar"}
@@ -146,7 +149,7 @@ export default function Login() {
           <div className="mt-4 text-center">
             <button
               type="button"
-              className="text-sm text-vyr-gray-500 hover:text-vyr-white transition-colors"
+              className="text-sm text-vyr-gray-500 hover:text-vyr-accent transition-colors"
               onClick={() => setIsSignUp(!isSignUp)}
             >
               {isSignUp ? "Já tem conta? Faça login" : "Não tem conta? Cadastre-se"}
