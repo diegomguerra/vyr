@@ -17,33 +17,77 @@ export function NodeVisual({ size = "md", showLabel = true, className = "" }: No
   
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      {/* Ring representation - technical, minimal with accent glow */}
+      {/* Ring representation - premium metallic with shine */}
       <div className="relative">
-        {/* Accent glow behind the ring - muted cold blue */}
+        {/* Outer glow - cold blue ambient */}
         <div 
-          className="absolute inset-0 rounded-full blur-xl opacity-30"
+          className="absolute inset-0 rounded-full blur-2xl"
           style={{
-            background: `radial-gradient(circle, hsl(215 18% 32% / 0.4) 0%, hsl(215 25% 17% / 0.2) 50%, transparent 70%)`,
+            background: `radial-gradient(circle, hsl(200 30% 45% / 0.5) 0%, hsl(210 25% 30% / 0.3) 40%, transparent 70%)`,
+            transform: 'scale(1.6)'
+          }}
+        />
+        
+        {/* Secondary glow layer */}
+        <div 
+          className="absolute inset-0 rounded-full blur-xl"
+          style={{
+            background: `radial-gradient(circle, hsl(195 35% 55% / 0.4) 0%, transparent 60%)`,
             transform: 'scale(1.3)'
           }}
         />
         
-        {/* Outer ring */}
+        {/* Outer ring - premium titanium look */}
         <div 
-          className="relative rounded-full"
+          className="relative rounded-full overflow-hidden"
           style={{
             width: dim.ring,
             height: dim.ring,
-            background: `linear-gradient(135deg, ${VYR_COLORS.gray[800]} 0%, ${VYR_COLORS.black} 50%, ${VYR_COLORS.gray[900]} 100%)`,
+            background: `
+              linear-gradient(145deg, 
+                hsl(210 8% 55%) 0%, 
+                hsl(210 6% 35%) 20%, 
+                hsl(210 4% 18%) 50%, 
+                hsl(210 6% 30%) 80%, 
+                hsl(210 8% 45%) 100%
+              )
+            `,
             boxShadow: `
-              inset 0 2px 4px rgba(255,255,255,0.05),
-              inset 0 -2px 4px rgba(0,0,0,0.3),
-              0 10px 30px -10px ${VYR_COLORS.black},
-              0 0 20px hsl(215 18% 32% / 0.15)
+              inset 0 3px 8px rgba(255,255,255,0.25),
+              inset 0 -3px 8px rgba(0,0,0,0.4),
+              0 0 40px hsl(200 30% 50% / 0.35),
+              0 0 80px hsl(200 25% 40% / 0.2),
+              0 15px 40px -15px rgba(0,0,0,0.8)
             `
           }}
         >
-          {/* Inner cutout */}
+          {/* Metallic highlight arc - top shine */}
+          <div 
+            className="absolute rounded-full"
+            style={{
+              top: 2,
+              left: '15%',
+              right: '15%',
+              height: dim.thickness * 0.6,
+              background: `linear-gradient(180deg, rgba(255,255,255,0.35) 0%, transparent 100%)`,
+              filter: 'blur(1px)'
+            }}
+          />
+          
+          {/* Secondary highlight - left edge */}
+          <div 
+            className="absolute rounded-full"
+            style={{
+              top: '20%',
+              left: 2,
+              width: dim.thickness * 0.4,
+              height: '30%',
+              background: `linear-gradient(90deg, rgba(255,255,255,0.2) 0%, transparent 100%)`,
+              filter: 'blur(1px)'
+            }}
+          />
+          
+          {/* Inner cutout - deep black center */}
           <div 
             className="absolute rounded-full"
             style={{
@@ -52,22 +96,28 @@ export function NodeVisual({ size = "md", showLabel = true, className = "" }: No
               right: dim.thickness,
               bottom: dim.thickness,
               backgroundColor: VYR_COLORS.black,
-              boxShadow: `inset 0 2px 8px rgba(0,0,0,0.8)`
+              boxShadow: `
+                inset 0 4px 12px rgba(0,0,0,0.9),
+                inset 0 0 20px rgba(0,0,0,0.5)
+              `
             }}
           />
           
-          {/* Sensor indicator with glow */}
-          {/* Sensor indicator with muted cold blue */}
+          {/* Sensor indicator with enhanced glow */}
           <div 
             className="absolute rounded-full animate-pulse"
             style={{
-              width: 4,
-              height: 4,
+              width: size === 'lg' ? 6 : size === 'md' ? 5 : 4,
+              height: size === 'lg' ? 6 : size === 'md' ? 5 : 4,
               bottom: dim.thickness + 4,
               left: "50%",
               transform: "translateX(-50%)",
-              backgroundColor: 'hsl(215 22% 38%)',
-              boxShadow: '0 0 6px hsl(215 18% 32% / 0.6)'
+              backgroundColor: 'hsl(195 40% 55%)',
+              boxShadow: `
+                0 0 8px hsl(195 45% 55% / 0.9),
+                0 0 16px hsl(195 40% 50% / 0.6),
+                0 0 24px hsl(200 35% 45% / 0.4)
+              `
             }}
           />
         </div>
