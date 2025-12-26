@@ -27,10 +27,10 @@ export function StepSono({
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
       <div>
-        <h3 className="text-lg font-bold text-vyr-white mb-2">
+        <h3 className="text-lg font-bold text-foreground mb-2">
           Como você avalia sua qualidade de sono geral?
         </h3>
-        <p className="text-sm text-vyr-gray-400 mb-4">
+        <p className="text-sm text-muted-foreground mb-4">
           Considere as últimas semanas de forma geral.
         </p>
         
@@ -44,7 +44,7 @@ export function StepSono({
       </div>
 
       <div>
-        <h3 className="text-lg font-bold text-vyr-white mb-2">
+        <h3 className="text-lg font-bold text-foreground mb-2">
           Quantas horas você costuma dormir por noite?
         </h3>
         
@@ -56,8 +56,8 @@ export function StepSono({
               className={cn(
                 "w-14 h-14 rounded-xl border font-bold transition-all duration-200",
                 horasSono === h
-                  ? "border-vyr-accent bg-vyr-accent/20 text-vyr-accent"
-                  : "border-vyr-gray-700/50 bg-vyr-graphite-dark/60 text-vyr-gray-300 hover:bg-vyr-graphite/80 hover:border-vyr-gray-600"
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted/50"
               )}
             >
               {h}h
@@ -68,26 +68,26 @@ export function StepSono({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <h3 className="text-base font-bold text-vyr-white mb-2">
+          <h3 className="text-base font-bold text-foreground mb-2">
             Horário que costuma acordar
           </h3>
           <input
             type="time"
             value={horarioAcordar}
             onChange={(e) => onHorarioAcordarChange(e.target.value)}
-            className="w-full p-4 rounded-xl border border-vyr-gray-700/50 bg-vyr-graphite-dark/60 text-vyr-white focus:outline-none focus:ring-2 focus:ring-vyr-accent/50 focus:border-vyr-accent"
+            className="w-full p-4 rounded-xl border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
           />
         </div>
         
         <div>
-          <h3 className="text-base font-bold text-vyr-white mb-2">
+          <h3 className="text-base font-bold text-foreground mb-2">
             Horário que costuma dormir
           </h3>
           <input
             type="time"
             value={horarioDormir}
             onChange={(e) => onHorarioDormirChange(e.target.value)}
-            className="w-full p-4 rounded-xl border border-vyr-gray-700/50 bg-vyr-graphite-dark/60 text-vyr-white focus:outline-none focus:ring-2 focus:ring-vyr-accent/50 focus:border-vyr-accent"
+            className="w-full p-4 rounded-xl border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
           />
         </div>
       </div>
