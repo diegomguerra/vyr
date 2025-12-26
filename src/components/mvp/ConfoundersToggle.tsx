@@ -21,10 +21,10 @@ export function ConfoundersToggle({ value, onChange }: ConfoundersToggleProps) {
         <button
           key={key}
           className={`
-            px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-[10px] sm:text-xs font-medium transition-all border
+            px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-sm text-[10px] sm:text-xs font-medium font-mono transition-all border
             ${value[key] 
-              ? "bg-violet-500/20 text-violet-300 border-violet-500/30" 
-              : "bg-slate-800/30 text-slate-400 border-slate-700/30 hover:text-white"}
+              ? "bg-vyr-accent/10 text-vyr-accent border-vyr-accent/30" 
+              : "bg-vyr-gray-800/30 text-vyr-gray-400 border-vyr-gray-700/30 hover:text-vyr-white"}
           `}
           onClick={() => onChange({ ...value, [key]: !value[key] })}
         >
