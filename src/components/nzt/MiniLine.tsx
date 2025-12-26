@@ -17,23 +17,25 @@ export function MiniLine({ data, refMin, refMax }: MiniLineProps) {
     <div className="h-60">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={formattedData}>
-          <CartesianGrid strokeDasharray="4 4" stroke="hsl(240 6% 20%)" />
+          <CartesianGrid strokeDasharray="4 4" stroke="hsl(220 13% 18%)" />
           <XAxis 
             dataKey="dataFormatada" 
-            tick={{ fontSize: 10, fill: "hsl(240 5% 65%)" }}
-            stroke="hsl(240 6% 20%)"
+            tick={{ fontSize: 10, fill: "hsl(220 9% 46%)" }}
+            stroke="hsl(220 13% 18%)"
           />
           <YAxis 
             domain={[0, 10]} 
-            tick={{ fontSize: 10, fill: "hsl(240 5% 65%)" }}
-            stroke="hsl(240 6% 20%)"
+            tick={{ fontSize: 10, fill: "hsl(220 9% 46%)" }}
+            stroke="hsl(220 13% 18%)"
           />
           <Tooltip 
             contentStyle={{
-              backgroundColor: "hsl(240 6% 10%)",
-              border: "1px solid hsl(240 6% 20%)",
+              backgroundColor: "hsl(220 13% 10%)",
+              border: "1px solid hsl(220 13% 22%)",
               borderRadius: "8px",
-              color: "hsl(0 0% 95%)",
+              color: "hsl(0 0% 98%)",
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "12px",
             }}
           />
           {typeof refMin === "number" && typeof refMax === "number" && (
@@ -41,17 +43,17 @@ export function MiniLine({ data, refMin, refMax }: MiniLineProps) {
               y1={refMin} 
               y2={refMax} 
               strokeOpacity={0} 
-              fill="hsl(160 84% 39%)"
-              fillOpacity={0.1} 
+              fill="hsl(215 25% 27%)"
+              fillOpacity={0.15} 
             />
           )}
           <Line 
             type="monotone" 
             dataKey="valor" 
-            stroke="hsl(262 83% 58%)" 
+            stroke="hsl(215 25% 27%)" 
             strokeWidth={2} 
             dot={false}
-            activeDot={{ r: 4, fill: "hsl(262 83% 58%)" }}
+            activeDot={{ r: 4, fill: "hsl(215 25% 27%)", stroke: "hsl(0 0% 98%)", strokeWidth: 1 }}
           />
         </LineChart>
       </ResponsiveContainer>
