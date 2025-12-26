@@ -141,24 +141,24 @@ export default function Welcome() {
 
   if (!participante) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
-        <div className="text-slate-400 animate-pulse">Carregando...</div>
+      <div className="min-h-screen flex items-center justify-center vyr-gradient-bg">
+        <div className="text-vyr-gray-400 animate-pulse font-mono">Carregando...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 opacity-20" style={{
+    <div className="min-h-screen vyr-gradient-bg relative overflow-hidden">
+      {/* Background effects - VYR style */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `
-          linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)
+          linear-gradient(hsl(var(--vyr-gray-600)) 1px, transparent 1px),
+          linear-gradient(90deg, hsl(var(--vyr-gray-600)) 1px, transparent 1px)
         `,
         backgroundSize: '40px 40px'
       }} />
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-violet-600/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] bg-indigo-500/15 rounded-full blur-[100px] animate-pulse delay-1000" />
+      <div className="absolute inset-0 vyr-gradient-radial opacity-50" />
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full blur-[150px] opacity-15" style={{ background: 'hsl(var(--vyr-accent))' }} />
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 py-8 sm:py-12">
         {/* Progress bar - only show after intro */}
@@ -168,23 +168,23 @@ export default function Welcome() {
               {steps.slice(1).map((s, i) => (
                 <div key={s.key} className="flex items-center">
                   <div className={`
-                    w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all
-                    ${currentIndex > i + 1 ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50' : 
-                      currentIndex === i + 1 ? 'bg-violet-500/20 text-violet-300 border border-violet-500/50' : 
-                      'bg-slate-800/50 text-slate-500 border border-slate-700/50'}
+                    w-8 h-8 rounded-sm flex items-center justify-center text-xs font-medium font-mono transition-all
+                    ${currentIndex > i + 1 ? 'bg-vyr-accent/20 text-vyr-accent border border-vyr-accent/50' : 
+                      currentIndex === i + 1 ? 'bg-vyr-accent/10 text-vyr-gray-200 border border-vyr-accent/30' : 
+                      'bg-vyr-gray-800/50 text-vyr-gray-500 border border-vyr-gray-700/50'}
                   `}>
                     {i + 1}
                   </div>
                   {i < steps.length - 2 && (
                     <div className={`
                       w-8 sm:w-16 h-0.5 mx-1
-                      ${currentIndex > i + 1 ? 'bg-emerald-500/50' : 'bg-slate-700/50'}
+                      ${currentIndex > i + 1 ? 'bg-vyr-accent/50' : 'bg-vyr-gray-700/50'}
                     `} />
                   )}
                 </div>
               ))}
             </div>
-            <p className="text-center text-xs text-slate-500">
+            <p className="text-center text-xs text-vyr-gray-500 font-mono">
               Etapa {currentIndex} de {steps.length - 1}
             </p>
           </div>
@@ -193,44 +193,42 @@ export default function Welcome() {
         {/* INTRO STEP */}
         {step === "intro" && (
           <div className="text-center space-y-8 py-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/30 backdrop-blur-sm">
-              <Brain className="w-4 h-4 text-violet-400" />
-              <span className="text-sm text-violet-300 font-medium">Cognitive Performance System</span>
+            <div className="vyr-badge-accent">
+              <Brain className="w-4 h-4" />
+              <span className="text-sm font-mono tracking-wider">COGNITIVE PERFORMANCE SYSTEM</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-bold text-vyr-white leading-tight font-mono tracking-tight">
               Bem-vindo ao{" "}
-              <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
-                NZT
-              </span>
+              <span className="text-gradient-accent">VYR</span>
             </h1>
 
-            <p className="text-slate-300 max-w-md mx-auto leading-relaxed">
+            <p className="text-vyr-gray-300 max-w-md mx-auto leading-relaxed">
               Para personalizar sua experiência e fornecer análises precisas, precisamos conhecer seu perfil.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-lg mx-auto">
-              <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-800/40 border border-slate-700/50">
-                <User className="w-6 h-6 text-emerald-400" />
-                <span className="text-xs text-slate-400">Perfil básico</span>
+              <div className="vyr-card-glow flex flex-col items-center gap-2 p-4">
+                <User className="w-6 h-6 text-vyr-accent vyr-icon-glow" />
+                <span className="text-xs text-vyr-gray-400 font-mono">Perfil básico</span>
               </div>
-              <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-800/40 border border-slate-700/50">
-                <ClipboardList className="w-6 h-6 text-violet-400" />
-                <span className="text-xs text-slate-400">Anamnese</span>
+              <div className="vyr-card-glow flex flex-col items-center gap-2 p-4">
+                <ClipboardList className="w-6 h-6 text-vyr-cyan vyr-icon-glow" />
+                <span className="text-xs text-vyr-gray-400 font-mono">Anamnese</span>
               </div>
-              <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-800/40 border border-slate-700/50">
-                <BarChart3 className="w-6 h-6 text-amber-400" />
-                <span className="text-xs text-slate-400">Análises</span>
+              <div className="vyr-card-glow flex flex-col items-center gap-2 p-4">
+                <BarChart3 className="w-6 h-6 text-vyr-accentGlow vyr-icon-glow" />
+                <span className="text-xs text-vyr-gray-400 font-mono">Análises</span>
               </div>
             </div>
 
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-vyr-gray-500 font-mono">
               Leva menos de 3 minutos. Seus dados são confidenciais.
             </p>
 
             <button
               onClick={() => setStep("profile")}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-600 text-white font-semibold shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] transition-all"
+              className="vyr-btn-accent inline-flex items-center gap-2 px-8 py-4 rounded-sm text-vyr-white font-mono"
             >
               Começar configuração
               <ChevronRight className="w-5 h-5" />
@@ -242,26 +240,26 @@ export default function Welcome() {
         {step === "profile" && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">Dados básicos</h2>
-              <p className="text-slate-400 text-sm">Informações para calibrar referências</p>
+              <h2 className="text-2xl font-bold text-vyr-white mb-2 font-mono">Dados básicos</h2>
+              <p className="text-vyr-gray-400 text-sm">Informações para calibrar referências</p>
             </div>
 
-            <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 space-y-5">
+            <div className="vyr-card-glow p-6 space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-2">Nome (visível no app)</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-2 font-mono">Nome (visível no app)</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white placeholder:text-slate-500 focus:border-violet-500/50 focus:outline-none transition-colors"
+                    className="vyr-input rounded-sm"
                     value={nome}
                     onChange={(e) => setNome(e.target.value)}
                     placeholder="Seu nome"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-2">Sexo biológico</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-2 font-mono">Sexo biológico</label>
                   <select
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white focus:border-violet-500/50 focus:outline-none transition-colors"
+                    className="vyr-input rounded-sm"
                     value={sexo}
                     onChange={(e) => setSexo(e.target.value)}
                   >
@@ -274,10 +272,10 @@ export default function Welcome() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-2">Data de nascimento</label>
+                <label className="block text-xs text-vyr-gray-400 mb-2 font-mono">Data de nascimento</label>
                 <input
                   type="date"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white focus:border-violet-500/50 focus:outline-none transition-colors"
+                  className="vyr-input rounded-sm"
                   value={dataNascimento}
                   onChange={(e) => setDataNascimento(e.target.value)}
                 />
@@ -285,20 +283,20 @@ export default function Welcome() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-slate-400 mb-2">Altura (cm)</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-2 font-mono">Altura (cm)</label>
                   <input
                     type="number"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white placeholder:text-slate-500 focus:border-violet-500/50 focus:outline-none transition-colors"
+                    className="vyr-input rounded-sm"
                     value={altura ?? ""}
                     onChange={(e) => setAltura(e.target.value ? Number(e.target.value) : null)}
                     placeholder="175"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-400 mb-2">Peso (kg)</label>
+                  <label className="block text-xs text-vyr-gray-400 mb-2 font-mono">Peso (kg)</label>
                   <input
                     type="number"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white placeholder:text-slate-500 focus:border-violet-500/50 focus:outline-none transition-colors"
+                    className="vyr-input rounded-sm"
                     value={peso ?? ""}
                     onChange={(e) => setPeso(e.target.value ? Number(e.target.value) : null)}
                     placeholder="70"
@@ -311,7 +309,7 @@ export default function Welcome() {
               <button
                 onClick={() => saveAndContinue("goals")}
                 disabled={saving || !nome || !dataNascimento}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="vyr-btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-sm font-mono disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? "Salvando..." : "Continuar"}
                 <ChevronRight className="w-4 h-4" />
@@ -324,27 +322,27 @@ export default function Welcome() {
         {step === "goals" && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">Seus objetivos</h2>
-              <p className="text-slate-400 text-sm">O que você busca com a suplementação?</p>
+              <h2 className="text-2xl font-bold text-vyr-white mb-2 font-mono">Seus objetivos</h2>
+              <p className="text-vyr-gray-400 text-sm">O que você busca com a suplementação?</p>
             </div>
 
-            <div className="bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 space-y-6">
+            <div className="vyr-card-glow p-6 space-y-6">
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Objetivo principal</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Objetivo principal</label>
                 <div className="grid grid-cols-1 gap-2">
                   {OBJETIVOS.map((obj) => (
                     <button
                       key={obj.value}
                       onClick={() => setObjetivo(obj.value)}
                       className={`
-                        p-4 rounded-xl text-left text-sm transition-all border flex items-center gap-3
+                        p-4 rounded-sm text-left text-sm transition-all border flex items-center gap-3
                         ${objetivo === obj.value 
-                          ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                          : 'bg-slate-900/30 border-slate-700/50 text-slate-300 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-300 hover:border-vyr-gray-600'}
                       `}
                     >
-                      <div className="w-9 h-9 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
-                        <DynamicIcon name={obj.icon} className="w-5 h-5 text-violet-400" />
+                      <div className="w-9 h-9 rounded-sm bg-vyr-accent/10 flex items-center justify-center flex-shrink-0">
+                        <DynamicIcon name={obj.icon} className="w-5 h-5 text-vyr-accent vyr-icon-glow" />
                       </div>
                       <span>{obj.label}</span>
                     </button>
@@ -353,17 +351,17 @@ export default function Welcome() {
               </div>
 
               <div>
-                <label className="block text-xs text-slate-400 mb-3">Experiência com suplementos nootrópicos</label>
+                <label className="block text-xs text-vyr-gray-400 mb-3 font-mono">Experiência com suplementos nootrópicos</label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {EXPERIENCIA_SUPLEMENTOS.map((exp) => (
                     <button
                       key={exp.value}
                       onClick={() => setExperiencia(exp.value as NivelExperiencia)}
                       className={`
-                        p-3 rounded-xl text-sm transition-all border
+                        p-3 rounded-sm text-sm transition-all border font-mono
                         ${experiencia === exp.value 
-                          ? 'bg-violet-500/20 border-violet-500/50 text-white' 
-                          : 'bg-slate-900/30 border-slate-700/50 text-slate-300 hover:border-slate-600'}
+                          ? 'bg-vyr-accent/10 border-vyr-accent/30 text-vyr-white' 
+                          : 'bg-vyr-gray-800/50 border-vyr-gray-700/50 text-vyr-gray-300 hover:border-vyr-gray-600'}
                       `}
                     >
                       {exp.label}
@@ -376,14 +374,14 @@ export default function Welcome() {
             <div className="flex justify-between">
               <button
                 onClick={() => setStep("profile")}
-                className="px-6 py-3 rounded-xl text-slate-400 hover:text-white transition-colors"
+                className="px-6 py-3 rounded-sm text-vyr-gray-400 hover:text-vyr-white transition-colors font-mono"
               >
                 Voltar
               </button>
               <button
                 onClick={() => saveAndContinue("activity")}
                 disabled={saving || !objetivo}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="vyr-btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-sm font-mono disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? "Salvando..." : "Continuar"}
                 <ChevronRight className="w-4 h-4" />
