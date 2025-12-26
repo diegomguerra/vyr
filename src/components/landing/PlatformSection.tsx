@@ -211,17 +211,17 @@ export function PlatformSection() {
                   <h4 className="text-vyr-white font-semibold">Evolução Semanal</h4>
                   <p className="text-vyr-gray-500 text-sm">Foco, Energia e Clareza</p>
                 </div>
-                <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-4 text-xs font-mono">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-vyr-gray-100" />
+                    <div className="w-2 h-2 rounded-full bg-vyr-gray-400" />
                     <span className="text-vyr-gray-500">Foco</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-vyr-gray-500" />
+                    <div className="w-2 h-2 rounded-full bg-vyr-gray-600" />
                     <span className="text-vyr-gray-500">Energia</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-vyr-cold-blue" />
+                    <div className="w-2 h-2 rounded-full bg-vyr-accent" />
                     <span className="text-vyr-gray-500">Clareza</span>
                   </div>
                 </div>
@@ -229,25 +229,25 @@ export function PlatformSection() {
               <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={performanceData}>
-                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#525252', fontSize: 12 }} />
-                    <YAxis domain={[5, 10]} axisLine={false} tickLine={false} tick={{ fill: '#525252', fontSize: 12 }} />
-                    <Line type="monotone" dataKey="foco" stroke="#E5E5E5" strokeWidth={2} dot={{ fill: '#E5E5E5', r: 3 }} />
-                    <Line type="monotone" dataKey="energia" stroke="#525252" strokeWidth={2} dot={{ fill: '#525252', r: 3 }} />
-                    <Line type="monotone" dataKey="clareza" stroke="#1E293B" strokeWidth={2} dot={{ fill: '#1E293B', r: 3 }} />
+                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#404040', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }} />
+                    <YAxis domain={[5, 10]} axisLine={false} tickLine={false} tick={{ fill: '#404040', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }} />
+                    <Line type="monotone" dataKey="foco" stroke="#737373" strokeWidth={2} dot={{ fill: '#737373', r: 3, strokeWidth: 0 }} />
+                    <Line type="monotone" dataKey="energia" stroke="#404040" strokeWidth={2} dot={{ fill: '#404040', r: 3, strokeWidth: 0 }} />
+                    <Line type="monotone" dataKey="clareza" stroke="#3b4f63" strokeWidth={2} dot={{ fill: '#3b4f63', r: 3, strokeWidth: 0 }} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
             {/* Sleep Quality */}
-            <div className="p-6 rounded-2xl bg-vyr-gray-900/40 border border-vyr-cold-blue/20">
+            <div className="p-6 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-vyr-cold-blue/15 flex items-center justify-center">
-                  <Moon className="w-5 h-5 text-vyr-cold-blue" />
+                <div className="w-10 h-10 rounded-xl bg-vyr-accent/10 flex items-center justify-center border border-vyr-accent/20">
+                  <Moon className="w-5 h-5 text-vyr-accent" />
                 </div>
                 <div>
                   <h4 className="text-vyr-white font-semibold">Qualidade do Sono</h4>
-                  <p className="text-vyr-gray-500 text-xs">Últimos 7 dias</p>
+                  <p className="text-vyr-gray-500 text-xs font-mono">Últimos 7 dias</p>
                 </div>
               </div>
               <div className="h-32">
@@ -255,17 +255,17 @@ export function PlatformSection() {
                   <AreaChart data={sleepData}>
                     <defs>
                       <linearGradient id="sleepGradientVyr" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#1E293B" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#1E293B" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#3b4f63" stopOpacity={0.35} />
+                        <stop offset="95%" stopColor="#3b4f63" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <Area type="monotone" dataKey="qualidade" stroke="#1E293B" strokeWidth={2} fill="url(#sleepGradientVyr)" />
+                    <Area type="monotone" dataKey="qualidade" stroke="#3b4f63" strokeWidth={2} fill="url(#sleepGradientVyr)" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
               <div className="mt-3 flex items-center justify-between">
-                <span className="text-vyr-gray-500 text-sm">Média</span>
-                <span className="text-vyr-cold-blue font-bold text-lg font-mono">77%</span>
+                <span className="text-vyr-gray-500 text-sm font-mono">Média</span>
+                <span className="text-vyr-accent font-bold text-lg font-mono">77%</span>
               </div>
             </div>
           </div>
@@ -273,69 +273,69 @@ export function PlatformSection() {
           {/* Second row of dashboard */}
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             {/* Plasticidade Score */}
-            <div className="p-5 rounded-2xl bg-vyr-gray-900/40 border border-vyr-gray-500/20">
+            <div className="p-5 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-vyr-gray-500 text-sm">Plasticidade Cognitiva</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-vyr-gray-100/10 text-vyr-gray-100">+12%</span>
+                <span className="text-vyr-gray-500 text-sm font-mono">Plasticidade Cognitiva</span>
+                <span className="text-xs px-2 py-1 rounded-full bg-vyr-accent/10 text-vyr-accent font-mono border border-vyr-accent/20">+12%</span>
               </div>
               <div className="flex items-end gap-2">
                 <span className="text-3xl font-bold text-vyr-white font-mono">82</span>
-                <span className="text-vyr-gray-500 text-sm mb-1">/100</span>
+                <span className="text-vyr-gray-500 text-sm mb-1 font-mono">/100</span>
               </div>
-              <div className="mt-3 h-2 bg-vyr-gray-900 rounded-full overflow-hidden">
-                <div className="h-full w-[82%] bg-vyr-gray-100 rounded-full" />
+              <div className="mt-3 h-2 bg-vyr-gray-800 rounded-full overflow-hidden">
+                <div className="h-full w-[82%] bg-gradient-to-r from-vyr-gray-500 to-vyr-accent rounded-full" />
               </div>
             </div>
 
             {/* Weekly Trend */}
-            <div className="p-5 rounded-2xl bg-vyr-gray-900/40 border border-vyr-gray-500/20">
+            <div className="p-5 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-vyr-gray-500 text-sm">Tendência 6 Semanas</span>
-                <TrendingUp className="w-4 h-4 text-vyr-gray-100" />
+                <span className="text-vyr-gray-500 text-sm font-mono">Tendência 6 Semanas</span>
+                <TrendingUp className="w-4 h-4 text-vyr-accent" />
               </div>
               <div className="h-16">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={weeklyTrend}>
                     <defs>
                       <linearGradient id="trendGradientVyr" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#E5E5E5" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#E5E5E5" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#737373" stopOpacity={0.35} />
+                        <stop offset="95%" stopColor="#737373" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <Area type="monotone" dataKey="score" stroke="#E5E5E5" strokeWidth={2} fill="url(#trendGradientVyr)" />
+                    <Area type="monotone" dataKey="score" stroke="#737373" strokeWidth={2} fill="url(#trendGradientVyr)" />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
             {/* Ring Scores Preview */}
-            <div className="p-5 rounded-2xl bg-vyr-gray-900/40 border border-vyr-gray-500/20">
-              <span className="text-vyr-gray-500 text-sm">Índices do Dia</span>
+            <div className="p-5 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
+              <span className="text-vyr-gray-500 text-sm font-mono">Índices do Dia</span>
               <div className="mt-3 flex items-center justify-around">
                 {/* Circular progress indicators */}
                 <div className="relative w-14 h-14">
                   <svg className="w-14 h-14 transform -rotate-90">
-                    <circle cx="28" cy="28" r="24" stroke="#171717" strokeWidth="4" fill="none" />
-                    <circle cx="28" cy="28" r="24" stroke="#E5E5E5" strokeWidth="4" fill="none" strokeDasharray={`${0.85 * 150.8} 150.8`} strokeLinecap="round" />
+                    <circle cx="28" cy="28" r="24" stroke="#262626" strokeWidth="4" fill="none" />
+                    <circle cx="28" cy="28" r="24" stroke="#737373" strokeWidth="4" fill="none" strokeDasharray={`${0.85 * 150.8} 150.8`} strokeLinecap="round" />
                   </svg>
                   <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-vyr-white font-mono">85%</span>
                 </div>
                 <div className="relative w-14 h-14">
                   <svg className="w-14 h-14 transform -rotate-90">
-                    <circle cx="28" cy="28" r="24" stroke="#171717" strokeWidth="4" fill="none" />
-                    <circle cx="28" cy="28" r="24" stroke="#525252" strokeWidth="4" fill="none" strokeDasharray={`${0.72 * 150.8} 150.8`} strokeLinecap="round" />
+                    <circle cx="28" cy="28" r="24" stroke="#262626" strokeWidth="4" fill="none" />
+                    <circle cx="28" cy="28" r="24" stroke="#404040" strokeWidth="4" fill="none" strokeDasharray={`${0.72 * 150.8} 150.8`} strokeLinecap="round" />
                   </svg>
                   <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-vyr-white font-mono">72%</span>
                 </div>
                 <div className="relative w-14 h-14">
                   <svg className="w-14 h-14 transform -rotate-90">
-                    <circle cx="28" cy="28" r="24" stroke="#171717" strokeWidth="4" fill="none" />
-                    <circle cx="28" cy="28" r="24" stroke="#1E293B" strokeWidth="4" fill="none" strokeDasharray={`${0.91 * 150.8} 150.8`} strokeLinecap="round" />
+                    <circle cx="28" cy="28" r="24" stroke="#262626" strokeWidth="4" fill="none" />
+                    <circle cx="28" cy="28" r="24" stroke="#3b4f63" strokeWidth="4" fill="none" strokeDasharray={`${0.91 * 150.8} 150.8`} strokeLinecap="round" />
                   </svg>
                   <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-vyr-white font-mono">91%</span>
                 </div>
               </div>
-              <div className="mt-2 flex items-center justify-around text-xs text-vyr-gray-500">
+              <div className="mt-2 flex items-center justify-around text-xs text-vyr-gray-500 font-mono">
                 <span>Ativação</span>
                 <span>Sustentação</span>
                 <span>Recuperação</span>

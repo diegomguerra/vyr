@@ -18,7 +18,7 @@ interface BaselineEvolutionProps {
 export function BaselineEvolution({ metrics, showAnamnese = true }: BaselineEvolutionProps) {
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
+      <div className="flex items-center justify-between text-xs text-vyr-gray-500 mb-2 font-mono">
         {showAnamnese && <span className="flex-1">Anamnese</span>}
         <span className="flex-1 text-center">Início</span>
         <span className="flex-1 text-center">Agora</span>
@@ -60,14 +60,14 @@ function EvolutionRow({
   }, [metric.refRange, metric.atual]);
 
   return (
-    <div className="flex items-center gap-2 py-2 border-b border-border/50 last:border-b-0">
+    <div className="flex items-center gap-2 py-2 border-b border-vyr-gray-700/50 last:border-b-0">
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-foreground truncate">{metric.label}</p>
+        <p className="text-sm font-medium text-vyr-white truncate">{metric.label}</p>
         {metric.refRange && (
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-vyr-gray-500 font-mono">
             Ref: {metric.refRange.min}–{metric.refRange.max}
             {withinRef !== null && (
-              <span className={withinRef ? " text-secondary" : " text-warning"}>
+              <span className={withinRef ? " text-vyr-accent" : " text-amber-500/70"}>
                 {withinRef ? " ✓" : " •"}
               </span>
             )}
@@ -100,13 +100,13 @@ function EvolutionRow({
           {evolution && !evolution.isNeutral ? (
             <>
               {evolution.isPositive ? (
-                <TrendingUp className="w-4 h-4 text-secondary" />
+                <TrendingUp className="w-4 h-4 text-vyr-accent" />
               ) : (
-                <TrendingDown className="w-4 h-4 text-destructive" />
+                <TrendingDown className="w-4 h-4 text-red-400/70" />
               )}
               <span 
-                className={`text-xs font-medium ${
-                  evolution.isPositive ? "text-secondary" : "text-destructive"
+                className={`text-xs font-medium font-mono ${
+                  evolution.isPositive ? "text-vyr-accent" : "text-red-400/70"
                 }`}
               >
                 {evolution.diff > 0 ? "+" : ""}{evolution.diff.toFixed(1)}
@@ -114,11 +114,11 @@ function EvolutionRow({
             </>
           ) : evolution?.isNeutral ? (
             <>
-              <Minus className="w-4 h-4 text-muted-foreground" />
-              <span className="text-xs text-muted-foreground">—</span>
+              <Minus className="w-4 h-4 text-vyr-gray-500" />
+              <span className="text-xs text-vyr-gray-500 font-mono">—</span>
             </>
           ) : (
-            <span className="text-xs text-muted-foreground">—</span>
+            <span className="text-xs text-vyr-gray-500 font-mono">—</span>
           )}
         </div>
       </div>
@@ -136,14 +136,14 @@ function ValueCell({
   title: string;
 }) {
   const styles = {
-    muted: "text-muted-foreground",
-    default: "text-foreground/70",
-    highlight: "text-foreground font-medium",
+    muted: "text-vyr-gray-500",
+    default: "text-vyr-gray-400",
+    highlight: "text-vyr-white font-semibold",
   };
 
   return (
     <span 
-      className={`w-8 text-center ${styles[variant]}`} 
+      className={`w-8 text-center font-mono ${styles[variant]}`} 
       title={title}
     >
       {value ?? "—"}

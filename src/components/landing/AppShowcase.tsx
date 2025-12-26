@@ -8,69 +8,69 @@ function DashboardScreen() {
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-vyr-gray-500 rounded-lg" />
-          <span className="text-vyr-white text-xs font-semibold font-mono">VYR Dashboard</span>
+          <div className="w-6 h-6 bg-vyr-graphite rounded-lg border border-vyr-gray-600/50" />
+          <span className="text-vyr-white text-xs font-semibold font-mono tracking-tight">VYR</span>
         </div>
-        <div className="w-6 h-6 bg-vyr-gray-500 rounded-full" />
+        <div className="w-6 h-6 bg-vyr-graphite rounded-full border border-vyr-gray-600/30" />
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 gap-2 mb-3">
-        <div className="bg-vyr-black rounded-lg p-2 border border-vyr-gray-500/20">
-          <div className="text-[8px] text-vyr-gray-100/60">Performance</div>
-          <div className="text-sm font-bold text-vyr-white">+23%</div>
+        <div className="bg-vyr-graphite-dark rounded-lg p-2 border border-vyr-gray-700/50">
+          <div className="text-[8px] text-vyr-gray-500 font-mono">PERFORMANCE</div>
+          <div className="text-sm font-bold text-vyr-white font-mono">+23%</div>
           <div className="flex gap-0.5 mt-1">
             {[40, 55, 45, 60, 75, 65, 80].map((h, i) => (
-              <div key={i} className="w-1.5 bg-vyr-gray-100/30 rounded-sm" style={{ height: `${h * 0.2}px` }} />
+              <div key={i} className="w-1.5 bg-vyr-gray-500/40 rounded-sm" style={{ height: `${h * 0.2}px` }} />
             ))}
           </div>
         </div>
-        <div className="bg-vyr-black rounded-lg p-2 border border-vyr-gray-500/20">
-          <div className="text-[8px] text-vyr-gray-100/60">Qualidade do Sono</div>
-          <div className="text-sm font-bold text-vyr-cold-blue">8.2h</div>
+        <div className="bg-vyr-graphite-dark rounded-lg p-2 border border-vyr-gray-700/50">
+          <div className="text-[8px] text-vyr-gray-500 font-mono">SONO</div>
+          <div className="text-sm font-bold text-vyr-accent font-mono">8.2h</div>
           <div className="flex gap-0.5 mt-1">
             {[60, 70, 65, 80, 75, 85, 90].map((h, i) => (
-              <div key={i} className="w-1.5 bg-vyr-cold-blue/30 rounded-sm" style={{ height: `${h * 0.2}px` }} />
+              <div key={i} className="w-1.5 bg-vyr-accent/25 rounded-sm" style={{ height: `${h * 0.2}px` }} />
             ))}
           </div>
         </div>
       </div>
 
       {/* Main Chart */}
-      <div className="bg-vyr-black rounded-lg p-2 mb-3 border border-vyr-gray-500/20">
+      <div className="bg-vyr-graphite-dark rounded-lg p-2 mb-3 border border-vyr-gray-700/50">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-[8px] text-vyr-gray-100/60">Evolução Cognitiva</span>
-          <span className="text-[8px] text-vyr-white">+15%</span>
+          <span className="text-[8px] text-vyr-gray-500 font-mono">EVOLUÇÃO</span>
+          <span className="text-[8px] text-vyr-accent font-mono">+15%</span>
         </div>
         <svg viewBox="0 0 200 60" className="w-full h-12">
           <defs>
-            <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#525252" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#525252" stopOpacity="0" />
+            <linearGradient id="chartGradientVyr" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#3b4f63" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#3b4f63" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path
             d="M0,50 Q25,45 50,40 T100,30 T150,25 T200,15"
             fill="none"
-            stroke="#E5E5E5"
+            stroke="#3b4f63"
             strokeWidth="2"
           />
           <path
             d="M0,50 Q25,45 50,40 T100,30 T150,25 T200,15 L200,60 L0,60 Z"
-            fill="url(#chartGradient)"
+            fill="url(#chartGradientVyr)"
           />
         </svg>
       </div>
 
       {/* Stats Row */}
       <div className="flex gap-2">
-        <div className="flex-1 bg-vyr-gray-900 rounded-lg p-2 border border-vyr-gray-500/30">
-          <div className="text-[8px] text-vyr-gray-100/60">Foco</div>
-          <div className="text-xs font-bold text-vyr-white">Alto</div>
+        <div className="flex-1 bg-vyr-graphite rounded-lg p-2 border border-vyr-gray-600/30">
+          <div className="text-[8px] text-vyr-gray-500 font-mono">FOCO</div>
+          <div className="text-xs font-bold text-vyr-white font-mono">Alto</div>
         </div>
-        <div className="flex-1 bg-vyr-gray-900 rounded-lg p-2 border border-vyr-gray-500/30">
-          <div className="text-[8px] text-vyr-gray-100/60">Energia</div>
-          <div className="text-xs font-bold text-vyr-white">+18%</div>
+        <div className="flex-1 bg-vyr-graphite rounded-lg p-2 border border-vyr-gray-600/30">
+          <div className="text-[8px] text-vyr-gray-500 font-mono">ENERGIA</div>
+          <div className="text-xs font-bold text-vyr-white font-mono">+18%</div>
         </div>
       </div>
     </div>
@@ -83,20 +83,20 @@ function SleepScreen() {
     <div className="bg-vyr-gray-900 rounded-2xl p-3 h-full">
       {/* Header */}
       <div className="text-center mb-3">
-        <Moon className="w-5 h-5 text-vyr-cold-blue mx-auto mb-1" />
-        <span className="text-vyr-white text-xs font-semibold font-mono">Análise do Sono</span>
+        <Moon className="w-5 h-5 text-vyr-accent mx-auto mb-1" />
+        <span className="text-vyr-white text-xs font-semibold font-mono tracking-tight">VYR CLEAR</span>
       </div>
 
       {/* Sleep Circle */}
       <div className="relative w-24 h-24 mx-auto mb-3">
         <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#171717" strokeWidth="8" />
+          <circle cx="50" cy="50" r="40" fill="none" stroke="#262626" strokeWidth="8" />
           <circle
             cx="50"
             cy="50"
             r="40"
             fill="none"
-            stroke="#1E293B"
+            stroke="#3b4f63"
             strokeWidth="8"
             strokeDasharray="220"
             strokeDashoffset="44"
@@ -104,34 +104,34 @@ function SleepScreen() {
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold text-vyr-white">82%</span>
-          <span className="text-[8px] text-vyr-cold-blue">Qualidade</span>
+          <span className="text-xl font-bold text-vyr-white font-mono">82%</span>
+          <span className="text-[8px] text-vyr-accent font-mono">QUALIDADE</span>
         </div>
       </div>
 
       {/* Sleep Phases */}
       <div className="space-y-1.5">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-vyr-cold-blue rounded-full" />
-          <span className="text-[8px] text-vyr-gray-100/60 flex-1">REM</span>
-          <span className="text-[8px] text-vyr-white font-medium">1h 45m</span>
+          <div className="w-2 h-2 bg-vyr-accent rounded-full" />
+          <span className="text-[8px] text-vyr-gray-500 flex-1 font-mono">REM</span>
+          <span className="text-[8px] text-vyr-white font-medium font-mono">1h 45m</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-vyr-gray-500 rounded-full" />
-          <span className="text-[8px] text-vyr-gray-100/60 flex-1">Profundo</span>
-          <span className="text-[8px] text-vyr-white font-medium">2h 30m</span>
+          <span className="text-[8px] text-vyr-gray-500 flex-1 font-mono">Profundo</span>
+          <span className="text-[8px] text-vyr-white font-medium font-mono">2h 30m</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-vyr-gray-100 rounded-full" />
-          <span className="text-[8px] text-vyr-gray-100/60 flex-1">Leve</span>
-          <span className="text-[8px] text-vyr-white font-medium">3h 15m</span>
+          <div className="w-2 h-2 bg-vyr-gray-300 rounded-full" />
+          <span className="text-[8px] text-vyr-gray-500 flex-1 font-mono">Leve</span>
+          <span className="text-[8px] text-vyr-white font-medium font-mono">3h 15m</span>
         </div>
       </div>
 
       {/* Bottom Stat */}
-      <div className="mt-3 bg-vyr-black rounded-lg p-2 text-center border border-vyr-gray-500/20">
-        <span className="text-[8px] text-vyr-cold-blue">Tempo Total</span>
-        <div className="text-sm font-bold text-vyr-white">7h 30m</div>
+      <div className="mt-3 bg-vyr-graphite-dark rounded-lg p-2 text-center border border-vyr-gray-700/50">
+        <span className="text-[8px] text-vyr-accent font-mono">TEMPO TOTAL</span>
+        <div className="text-sm font-bold text-vyr-white font-mono">7h 30m</div>
       </div>
     </div>
   );
@@ -142,13 +142,13 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
   return (
     <div className={`relative ${className}`}>
       {/* Phone Frame */}
-      <div className="relative bg-gradient-to-b from-vyr-gray-500 via-vyr-gray-900 to-vyr-black rounded-[2rem] sm:rounded-[3rem] p-[2px] sm:p-[3px] shadow-2xl shadow-black/60">
+      <div className="relative bg-gradient-to-b from-vyr-gray-600 via-vyr-gray-800 to-vyr-black rounded-[2rem] sm:rounded-[3rem] p-[2px] sm:p-[3px] shadow-2xl shadow-black/60">
         {/* Inner bezel */}
         <div className="bg-vyr-black rounded-[1.8rem] sm:rounded-[2.8rem] p-1.5 sm:p-2">
           {/* Dynamic Island */}
           <div className="absolute top-3 sm:top-5 left-1/2 -translate-x-1/2 w-16 sm:w-24 h-5 sm:h-7 bg-vyr-black rounded-full z-10 flex items-center justify-center gap-1.5 sm:gap-2">
-            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-vyr-gray-900 rounded-full" />
-            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-vyr-gray-900 rounded-full ring-1 ring-vyr-gray-500/50" />
+            <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-vyr-gray-800 rounded-full" />
+            <div className="w-2 sm:w-3 h-2 sm:h-3 bg-vyr-gray-800 rounded-full ring-1 ring-vyr-gray-600/50" />
           </div>
           {/* Screen */}
           <div className="relative bg-vyr-gray-900 rounded-[2.5rem] overflow-hidden w-40 h-[340px] sm:w-56 sm:h-[480px]">
@@ -156,10 +156,10 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
               {children}
             </div>
             {/* Screen reflection effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent pointer-events-none" />
           </div>
           {/* Bottom bar indicator */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-28 h-1 bg-vyr-gray-500 rounded-full" />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-28 h-1 bg-vyr-gray-600 rounded-full" />
         </div>
       </div>
     </div>
@@ -180,7 +180,7 @@ export function AppShowcase() {
       <div className="absolute inset-0 bg-vyr-gray-900" />
       
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#17171710_1px,transparent_1px),linear-gradient(to_bottom,#17171710_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#17171708_1px,transparent_1px),linear-gradient(to_bottom,#17171708_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -199,7 +199,7 @@ export function AppShowcase() {
               <div className="absolute -bottom-8 sm:-bottom-12 -right-2 sm:-right-4 z-20">
                 <div className="relative group">
                   {/* Subtle glow */}
-                  <div className="absolute inset-0 bg-vyr-gray-500/20 rounded-full blur-2xl scale-125 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-vyr-graphite/30 rounded-full blur-2xl scale-125 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                   <img 
                     src={smartRingImage} 
                     alt="VYR NODE" 
@@ -212,17 +212,17 @@ export function AppShowcase() {
 
           {/* Content */}
           <div className="text-center lg:text-left">
-            <p className="text-sm text-vyr-gray-100 uppercase tracking-widest mb-3 font-mono">
+            <p className="text-sm text-vyr-gray-400 uppercase tracking-widest mb-3 font-mono">
               Plataforma + VYR NODE
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-vyr-white mb-6 leading-tight">
               Dados precisos para{" "}
-              <span className="text-vyr-gray-100">
+              <span className="text-vyr-accent">
                 evolução mensurável
               </span>
             </h2>
             
-            <p className="text-lg text-vyr-gray-100/80 mb-4 max-w-xl">
+            <p className="text-lg text-vyr-gray-300 mb-4 max-w-xl">
               VYR NODE discreto e técnico que coleta dados fisiológicos 24/7. 
               Não substitui relógios sociais. Não possui estética esportiva.
             </p>
@@ -235,10 +235,10 @@ export function AppShowcase() {
             {/* Feature Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {features.map((feature) => (
-                <div key={feature.label} className="flex items-center gap-3 bg-vyr-black/50 backdrop-blur-sm rounded-xl p-3 border border-vyr-gray-500/20">
-                  <feature.icon className="w-5 h-5 text-vyr-gray-100" />
+                <div key={feature.label} className="flex items-center gap-3 vyr-card-graphite rounded-xl p-3">
+                  <feature.icon className="w-5 h-5 text-vyr-accent" />
                   <div>
-                    <div className="text-xs text-vyr-gray-500">{feature.label}</div>
+                    <div className="text-xs text-vyr-gray-500 font-mono">{feature.label}</div>
                     <div className="text-sm font-semibold text-vyr-white font-mono">{feature.value}</div>
                   </div>
                 </div>
