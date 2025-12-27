@@ -199,7 +199,7 @@ export function PlatformSection() {
               Visualize seus dados
             </p>
             <h3 className="text-2xl font-bold text-vyr-white">
-              Dashboard de Performance Cognitiva
+              Painel de Gestão de Estados Cognitivos
             </h3>
           </div>
 
@@ -208,8 +208,8 @@ export function PlatformSection() {
             <div className="lg:col-span-2 p-6 rounded-2xl bg-vyr-gray-900/40 border border-vyr-gray-600/30">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h4 className="text-vyr-white font-semibold">Evolução Semanal</h4>
-                  <p className="text-vyr-gray-400 text-sm">Foco, Energia e Clareza</p>
+                  <h4 className="text-vyr-white font-semibold">Variação e Evolução Semanal</h4>
+                  <p className="text-vyr-gray-400 text-sm">Indicadores diários</p>
                 </div>
                 <div className="flex items-center gap-4 text-xs font-mono">
                   <div className="flex items-center gap-1.5">

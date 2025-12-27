@@ -75,18 +75,18 @@ export function SmartRingSection() {
         <div className="text-center mb-16">
           <div className="vyr-badge-accent mb-6">
             <Circle className="w-4 h-4" />
-            <span className="text-sm font-mono tracking-wider">VYR NODE — O DIFERENCIAL</span>
+            <span className="text-sm font-mono tracking-wider">VYR NODE — MÓDULO DE MENSURAÇÃO FISIOLÓGICA</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
             De percepção a{" "}
             <span className="text-gradient-accent">
-              precisão científica
+              dados fisiológicos
             </span>
           </h2>
           <p className="text-vyr-gray-400 max-w-3xl mx-auto text-lg">
-            O VYR NODE fecha o ciclo: captura dados fisiológicos 24/7 que revelam 
-            exatamente como seu corpo responde aos nootrópicos.{" "}
-            <span className="text-vyr-white font-medium">Discreto como uma aliança. Poderoso como um laboratório.</span>
+            Dados fisiológicos contínuos para análise de estado cognitivo. 
+            O VYR NODE captura biomarcadores 24/7 que complementam a análise subjetiva.{" "}
+            <span className="text-vyr-white font-medium">Discreto. Contínuo. Preciso.</span>
           </p>
         </div>
 
@@ -127,7 +127,7 @@ export function SmartRingSection() {
                 O que o NODE captura
               </p>
               <h3 className="text-2xl font-medium text-vyr-white">
-                Biomarcadores de Performance Real
+                Biomarcadores Fisiológicos
               </h3>
             </div>
 
@@ -194,7 +194,7 @@ export function SmartRingSection() {
             </span>
             <span className="hidden sm:block w-px h-6 bg-vyr-graphite" />
             <span className="text-vyr-white font-mono tracking-wider">
-              Agora você pode medir.
+              Mensuração ativa.
             </span>
           </div>
         </div>

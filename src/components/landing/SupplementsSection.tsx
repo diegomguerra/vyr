@@ -7,8 +7,8 @@ const supplements = [{
   icon: Sun,
   period: "Manhã",
   tagline: "Ativação & Clareza",
-  description: "Fórmula nootrópica para máxima ativação cognitiva. Foco profundo, memória de trabalho e clareza mental desde as primeiras horas.",
-  benefits: ["Foco intensificado", "Clareza nas decisões", "Energia mental sustentada"],
+  description: "Estado inicial de ativação cognitiva. Indução de estado cognitivo inicial com suporte à atenção, memória operacional e clareza decisória.",
+  benefits: ["Suporte à atenção", "Memória operacional", "Clareza decisória"],
   bgColor: "bg-vyr-gray-100",
   borderColor: "border-vyr-gray-300",
   textColor: "text-vyr-black",
@@ -19,9 +19,9 @@ const supplements = [{
   variant: "HOLD" as const,
   icon: Sunset,
   period: "Tarde",
-  tagline: "Sustentação & Resiliência",
-  description: "Mantém o estado de flow e protege contra fadiga cognitiva. Resistência mental para finalizar o dia no mesmo nível.",
-  benefits: ["Flow prolongado", "Resistência à fadiga", "Equilíbrio emocional"],
+  tagline: "Manutenção de Estado Cognitivo",
+  description: "Manutenção de estado cognitivo sob carga. Contribui para a manutenção do estado cognitivo sob carga prolongada e redução da variabilidade ao longo do dia.",
+  benefits: ["Manutenção sob carga", "Redução de variabilidade", "Estabilidade ao longo do dia"],
   bgColor: "bg-vyr-gray-600",
   borderColor: "border-vyr-gray-500",
   textColor: "text-vyr-white",
@@ -33,8 +33,8 @@ const supplements = [{
   icon: Moon,
   period: "Noite",
   tagline: "Recuperação Cognitiva",
-  description: "Otimiza consolidação de memória e regeneração neural durante o sono. Acorde preparado para um novo dia de alta performance.",
-  benefits: ["Sono reparador", "Consolidação de memória", "Regeneração neural"],
+  description: "Redução de carga e recuperação neural. Favorece processos associados à consolidação neural e recuperação fisiológica durante o sono.",
+  benefits: ["Descompressão cognitiva", "Consolidação neural", "Recuperação fisiológica"],
   bgColor: "bg-vyr-coldBlue",
   borderColor: "border-vyr-gray-600",
   textColor: "text-vyr-white",
@@ -149,8 +149,8 @@ export function SupplementsSection() {
             Ciclo <span className="text-gradient-accent">Cognitivo</span> Completo
           </h2>
           <p className="text-vyr-gray-400 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 px-2">
-            Três fórmulas nootrópicas cientificamente dosadas para cada fase do seu dia. 
-            <span className="text-vyr-white font-medium"> Não é estimulante. É otimização neural estruturada.</span>
+            Três módulos nootrópicos estruturados para diferentes estados cognitivos ao longo do dia. 
+            <span className="text-vyr-white font-medium"> Não atua por estímulo agudo, mas por modulação progressiva do estado neural.</span>
           </p>
           
           {/* Preview das 3 caixas VYR (CSS-based) */}
@@ -203,7 +203,7 @@ export function SupplementsSection() {
             <div className="hidden sm:block w-px h-6 bg-vyr-graphite" />
             <div className="flex items-center gap-2 text-sm">
               <span className="text-vyr-gray-400">BOOT + HOLD + CLEAR</span>
-              <span className="text-vyr-gray-300 font-medium">= Otimização 24h</span>
+              <span className="text-vyr-gray-300 font-medium">= Gestão cognitiva 24h</span>
             </div>
           </div>
         </div>

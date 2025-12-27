@@ -4,7 +4,7 @@ const steps = [
   {
     icon: UserPlus,
     title: "1. Configure seu Perfil",
-    description: "Complete a anamnese cognitiva e defina seus objetivos de performance intelectual.",
+    description: "Complete a anamnese cognitiva e defina seus objetivos de alta performance cognitiva.",
   },
   {
     icon: Activity,
@@ -14,7 +14,7 @@ const steps = [
   {
     icon: BarChart3,
     title: "3. Evolua com Dados",
-    description: "Dashboard cognitivo, correlações inteligentes e insights personalizados. Compare apenas consigo mesmo.",
+    description: "Painel de gestão cognitiva, correlações e insights personalizados. Compare apenas consigo mesmo.",
   },
 ];
 
