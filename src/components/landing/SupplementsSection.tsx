@@ -51,7 +51,7 @@ function SupplementBox({
       {/* Caixa do suplemento */}
       <div className={`relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px]`}>
         {/* Visual da caixa com mockup do sachê */}
-        <div className="relative mb-4 sm:mb-6">
+        <div className="relative mb-6 sm:mb-8">
           {/* Caixa simulada com borda do produto */}
           <div className={`relative w-full aspect-[4/3] rounded-sm ${supplement.bgColor} p-[2px]`}>
             <div className="w-full h-full rounded-sm bg-vyr-graphite-dark flex flex-col items-center justify-center p-3 sm:p-4">
