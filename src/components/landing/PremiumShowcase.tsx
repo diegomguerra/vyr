@@ -90,8 +90,8 @@ export function PremiumShowcase() {
           <div className="relative flex justify-center">
             <div className="px-8 py-4 bg-vyr-graphite-dark/80 backdrop-blur-sm rounded-2xl border border-vyr-gray-700/50">
               <p className="text-xl sm:text-2xl font-medium text-vyr-white text-center">
-                "Alta performance intelectual não se ostenta.{" "}
-                <span className="text-vyr-accent">Se mede.</span>"
+                "Alta performance cognitiva não se ostenta.{" "}
+                <span className="text-vyr-accent">Se mensura.</span>"
               </p>
             </div>
           </div>

@@ -19,7 +19,7 @@ const testimonials = [
     name: "André L.",
     role: "Founder & CEO",
     content: "Reuniões das 8h às 22h são minha rotina. Com VYR, mantenho a mesma energia e clareza na última call do dia que tinha na primeira.",
-    highlight: "14h de alta performance",
+    highlight: "14h de clareza sustentada",
     avatar: "AL",
   },
   {
@@ -39,7 +39,7 @@ const testimonials = [
   {
     name: "Mariana R.",
     role: "M&A Director",
-    content: "Due diligence de milhões exige atenção aos detalhes. Não posso deixar nada passar. VYR se tornou parte essencial da minha rotina de alta performance.",
+    content: "Due diligence de milhões exige atenção aos detalhes. Não posso deixar nada passar. VYR se tornou parte essencial da minha rotina cognitiva.",
     highlight: "Zero erros em deals",
     avatar: "MR",
   },
@@ -52,10 +52,10 @@ export function Testimonials() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
-            Quem já está no <span className="text-vyr-gray-400">peak</span>
+            Quem já está no <span className="text-vyr-gray-400">estado elevado</span>
           </h2>
           <p className="text-vyr-gray-400 max-w-2xl mx-auto text-lg">
-            Profissionais de alta performance que escolheram otimizar seu maior ativo: o cérebro
+            Profissionais em ambientes exigentes que escolheram estruturar sua rotina cognitiva
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export function Testimonials() {
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <p className="text-vyr-gray-500 text-sm">
-            Junte-se a centenas de profissionais que já elevaram sua performance cognitiva
+            Junte-se a profissionais que estruturaram sua rotina cognitiva com dados
           </p>
         </div>
       </div>

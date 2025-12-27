@@ -60,7 +60,7 @@ export function SystemSection() {
             4 Camadas Integradas
           </h2>
           <p className="text-vyr-gray-500 max-w-2xl mx-auto text-lg">
-            Ajudamos profissionais de elite a sustentar, medir e evoluir seu desempenho 
+            Ajudamos profissionais em ambientes exigentes a sustentar, medir e evoluir seu desempenho 
             intelectual com o mesmo rigor aplicado ao corpo.
           </p>
         </div>

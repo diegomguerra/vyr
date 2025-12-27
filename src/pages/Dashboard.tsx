@@ -94,9 +94,9 @@ export default function Dashboard() {
       <div className="flex flex-col gap-3 sm:gap-4">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <h1 className="text-lg sm:text-2xl font-bold text-vyr-white font-mono">Painel de Performance</h1>
+            <h1 className="text-lg sm:text-2xl font-bold text-vyr-white font-mono">Painel de Gestão Cognitiva</h1>
             <p className="text-vyr-gray-400 text-xs sm:text-sm mt-1">
-              Acompanhe sua evolução cognitiva diária
+              Acompanhe sua variação e evolução semanal
             </p>
           </div>
           <div className="flex-shrink-0">

@@ -40,7 +40,7 @@ const ringFeatures = [
 const platformFeatures = [
   {
     icon: BarChart3,
-    title: "Dashboard Cognitivo Avançado",
+    title: "Painel de Gestão Cognitiva",
     description: "Visualize todas as suas métricas em um painel unificado com gráficos evolutivos.",
   },
   {
@@ -201,7 +201,7 @@ export default function SistemaCompleto() {
                 Os 3 Sachês do Ciclo Cognitivo
               </h2>
               <p className="text-sm sm:text-base text-vyr-gray-400 max-w-2xl mx-auto px-2">
-                Fórmulas sincronizadas com seu ritmo circadiano para máximo desempenho ao longo do dia.
+                Fórmulas sincronizadas com seu ritmo circadiano para expansão da capacidade funcional ao longo do dia.
               </p>
             </div>
 
@@ -222,7 +222,7 @@ export default function SistemaCompleto() {
                   </div>
                 </div>
                 <p className="text-sm text-vyr-gray-400 leading-relaxed mb-4">
-                  <strong className="text-vyr-gray-100">Foco e energia cognitiva.</strong> Otimiza neurotransmissores para clareza mental e concentração nas primeiras horas do dia.
+                  <strong className="text-vyr-gray-100">Foco e energia cognitiva.</strong> Induz estado cognitivo inicial para clareza mental e concentração nas primeiras horas do dia.
                 </p>
                 <ul className="space-y-2 text-xs text-vyr-gray-500">
                   <li className="flex items-center gap-2">
@@ -252,7 +252,7 @@ export default function SistemaCompleto() {
                   </div>
                 </div>
                 <p className="text-sm text-vyr-gray-400 leading-relaxed mb-4">
-                  <strong className="text-vyr-gray-300">Sustentação e resiliência.</strong> Mantém a performance enquanto prepara a transição para o relaxamento noturno.
+                  <strong className="text-vyr-gray-300">Sustentação e resiliência.</strong> Contribui para manutenção do estado cognitivo enquanto prepara a transição para o relaxamento noturno.
                 </p>
                 <ul className="space-y-2 text-xs text-vyr-gray-500">
                   <li className="flex items-center gap-2">
@@ -282,7 +282,7 @@ export default function SistemaCompleto() {
                   </div>
                 </div>
                 <p className="text-sm text-vyr-gray-400 leading-relaxed mb-4">
-                  <strong className="text-vyr-cold-blue">Sono reparador.</strong> Promove relaxamento profundo e otimiza a consolidação da memória durante o sono.
+                  <strong className="text-vyr-cold-blue">Sono reparador.</strong> Promove relaxamento profundo e favorece a consolidação da memória durante o sono.
                 </p>
                 <ul className="space-y-2 text-xs text-vyr-gray-500">
                   <li className="flex items-center gap-2">
@@ -341,7 +341,7 @@ export default function SistemaCompleto() {
               Plataforma Premium
             </h2>
             <p className="text-sm sm:text-base text-vyr-gray-400 max-w-2xl mx-auto px-2">
-              Recursos exclusivos que transformam dados biométricos em insights acionáveis para otimizar sua performance.
+              Recursos exclusivos que transformam dados biométricos em insights acionáveis para estruturar sua rotina cognitiva.
             </p>
           </div>
 
@@ -389,7 +389,7 @@ export default function SistemaCompleto() {
               O Que Está Incluído
             </h2>
             <p className="text-sm sm:text-base text-vyr-gray-400 max-w-2xl mx-auto px-2">
-              Tudo que você precisa para otimização cognitiva completa em um único pacote.
+              Tudo que você precisa para gestão cognitiva completa em um único pacote.
             </p>
           </div>
 

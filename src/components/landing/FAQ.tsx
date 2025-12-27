@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "O que é o VYR?",
     answer:
-      "VYR é um sistema de performance cognitiva que combina suplementação nootrópica (BOOT, HOLD, CLEAR), plataforma de mensuração e o VYR NODE para otimização intelectual baseada em dados.",
+      "VYR é um sistema de gestão cognitiva que combina suplementação nootrópica (BOOT, HOLD, CLEAR), plataforma de mensuração e o VYR NODE para modulação progressiva do estado neural baseada em dados.",
   },
   {
     question: "Como funciona a plataforma de acompanhamento?",
@@ -19,7 +19,7 @@ const faqs = [
   {
     question: "Quanto tempo leva para ver resultados?",
     answer:
-      "Os efeitos agudos podem ser sentidos nas primeiras doses. Porém, para resultados otimizados e sustentáveis, recomendamos um ciclo de pelo menos 30 dias com acompanhamento consistente na plataforma.",
+      "Os efeitos agudos podem ser sentidos nas primeiras doses. Porém, para resultados estruturados e sustentáveis, recomendamos um ciclo de pelo menos 30 dias com acompanhamento consistente na plataforma.",
   },
   {
     question: "Posso usar com outros suplementos?",

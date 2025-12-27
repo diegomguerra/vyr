@@ -114,7 +114,7 @@ export function PlatformSection() {
             
             {/* Dashboard image with frame */}
             <div className="relative rounded-2xl overflow-hidden border border-vyr-gray-600/30 shadow-2xl">
-              <img src={dashboardPreview} alt="VYR Dashboard - Painel de Performance Cognitiva" className="w-full h-auto" />
+              <img src={dashboardPreview} alt="VYR - Painel de Gestão de Estados Cognitivos" className="w-full h-auto" />
               {/* Subtle overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-vyr-black/40 via-transparent to-transparent pointer-events-none" />
             </div>

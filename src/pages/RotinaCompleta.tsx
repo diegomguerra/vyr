@@ -12,7 +12,7 @@ const sachets = [
     variant: "BOOT" as const,
     icon: Sun,
     tagline: "Ativação & Clareza",
-    description: "Máxima performance cognitiva durante o dia. Ideal para trabalho intenso e tomada de decisões.",
+    description: "Indução de estado cognitivo inicial. Ideal para trabalho intenso e tomada de decisões.",
     bgColor: "bg-vyr-gray-100",
     borderColor: "border-vyr-gray-300",
     textColor: "text-vyr-black",
@@ -38,7 +38,7 @@ const sachets = [
     variant: "CLEAR" as const,
     icon: Moon,
     tagline: "Recuperação Cognitiva",
-    description: "Otimiza consolidação da memória e prepara o cérebro para recuperação profunda.",
+    description: "Favorece processos associados à consolidação neural e recuperação fisiológica durante o sono.",
     bgColor: "bg-vyr-coldBlue",
     borderColor: "border-vyr-cold-blue/50",
     textColor: "text-vyr-white",
@@ -102,7 +102,7 @@ export default function RotinaCompleta() {
               Rotina Cognitiva Completa
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-vyr-white mb-4 sm:mb-6">
-              Otimização Cognitiva
+              Gestão Cognitiva
               <span className="block font-mono tracking-wider text-vyr-gray-300">
                 24 Horas por Dia
               </span>
@@ -299,7 +299,7 @@ export default function RotinaCompleta() {
       <section className="py-10 sm:py-16 bg-vyr-gray-900 border-y border-vyr-gray-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-vyr-white mb-3 sm:mb-4">
-            Quer o máximo de performance?
+            Quer expandir sua capacidade funcional?
           </h3>
           <p className="text-sm sm:text-base text-vyr-gray-400 mb-5 sm:mb-6 max-w-2xl mx-auto px-2">
             O VYR SYSTEM inclui VYR NODE para monitoramento biométrico contínuo, correlações inteligentes entre suas métricas e insights personalizados por AI.

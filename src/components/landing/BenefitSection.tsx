@@ -25,14 +25,14 @@ const benefits = [
   {
     icon: Target,
     title: "Vantagem Competitiva Silenciosa",
-    description: "Performance intelectual de elite que não se ostenta. O diferencial está nos resultados.",
+    description: "Capacidade funcional em ambientes exigentes que não se ostenta. O diferencial está nos resultados.",
     color: "text-vyr-cold-blue",
     bgColor: "bg-vyr-cold-blue/10",
   },
   {
     icon: Moon,
-    title: "Recuperação Otimizada",
-    description: "Sono reparador que prepara seu cérebro para o próximo dia de alta demanda cognitiva.",
+    title: "Recuperação Estruturada",
+    description: "Sono reparador que prepara seu cérebro para o próximo dia de demanda cognitiva.",
     color: "text-vyr-gray-500",
     bgColor: "bg-vyr-gray-500/10",
   },
@@ -63,7 +63,7 @@ export function BenefitSection() {
           </h2>
           <p className="text-vyr-gray-500 max-w-2xl mx-auto text-lg">
             O mesmo rigor aplicado ao desempenho físico, agora para sua mente. 
-            Traders, founders e desenvolvedores de elite.
+            Traders, founders e desenvolvedores em ambientes exigentes.
           </p>
         </div>
 

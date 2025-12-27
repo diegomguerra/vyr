@@ -1,12 +1,12 @@
 import type { PerfilAtividade, RotinaTrabalho, NivelExperiencia, FrequenciaExercicio, ConsumoSubstancia } from "./types";
 
 export const OBJETIVOS = [
-  { value: "FOCO_MENTAL", label: "Melhorar foco e clareza mental", icon: "Target" },
+  { value: "FOCO_MENTAL", label: "Ajustar foco e clareza mental", icon: "Target" },
   { value: "ENERGIA_ESTAVEL", label: "Ter energia mais estável ao longo do dia", icon: "Zap" },
-  { value: "QUALIDADE_SONO", label: "Melhorar qualidade do sono", icon: "Moon" },
+  { value: "QUALIDADE_SONO", label: "Ajustar qualidade do sono", icon: "Moon" },
   { value: "REDUZIR_ESTRESSE", label: "Reduzir estresse e ansiedade", icon: "Heart" },
-  { value: "PERFORMANCE", label: "Otimizar performance cognitiva", icon: "Brain" },
-  { value: "RECUPERACAO", label: "Melhorar recuperação física/mental", icon: "Activity" },
+  { value: "PERFORMANCE", label: "Estruturar rotina cognitiva", icon: "Brain" },
+  { value: "RECUPERACAO", label: "Ajustar recuperação física/mental", icon: "Activity" },
 ] as const;
 
 export const EXPERIENCIA_SUPLEMENTOS: { value: NivelExperiencia; label: string; desc: string }[] = [

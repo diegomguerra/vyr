@@ -10,13 +10,13 @@ const products = [
     name: "VYR BOOT",
     tagline: "Ativação Matinal",
     period: "6h às 12h",
-    description: "Fórmula desenvolvida para máxima ativação cognitiva nas primeiras horas do dia. Potencializa foco, clareza mental e energia sustentável sem picos de ansiedade.",
+    description: "Fórmula estruturada para indução de estado cognitivo inicial nas primeiras horas do dia. Potencializa foco, clareza mental e energia sustentável sem picos de ansiedade.",
     variant: "BOOT" as const,
     icon: Sun,
     benefits: [
       "Foco intenso e clareza mental",
       "Energia sustentável sem crash",
-      "Melhora na memória de trabalho",
+      "Suporte à memória de trabalho",
       "Redução da procrastinação matinal"
     ],
     ingredients: [
@@ -36,14 +36,14 @@ const products = [
     name: "VYR HOLD",
     tagline: "Performance Sustentada",
     period: "12h às 18h",
-    description: "Fórmula para manter a produtividade no período mais desafiador do dia. Combate a fadiga pós-almoço e mantém o desempenho cognitivo estável até o fim do expediente.",
+    description: "Fórmula para manutenção do estado cognitivo no período mais desafiador do dia. Combate a fadiga pós-almoço e contribui para desempenho cognitivo estável até o fim do expediente.",
     variant: "HOLD" as const,
     icon: Zap,
     benefits: [
       "Combate à fadiga pós-almoço",
       "Produtividade sustentada",
       "Resistência ao estresse",
-      "Melhora na tomada de decisões"
+      "Suporte à tomada de decisões"
     ],
     ingredients: [
       "Teacrina 100mg",
@@ -61,7 +61,7 @@ const products = [
     name: "VYR CLEAR",
     tagline: "Recuperação Profunda",
     period: "20h às 6h",
-    description: "Fórmula para otimizar a recuperação cognitiva durante o sono. Promove sono reparador e consolidação de memórias, preparando o cérebro para o próximo dia.",
+    description: "Fórmula para favorecer a recuperação cognitiva durante o sono. Promove sono reparador e consolidação de memórias, preparando o cérebro para o próximo dia.",
     variant: "CLEAR" as const,
     icon: Moon,
     benefits: [
@@ -111,7 +111,7 @@ export default function Products() {
             Escolha seu <span className="text-gradient-accent">Suplemento</span>
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-vyr-gray-400 max-w-2xl mx-auto px-2">
-            Três fórmulas exclusivas desenvolvidas para otimizar cada fase do seu dia cognitivo. 
+            Três fórmulas exclusivas estruturadas para cada fase do seu dia cognitivo. 
             Selecione o produto ideal para suas necessidades.
           </p>
         </div>
@@ -266,7 +266,7 @@ export default function Products() {
                 Rotina Cognitiva <span className="text-gradient-accent">Completa</span>
               </h2>
               <p className="text-vyr-gray-400 max-w-2xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base">
-                Otimize seu cérebro 24h com os 3 suplementos VYR integrados. 
+                Estruture sua rotina cognitiva 24h com os 3 suplementos VYR integrados. 
                 Economia de 30% em relação aos produtos individuais.
               </p>
               
