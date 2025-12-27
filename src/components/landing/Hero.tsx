@@ -51,7 +51,7 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-16 px-4">
-          <Link to="/login?signup=true" className="w-full sm:w-auto">
+          <Link to="/como-funciona" className="w-full sm:w-auto">
             <Button size="lg" className="w-full sm:w-auto vyr-btn-accent px-8 sm:px-12 py-5 sm:py-7 text-base sm:text-lg rounded-sm group">
               Começar agora
               <ArrowRight className="ml-2 sm:ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
