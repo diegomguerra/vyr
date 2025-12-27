@@ -60,16 +60,6 @@ export function SachetMockup({ variant, className = "" }: SachetMockupProps) {
         </div>
       </div>
       
-      {/* Label below */}
-      <span 
-        className="mt-4 text-sm tracking-[0.2em] font-medium"
-        style={{ 
-          color: VYR_COLORS.gray[300],
-          fontFamily: VYR_TYPOGRAPHY.logo.fontFamily 
-        }}
-      >
-        {label.name}
-      </span>
     </div>
   );
 }
