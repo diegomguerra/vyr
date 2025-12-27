@@ -23,7 +23,7 @@ export function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-12">
         {/* Badge with accent */}
         <div className="vyr-badge-accent mb-6 sm:mb-8">
-          <span className="text-xs sm:text-sm font-mono tracking-wider">COGNITIVE PERFORMANCE SYSTEM</span>
+          <span className="text-xs sm:text-sm font-mono tracking-wider">Cognitive Performance System</span>
         </div>
 
         {/* Main Heading with subtle glow */}
@@ -33,8 +33,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg lg:text-xl max-w-3xl mx-auto mb-4 sm:mb-6 leading-relaxed text-vyr-gray-300 px-2">
-          O sistema de performance intelectual para profissionais de elite. 
-          Traders, founders, desenvolvedores e estudantes de alto rendimento.
+          O sistema de performance intelectual para ambientes de alta exigência.
         </p>
 
         {/* Accent line */}
@@ -42,13 +41,12 @@ export function Hero() {
 
         {/* Key phrase */}
         <p className="text-sm sm:text-base max-w-2xl mx-auto mb-3 sm:mb-4 text-vyr-gray-400 px-2 font-mono">
-          "Alta performance intelectual não se ostenta. Se mede."
+          "Estados cognitivos não são percebidos. São medidos."
         </p>
 
         {/* Secondary tagline */}
         <p className="text-xs sm:text-sm max-w-xl mx-auto mb-8 sm:mb-10 text-vyr-gray-500 px-2">
-          Suplementação por ciclo + Plataforma digital + VYR NODE. 
-          Evolução mensurável baseada em dados.
+          VYR é um sistema estruturado para gestão do estado cognitivo ao longo do dia. Combina suplementação nootrópica por ciclo, plataforma digital de mensuração e dados fisiológicos contínuos para expandir capacidade funcional com precisão.
         </p>
 
         {/* CTA Buttons */}
