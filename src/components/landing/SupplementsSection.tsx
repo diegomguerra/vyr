@@ -1,5 +1,4 @@
 import { Sun, Moon, Sunset, Zap, Shield, Beaker } from "lucide-react";
-import { Label as VYRLabel, SachetMockup } from "@/brand";
 
 const supplements = [
   {
@@ -46,44 +45,32 @@ const supplements = [
   },
 ];
 
-// Componente visual de caixa de suplemento usando mockups do brand
+// Componente visual de caixa de suplemento - design limpo e sóbrio
 function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
+  const Icon = supplement.icon;
   return (
     <div className="relative group">
-      {/* Caixa do suplemento */}
-      <div className={`relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px]`}>
-        {/* Visual da caixa com mockup do sachê */}
-        <div className="relative mb-4 sm:mb-6">
-          {/* Caixa simulada com borda do produto */}
-          <div className={`relative w-full aspect-[4/3] rounded-sm ${supplement.bgColor} p-[2px]`}>
-            <div className="w-full h-full rounded-sm bg-vyr-graphite-dark flex flex-col items-center justify-center p-3 sm:p-4">
-              {/* Label VYR */}
-              <VYRLabel variant={supplement.variant} />
-              <span className="text-[10px] sm:text-xs text-vyr-gray-500 mt-2 font-mono">{supplement.sachets}</span>
-              
-              {/* Mockup visual do sachê (CSS-based) - Larger and more prominent */}
-              <div className="mt-3 sm:mt-4 scale-90 sm:scale-100">
-                <SachetMockup variant={supplement.variant} />
-              </div>
-            </div>
+      <div className={`relative p-5 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px]`}>
+        {/* Header com ícone e período */}
+        <div className="flex items-center justify-between mb-4">
+          <div className={`w-10 h-10 rounded-sm ${supplement.bgColor} flex items-center justify-center`}>
+            <Icon className={`w-5 h-5 ${supplement.textColor}`} />
           </div>
-          
-          {/* Período badge */}
-          <div className={`absolute -top-2 sm:-top-3 -right-2 sm:-right-3 px-2 sm:px-3 py-0.5 sm:py-1 rounded-sm ${supplement.bgColor} ${supplement.textColor} text-[10px] sm:text-xs font-mono tracking-wider`}>
+          <span className={`px-3 py-1 rounded-sm ${supplement.bgColor} ${supplement.textColor} text-xs font-mono tracking-wider`}>
             {supplement.period}
-          </div>
+          </span>
         </div>
         
-        {/* Conteúdo */}
-        <h3 className="text-lg sm:text-xl font-medium text-vyr-white mb-0.5 sm:mb-1 font-mono tracking-wider">{supplement.name}</h3>
-        <p className="text-vyr-gray-300 font-medium text-xs sm:text-sm mb-1.5 sm:mb-2">{supplement.tagline}</p>
-        <p className="text-vyr-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">{supplement.description}</p>
+        {/* Nome único - sem repetição */}
+        <h3 className="text-xl font-medium text-vyr-white mb-1 font-mono tracking-wider">{supplement.name}</h3>
+        <p className="text-vyr-gray-300 font-medium text-sm mb-3">{supplement.tagline}</p>
+        <p className="text-vyr-gray-400 text-sm mb-5 leading-relaxed">{supplement.description}</p>
         
         {/* Benefícios */}
-        <ul className="space-y-1.5 sm:space-y-2">
+        <ul className="space-y-2">
           {supplement.benefits.map((benefit) => (
-            <li key={benefit} className="flex items-center gap-2 text-xs sm:text-sm text-vyr-gray-300">
-              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-vyr-accent vyr-icon-glow flex-shrink-0" />
+            <li key={benefit} className="flex items-center gap-2.5 text-sm text-vyr-gray-300">
+              <Zap className="w-3.5 h-3.5 text-vyr-accent flex-shrink-0" />
               {benefit}
             </li>
           ))}
