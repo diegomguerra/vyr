@@ -137,14 +137,8 @@ export function BoxMockup({ variant, className = "" }: BoxMockupProps) {
         </div>
       </div>
       
-      {/* Label below */}
-      <span 
-        className="mt-4 text-xs tracking-[0.15em]"
-        style={{ 
-          color: VYR_COLORS.gray[400],
-          fontFamily: VYR_TYPOGRAPHY.logo.fontFamily 
-        }}
-      >
+      {/* Spacer to maintain layout - label hidden */}
+      <span className="mt-4 text-xs tracking-[0.15em] invisible">
         {label.name}
       </span>
     </div>
