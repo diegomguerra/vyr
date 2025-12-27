@@ -17,23 +17,23 @@ export function MiniLine({ data, refMin, refMax }: MiniLineProps) {
     <div className="h-60">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={formattedData}>
-          <CartesianGrid strokeDasharray="4 4" stroke="hsl(220 13% 18%)" />
+          <CartesianGrid strokeDasharray="4 4" stroke="hsl(var(--vyr-gray-700))" />
           <XAxis 
             dataKey="dataFormatada" 
-            tick={{ fontSize: 10, fill: "hsl(220 9% 46%)" }}
-            stroke="hsl(220 13% 18%)"
+            tick={{ fontSize: 10, fill: "hsl(var(--vyr-gray-300))" }}
+            stroke="hsl(var(--vyr-gray-700))"
           />
           <YAxis 
             domain={[0, 10]} 
-            tick={{ fontSize: 10, fill: "hsl(220 9% 46%)" }}
-            stroke="hsl(220 13% 18%)"
+            tick={{ fontSize: 10, fill: "hsl(var(--vyr-gray-300))" }}
+            stroke="hsl(var(--vyr-gray-700))"
           />
           <Tooltip 
             contentStyle={{
-              backgroundColor: "hsl(220 13% 10%)",
-              border: "1px solid hsl(220 13% 22%)",
+              backgroundColor: "hsl(var(--vyr-gray-900))",
+              border: "1px solid hsl(var(--vyr-gray-700))",
               borderRadius: "8px",
-              color: "hsl(0 0% 98%)",
+              color: "hsl(var(--vyr-white))",
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "12px",
             }}
@@ -43,17 +43,17 @@ export function MiniLine({ data, refMin, refMax }: MiniLineProps) {
               y1={refMin} 
               y2={refMax} 
               strokeOpacity={0} 
-              fill="hsl(215 25% 27%)"
+              fill="hsl(var(--vyr-accent))"
               fillOpacity={0.15} 
             />
           )}
           <Line 
             type="monotone" 
             dataKey="valor" 
-            stroke="hsl(215 25% 27%)" 
+            stroke="hsl(var(--vyr-accent))" 
             strokeWidth={2} 
             dot={false}
-            activeDot={{ r: 4, fill: "hsl(215 25% 27%)", stroke: "hsl(0 0% 98%)", strokeWidth: 1 }}
+            activeDot={{ r: 4, fill: "hsl(var(--vyr-accent))", stroke: "hsl(var(--vyr-white))", strokeWidth: 1 }}
           />
         </LineChart>
       </ResponsiveContainer>
