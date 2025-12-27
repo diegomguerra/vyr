@@ -1,55 +1,53 @@
 import { Sun, Moon, Sunset, Zap, Shield, Beaker } from "lucide-react";
 import { Label as VYRLabel, SachetMockup } from "@/brand";
-
-const supplements = [
-  {
-    id: "boot",
-    name: "VYR BOOT",
-    variant: "BOOT" as const,
-    icon: Sun,
-    period: "Manhã",
-    tagline: "Ativação & Clareza",
-    description: "Fórmula nootrópica para máxima ativação cognitiva. Foco profundo, memória de trabalho e clareza mental desde as primeiras horas.",
-    benefits: ["Foco intensificado", "Clareza nas decisões", "Energia mental sustentada"],
-    bgColor: "bg-vyr-gray-100",
-    borderColor: "border-vyr-gray-300",
-    textColor: "text-vyr-black",
-    sachets: "30 sachês",
-  },
-  {
-    id: "hold",
-    name: "VYR HOLD",
-    variant: "HOLD" as const,
-    icon: Sunset,
-    period: "Tarde",
-    tagline: "Sustentação & Resiliência",
-    description: "Mantém o estado de flow e protege contra fadiga cognitiva. Resistência mental para finalizar o dia no mesmo nível.",
-    benefits: ["Flow prolongado", "Resistência à fadiga", "Equilíbrio emocional"],
-    bgColor: "bg-vyr-gray-600",
-    borderColor: "border-vyr-gray-500",
-    textColor: "text-vyr-white",
-    sachets: "30 sachês",
-  },
-  {
-    id: "clear",
-    name: "VYR CLEAR",
-    variant: "CLEAR" as const,
-    icon: Moon,
-    period: "Noite",
-    tagline: "Recuperação Cognitiva",
-    description: "Otimiza consolidação de memória e regeneração neural durante o sono. Acorde preparado para um novo dia de alta performance.",
-    benefits: ["Sono reparador", "Consolidação de memória", "Regeneração neural"],
-    bgColor: "bg-vyr-coldBlue",
-    borderColor: "border-vyr-gray-600",
-    textColor: "text-vyr-white",
-    sachets: "30 sachês",
-  },
-];
+const supplements = [{
+  id: "boot",
+  name: "VYR BOOT",
+  variant: "BOOT" as const,
+  icon: Sun,
+  period: "Manhã",
+  tagline: "Ativação & Clareza",
+  description: "Fórmula nootrópica para máxima ativação cognitiva. Foco profundo, memória de trabalho e clareza mental desde as primeiras horas.",
+  benefits: ["Foco intensificado", "Clareza nas decisões", "Energia mental sustentada"],
+  bgColor: "bg-vyr-gray-100",
+  borderColor: "border-vyr-gray-300",
+  textColor: "text-vyr-black",
+  sachets: "30 sachês"
+}, {
+  id: "hold",
+  name: "VYR HOLD",
+  variant: "HOLD" as const,
+  icon: Sunset,
+  period: "Tarde",
+  tagline: "Sustentação & Resiliência",
+  description: "Mantém o estado de flow e protege contra fadiga cognitiva. Resistência mental para finalizar o dia no mesmo nível.",
+  benefits: ["Flow prolongado", "Resistência à fadiga", "Equilíbrio emocional"],
+  bgColor: "bg-vyr-gray-600",
+  borderColor: "border-vyr-gray-500",
+  textColor: "text-vyr-white",
+  sachets: "30 sachês"
+}, {
+  id: "clear",
+  name: "VYR CLEAR",
+  variant: "CLEAR" as const,
+  icon: Moon,
+  period: "Noite",
+  tagline: "Recuperação Cognitiva",
+  description: "Otimiza consolidação de memória e regeneração neural durante o sono. Acorde preparado para um novo dia de alta performance.",
+  benefits: ["Sono reparador", "Consolidação de memória", "Regeneração neural"],
+  bgColor: "bg-vyr-coldBlue",
+  borderColor: "border-vyr-gray-600",
+  textColor: "text-vyr-white",
+  sachets: "30 sachês"
+}];
 
 // Componente visual de caixa de suplemento usando mockups do brand
-function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
-  return (
-    <div className="relative group">
+function SupplementBox({
+  supplement
+}: {
+  supplement: typeof supplements[0];
+}) {
+  return <div className="relative group">
       {/* Caixa do suplemento */}
       <div className={`relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px]`}>
         {/* Visual da caixa com mockup do sachê */}
@@ -75,34 +73,32 @@ function SupplementBox({ supplement }: { supplement: typeof supplements[0] }) {
         </div>
         
         {/* Conteúdo */}
-        <h3 className="text-lg sm:text-xl font-medium text-vyr-white mb-0.5 sm:mb-1 font-mono tracking-wider">{supplement.name}</h3>
+        
         <p className="text-vyr-gray-300 font-medium text-xs sm:text-sm mb-1.5 sm:mb-2">{supplement.tagline}</p>
         <p className="text-vyr-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">{supplement.description}</p>
         
         {/* Benefícios */}
         <ul className="space-y-1.5 sm:space-y-2">
-          {supplement.benefits.map((benefit) => (
-            <li key={benefit} className="flex items-center gap-2 text-xs sm:text-sm text-vyr-gray-300">
+          {supplement.benefits.map(benefit => <li key={benefit} className="flex items-center gap-2 text-xs sm:text-sm text-vyr-gray-300">
               <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-vyr-accent vyr-icon-glow flex-shrink-0" />
               {benefit}
-            </li>
-          ))}
+            </li>)}
         </ul>
       </div>
-    </div>
-  );
+    </div>;
 }
 
 // Componente de visualização das 3 caixas VYR
 function AllBoxesPreview() {
-  return (
-    <div className="flex items-end justify-center gap-4 sm:gap-6 lg:gap-8 py-6">
+  return <div className="flex items-end justify-center gap-4 sm:gap-6 lg:gap-8 py-6">
       {/* VYR BOOT Box */}
-      <div className="relative" style={{ perspective: "400px" }}>
-        <div 
-          className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-100 flex flex-col items-center justify-center"
-          style={{ transform: "rotateY(-8deg)", boxShadow: "6px 0 20px -5px rgba(0,0,0,0.5)" }}
-        >
+      <div className="relative" style={{
+      perspective: "400px"
+    }}>
+        <div className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-100 flex flex-col items-center justify-center" style={{
+        transform: "rotateY(-8deg)",
+        boxShadow: "6px 0 20px -5px rgba(0,0,0,0.5)"
+      }}>
           <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-black font-medium">VYR</span>
           <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-500">BOOT</span>
           <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
@@ -110,11 +106,12 @@ function AllBoxesPreview() {
       </div>
       
       {/* VYR HOLD Box */}
-      <div className="relative" style={{ perspective: "400px" }}>
-        <div 
-          className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-600 flex flex-col items-center justify-center"
-          style={{ boxShadow: "0 0 30px -5px rgba(0,0,0,0.5)" }}
-        >
+      <div className="relative" style={{
+      perspective: "400px"
+    }}>
+        <div className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-600 flex flex-col items-center justify-center" style={{
+        boxShadow: "0 0 30px -5px rgba(0,0,0,0.5)"
+      }}>
           <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
           <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">HOLD</span>
           <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
@@ -122,23 +119,22 @@ function AllBoxesPreview() {
       </div>
       
       {/* VYR CLEAR Box */}
-      <div className="relative" style={{ perspective: "400px" }}>
-        <div 
-          className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-coldBlue flex flex-col items-center justify-center"
-          style={{ transform: "rotateY(8deg)", boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)" }}
-        >
+      <div className="relative" style={{
+      perspective: "400px"
+    }}>
+        <div className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-coldBlue flex flex-col items-center justify-center" style={{
+        transform: "rotateY(8deg)",
+        boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)"
+      }}>
           <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
           <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">CLEAR</span>
           <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 }
-
 export function SupplementsSection() {
-  return (
-    <section id="suplementos" className="relative py-16 sm:py-24 bg-vyr-gray-900 overflow-hidden">
+  return <section id="suplementos" className="relative py-16 sm:py-24 bg-vyr-gray-900 overflow-hidden">
       {/* Subtle radial glow */}
       <div className="absolute inset-0 vyr-gradient-radial opacity-50" />
       
@@ -163,9 +159,7 @@ export function SupplementsSection() {
 
         {/* Grid de suplementos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
-          {supplements.map((supplement) => (
-            <SupplementBox key={supplement.id} supplement={supplement} />
-          ))}
+          {supplements.map(supplement => <SupplementBox key={supplement.id} supplement={supplement} />)}
         </div>
 
         {/* Info bar */}
@@ -214,6 +208,5 @@ export function SupplementsSection() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
