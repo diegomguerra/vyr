@@ -10,8 +10,8 @@ const CONFOUNDER_OPTIONS: { key: keyof Confounders; label: string }[] = [
   { key: "workout", label: "Treino" },
   { key: "alcohol", label: "Álcool" },
   { key: "travel", label: "Viagem" },
-  { key: "sick", label: "Doença" },
-  { key: "unusualStress", label: "Estresse anormal" },
+  { key: "lowEnergy", label: "Baixa energia" },
+  { key: "unusualStress", label: "Estresse" },
 ];
 
 export function ConfoundersToggle({ value, onChange }: ConfoundersToggleProps) {

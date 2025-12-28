@@ -4,14 +4,14 @@ import {
   Tab,
   PlanSelector,
   StatusPill,
-  TodayCard,
-  CheckinPanel,
+  DoseCard,
+  DoseCheckinPanel,
   SmartDataPanel,
   ProgressPanel,
   InsightsPanel,
   SettingsPanel,
 } from "@/components/mvp";
-import type { Plan, Period, Checkin, RingDaily } from "@/lib/mvp-types";
+import type { Plan, DoseType, DoseCheckin, RingDaily } from "@/lib/mvp-types";
 
 export default function Dashboard() {
   const [plan, setPlan] = useState<Plan>("basic");
@@ -20,17 +20,18 @@ export default function Dashboard() {
   const today = new Date();
   const todayISO = today.toISOString().slice(0, 10);
 
-  const [checkins, setCheckins] = useState<Checkin[]>([]);
+  const [checkins, setCheckins] = useState<DoseCheckin[]>([]);
   const [ringConnected, setRingConnected] = useState(false);
+  const [activeCheckin, setActiveCheckin] = useState<DoseType | null>(null);
 
   const [ringDaily, setRingDaily] = useState<RingDaily>({
     dateISO: todayISO,
     dataQuality: "missing",
   });
 
-  const upsertCheckin = (c: Checkin) => {
+  const upsertCheckin = (c: DoseCheckin) => {
     setCheckins((prev) => {
-      const idx = prev.findIndex((x) => x.dateISO === c.dateISO && x.period === c.period);
+      const idx = prev.findIndex((x) => x.dateISO === c.dateISO && x.dose === c.dose);
       if (idx >= 0) {
         const copy = [...prev];
         copy[idx] = c;
@@ -45,9 +46,13 @@ export default function Dashboard() {
 
   const todayCheckins = checkins.filter((c) => c.dateISO === todayISO);
   const status = {
-    day: todayCheckins.some((c) => c.period === "day"),
-    afternoon: todayCheckins.some((c) => c.period === "afternoon"),
-    night: todayCheckins.some((c) => c.period === "night"),
+    boot: todayCheckins.some((c) => c.dose === "boot"),
+    hold: todayCheckins.some((c) => c.dose === "hold"),
+    clear: todayCheckins.some((c) => c.dose === "clear"),
+  };
+
+  const getExistingCheckin = (dose: DoseType) => {
+    return checkins.find((c) => c.dateISO === todayISO && c.dose === dose);
   };
 
   const handleSyncPartial = () => {
@@ -96,7 +101,7 @@ export default function Dashboard() {
           <div className="min-w-0 flex-1">
             <h1 className="text-lg sm:text-2xl font-bold text-vyr-white font-mono">Painel de Gestão Cognitiva</h1>
             <p className="text-vyr-gray-400 text-xs sm:text-sm mt-1">
-              Acompanhe sua variação e evolução semanal
+              Registre suas doses e acompanhe sua evolução
             </p>
           </div>
           <div className="flex-shrink-0">
@@ -127,46 +132,50 @@ export default function Dashboard() {
 
       {/* HOME TAB */}
       {tab === "home" && (
-        <div className="space-y-3 sm:space-y-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            <TodayCard
-              period="day"
-              done={status.day}
-              subtitle="Ativação & Clareza"
-              onOpenCheckin={() => setTab("checkin")}
-            />
-            <TodayCard
-              period="afternoon"
-              done={status.afternoon}
-              subtitle="Sustentação & Resiliência"
-              onOpenCheckin={() => setTab("checkin")}
-            />
-            <TodayCard
-              period="night"
-              done={status.night}
-              subtitle="Recuperação Cognitiva"
-              onOpenCheckin={() => setTab("checkin")}
-            />
-          </div>
-
-          {plan === "pro" && (
-            <SmartDataPanel
-              ringDaily={ringDaily}
-              ringConnected={ringConnected}
-              onConnect={() => setRingConnected(true)}
-              onSyncPartial={handleSyncPartial}
-              onSyncFull={handleSyncFull}
+        <div className="space-y-4 sm:space-y-5">
+          {/* Modal de check-in ativo */}
+          {activeCheckin && (
+            <DoseCheckinPanel
+              dose={activeCheckin}
+              dateISO={todayISO}
+              onSave={upsertCheckin}
+              onClose={() => setActiveCheckin(null)}
+              existingCheckin={getExistingCheckin(activeCheckin)}
             />
           )}
-        </div>
-      )}
 
-      {/* CHECK-IN TAB */}
-      {tab === "checkin" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
-          {(["day", "afternoon", "night"] as Period[]).map((p) => (
-            <CheckinPanel key={p} period={p} dateISO={todayISO} onSave={upsertCheckin} />
-          ))}
+          {/* Cards de dose - só mostra quando não tem modal ativo */}
+          {!activeCheckin && (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                <DoseCard
+                  dose="boot"
+                  done={status.boot}
+                  onRegister={() => setActiveCheckin("boot")}
+                />
+                <DoseCard
+                  dose="hold"
+                  done={status.hold}
+                  onRegister={() => setActiveCheckin("hold")}
+                />
+                <DoseCard
+                  dose="clear"
+                  done={status.clear}
+                  onRegister={() => setActiveCheckin("clear")}
+                />
+              </div>
+
+              {plan === "pro" && (
+                <SmartDataPanel
+                  ringDaily={ringDaily}
+                  ringConnected={ringConnected}
+                  onConnect={() => setRingConnected(true)}
+                  onSyncPartial={handleSyncPartial}
+                  onSyncFull={handleSyncFull}
+                />
+              )}
+            </>
+          )}
         </div>
       )}
 

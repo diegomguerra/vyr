@@ -16,8 +16,8 @@ export function InsightsPanel({ plan, ringDaily, baselineReady }: InsightsPanelP
 
   const hasAnyMetric = (ringDaily.metrics?.length ?? 0) > 0;
 
+  // Em fase de testes, insights disponíveis para todos
   const proInsightsUnlocked =
-    plan === "pro" &&
     ringDaily.dataQuality !== "missing" &&
     (hasExportableScores || hasAnyMetric);
 
@@ -25,7 +25,7 @@ export function InsightsPanel({ plan, ringDaily, baselineReady }: InsightsPanelP
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
       {/* Insights Básico */}
       <div className="bg-vyr-gray-900/50 backdrop-blur-xl border border-vyr-gray-600/30 rounded-2xl p-4 sm:p-5">
-        <h3 className="font-semibold text-sm sm:text-base text-vyr-white mb-2 sm:mb-3 font-mono">Insights (Básico)</h3>
+        <h3 className="font-semibold text-sm sm:text-base text-vyr-white mb-2 sm:mb-3 font-mono">Insights</h3>
         <p className="text-xs sm:text-sm text-vyr-gray-400 mb-3 sm:mb-4">
           Análises baseadas em consistência e auto-relato.
         </p>
@@ -33,7 +33,7 @@ export function InsightsPanel({ plan, ringDaily, baselineReady }: InsightsPanelP
         {!baselineReady ? (
           <div className="p-3 sm:p-4 rounded-xl bg-vyr-gray-700/20 border border-vyr-gray-600/30">
             <p className="text-xs sm:text-sm text-vyr-gray-300">
-              ⏳ Complete 7 dias de check-ins para desbloquear.
+              ⏳ Complete 7 dias de registros para desbloquear.
             </p>
           </div>
         ) : (
@@ -54,29 +54,23 @@ export function InsightsPanel({ plan, ringDaily, baselineReady }: InsightsPanelP
         )}
       </div>
 
-      {/* Insights Premium */}
+      {/* Insights Avançados - liberado para todos em fase de teste */}
       <div className="bg-vyr-gray-900/50 backdrop-blur-xl border border-vyr-gray-600/30 rounded-2xl p-4 sm:p-5">
         <div className="flex items-center gap-2 mb-2 sm:mb-3 flex-wrap">
-          <h3 className="font-semibold text-sm sm:text-base text-vyr-white font-mono">Insights Premium</h3>
-          <StatusPill variant="info">Superior</StatusPill>
+          <h3 className="font-semibold text-sm sm:text-base text-vyr-white font-mono">Insights Avançados</h3>
+          <StatusPill variant="success">Beta</StatusPill>
         </div>
         <p className="text-xs sm:text-sm text-vyr-gray-400 mb-3 sm:mb-4">
           Convergência vs divergência — percepção × VYR NODE.
         </p>
 
-        {plan !== "pro" ? (
-          <div className="p-3 sm:p-4 rounded-xl bg-vyr-gray-800/50 border border-vyr-gray-600/30">
-            <p className="text-xs sm:text-sm text-vyr-gray-300">
-              🔒 Disponível no Plano Superior.
-            </p>
-          </div>
-        ) : !proInsightsUnlocked ? (
+        {!proInsightsUnlocked ? (
           <div className="p-3 sm:p-4 rounded-xl bg-vyr-gray-700/20 border border-vyr-gray-600/30">
             <p className="text-xs sm:text-sm text-vyr-gray-300">
-              ⚠️ VYR NODE insuficiente.
+              ⚠️ Dados do VYR NODE insuficientes.
             </p>
             <p className="text-[10px] sm:text-xs text-vyr-gray-400 mt-1.5 sm:mt-2">
-              Requisito: dados do NODE com qualidade parcial/boa.
+              Conecte o NODE e sincronize para ver insights avançados.
             </p>
           </div>
         ) : (
