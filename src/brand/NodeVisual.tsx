@@ -152,7 +152,13 @@ export function NodeVisual({ size = "md", showLabel = true, className = "" }: No
             VYR NODE
           </span>
           <p 
-            className="mt-2 text-[10px] tracking-wider opacity-50"
+            className="mt-1 text-[9px] tracking-[0.15em] opacity-40"
+            style={{ color: VYR_COLORS.gray[400] }}
+          >
+            SMART RING
+          </p>
+          <p 
+            className="mt-1 text-[10px] tracking-wider opacity-50"
             style={{ color: VYR_COLORS.gray[500] }}
           >
             PHYSIOLOGICAL SENSOR

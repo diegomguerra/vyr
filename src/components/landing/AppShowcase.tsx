@@ -213,7 +213,7 @@ export function AppShowcase() {
           {/* Content */}
           <div className="text-center lg:text-left">
             <p className="text-sm text-vyr-gray-400 uppercase tracking-widest mb-3 font-mono">
-              Plataforma + VYR NODE
+              Plataforma + VYR NODE · Smart Ring
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-vyr-white mb-6 leading-tight">
               Dados precisos para{" "}

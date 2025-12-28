@@ -16,8 +16,8 @@ const steps = [
   {
     icon: Cpu,
     title: "Evolução com dados",
-    subtitle: "VYR Node",
-    description: "Ao integrar o VYR Node, o sistema deixa de ser apenas guiado e passa a ser adaptativo.",
+    subtitle: "VYR Node · Smart Ring",
+    description: "Ao integrar o VYR Node (Smart Ring), o sistema deixa de ser apenas guiado e passa a ser adaptativo.",
     note: "O VYR começa a correlacionar padrões fisiológicos, rotina e resposta individual ao protocolo. Aqui o sistema se torna completo.",
   },
 ];

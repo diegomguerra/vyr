@@ -75,7 +75,7 @@ export function SmartRingSection() {
         <div className="text-center mb-16">
           <div className="vyr-badge-accent mb-6">
             <Circle className="w-4 h-4" />
-            <span className="text-sm font-mono tracking-wider">VYR NODE — MÓDULO DE MENSURAÇÃO FISIOLÓGICA</span>
+            <span className="text-sm font-mono tracking-wider">VYR NODE · SMART RING</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
             De percepção a{" "}
