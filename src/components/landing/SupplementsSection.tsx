@@ -15,7 +15,7 @@ const supplements = [{
   borderColor: "border-vyr-gray-300",
   textColor: "text-vyr-black",
   sachets: "30 sachês",
-  link: "/produto/dia"
+  link: "/produtos/dia"
 }, {
   id: "hold",
   name: "VYR HOLD",
@@ -29,7 +29,7 @@ const supplements = [{
   borderColor: "border-vyr-gray-500",
   textColor: "text-vyr-white",
   sachets: "30 sachês",
-  link: "/produto/tarde"
+  link: "/produtos/tarde"
 }, {
   id: "clear",
   name: "VYR CLEAR",
@@ -43,7 +43,7 @@ const supplements = [{
   borderColor: "border-vyr-gray-600",
   textColor: "text-vyr-white",
   sachets: "30 sachês",
-  link: "/produto/noite"
+  link: "/produtos/noite"
 }];
 
 // Componente visual de caixa de suplemento usando mockups do brand
