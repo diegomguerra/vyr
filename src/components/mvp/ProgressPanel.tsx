@@ -204,29 +204,22 @@ export function ProgressPanel({ plan, ringDaily, checkins }: ProgressPanelProps)
 
         {/* SmartData tendência */}
         <div className="bg-vyr-gray-900/50 backdrop-blur-xl border border-vyr-gray-500/20 rounded-2xl p-4 sm:p-5">
-          <h3 className="font-semibold text-sm sm:text-base text-vyr-white mb-1.5 sm:mb-2 font-mono">VYR NODE — tendência</h3>
+        <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+          <h3 className="font-semibold text-sm sm:text-base text-vyr-white font-mono">VYR NODE — tendência</h3>
+          <span className="text-[9px] px-1.5 py-0.5 rounded bg-vyr-accent/20 text-vyr-accent font-mono">Beta</span>
+        </div>
 
-          {plan !== "pro" ? (
-            <div className="p-3 sm:p-4 rounded-xl bg-vyr-gray-900/50 border border-vyr-gray-500/20">
-              <p className="text-xs sm:text-sm text-vyr-gray-500">
-                🔒 Disponível no Plano Superior.
-              </p>
-            </div>
-          ) : (
-            <>
-              <p className="text-[10px] sm:text-xs text-vyr-gray-500 mb-3 sm:mb-4">
-                Use os índices exportáveis como macro-sinal.
-              </p>
-              <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                <IndexCard label="Saúde" value={ringDaily.healthIndex} icon="❤️" />
-                <IndexCard label="Vitalidade" value={ringDaily.vitalityIndex} icon="⚡" />
-                <IndexCard label="Equilíbrio" value={ringDaily.balanceIndex} icon="⚖️" />
-              </div>
-              <p className="text-[10px] sm:text-xs text-vyr-gray-500 mt-3 sm:mt-4">
-                Qualidade: <strong className="text-vyr-white font-mono">{ringDaily.dataQuality}</strong>
-              </p>
-            </>
-          )}
+        <p className="text-[10px] sm:text-xs text-vyr-gray-500 mb-3 sm:mb-4">
+          Use os índices exportáveis como macro-sinal.
+        </p>
+          <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            <IndexCard label="Saúde" value={ringDaily.healthIndex} icon="❤️" />
+            <IndexCard label="Vitalidade" value={ringDaily.vitalityIndex} icon="⚡" />
+            <IndexCard label="Equilíbrio" value={ringDaily.balanceIndex} icon="⚖️" />
+          </div>
+          <p className="text-[10px] sm:text-xs text-vyr-gray-500 mt-3 sm:mt-4">
+            Qualidade: <strong className="text-vyr-white font-mono">{ringDaily.dataQuality}</strong>
+          </p>
         </div>
       </div>
     </div>
