@@ -166,13 +166,14 @@ export default function Dashboard() {
               </div>
 
               {plan === "pro" && (
-                <SmartDataPanel
-                  ringDaily={ringDaily}
-                  ringConnected={ringConnected}
-                  onConnect={() => setRingConnected(true)}
-                  onSyncPartial={handleSyncPartial}
-                  onSyncFull={handleSyncFull}
-                />
+              <SmartDataPanel
+                ringDaily={ringDaily}
+                ringConnected={ringConnected}
+                onConnect={() => setRingConnected(true)}
+                onSyncPartial={handleSyncPartial}
+                onSyncFull={handleSyncFull}
+                onManualData={setRingDaily}
+              />
               )}
             </>
           )}
