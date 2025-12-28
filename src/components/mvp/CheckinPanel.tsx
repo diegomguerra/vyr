@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
-import { StatusPill } from "./StatusPill";
-import { ConfoundersToggle } from "./ConfoundersToggle";
 import type { Period, Checkin, Confounders } from "@/lib/mvp-types";
 import { periodLabel, checkinFields, fieldLabel } from "@/lib/mvp-types";
+import { StatusPill } from "./StatusPill";
+import { ConfoundersToggle } from "./ConfoundersToggle";
 
 interface CheckinPanelProps {
   period: Period;
@@ -16,7 +16,7 @@ const defaultConfounders: Confounders = {
   workout: false,
   alcohol: false,
   travel: false,
-  sick: false,
+  lowEnergy: false,
   unusualStress: false,
 };
 
@@ -27,10 +27,8 @@ export function CheckinPanel({ period, dateISO, onSave }: CheckinPanelProps) {
     clarity: 5,
     energy: 5,
     resilience: 5,
-    perceivedStress: 5,
     windDown: 5,
     sleepQuality: 5,
-    wakeQuality: 5,
   }));
   const [confounders, setConfounders] = useState<Confounders>(defaultConfounders);
 
@@ -38,6 +36,8 @@ export function CheckinPanel({ period, dateISO, onSave }: CheckinPanelProps) {
     const checkin: Checkin = {
       dateISO,
       period,
+      dose: period === "day" ? "boot" : period === "afternoon" ? "hold" : "clear",
+      taken: true,
       confounders,
     };
     fields.forEach((f) => {
@@ -73,7 +73,7 @@ export function CheckinPanel({ period, dateISO, onSave }: CheckinPanelProps) {
       </div>
 
       <div className="mt-4 sm:mt-5">
-        <p className="text-[10px] sm:text-xs text-vyr-gray-400 mb-2">Contexto do dia</p>
+        <p className="text-[10px] sm:text-xs text-vyr-gray-400 mb-2">Fatores do dia</p>
         <ConfoundersToggle value={confounders} onChange={setConfounders} />
       </div>
 

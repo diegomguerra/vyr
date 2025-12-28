@@ -9,3 +9,5 @@ export * from "./TodayCard";
 export * from "./InsightsPanel";
 export * from "./ProgressPanel";
 export * from "./SettingsPanel";
+export * from "./DoseCard";
+export * from "./DoseCheckinPanel";

@@ -1,7 +1,7 @@
 // NZT MVP - Tipos para nova arquitetura
 
 export type Plan = "basic" | "pro";
-export type Period = "day" | "afternoon" | "night";
+export type DoseType = "boot" | "hold" | "clear";
 export type DataQuality = "missing" | "partial" | "good";
 
 export type Confounders = {
@@ -9,22 +9,22 @@ export type Confounders = {
   workout?: boolean;
   alcohol?: boolean;
   travel?: boolean;
-  sick?: boolean;
+  lowEnergy?: boolean;  // Renomeado de "sick" para algo mais neutro
   unusualStress?: boolean;
 };
 
-export type Checkin = {
+export type DoseCheckin = {
   dateISO: string;
-  period: Period;
-  // percepção
+  dose: DoseType;
+  taken: boolean;
+  timeOfDay?: string;
+  // percepção específica de cada dose
   focus?: number;
   clarity?: number;
   energy?: number;
   resilience?: number;
-  perceivedStress?: number;
   windDown?: number;
   sleepQuality?: number;
-  wakeQuality?: number;
   // contexto
   confounders: Confounders;
 };
@@ -49,16 +49,22 @@ export type RingDaily = {
 };
 
 // Helpers
-export function periodLabel(p: Period): string {
-  if (p === "day") return "Dia";
-  if (p === "afternoon") return "Tarde";
-  return "Noite";
+export function doseLabel(d: DoseType): string {
+  if (d === "boot") return "BOOT";
+  if (d === "hold") return "HOLD";
+  return "CLEAR";
 }
 
-export function checkinFields(p: Period): readonly string[] {
-  if (p === "day") return ["focus", "clarity", "energy"] as const;
-  if (p === "afternoon") return ["energy", "resilience", "perceivedStress"] as const;
-  return ["windDown", "sleepQuality", "wakeQuality"] as const;
+export function doseDescription(d: DoseType): string {
+  if (d === "boot") return "Ativação matinal";
+  if (d === "hold") return "Sustentação diurna";
+  return "Recuperação noturna";
+}
+
+export function doseFields(d: DoseType): readonly string[] {
+  if (d === "boot") return ["focus", "clarity", "energy"] as const;
+  if (d === "hold") return ["energy", "resilience"] as const;
+  return ["windDown", "sleepQuality"] as const;
 }
 
 export function fieldLabel(f: string): string {
@@ -67,10 +73,22 @@ export function fieldLabel(f: string): string {
     case "clarity": return "Clareza";
     case "energy": return "Energia";
     case "resilience": return "Resiliência";
-    case "perceivedStress": return "Estresse percebido";
     case "windDown": return "Desaceleração mental";
     case "sleepQuality": return "Sono (percebido)";
-    case "wakeQuality": return "Despertar (percebido)";
     default: return f;
   }
+}
+
+// Legado - manter para compatibilidade
+export type Period = "day" | "afternoon" | "night";
+export type Checkin = DoseCheckin & { period?: Period };
+export function periodLabel(p: Period): string {
+  if (p === "day") return "Dia";
+  if (p === "afternoon") return "Tarde";
+  return "Noite";
+}
+export function checkinFields(p: Period): readonly string[] {
+  if (p === "day") return ["focus", "clarity", "energy"] as const;
+  if (p === "afternoon") return ["energy", "resilience"] as const;
+  return ["windDown", "sleepQuality"] as const;
 }
