@@ -38,21 +38,21 @@ export function FocusTimeChart({
   };
 
   return (
-    <div className="p-4 sm:p-5 rounded-lg border border-border/50 bg-card/50">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-medium text-foreground">{title}</h3>
+    <div className="p-5 sm:p-6 rounded-lg border border-border/60 bg-card/60">
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="text-base font-medium text-foreground">{title}</h3>
         
         {/* Period toggle */}
-        <div className="flex items-center gap-1 p-0.5 rounded-md bg-muted/30">
+        <div className="flex items-center gap-1 p-0.5 rounded-md bg-muted/40">
           {([7, 14, 30] as Period[]).map((p) => (
             <button
               key={p}
               onClick={() => setPeriod(p)}
               className={`
-                px-2 py-1 text-xs font-mono rounded transition-all
+                px-3 py-1.5 text-sm font-mono rounded transition-all
                 ${period === p 
-                  ? "bg-vyr-accent/20 text-foreground" 
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-vyr-accent/25 text-foreground" 
+                  : "text-foreground/60 hover:text-foreground"
                 }
               `}
             >
@@ -63,7 +63,7 @@ export function FocusTimeChart({
       </div>
       
       {filteredData.length > 0 ? (
-        <div className="h-[180px] w-full">
+        <div className="h-[200px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={filteredData} margin={{ top: 5, right: 5, bottom: 5, left: -20 }}>
               <XAxis 
@@ -71,13 +71,13 @@ export function FocusTimeChart({
                 tickFormatter={formatDate}
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fontSize: 12, fill: "hsl(var(--foreground) / 0.6)" }}
                 interval="preserveStartEnd"
               />
               <YAxis 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fontSize: 12, fill: "hsl(var(--foreground) / 0.6)" }}
                 width={35}
               />
               <Tooltip
@@ -102,7 +102,7 @@ export function FocusTimeChart({
           </ResponsiveContainer>
         </div>
       ) : (
-        <div className="h-[180px] flex items-center justify-center text-sm text-muted-foreground">
+        <div className="h-[200px] flex items-center justify-center text-base text-foreground/60">
           Ainda não há dados suficientes. A consistência constrói clareza.
         </div>
       )}

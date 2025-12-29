@@ -81,10 +81,10 @@ export function CognitiveProgressRing({ value, animate = true }: CognitiveProgre
           className="absolute inset-0 flex flex-col items-center justify-center"
           style={{ transform: "translateY(-8px)" }}
         >
-          <span className="text-4xl font-bold text-foreground font-mono tracking-tight">
+          <span className="text-5xl font-bold text-foreground font-mono tracking-tight">
             {value}
           </span>
-          <span className="text-xs text-muted-foreground font-mono tracking-wider mt-1">
+          <span className="text-sm text-foreground/70 font-mono tracking-wider mt-1">
             ÍNDICE
           </span>
         </div>
@@ -93,26 +93,26 @@ export function CognitiveProgressRing({ value, animate = true }: CognitiveProgre
       {/* Status label */}
       <div className="text-center space-y-2">
         <div className={`
-          inline-flex items-center gap-2 px-4 py-1.5 rounded-sm border
+          inline-flex items-center gap-2 px-4 py-2 rounded-sm border
           ${level.key === "avancado" 
-            ? "border-vyr-accent/40 bg-vyr-accent/10 text-vyr-accent-glow" 
+            ? "border-vyr-accent/50 bg-vyr-accent/15 text-vyr-accent-glow" 
             : level.key === "consistente"
-            ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+            ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400"
             : level.key === "construcao"
-            ? "border-amber-500/30 bg-amber-500/10 text-amber-400"
-            : "border-border bg-muted/30 text-muted-foreground"
+            ? "border-amber-500/40 bg-amber-500/15 text-amber-400"
+            : "border-border bg-muted/40 text-foreground/70"
           }
         `}>
-          <div className={`w-1.5 h-1.5 rounded-full ${
+          <div className={`w-2 h-2 rounded-full ${
             level.key === "avancado" ? "bg-vyr-accent-glow" :
             level.key === "consistente" ? "bg-emerald-400" :
             level.key === "construcao" ? "bg-amber-400" :
-            "bg-muted-foreground"
+            "bg-foreground/50"
           }`} />
-          <span className="text-sm font-medium">{level.label}</span>
+          <span className="text-base font-medium">{level.label}</span>
         </div>
         
-        <p className="text-xs text-muted-foreground max-w-[200px] mx-auto">
+        <p className="text-sm text-foreground/60 max-w-[220px] mx-auto">
           Baseado em execução cognitiva declarada pelo usuário
         </p>
       </div>

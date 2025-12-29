@@ -20,20 +20,20 @@ const CARD_CONFIG: Record<CardType, { icon: LucideIcon; label: string }> = {
 
 const STATUS_STYLES: Record<Status, { bg: string; border: string; dot: string; text: string }> = {
   favoravel: {
-    bg: "bg-emerald-500/5",
-    border: "border-emerald-500/20",
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-500/30",
     dot: "bg-emerald-400",
     text: "text-emerald-400",
   },
   neutro: {
-    bg: "bg-muted/20",
-    border: "border-border/50",
-    dot: "bg-muted-foreground",
-    text: "text-muted-foreground",
+    bg: "bg-muted/30",
+    border: "border-border/60",
+    dot: "bg-foreground/50",
+    text: "text-foreground/70",
   },
   desfavoravel: {
-    bg: "bg-amber-500/5",
-    border: "border-amber-500/20",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/30",
     dot: "bg-amber-400",
     text: "text-amber-400",
   },
@@ -56,18 +56,18 @@ export function PhysiologicalCard({ type, value, subValue, status }: Physiologic
       ${styles.bg} ${styles.border}
     `}>
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-md bg-muted/30">
-            <Icon className="w-4 h-4 text-muted-foreground" />
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-md bg-muted/40">
+            <Icon className="w-5 h-5 text-foreground/70" />
           </div>
           <div>
-            <p className="text-xs text-muted-foreground font-mono tracking-wide">
+            <p className="text-sm text-foreground/70 font-mono tracking-wide">
               {config.label}
             </p>
-            <p className="text-sm font-medium text-foreground mt-0.5">
+            <p className="text-base font-medium text-foreground mt-0.5">
               {value}
               {subValue && (
-                <span className="text-muted-foreground font-normal ml-1.5">
+                <span className="text-foreground/60 font-normal ml-1.5">
                   {subValue}
                 </span>
               )}
@@ -76,9 +76,9 @@ export function PhysiologicalCard({ type, value, subValue, status }: Physiologic
         </div>
         
         {/* Status indicator */}
-        <div className="flex items-center gap-1.5">
-          <div className={`w-1.5 h-1.5 rounded-full ${styles.dot}`} />
-          <span className={`text-[10px] font-mono ${styles.text}`}>
+        <div className="flex items-center gap-2">
+          <div className={`w-2 h-2 rounded-full ${styles.dot}`} />
+          <span className={`text-xs font-mono ${styles.text}`}>
             {STATUS_LABEL[status]}
           </span>
         </div>

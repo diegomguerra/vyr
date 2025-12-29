@@ -125,18 +125,18 @@ export function CognitiveDashboard({ checkins }: CognitiveDashboardProps) {
   }, [metrics, checkins]);
 
   return (
-    <div className="space-y-6 sm:space-y-8">
+    <div className="space-y-8 sm:space-y-10">
       {/* === HOME / VISÃO GERAL === */}
       <section className="space-y-6">
         {/* Anel principal + Mini anéis */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Anel de Progresso Cognitivo Principal */}
-          <div className="flex items-center justify-center p-6 rounded-lg border border-border/50 bg-card/30">
+          <div className="flex items-center justify-center p-8 rounded-lg border border-border/60 bg-card/40">
             <CognitiveProgressRing value={metrics.cognitiveIndex} />
           </div>
           
           {/* Mini Anéis */}
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-4">
             <MiniProgressRing
               label="Foco Sustentado"
               value={metrics.focusSustained}
@@ -156,14 +156,14 @@ export function CognitiveDashboard({ checkins }: CognitiveDashboardProps) {
         </div>
         
         {/* Contexto Fisiológico */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-medium text-foreground">Contexto Fisiológico</h3>
-            <span className="text-[10px] text-muted-foreground font-mono">
+            <h3 className="text-base font-medium text-foreground">Contexto Fisiológico</h3>
+            <span className="text-xs text-foreground/60 font-mono">
               Declarado pelo usuário
             </span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <PhysiologicalCard
               type="sono"
               value="7h"
@@ -191,12 +191,12 @@ export function CognitiveDashboard({ checkins }: CognitiveDashboardProps) {
       </section>
       
       {/* === EXECUÇÃO COGNITIVA === */}
-      <section className="space-y-4">
-        <h2 className="text-sm font-mono text-muted-foreground tracking-wider">
-          EXECUÇÃO COGNITIVA
+      <section className="space-y-5">
+        <h2 className="text-sm font-mono text-foreground/70 tracking-wider uppercase">
+          Execução Cognitiva
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <CognitiveHeatmap data={heatmapData} />
           <CognitiveProfileChart data={profileData} />
         </div>
@@ -209,12 +209,12 @@ export function CognitiveDashboard({ checkins }: CognitiveDashboardProps) {
       </section>
       
       {/* === EVOLUÇÃO === */}
-      <section className="space-y-4">
-        <h2 className="text-sm font-mono text-muted-foreground tracking-wider">
-          EVOLUÇÃO
+      <section className="space-y-5">
+        <h2 className="text-sm font-mono text-foreground/70 tracking-wider uppercase">
+          Evolução
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <FocusTimeChart 
             data={clarityData} 
             title="Evolução da Clareza"
@@ -229,15 +229,15 @@ export function CognitiveDashboard({ checkins }: CognitiveDashboardProps) {
       </section>
       
       {/* === INTERPRETAÇÃO === */}
-      <section className="space-y-4">
-        <h2 className="text-sm font-mono text-muted-foreground tracking-wider">
-          INTERPRETAÇÃO
+      <section className="space-y-5">
+        <h2 className="text-sm font-mono text-foreground/70 tracking-wider uppercase">
+          Interpretação
         </h2>
         <InsightsSection insights={insights} />
       </section>
       
       {/* Mensagem fixa */}
-      <p className="text-xs text-muted-foreground text-center pt-4 border-t border-border/30 italic">
+      <p className="text-sm text-foreground/50 text-center pt-6 border-t border-border/40 italic">
         Clareza mental é construída com consistência, recuperação e exigência cognitiva.
       </p>
     </div>

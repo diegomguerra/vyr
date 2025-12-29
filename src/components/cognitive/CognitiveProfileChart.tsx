@@ -47,14 +47,14 @@ export function CognitiveProfileChart({ data }: CognitiveProfileChartProps) {
   }, [data]);
 
   return (
-    <div className="p-4 sm:p-5 rounded-lg border border-border/50 bg-card/50">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-medium text-foreground">Perfil Cognitivo</h3>
-        <span className="text-xs text-muted-foreground font-mono">Distribuição por tipo</span>
+    <div className="p-5 sm:p-6 rounded-lg border border-border/60 bg-card/60">
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="text-base font-medium text-foreground">Perfil Cognitivo</h3>
+        <span className="text-sm text-foreground/60 font-mono">Distribuição por tipo</span>
       </div>
       
       {chartData.length > 0 && chartData.some(d => d.hours > 0) ? (
-        <div className="h-[180px] w-full">
+        <div className="h-[200px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart 
               data={chartData} 
@@ -65,15 +65,15 @@ export function CognitiveProfileChart({ data }: CognitiveProfileChartProps) {
                 type="number"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
+                tick={{ fontSize: 12, fill: "hsl(var(--foreground) / 0.6)" }}
               />
               <YAxis 
                 type="category"
                 dataKey="label"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }}
-                width={60}
+                tick={{ fontSize: 12, fill: "hsl(var(--foreground) / 0.7)" }}
+                width={70}
               />
               <Tooltip
                 contentStyle={{
@@ -102,7 +102,7 @@ export function CognitiveProfileChart({ data }: CognitiveProfileChartProps) {
           </ResponsiveContainer>
         </div>
       ) : (
-        <div className="h-[180px] flex items-center justify-center text-sm text-muted-foreground">
+        <div className="h-[200px] flex items-center justify-center text-base text-foreground/60">
           Ainda não há dados suficientes.
         </div>
       )}

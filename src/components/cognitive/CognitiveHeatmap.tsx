@@ -53,22 +53,22 @@ export function CognitiveHeatmap({ data }: CognitiveHeatmapProps) {
   }, [data]);
 
   return (
-    <div className="p-4 sm:p-5 rounded-lg border border-border/50 bg-card/50">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-medium text-foreground">Heatmap Cognitivo</h3>
-        <span className="text-xs text-muted-foreground font-mono">Última semana</span>
+    <div className="p-5 sm:p-6 rounded-lg border border-border/60 bg-card/60">
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="text-base font-medium text-foreground">Heatmap Cognitivo</h3>
+        <span className="text-sm text-foreground/60 font-mono">Última semana</span>
       </div>
       
       {/* Grid */}
       <div className="overflow-x-auto">
         <div className="min-w-[320px]">
           {/* Header row - days */}
-          <div className="grid grid-cols-8 gap-1 mb-1">
+          <div className="grid grid-cols-8 gap-1.5 mb-2">
             <div /> {/* Empty corner cell */}
             {DAYS.map(day => (
               <div 
                 key={day}
-                className="text-center text-[10px] text-muted-foreground font-mono py-1"
+                className="text-center text-xs text-foreground/70 font-mono py-1"
               >
                 {DAY_LABELS[day]}
               </div>
@@ -77,9 +77,9 @@ export function CognitiveHeatmap({ data }: CognitiveHeatmapProps) {
           
           {/* Data rows */}
           {PERIODS.map(period => (
-            <div key={period} className="grid grid-cols-8 gap-1 mb-1">
+            <div key={period} className="grid grid-cols-8 gap-1.5 mb-2">
               {/* Period label */}
-              <div className="text-[10px] text-muted-foreground font-mono flex items-center pr-2">
+              <div className="text-xs text-foreground/70 font-mono flex items-center pr-2">
                 {PERIOD_LABELS[period]}
               </div>
               
@@ -110,15 +110,15 @@ export function CognitiveHeatmap({ data }: CognitiveHeatmapProps) {
       </div>
       
       {/* Legend */}
-      <div className="flex items-center justify-end gap-1 mt-4">
-        <span className="text-[10px] text-muted-foreground mr-1">Menos</span>
+      <div className="flex items-center justify-end gap-1.5 mt-5">
+        <span className="text-xs text-foreground/60 mr-1">Menos</span>
         {INTENSITY_STYLES.map((style, i) => (
           <div 
             key={i} 
-            className={`w-3 h-3 rounded-sm ${style}`}
+            className={`w-4 h-4 rounded-sm ${style}`}
           />
         ))}
-        <span className="text-[10px] text-muted-foreground ml-1">Mais</span>
+        <span className="text-xs text-foreground/60 ml-1">Mais</span>
       </div>
     </div>
   );
