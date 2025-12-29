@@ -1,6 +1,6 @@
-import { Home, TrendingUp, Lightbulb, Settings } from "lucide-react";
+import { Home, TrendingUp, Lightbulb, Settings, Activity } from "lucide-react";
 
-type Tab = "home" | "progress" | "insights" | "settings";
+type Tab = "home" | "cognitive" | "progress" | "insights" | "settings";
 
 interface TabNavProps {
   active: Tab;
@@ -9,6 +9,7 @@ interface TabNavProps {
 
 const tabs: { key: Tab; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [
   { key: "home", label: "Início", Icon: Home },
+  { key: "cognitive", label: "Cognitivo", Icon: Activity },
   { key: "progress", label: "Progresso", Icon: TrendingUp },
   { key: "insights", label: "Insights", Icon: Lightbulb },
   { key: "settings", label: "Config", Icon: Settings },

@@ -11,6 +11,7 @@ import {
   InsightsPanel,
   SettingsPanel,
 } from "@/components/mvp";
+import { CognitiveDashboard } from "@/components/cognitive";
 import type { Plan, DoseType, DoseCheckin, RingDaily } from "@/lib/mvp-types";
 
 export default function Dashboard() {
@@ -178,6 +179,11 @@ export default function Dashboard() {
             </>
           )}
         </div>
+      )}
+
+      {/* COGNITIVE TAB - New Dashboard */}
+      {tab === "cognitive" && (
+        <CognitiveDashboard checkins={checkins} />
       )}
 
       {/* PROGRESS TAB */}
