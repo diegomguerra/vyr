@@ -31,7 +31,7 @@ export function LandingNav() {
             <Link to="/como-funciona" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               Como Funciona
             </Link>
-            <Link to="/science" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-mono tracking-wider">
+            <Link to="/science" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               VYR Science
             </Link>
           </div>
@@ -39,7 +39,7 @@ export function LandingNav() {
           {/* Auth Buttons - Desktop */}
           <div className="hidden sm:flex items-center gap-2 sm:gap-3">
             <Link to="/labs">
-              <Button variant="ghost" size="sm" className="font-mono tracking-wider text-muted-foreground hover:text-foreground text-xs sm:text-sm px-2 sm:px-4">
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-xs sm:text-sm px-2 sm:px-4">
                 VYR Labs
               </Button>
             </Link>
@@ -79,14 +79,14 @@ export function LandingNav() {
             </Link>
             <Link
               to="/science"
-              className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-mono tracking-wider border-b border-border/30"
+              className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-sm border-b border-border/30"
               onClick={() => setMobileMenuOpen(false)}
             >
               VYR Science
             </Link>
             <div className="pt-4 flex gap-2">
               <Link to="/labs" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" size="sm" className="w-full text-xs font-mono tracking-wider">
+                <Button variant="outline" size="sm" className="w-full text-xs">
                   VYR Labs
                 </Button>
               </Link>

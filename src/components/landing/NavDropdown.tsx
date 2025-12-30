@@ -54,7 +54,7 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span className="font-mono tracking-wider">{trigger}</span>
+        <span>{trigger}</span>
         <ChevronDown
           className={cn(
             "w-3.5 h-3.5 transition-transform duration-200",
@@ -82,7 +82,7 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
                 className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                <span className="font-mono text-xs tracking-wider">{item.label}</span>
+                <span className="text-sm">{item.label}</span>
                 {item.description && (
                   <span className="block text-[10px] text-muted-foreground/60 mt-0.5">
                     {item.description}
@@ -114,7 +114,7 @@ export function MobileNavDropdown({ trigger, items, onItemClick }: MobileNavDrop
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <span className="font-mono text-sm tracking-wider">{trigger}</span>
+        <span className="text-sm">{trigger}</span>
         <ChevronDown
           className={cn(
             "w-4 h-4 transition-transform duration-200",
@@ -140,7 +140,7 @@ export function MobileNavDropdown({ trigger, items, onItemClick }: MobileNavDrop
                 onItemClick?.();
               }}
             >
-              <span className="font-mono text-xs tracking-wide">{item.label}</span>
+              <span className="text-sm">{item.label}</span>
             </Link>
           ))}
         </div>
