@@ -34,12 +34,12 @@ export function LandingNav() {
 
           {/* Auth Buttons - Desktop */}
           <div className="hidden sm:flex items-center gap-2 sm:gap-3">
-            <Link to="/login">
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-xs sm:text-sm px-2 sm:px-4">
-                Entrar
+            <Link to="/labs">
+              <Button variant="ghost" size="sm" className="font-mono tracking-wider text-muted-foreground hover:text-foreground text-xs sm:text-sm px-2 sm:px-4">
+                VYR Labs
               </Button>
             </Link>
-            <Link to="/login?signup=true">
+            <Link to="/labs?signup=true">
               <Button size="sm" className="bg-foreground hover:bg-foreground/90 text-background text-xs sm:text-sm px-3 sm:px-4">
                 Começar
               </Button>
@@ -90,12 +90,12 @@ export function LandingNav() {
               FAQ
             </a>
             <div className="pt-3 border-t border-border flex gap-2">
-              <Link to="/login" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" size="sm" className="w-full text-xs">
-                  Entrar
+              <Link to="/labs" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" size="sm" className="w-full text-xs font-mono tracking-wider">
+                  VYR Labs
                 </Button>
               </Link>
-              <Link to="/login?signup=true" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/labs?signup=true" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
                 <Button size="sm" className="w-full bg-foreground hover:bg-foreground/90 text-background text-xs">
                   Começar
                 </Button>

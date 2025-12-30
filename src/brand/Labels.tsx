@@ -34,7 +34,7 @@ export function Label({ variant, showSubtitle = false, className = "" }: LabelPr
       >
         {label.name.split(" ")[1]}
       </span>
-      {showSubtitle && (
+      {'old' in label && showSubtitle && (
         <span 
           className="text-[10px] tracking-wider mt-2 opacity-50"
           style={{ color: VYR_COLORS.gray[500] }}
@@ -80,12 +80,14 @@ export function LabelComparison() {
             className="flex items-center gap-6 py-3 border-b"
             style={{ borderColor: VYR_COLORS.gray[800] }}
           >
-            <span 
-              className="w-32 text-xs tracking-wider opacity-40 line-through"
-              style={{ color: VYR_COLORS.gray[500] }}
-            >
-              {label.old}
-            </span>
+            {'old' in label && (
+              <span 
+                className="w-32 text-xs tracking-wider opacity-40 line-through"
+                style={{ color: VYR_COLORS.gray[500] }}
+              >
+                {label.old}
+              </span>
+            )}
             <span 
               className="text-lg"
               style={{ color: VYR_COLORS.gray[600] }}
