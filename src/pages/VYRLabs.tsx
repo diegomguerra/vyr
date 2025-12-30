@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { LabsHeader, InfoBlock, StatusCard } from "@/components/labs";
+import { LabsHeader, InfoBlock, StatusCard, ScrollReveal } from "@/components/labs";
 import { ArrowRight } from "lucide-react";
 
 export default function VYRLabs() {
@@ -226,80 +226,91 @@ export default function VYRLabs() {
         {/* Info Blocks */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 sm:mt-32 space-y-20 sm:space-y-28">
           {/* Block 1 */}
-          <InfoBlock
-            title="Sistemas confiáveis não nascem prontos."
-            text="Antes de um protocolo ser entregue como sistema, ele passa por ciclos de observação, registro e correlação. A VYR Labs existe para testar hipóteses sobre estados cognitivos reais, em contextos reais, com usuários reais — sem simplificações artificiais."
-          />
+          <ScrollReveal>
+            <InfoBlock
+              title="Sistemas confiáveis não nascem prontos."
+              text="Antes de um protocolo ser entregue como sistema, ele passa por ciclos de observação, registro e correlação. A VYR Labs existe para testar hipóteses sobre estados cognitivos reais, em contextos reais, com usuários reais — sem simplificações artificiais."
+            />
+          </ScrollReveal>
 
           {/* Block 2 */}
-          <InfoBlock
-            title="O que observamos"
-            list={[
-              "Modulação de estados cognitivos ao longo do dia",
-              "Relação entre percepção subjetiva e sinais fisiológicos",
-              "Variabilidade individual de resposta",
-              "Estabilidade vs flutuação cognitiva sob carga",
-              "Efeitos acumulativos de ciclos prolongados",
-            ]}
-          />
+          <ScrollReveal delay={100}>
+            <InfoBlock
+              title="O que observamos"
+              list={[
+                "Modulação de estados cognitivos ao longo do dia",
+                "Relação entre percepção subjetiva e sinais fisiológicos",
+                "Variabilidade individual de resposta",
+                "Estabilidade vs flutuação cognitiva sob carga",
+                "Efeitos acumulativos de ciclos prolongados",
+              ]}
+            />
+          </ScrollReveal>
 
           {/* Block 3 */}
-          <InfoBlock
-            title="Da observação ao sistema"
-            text="Os achados da VYR Labs não são publicados como promessas. Eles são incorporados ao VYR SYSTEM apenas quando atingem consistência suficiente para operação contínua. Tudo o que o VYR SYSTEM entrega hoje passou antes por este ambiente."
-          />
+          <ScrollReveal delay={100}>
+            <InfoBlock
+              title="Da observação ao sistema"
+              text="Os achados da VYR Labs não são publicados como promessas. Eles são incorporados ao VYR SYSTEM apenas quando atingem consistência suficiente para operação contínua. Tudo o que o VYR SYSTEM entrega hoje passou antes por este ambiente."
+            />
+          </ScrollReveal>
 
           {/* Block 4 */}
-          <InfoBlock
-            title="O que a VYR Labs não é"
-            list={[
-              "Não é um produto comercial",
-              "Não é um blog de conteúdo",
-              "Não é um espaço de marketing",
-              "Não é um manifesto",
-            ]}
-            note="É um ambiente técnico de validação contínua."
-          />
+          <ScrollReveal delay={100}>
+            <InfoBlock
+              title="O que a VYR Labs não é"
+              list={[
+                "Não é um produto comercial",
+                "Não é um blog de conteúdo",
+                "Não é um espaço de marketing",
+                "Não é um manifesto",
+              ]}
+              note="É um ambiente técnico de validação contínua."
+            />
+          </ScrollReveal>
 
           {/* Block 5 - Status */}
-          <div className="space-y-6">
-            <h3 className="text-lg sm:text-xl font-medium text-foreground tracking-wide">
-              Estado atual
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <StatusCard label="Protocolos em teste" status="active" />
-              <StatusCard label="Instrumentação ativa" status="active" />
-              <StatusCard label="Ciclos em observação" status="active" />
-              <StatusCard label="Integração progressiva" status="pending" />
+          <ScrollReveal delay={100}>
+            <div className="space-y-6">
+              <h3 className="text-lg sm:text-xl font-medium text-foreground tracking-wide">
+                Estado atual
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <StatusCard label="Protocolos em teste" status="active" />
+                <StatusCard label="Instrumentação ativa" status="active" />
+                <StatusCard label="Ciclos em observação" status="active" />
+                <StatusCard label="Integração progressiva" status="pending" />
+              </div>
+              <p className="text-muted-foreground/50 text-xs font-mono">
+                Alguns dados ainda não são públicos.
+              </p>
             </div>
-            <p className="text-muted-foreground/50 text-xs font-mono">
-              Alguns dados ainda não são públicos.
-            </p>
-          </div>
+          </ScrollReveal>
         </section>
 
-        {/* Footer */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28 sm:mt-36">
-          <div className="border-t border-border/30 pt-12 sm:pt-16 space-y-8">
-            <p className="text-muted-foreground text-sm sm:text-base">
-              Os resultados da VYR Labs se manifestam no VYR SYSTEM.
-            </p>
-            
-            <Link to="/">
-              <Button 
-                variant="outline" 
-                className="border-border/50 text-muted-foreground hover:text-foreground hover:bg-card/50 text-sm"
-              >
-                Conhecer o sistema
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+        <ScrollReveal delay={150}>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28 sm:mt-36">
+            <div className="border-t border-border/30 pt-12 sm:pt-16 space-y-8">
+              <p className="text-muted-foreground text-sm sm:text-base">
+                Os resultados da VYR Labs se manifestam no VYR SYSTEM.
+              </p>
+              
+              <Link to="/">
+                <Button 
+                  variant="outline" 
+                  className="border-border/50 text-muted-foreground hover:text-foreground hover:bg-card/50 text-sm"
+                >
+                  Conhecer o sistema
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
 
-            <p className="text-muted-foreground/40 text-xs font-mono italic max-w-md">
-              Clareza mental é construída com consistência, recuperação e exigência cognitiva.
-            </p>
-          </div>
-        </section>
+              <p className="text-muted-foreground/40 text-xs font-mono italic max-w-md">
+                Clareza mental é construída com consistência, recuperação e exigência cognitiva.
+              </p>
+            </div>
+          </section>
+        </ScrollReveal>
       </main>
     </div>
   );
