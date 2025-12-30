@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { VYRLogo } from "@/brand";
+import { NavDropdown, MobileNavDropdown } from "./NavDropdown";
+
+const VYR_SUBMENU_ITEMS = [
+  { label: "VYR NUTRITION", href: "/nutrition", description: "Modulação nutricional" },
+  { label: "VYR LABS", href: "/labs", description: "Plataforma experimental" },
+  { label: "VYR NODE", href: "/node", description: "Hardware layer" },
+  { label: "VYR SCIENCE", href: "/science", description: "Base científica" },
+];
 
 export function LandingNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,18 +26,13 @@ export function LandingNav() {
 
           {/* Nav Links - Desktop */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            <a href="#produto" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-              Produto
-            </a>
+            <NavDropdown trigger="VYR" items={VYR_SUBMENU_ITEMS} />
             <Link to="/como-funciona" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               Como Funciona
             </Link>
-            <a href="#beneficios" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-              Benefícios
-            </a>
-            <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-              FAQ
-            </a>
+            <Link to="/science" className="text-muted-foreground hover:text-foreground transition-colors text-sm font-mono tracking-wider">
+              VYR Science
+            </Link>
           </div>
 
           {/* Auth Buttons - Desktop */}
@@ -60,36 +63,27 @@ export function LandingNav() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="sm:hidden bg-background/98 backdrop-blur-xl border-t border-border">
-          <div className="px-4 py-4 space-y-3">
-            <a
-              href="#produto"
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Produto
-            </a>
+          <div className="px-4 py-4 space-y-1">
+            <MobileNavDropdown 
+              trigger="VYR" 
+              items={VYR_SUBMENU_ITEMS} 
+              onItemClick={() => setMobileMenuOpen(false)} 
+            />
             <Link
               to="/como-funciona"
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
+              className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-sm border-b border-border/30"
               onClick={() => setMobileMenuOpen(false)}
             >
               Como Funciona
             </Link>
-            <a
-              href="#beneficios"
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
+            <Link
+              to="/science"
+              className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-sm font-mono tracking-wider border-b border-border/30"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Benefícios
-            </a>
-            <a
-              href="#faq"
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              FAQ
-            </a>
-            <div className="pt-3 border-t border-border flex gap-2">
+              VYR Science
+            </Link>
+            <div className="pt-4 flex gap-2">
               <Link to="/labs" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="outline" size="sm" className="w-full text-xs font-mono tracking-wider">
                   VYR Labs

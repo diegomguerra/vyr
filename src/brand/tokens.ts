@@ -56,6 +56,18 @@ export const VYR_LABELS = {
     textColor: VYR_COLORS.gray[300],
     accentColor: VYR_COLORS.gray[500],
   },
+  NUTRITION: {
+    name: "VYR NUTRITION",
+    tagline: "MODULAÇÃO NUTRICIONAL",
+    color: VYR_COLORS.gray[100],
+    textColor: VYR_COLORS.black,
+  },
+  SCIENCE: {
+    name: "VYR SCIENCE",
+    tagline: "SCIENTIFIC FOUNDATION",
+    color: VYR_COLORS.gray[500],
+    textColor: VYR_COLORS.white,
+  },
 } as const;
 
 export const VYR_TYPOGRAPHY = {
