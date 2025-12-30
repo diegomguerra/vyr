@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Sun, Moon, Brain } from "lucide-react";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
+import VYRLabs from "./pages/VYRLabs";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import RotinaCompleta from "./pages/RotinaCompleta";
@@ -220,7 +221,8 @@ const App = () => {
               <Route path="/rotina-completa" element={<RotinaCompleta />} />
               <Route path="/sistema-completo" element={<SistemaCompleto />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
-              <Route path="/login" element={user ? <Navigate to="/app" replace /> : <Login />} />
+              <Route path="/labs" element={user ? <Navigate to="/app" replace /> : <VYRLabs />} />
+              <Route path="/login" element={<Navigate to="/labs" replace />} />
               
               {/* Protected routes */}
               <Route 

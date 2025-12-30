@@ -49,6 +49,13 @@ export const VYR_LABELS = {
     color: VYR_COLORS.black,
     textColor: VYR_COLORS.gray[300],
   },
+  LABS: {
+    name: "VYR LABS",
+    tagline: "AMBIENTE EXPERIMENTAL",
+    color: VYR_COLORS.gray[900],
+    textColor: VYR_COLORS.gray[300],
+    accentColor: VYR_COLORS.gray[500],
+  },
 } as const;
 
 export const VYR_TYPOGRAPHY = {
