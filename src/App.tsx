@@ -11,6 +11,9 @@ import { Sun, Moon, Brain } from "lucide-react";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import VYRLabs from "./pages/VYRLabs";
+import VYRNutrition from "./pages/VYRNutrition";
+import VYRNode from "./pages/VYRNode";
+import VYRScience from "./pages/VYRScience";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import RotinaCompleta from "./pages/RotinaCompleta";
@@ -216,6 +219,9 @@ const App = () => {
               <Route path="/" element={<Landing />} />
               <Route path="/brand-preview" element={<BrandPreview />} />
               <Route path="/brand-export" element={<BrandExport />} />
+              <Route path="/nutrition" element={<VYRNutrition />} />
+              <Route path="/node" element={<VYRNode />} />
+              <Route path="/science" element={<VYRScience />} />
               <Route path="/produtos" element={<Products />} />
               <Route path="/produtos/:id" element={<ProductDetail />} />
               <Route path="/rotina-completa" element={<RotinaCompleta />} />
