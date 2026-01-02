@@ -31,7 +31,6 @@ export function Hero() {
         
         {/* Hero Image - Full width */}
         <div className="relative w-full mb-12 lg:mb-16 animate-fade-in">
-          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--background))] via-transparent to-transparent z-10" />
           <img 
             src={heroBrainDashboard} 
             alt="VYR System - Fluidez mental e dashboard cognitivo" 
