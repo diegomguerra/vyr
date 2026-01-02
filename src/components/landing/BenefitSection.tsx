@@ -26,8 +26,8 @@ const benefits = [
     icon: Target,
     title: "Vantagem Competitiva Silenciosa",
     description: "Capacidade funcional em ambientes exigentes que não se ostenta. O diferencial está nos resultados.",
-    color: "text-vyr-cold-blue",
-    bgColor: "bg-vyr-cold-blue/10",
+    color: "text-vyr-coldBlue",
+    bgColor: "bg-vyr-coldBlue/10",
   },
   {
     icon: Moon,

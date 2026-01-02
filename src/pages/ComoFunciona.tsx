@@ -90,7 +90,7 @@ const sachets = [
     bgColor: "bg-vyr-coldBlue",
     textColor: "text-vyr-white",
     accentColor: "text-vyr-gray-300",
-    borderColor: "border-vyr-cold-blue/50",
+    borderColor: "border-vyr-coldBlue/50",
     periodo: "Noite",
     objetivo: "Redução de carga e recuperação neural",
     descricao: "Redução progressiva da carga cognitiva e suporte a processos associados à recuperação neural, consolidação de memória e arquitetura do sono.",

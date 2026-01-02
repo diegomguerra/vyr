@@ -30,9 +30,9 @@ const layers = [
     title: "Smart Ring",
     description: "Discreto como uma aliança, poderoso como um laboratório. Mede HRV, sono e prontidão mental.",
     icon: Circle,
-    color: "text-vyr-cold-blue",
-    bgColor: "bg-vyr-cold-blue/10",
-    borderColor: "border-vyr-cold-blue/30",
+    color: "text-vyr-coldBlue",
+    bgColor: "bg-vyr-coldBlue/10",
+    borderColor: "border-vyr-coldBlue/30",
     features: ["Sensor contínuo 24/7", "Design elegante e invisível", "HRV, sono e prontidão"],
   },
   {

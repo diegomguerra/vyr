@@ -40,7 +40,7 @@ const sachets = [
     tagline: "Recuperação Cognitiva",
     description: "Favorece processos associados à consolidação neural e recuperação fisiológica durante o sono.",
     bgColor: "bg-vyr-coldBlue",
-    borderColor: "border-vyr-cold-blue/50",
+    borderColor: "border-vyr-coldBlue/50",
     textColor: "text-vyr-white",
     benefits: ["Sono reparador", "Consolidação da memória", "Neuroproteção"],
     keyIngredients: ["NAC 600mg", "Ashwagandha 300mg", "Magnésio 200mg"],

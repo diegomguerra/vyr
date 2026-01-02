@@ -52,7 +52,7 @@ const SACHETS = [
     period: "Noite",
     icon: Moon,
     image: sachetNoite,
-    color: "bg-vyr-cold-blue",
+    color: "bg-vyr-coldBlue",
     textColor: "text-vyr-white",
     benefit: "Preparação para recuperação noturna e consolidação",
     usage: "Tomar 1-2 horas antes de dormir",
