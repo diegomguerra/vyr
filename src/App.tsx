@@ -90,14 +90,14 @@ function MobileNav() {
     <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-vyr-graphite-dark/95 backdrop-blur-xl border-t border-vyr-graphite/50">
       <div className="flex items-center justify-around py-2 px-1 safe-area-inset-bottom">
         {NAV_ITEMS.map((item) => (
-          <a
+          <Link
             key={item.to}
             href={item.to}
             className="flex flex-col items-center gap-0.5 px-4 py-2 rounded-sm text-vyr-gray-400 hover:text-vyr-white hover:bg-vyr-graphite/50 transition-all min-w-0"
           >
             <span className="text-lg">{item.icon}</span>
             <span className="text-[10px] font-medium">{item.label}</span>
-          </a>
+          </Link>
         ))}
       </div>
     </nav>
