@@ -265,7 +265,7 @@ export default function VYRScience() {
           <ScrollReveal>
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-vyr-cold-blue rounded-sm flex items-center justify-center">
+                <div className="w-8 h-8 bg-vyr-coldBlue rounded-sm flex items-center justify-center">
                   <span className="font-mono text-xs text-vyr-white">C</span>
                 </div>
                 <div>

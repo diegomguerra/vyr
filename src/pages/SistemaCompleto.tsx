@@ -65,7 +65,7 @@ const platformFeatures = [
 const included = [
   { text: "12 meses de VYR BOOT (360 sachês)", icon: Sun, color: "text-vyr-gray-100" },
   { text: "12 meses de VYR HOLD (360 sachês)", icon: Sunset, color: "text-vyr-gray-400" },
-  { text: "12 meses de VYR CLEAR (360 sachês)", icon: Moon, color: "text-vyr-cold-blue" },
+  { text: "12 meses de VYR CLEAR (360 sachês)", icon: Moon, color: "text-vyr-coldBlue" },
   { text: "VYR NODE (sensor contínuo)", icon: Activity, color: "text-vyr-gray-300" },
   { text: "Plataforma Premium com Correlações", icon: BarChart3, color: "text-vyr-gray-300" },
   { text: "Insights de AI Avançados", icon: Brain, color: "text-vyr-gray-300" },
@@ -267,7 +267,7 @@ export default function SistemaCompleto() {
               </div>
 
               {/* VYR CLEAR */}
-              <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-cold-blue/30 overflow-hidden group">
+              <div className="relative p-6 rounded-sm bg-vyr-gray-900/80 border border-vyr-coldBlue/30 overflow-hidden group">
                 <div className="absolute top-0 left-0 w-full h-1 bg-vyr-coldBlue" />
                 <div className="flex items-center gap-6 mb-4">
                   <div className="scale-90 sm:scale-100">
@@ -275,22 +275,22 @@ export default function SistemaCompleto() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <Moon className="w-4 h-4 text-vyr-cold-blue" />
-                      <span className="text-xs text-vyr-cold-blue font-mono uppercase tracking-wider">Noite</span>
+                      <Moon className="w-4 h-4 text-vyr-coldBlue" />
+                      <span className="text-xs text-vyr-coldBlue font-mono uppercase tracking-wider">Noite</span>
                     </div>
                     <h3 className="text-xl font-mono font-bold text-vyr-white tracking-wide">VYR CLEAR</h3>
                   </div>
                 </div>
                 <p className="text-sm text-vyr-gray-400 leading-relaxed mb-4">
-                  <strong className="text-vyr-cold-blue">Sono reparador.</strong> Promove relaxamento profundo e favorece a consolidação da memória durante o sono.
+                  <strong className="text-vyr-coldBlue">Sono reparador.</strong> Promove relaxamento profundo e favorece a consolidação da memória durante o sono.
                 </p>
                 <ul className="space-y-2 text-xs text-vyr-gray-500">
                   <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-vyr-cold-blue" />
+                    <Check className="w-3.5 h-3.5 text-vyr-coldBlue" />
                     NAC, Ashwagandha
                   </li>
                   <li className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-vyr-cold-blue" />
+                    <Check className="w-3.5 h-3.5 text-vyr-coldBlue" />
                     Magnésio quelato
                   </li>
                 </ul>
