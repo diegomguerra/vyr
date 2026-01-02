@@ -29,23 +29,26 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-24 pb-12">
         {/* Main Title */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-vyr-white mb-6 tracking-tight font-mono">
-          VYR SYSTEM
+        {/* Main Title */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-vyr-white mb-6 tracking-tight leading-tight">
+          Mais fluidez para funcionar bem.<br />
+          Mais leveza para sustentar o dia.
         </h1>
 
         {/* Subtitle */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl text-vyr-gray-300 font-light mb-8 max-w-3xl mx-auto leading-relaxed">
-          Performance cognitiva guiada. Evolução baseada em dados.
+        <h2 className="text-lg sm:text-xl md:text-2xl text-vyr-gray-300 font-light mb-8 max-w-3xl mx-auto leading-relaxed">
+          Performance cognitiva guiada.<br className="sm:hidden" />
+          Um sistema que aprende com você e reduz o esforço invisível do dia a dia.
         </h2>
 
         {/* Description */}
         <p className="text-base sm:text-lg text-vyr-gray-400 mb-6 max-w-2xl mx-auto leading-relaxed">
-          Um sistema que combina suplementação funcional (BOOT, HOLD, CLEAR) com uma plataforma inteligente para acompanhar, ajustar e evoluir sua performance mental ao longo do tempo.
+          O VYR combina suplementação funcional em três momentos do dia com um sistema de registro e mensuração que evolui junto com você. Menos ruído. Menos oscilação. Mais constância para pensar, decidir e agir.
         </p>
 
         {/* Closing Line */}
-        <p className="text-sm sm:text-base text-vyr-gray-500 mb-10 sm:mb-12 font-mono tracking-wider">
-          Comece guiado. Evolua com dados.
+        <p className="text-sm sm:text-base text-vyr-gray-500 mb-10 sm:mb-12 tracking-wide">
+          Comece alinhado. Siga leve. Evolua com dados.
         </p>
 
         {/* CTA Button */}
@@ -62,20 +65,20 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-vyr-gray-500 px-6 py-4 rounded-sm bg-vyr-gray-900/50 border border-vyr-gray-800 max-w-2xl mx-auto">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-sm bg-vyr-gray-300" />
-            <span className="font-mono uppercase tracking-wider">BOOT</span>
-            <span className="text-vyr-gray-600">Ativação</span>
+            <span className="uppercase tracking-wider">BOOT</span>
+            <span className="text-vyr-gray-600">Ativação com leveza</span>
           </div>
           <div className="hidden sm:block w-px h-4 bg-vyr-gray-700" />
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-sm bg-vyr-gray-500" />
-            <span className="font-mono uppercase tracking-wider">HOLD</span>
-            <span className="text-vyr-gray-600">Sustentação</span>
+            <span className="uppercase tracking-wider">HOLD</span>
+            <span className="text-vyr-gray-600">Constância sob carga</span>
           </div>
           <div className="hidden sm:block w-px h-4 bg-vyr-gray-700" />
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-sm bg-vyr-coldBlue" />
-            <span className="font-mono uppercase tracking-wider">CLEAR</span>
-            <span className="text-vyr-gray-600">Recuperação</span>
+            <span className="uppercase tracking-wider">CLEAR</span>
+            <span className="text-vyr-gray-600">Descompressão cognitiva</span>
           </div>
         </div>
       </div>

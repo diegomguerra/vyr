@@ -2,15 +2,16 @@ import { Sun, Moon, Sunset, Zap, Shield, Beaker, ArrowRight } from "lucide-react
 import { Link } from "react-router-dom";
 import { Label as VYRLabel, SachetMockup } from "@/brand";
 import { Button } from "@/components/ui/button";
+
 const supplements = [{
   id: "boot",
   name: "VYR BOOT",
   variant: "BOOT" as const,
   icon: Sun,
   period: "Manhã",
-  tagline: "Ativação & Clareza",
-  description: "Estado inicial de ativação cognitiva. Indução de estado cognitivo inicial com suporte à atenção, memória operacional e clareza decisória.",
-  benefits: ["Suporte à atenção", "Memória operacional", "Clareza decisória"],
+  tagline: "Ativação com leveza",
+  description: "Ajuda a iniciar o dia com clareza, sem aceleração excessiva. Menos inércia mental. Mais prontidão limpa.",
+  benefits: ["Atenção mais estável", "Menos esforço para começar", "Clareza sem tensão"],
   bgColor: "bg-vyr-gray-100",
   borderColor: "border-vyr-gray-300",
   textColor: "text-vyr-black",
@@ -22,9 +23,9 @@ const supplements = [{
   variant: "HOLD" as const,
   icon: Sunset,
   period: "Tarde",
-  tagline: "Manutenção de Estado Cognitivo",
-  description: "Manutenção de estado cognitivo sob carga. Contribui para a manutenção do estado cognitivo sob carga prolongada e redução da variabilidade ao longo do dia.",
-  benefits: ["Manutenção sob carga", "Redução de variabilidade", "Estabilidade ao longo do dia"],
+  tagline: "Constância sob carga",
+  description: "Mantém o ritmo cognitivo quando o dia exige mais. Menos oscilação. Mais continuidade.",
+  benefits: ["Energia mental mais previsível", "Menos queda abrupta", "Estabilidade ao longo do dia"],
   bgColor: "bg-vyr-gray-600",
   borderColor: "border-vyr-gray-500",
   textColor: "text-vyr-white",
@@ -36,9 +37,9 @@ const supplements = [{
   variant: "CLEAR" as const,
   icon: Moon,
   period: "Noite",
-  tagline: "Recuperação Cognitiva",
-  description: "Redução de carga e recuperação neural. Favorece processos associados à consolidação neural e recuperação fisiológica durante o sono.",
-  benefits: ["Descompressão cognitiva", "Consolidação neural", "Recuperação fisiológica"],
+  tagline: "Descompressão cognitiva",
+  description: "Ajuda o sistema a desacelerar para recuperar melhor. Menos resíduo mental. Mais leveza no dia seguinte.",
+  benefits: ["Redução de carga acumulada", "Recuperação mais consistente", "Transição mais suave para o descanso"],
   bgColor: "bg-vyr-coldBlue",
   borderColor: "border-vyr-gray-600",
   textColor: "text-vyr-white",
@@ -62,7 +63,7 @@ function SupplementBox({
             <div className="w-full h-full rounded-sm bg-vyr-graphite-dark flex flex-col items-center justify-center p-3 sm:p-4">
               {/* Label VYR */}
               <VYRLabel variant={supplement.variant} />
-              <span className="text-[10px] sm:text-xs text-vyr-gray-500 mt-2 font-mono">{supplement.sachets}</span>
+              <span className="text-[10px] sm:text-xs text-vyr-gray-500 mt-2">{supplement.sachets}</span>
               
               {/* Mockup visual do sachê (CSS-based) - Larger and more prominent */}
               <div className="mt-3 sm:mt-4 scale-90 sm:scale-100">
@@ -72,7 +73,7 @@ function SupplementBox({
           </div>
           
           {/* Período badge */}
-          <div className={`absolute -top-2 sm:-top-3 -right-2 sm:-right-3 px-2 sm:px-3 py-0.5 sm:py-1 rounded-sm ${supplement.bgColor} ${supplement.textColor} text-[10px] sm:text-xs font-mono tracking-wider`}>
+          <div className={`absolute -top-2 sm:-top-3 -right-2 sm:-right-3 px-2 sm:px-3 py-0.5 sm:py-1 rounded-sm ${supplement.bgColor} ${supplement.textColor} text-[10px] sm:text-xs tracking-wider`}>
             {supplement.period}
           </div>
         </div>
@@ -112,9 +113,9 @@ function AllBoxesPreview() {
         transform: "rotateY(-8deg)",
         boxShadow: "6px 0 20px -5px rgba(0,0,0,0.5)"
       }}>
-          <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-black font-medium">VYR</span>
-          <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-500">BOOT</span>
-          <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
+          <span className="text-xs sm:text-sm tracking-[0.35em] text-vyr-black font-medium">VYR</span>
+          <span className="text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-500">BOOT</span>
+          <span className="text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
         </div>
       </div>
       
@@ -125,9 +126,9 @@ function AllBoxesPreview() {
         <div className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-gray-600 flex flex-col items-center justify-center" style={{
         boxShadow: "0 0 30px -5px rgba(0,0,0,0.5)"
       }}>
-          <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
-          <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">HOLD</span>
-          <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
+          <span className="text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
+          <span className="text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">HOLD</span>
+          <span className="text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
         </div>
       </div>
       
@@ -139,13 +140,14 @@ function AllBoxesPreview() {
         transform: "rotateY(8deg)",
         boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)"
       }}>
-          <span className="font-mono text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
-          <span className="font-mono text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">CLEAR</span>
-          <span className="font-mono text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
+          <span className="text-xs sm:text-sm tracking-[0.35em] text-vyr-white font-medium">VYR</span>
+          <span className="text-[10px] sm:text-xs tracking-[0.25em] text-vyr-gray-300">CLEAR</span>
+          <span className="text-[6px] sm:text-[8px] tracking-wider text-vyr-gray-400 mt-4 sm:mt-6 opacity-60">30 SACHETS</span>
         </div>
       </div>
     </div>;
 }
+
 export function SupplementsSection() {
   return <section id="suplementos" className="relative py-16 sm:py-24 bg-vyr-gray-900 overflow-hidden">
       {/* Subtle radial glow */}
@@ -156,14 +158,14 @@ export function SupplementsSection() {
         <div className="text-center mb-10 sm:mb-16">
           <div className="vyr-badge-accent mb-4 sm:mb-6">
             <Beaker className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="text-xs sm:text-sm font-mono tracking-wider">SUPLEMENTAÇÃO NOOTRÓPICA</span>
+            <span className="text-xs sm:text-sm tracking-wider">SUPLEMENTAÇÃO FUNCIONAL</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium text-vyr-white mb-3 sm:mb-4">
-            Ciclo <span className="text-gradient-accent">Cognitivo</span> Completo
+            Um ciclo diário para <span className="text-gradient-accent">reduzir atrito mental</span>
           </h2>
           <p className="text-vyr-gray-400 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 px-2">
-            Três módulos nootrópicos estruturados para diferentes estados cognitivos ao longo do dia. 
-            <span className="text-vyr-white font-medium"> Não atua por estímulo agudo, mas por modulação progressiva do estado neural.</span>
+            Três momentos do dia.{" "}
+            <span className="text-vyr-white font-medium">Não para estimular mais — mas para sustentar melhor.</span>
           </p>
           
           {/* Preview das 3 caixas VYR (CSS-based) */}
@@ -182,8 +184,8 @@ export function SupplementsSection() {
               <Beaker className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-gray-300" />
             </div>
             <div className="min-w-0">
-              <p className="text-vyr-white font-medium text-xs sm:text-sm">Nootrópicos Premium</p>
-              <p className="text-vyr-gray-500 text-[10px] sm:text-xs">Compostos de alta pureza</p>
+              <p className="text-vyr-white font-medium text-xs sm:text-sm">Composição Funcional</p>
+              <p className="text-vyr-gray-500 text-[10px] sm:text-xs">Ingredientes de alta pureza</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-3 sm:p-4 vyr-card-graphite">
@@ -191,8 +193,8 @@ export function SupplementsSection() {
               <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-gray-300" />
             </div>
             <div className="min-w-0">
-              <p className="text-vyr-white font-medium text-xs sm:text-sm">Dosagem Otimizada</p>
-              <p className="text-vyr-gray-500 text-[10px] sm:text-xs">Baseada em estudos clínicos</p>
+              <p className="text-vyr-white font-medium text-xs sm:text-sm">Dosagem Calibrada</p>
+              <p className="text-vyr-gray-500 text-[10px] sm:text-xs">Para uso diário consistente</p>
             </div>
           </div>
           <div className="flex items-center gap-3 p-3 sm:p-4 vyr-card-graphite">
@@ -211,12 +213,12 @@ export function SupplementsSection() {
           <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-5 sm:px-8 py-4 sm:py-5 vyr-card-graphite">
             <div className="flex items-center gap-2">
               <span className="text-vyr-gray-400 text-sm">Ciclo completo:</span>
-              <span className="text-vyr-white font-medium text-sm font-mono">90 sachês/mês</span>
+              <span className="text-vyr-white font-medium text-sm">90 sachês/mês</span>
             </div>
             <div className="hidden sm:block w-px h-6 bg-vyr-graphite" />
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-vyr-gray-400">BOOT + HOLD + CLEAR</span>
-              <span className="text-vyr-gray-300 font-medium">= Gestão cognitiva 24h</span>
+            <div className="text-sm text-vyr-gray-400">
+              <span className="text-vyr-white font-medium">Não é sobre fazer mais.</span>{" "}
+              É sobre funcionar melhor, com menos atrito.
             </div>
           </div>
         </div>

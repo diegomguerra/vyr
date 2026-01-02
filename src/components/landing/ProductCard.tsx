@@ -7,7 +7,8 @@ const offers = [
     id: "vyr-system",
     tier: "Ponto de Partida",
     name: "VYR SYSTEM",
-    description: "Para quem quer iniciar sua jornada de performance cognitiva com estrutura, clareza e consistência.",
+    description: "Para quem quer começar com estrutura, clareza e consistência.",
+    shortText: "O essencial para reduzir atrito mental e criar constância diária.",
     plans: [
       { label: "Mensal", note: "1 caixa (30 unidades)", price: "R$ 397" },
       { label: "Trimestral", note: "3 caixas", price: "R$ 1.071", discount: "10% OFF" },
@@ -28,7 +29,8 @@ const offers = [
     id: "vyr-system-node",
     tier: "Experiência Completa",
     name: "VYR SYSTEM Node",
-    description: "A experiência completa, como foi desenhada desde o início.",
+    description: "Para quem quer aprofundar a leitura e acelerar o aprendizado do sistema.",
+    shortText: "Quando o sistema deixa de ser fixo e passa a se adaptar a você.",
     planNote: "Plano exclusivamente anual",
     price: "R$ 5.976",
     priceNote: "12 meses",
@@ -53,7 +55,7 @@ export function ProductCard() {
     <section id="produto" className="py-24 bg-vyr-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-sm text-vyr-gray-500 uppercase tracking-widest mb-3 font-mono">
+          <p className="text-sm text-vyr-gray-500 uppercase tracking-widest mb-3">
             Escolha seu Plano
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
@@ -71,17 +73,20 @@ export function ProductCard() {
             <div className="relative bg-vyr-gray-900 rounded-sm p-8 h-full flex flex-col">
               {/* Tier Badge */}
               <div className="mb-6">
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-sm uppercase tracking-wider bg-vyr-gray-800 text-vyr-gray-400">
+                <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-sm uppercase tracking-wider bg-vyr-gray-800 text-vyr-gray-400">
                   {offers[0].tier}
                 </span>
               </div>
 
               {/* Name & Description */}
-              <h3 className="text-3xl font-medium mb-3 font-mono tracking-wider text-vyr-white">
+              <h3 className="text-3xl font-medium mb-3 tracking-wider text-vyr-white">
                 {offers[0].name}
               </h3>
-              <p className="text-vyr-gray-400 text-sm mb-8 leading-relaxed">
+              <p className="text-vyr-gray-400 text-sm mb-2 leading-relaxed">
                 {offers[0].description}
+              </p>
+              <p className="text-vyr-gray-500 text-xs mb-8 italic">
+                {offers[0].shortText}
               </p>
 
               {/* Plans */}
@@ -101,7 +106,7 @@ export function ProductCard() {
                     </div>
                     <div className="flex items-center gap-2">
                       {plan.discount && (
-                        <span className="text-xs font-mono text-vyr-gray-300 bg-vyr-gray-700 px-2 py-0.5 rounded-sm">
+                        <span className="text-xs text-vyr-gray-300 bg-vyr-gray-700 px-2 py-0.5 rounded-sm">
                           {plan.discount}
                         </span>
                       )}
@@ -140,22 +145,25 @@ export function ProductCard() {
             <div className="relative bg-vyr-gray-900 rounded-sm p-8 h-full flex flex-col">
               {/* Tier Badge */}
               <div className="mb-6">
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-sm uppercase tracking-wider bg-vyr-white text-vyr-black">
+                <span className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-sm uppercase tracking-wider bg-vyr-white text-vyr-black">
                   <Star className="w-3 h-3" />
                   {offers[1].tier}
                 </span>
               </div>
 
               {/* Name & Description */}
-              <h3 className="text-3xl font-medium mb-3 font-mono tracking-wider text-vyr-white">
+              <h3 className="text-3xl font-medium mb-3 tracking-wider text-vyr-white">
                 {offers[1].name}
               </h3>
-              <p className="text-vyr-gray-400 text-sm mb-4 leading-relaxed">
+              <p className="text-vyr-gray-400 text-sm mb-2 leading-relaxed">
                 {offers[1].description}
+              </p>
+              <p className="text-vyr-gray-500 text-xs mb-4 italic">
+                {offers[1].shortText}
               </p>
 
               {/* Plan Note */}
-              <p className="text-xs font-mono text-vyr-gray-500 uppercase tracking-wider mb-6">
+              <p className="text-xs text-vyr-gray-500 uppercase tracking-wider mb-6">
                 {offers[1].planNote}
               </p>
 
@@ -209,7 +217,7 @@ export function ProductCard() {
         <div className="text-center px-4 py-12 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700">
           <p className="text-vyr-gray-400 text-base mb-4 leading-relaxed max-w-2xl mx-auto">
             Nem todo mundo precisa do Node no início.<br />
-            Mas todo usuário que leva performance a sério chega até ele.
+            <span className="text-vyr-white font-medium">Mas quem leva constância a sério, chega até ele.</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
             <span className="text-vyr-gray-500">

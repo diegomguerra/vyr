@@ -3,36 +3,32 @@ import { NodeVisual } from "@/brand";
 
 const ringCapabilities = [{
   icon: Activity,
-  title: "HRV Contínuo",
-  description: "Variabilidade da frequência cardíaca 24/7 revela estresse e recuperação em tempo real."
+  title: "Variabilidade Cardíaca (HRV)",
+  description: "Indicador contínuo de estresse e recuperação do sistema nervoso."
 }, {
   icon: Moon,
   title: "Arquitetura do Sono",
-  description: "Fases do sono, latência, despertares. Saiba exatamente como você recupera."
+  description: "Fases do sono, latência, despertares. Como você realmente recupera."
 }, {
   icon: Brain,
-  title: "Prontidão Mental",
-  description: "Score diário de prontidão cognitiva baseado em biomarcadores reais."
-}, {
-  icon: Zap,
-  title: "Resposta Autonômica",
-  description: "Ativação simpática e parassimpática. Entenda seu sistema nervoso."
+  title: "Ritmo Fisiológico Diário",
+  description: "Entenda os ciclos naturais do seu corpo ao longo do dia."
 }];
 
 const evolutionSteps = [{
   step: 1,
   label: "Suplementação",
-  description: "Nootrópicos otimizam sua química cerebral",
+  description: "Estrutura para o dia com menos atrito",
   active: true
 }, {
   step: 2,
   label: "Relatos",
-  description: "Plataforma captura sua percepção subjetiva",
+  description: "Sua percepção organizada ao longo do tempo",
   active: true
 }, {
   step: 3,
   label: "VYR NODE",
-  description: "Dados fisiológicos validam e expandem a análise",
+  description: "Dados fisiológicos refinam o aprendizado",
   active: true,
   highlight: true
 }];
@@ -47,15 +43,15 @@ function NodeShowcaseCompact() {
       {/* Especificações técnicas minimalistas */}
       <div className="mt-8 flex gap-8 text-center">
         <div>
-          <span className="text-[10px] font-mono tracking-[0.2em] block mb-1 text-vyr-gray-500">SENSORS</span>
+          <span className="text-[10px] tracking-[0.2em] block mb-1 text-vyr-gray-500">SENSORS</span>
           <span className="text-xs text-vyr-gray-300">PPG · HRV · SpO2</span>
         </div>
         <div>
-          <span className="text-[10px] font-mono tracking-[0.2em] block mb-1 text-vyr-gray-500">MATERIAL</span>
+          <span className="text-[10px] tracking-[0.2em] block mb-1 text-vyr-gray-500">MATERIAL</span>
           <span className="text-xs text-vyr-gray-300">Titanium</span>
         </div>
         <div>
-          <span className="text-[10px] font-mono tracking-[0.2em] block mb-1 text-vyr-gray-500">BATTERY</span>
+          <span className="text-[10px] tracking-[0.2em] block mb-1 text-vyr-gray-500">BATTERY</span>
           <span className="text-xs text-vyr-gray-300">7 Days</span>
         </div>
       </div>
@@ -75,18 +71,23 @@ export function SmartRingSection() {
         <div className="text-center mb-16">
           <div className="vyr-badge-accent mb-6">
             <Circle className="w-4 h-4" />
-            <span className="text-sm font-mono tracking-wider">VYR NODE · SMART RING</span>
+            <span className="text-sm tracking-wider">VYR NODE · SMART RING</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
-            De percepção a{" "}
+            Quando a percepção encontra{" "}
             <span className="text-gradient-accent">
-              dados fisiológicos
+              o corpo
             </span>
           </h2>
-          <p className="text-vyr-gray-400 max-w-3xl mx-auto text-lg">
-            Dados fisiológicos contínuos para análise de estado cognitivo. 
-            O VYR NODE captura biomarcadores 24/7 que complementam a análise subjetiva.{" "}
-            <span className="text-vyr-white font-medium">Discreto. Contínuo. Preciso.</span>
+          <p className="text-vyr-gray-400 max-w-3xl mx-auto text-lg mb-4">
+            Dados fisiológicos contínuos para refinar o aprendizado do sistema.
+          </p>
+          <p className="text-vyr-gray-500 max-w-2xl mx-auto text-base">
+            O VYR Node adiciona uma camada objetiva à sua percepção diária. 
+            Ele não substitui o que você sente.{" "}
+            <span className="text-vyr-white font-medium">
+              Ele ajuda o sistema a entender quando o corpo confirma — ou diverge — da percepção.
+            </span>
           </p>
         </div>
 
@@ -107,14 +108,14 @@ export function SmartRingSection() {
               <div className="absolute -top-4 -right-4 px-3 py-2 vyr-card-graphite">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-vyr-accent rounded-full animate-pulse opacity-60" />
-                  <span className="text-xs text-vyr-gray-300 font-mono">SENSOR 24/7</span>
+                  <span className="text-xs text-vyr-gray-300">SENSOR 24/7</span>
                 </div>
               </div>
               
               <div className="absolute -bottom-4 -left-4 px-3 py-2 vyr-card-graphite">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-3 h-3 text-vyr-gray-400" />
-                  <span className="text-xs text-vyr-gray-300 font-mono">DISCRETO</span>
+                  <span className="text-xs text-vyr-gray-300">DISCRETO</span>
                 </div>
               </div>
             </div>
@@ -123,7 +124,7 @@ export function SmartRingSection() {
           {/* Capabilities */}
           <div className="space-y-6">
             <div className="mb-8">
-              <p className="text-sm text-vyr-gray-500 uppercase tracking-widest mb-2 font-mono">
+              <p className="text-sm text-vyr-gray-500 uppercase tracking-widest mb-2">
                 O que o NODE captura
               </p>
               <h3 className="text-2xl font-medium text-vyr-white">
@@ -150,11 +151,11 @@ export function SmartRingSection() {
         {/* Evolution Steps */}
         <div className="relative">
           <div className="text-center mb-10">
-            <p className="text-sm uppercase tracking-widest mb-2 text-vyr-gray-500 font-mono">
+            <p className="text-sm uppercase tracking-widest mb-2 text-vyr-gray-500">
               A evolução completa
             </p>
             <h3 className="text-2xl font-medium text-vyr-white">
-              Do suplemento ao insight preciso
+              Do suplemento ao insight refinado
             </h3>
           </div>
 
@@ -168,13 +169,13 @@ export function SmartRingSection() {
                 <div key={step.step} className="relative text-center">
                   {/* Step circle */}
                   <div className={`relative z-10 w-24 h-24 mx-auto mb-4 rounded-sm flex flex-col items-center justify-center ${step.highlight ? 'bg-vyr-white' : 'vyr-card-graphite'}`}>
-                    <span className={`text-2xl font-medium font-mono ${step.highlight ? 'text-vyr-black' : 'text-vyr-gray-400'}`}>
+                    <span className={`text-2xl font-medium ${step.highlight ? 'text-vyr-black' : 'text-vyr-gray-400'}`}>
                       {step.step}
                     </span>
                     {step.highlight && <TrendingUp className="w-4 h-4 text-vyr-graphite mt-1" />}
                   </div>
 
-                  <h4 className={`font-medium mb-1 font-mono tracking-wider ${step.highlight ? 'text-vyr-white' : 'text-vyr-gray-300'}`}>
+                  <h4 className={`font-medium mb-1 tracking-wider ${step.highlight ? 'text-vyr-white' : 'text-vyr-gray-300'}`}>
                     {step.label}
                   </h4>
                   <p className="text-sm text-vyr-gray-500">
@@ -190,11 +191,11 @@ export function SmartRingSection() {
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-5 vyr-card-graphite">
             <span className="text-vyr-gray-400 font-medium text-lg">
-              "O que não se mede, não se gerencia."
+              Mais dados não significam mais esforço.
             </span>
             <span className="hidden sm:block w-px h-6 bg-vyr-graphite" />
-            <span className="text-vyr-white font-mono tracking-wider">
-              Mensuração ativa.
+            <span className="text-vyr-white tracking-wider">
+              Significam menos dúvida.
             </span>
           </div>
         </div>

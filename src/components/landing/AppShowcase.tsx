@@ -9,7 +9,7 @@ function DashboardScreen() {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-vyr-graphite rounded-lg border border-vyr-gray-600/50" />
-          <span className="text-vyr-white text-xs font-semibold font-mono tracking-tight">VYR</span>
+          <span className="text-vyr-white text-xs font-semibold tracking-tight">VYR</span>
         </div>
         <div className="w-6 h-6 bg-vyr-graphite rounded-full border border-vyr-gray-600/30" />
       </div>
@@ -17,8 +17,8 @@ function DashboardScreen() {
       {/* KPI Cards */}
       <div className="grid grid-cols-2 gap-2 mb-3">
         <div className="bg-vyr-graphite-dark rounded-lg p-2 border border-vyr-gray-700/50">
-          <div className="text-[8px] text-vyr-gray-500 font-mono">PERFORMANCE</div>
-          <div className="text-sm font-bold text-vyr-white font-mono">+23%</div>
+          <div className="text-[8px] text-vyr-gray-500">CONSTÂNCIA</div>
+          <div className="text-sm font-medium text-vyr-white">+23%</div>
           <div className="flex gap-0.5 mt-1">
             {[40, 55, 45, 60, 75, 65, 80].map((h, i) => (
               <div key={i} className="w-1.5 bg-vyr-gray-500/40 rounded-sm" style={{ height: `${h * 0.2}px` }} />
@@ -26,8 +26,8 @@ function DashboardScreen() {
           </div>
         </div>
         <div className="bg-vyr-graphite-dark rounded-lg p-2 border border-vyr-gray-700/50">
-          <div className="text-[8px] text-vyr-gray-500 font-mono">SONO</div>
-          <div className="text-sm font-bold text-vyr-accent font-mono">8.2h</div>
+          <div className="text-[8px] text-vyr-gray-500">SONO</div>
+          <div className="text-sm font-medium text-vyr-accent">8.2h</div>
           <div className="flex gap-0.5 mt-1">
             {[60, 70, 65, 80, 75, 85, 90].map((h, i) => (
               <div key={i} className="w-1.5 bg-vyr-accent/25 rounded-sm" style={{ height: `${h * 0.2}px` }} />
@@ -39,8 +39,8 @@ function DashboardScreen() {
       {/* Main Chart */}
       <div className="bg-vyr-graphite-dark rounded-lg p-2 mb-3 border border-vyr-gray-700/50">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-[8px] text-vyr-gray-500 font-mono">EVOLUÇÃO</span>
-          <span className="text-[8px] text-vyr-accent font-mono">+15%</span>
+          <span className="text-[8px] text-vyr-gray-500">EVOLUÇÃO</span>
+          <span className="text-[8px] text-vyr-accent">+15%</span>
         </div>
         <svg viewBox="0 0 200 60" className="w-full h-12">
           <defs>
@@ -65,12 +65,12 @@ function DashboardScreen() {
       {/* Stats Row */}
       <div className="flex gap-2">
         <div className="flex-1 bg-vyr-graphite rounded-lg p-2 border border-vyr-gray-600/30">
-          <div className="text-[8px] text-vyr-gray-500 font-mono">FOCO</div>
-          <div className="text-xs font-bold text-vyr-white font-mono">Alto</div>
+          <div className="text-[8px] text-vyr-gray-500">FOCO</div>
+          <div className="text-xs font-medium text-vyr-white">Estável</div>
         </div>
         <div className="flex-1 bg-vyr-graphite rounded-lg p-2 border border-vyr-gray-600/30">
-          <div className="text-[8px] text-vyr-gray-500 font-mono">ENERGIA</div>
-          <div className="text-xs font-bold text-vyr-white font-mono">+18%</div>
+          <div className="text-[8px] text-vyr-gray-500">ENERGIA</div>
+          <div className="text-xs font-medium text-vyr-white">+18%</div>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@ function SleepScreen() {
       {/* Header */}
       <div className="text-center mb-3">
         <Moon className="w-5 h-5 text-vyr-accent mx-auto mb-1" />
-        <span className="text-vyr-white text-xs font-semibold font-mono tracking-tight">VYR CLEAR</span>
+        <span className="text-vyr-white text-xs font-semibold tracking-tight">VYR CLEAR</span>
       </div>
 
       {/* Sleep Circle */}
@@ -104,8 +104,8 @@ function SleepScreen() {
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-bold text-vyr-white font-mono">82%</span>
-          <span className="text-[8px] text-vyr-accent font-mono">QUALIDADE</span>
+          <span className="text-xl font-medium text-vyr-white">82%</span>
+          <span className="text-[8px] text-vyr-accent">QUALIDADE</span>
         </div>
       </div>
 
@@ -113,25 +113,25 @@ function SleepScreen() {
       <div className="space-y-1.5">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-vyr-accent rounded-full" />
-          <span className="text-[8px] text-vyr-gray-500 flex-1 font-mono">REM</span>
-          <span className="text-[8px] text-vyr-white font-medium font-mono">1h 45m</span>
+          <span className="text-[8px] text-vyr-gray-500 flex-1">REM</span>
+          <span className="text-[8px] text-vyr-white font-medium">1h 45m</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-vyr-gray-500 rounded-full" />
-          <span className="text-[8px] text-vyr-gray-500 flex-1 font-mono">Profundo</span>
-          <span className="text-[8px] text-vyr-white font-medium font-mono">2h 30m</span>
+          <span className="text-[8px] text-vyr-gray-500 flex-1">Profundo</span>
+          <span className="text-[8px] text-vyr-white font-medium">2h 30m</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-vyr-gray-300 rounded-full" />
-          <span className="text-[8px] text-vyr-gray-500 flex-1 font-mono">Leve</span>
-          <span className="text-[8px] text-vyr-white font-medium font-mono">3h 15m</span>
+          <span className="text-[8px] text-vyr-gray-500 flex-1">Leve</span>
+          <span className="text-[8px] text-vyr-white font-medium">3h 15m</span>
         </div>
       </div>
 
       {/* Bottom Stat */}
       <div className="mt-3 bg-vyr-graphite-dark rounded-lg p-2 text-center border border-vyr-gray-700/50">
-        <span className="text-[8px] text-vyr-accent font-mono">TEMPO TOTAL</span>
-        <div className="text-sm font-bold text-vyr-white font-mono">7h 30m</div>
+        <span className="text-[8px] text-vyr-accent">TEMPO TOTAL</span>
+        <div className="text-sm font-medium text-vyr-white">7h 30m</div>
       </div>
     </div>
   );
@@ -168,10 +168,10 @@ function PhoneFrame({ children, className = "" }: { children: React.ReactNode; c
 
 export function AppShowcase() {
   const features = [
-    { icon: Brain, label: "Performance Cognitiva", value: "Mensurável" },
-    { icon: Moon, label: "Qualidade do Sono", value: "Rastreada" },
+    { icon: Brain, label: "Clareza Cognitiva", value: "Registrada" },
+    { icon: Moon, label: "Qualidade do Sono", value: "Acompanhada" },
     { icon: TrendingUp, label: "Evolução Individual", value: "30+ dias" },
-    { icon: Zap, label: "Correlações AI", value: "Tempo real" },
+    { icon: Zap, label: "Correlações", value: "Automáticas" },
   ];
 
   return (
@@ -212,24 +212,24 @@ export function AppShowcase() {
 
           {/* Content */}
           <div className="text-center lg:text-left">
-            <p className="text-sm text-vyr-gray-400 uppercase tracking-widest mb-3 font-mono">
+            <p className="text-sm text-vyr-gray-400 uppercase tracking-widest mb-3">
               Plataforma + VYR NODE · Smart Ring
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-vyr-white mb-6 leading-tight">
-              Dados precisos para{" "}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-6 leading-tight">
+              Sua evolução,{" "}
               <span className="text-vyr-accent">
-                evolução mensurável
+                visível e organizada
               </span>
             </h2>
             
             <p className="text-lg text-vyr-gray-300 mb-4 max-w-xl">
-              VYR NODE discreto e técnico que coleta dados fisiológicos 24/7. 
-              Não substitui relógios sociais. Não possui estética esportiva.
+              Dashboard cognitivo com evolução histórica e correlação entre rotina, 
+              suplementos, recuperação e constância.
             </p>
 
             <p className="text-base text-vyr-gray-500 mb-8 max-w-xl">
-              Dashboard cognitivo com evolução histórica e correlação entre rotina, 
-              suplementos, recuperação e desempenho. Comparação apenas consigo mesmo.
+              Comparação apenas consigo mesmo. Sem métricas de competição. 
+              Seu progresso, no seu ritmo.
             </p>
 
             {/* Feature Grid */}
@@ -238,8 +238,8 @@ export function AppShowcase() {
                 <div key={feature.label} className="flex items-center gap-3 vyr-card-graphite rounded-xl p-3">
                   <feature.icon className="w-5 h-5 text-vyr-accent" />
                   <div>
-                    <div className="text-xs text-vyr-gray-500 font-mono">{feature.label}</div>
-                    <div className="text-sm font-semibold text-vyr-white font-mono">{feature.value}</div>
+                    <div className="text-xs text-vyr-gray-500">{feature.label}</div>
+                    <div className="text-sm font-medium text-vyr-white">{feature.value}</div>
                   </div>
                 </div>
               ))}

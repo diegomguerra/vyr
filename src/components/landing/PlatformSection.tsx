@@ -49,7 +49,7 @@ const platformFeatures = [
   {
     icon: BarChart3,
     title: "Correlações Inteligentes",
-    description: "Entenda como rotina, sono e suplementação impactam sua performance."
+    description: "Entenda como rotina, sono e suplementação impactam sua constância."
   }
 ];
 
@@ -91,18 +91,28 @@ export function PlatformSection() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vyr-gray-700/30 border border-vyr-gray-600/40 mb-6">
             <RefreshCw className="w-4 h-4 text-vyr-gray-200" />
-            <span className="text-sm font-medium text-vyr-gray-200 font-mono">Plataforma de Mensuração</span>
+            <span className="text-sm font-medium text-vyr-gray-200">Plataforma de Registro</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-vyr-white mb-4">
-            Transforme percepção em{" "}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-vyr-white mb-4">
+            O sistema{" "}
             <span className="text-vyr-gray-200">
-              dados acionáveis
+              aprende com você
             </span>
           </h2>
-          <p className="text-vyr-gray-400 max-w-3xl mx-auto text-lg">
-            A plataforma captura seu relato após cada dose, construindo uma linha de base 
-            única que revela como os nootrópicos impactam{" "}
-            <span className="text-vyr-white font-medium">seu</span> desempenho específico.
+          <p className="text-vyr-gray-400 max-w-3xl mx-auto text-lg mb-4">
+            Você registra como se sente. O VYR organiza, observa e aprende padrões ao longo do tempo.
+          </p>
+          <p className="text-vyr-gray-500 max-w-2xl mx-auto text-base">
+            Após cada uso, você registra percepção simples — foco, clareza, energia, recuperação.
+            Com o tempo, o sistema constrói sua linha de base e reduz a variabilidade do dia a dia.{" "}
+            <span className="text-vyr-white font-medium">Sem comparações externas. Sem competição. A evolução é só com você mesmo.</span>
+          </p>
+        </div>
+
+        {/* Micro phrase */}
+        <div className="text-center mb-12">
+          <p className="text-vyr-accent text-sm italic">
+            Abrir o VYR hoje é se alinhar.
           </p>
         </div>
 
@@ -114,17 +124,17 @@ export function PlatformSection() {
             
             {/* Dashboard image with frame */}
             <div className="relative rounded-2xl overflow-hidden border border-vyr-gray-600/30 shadow-2xl">
-              <img src={dashboardPreview} alt="VYR - Painel de Gestão de Estados Cognitivos" className="w-full h-auto" />
+              <img src={dashboardPreview} alt="VYR - Painel de Evolução Cognitiva" className="w-full h-auto" />
               {/* Subtle overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-vyr-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
             
             {/* Floating labels */}
             <div className="absolute -left-4 top-1/4 px-3 py-2 rounded-lg bg-vyr-gray-900/90 border border-vyr-gray-600/30 hidden lg:block">
-              <span className="text-xs text-vyr-gray-200 font-medium font-mono">Métricas em tempo real</span>
+              <span className="text-xs text-vyr-gray-200 font-medium">Tendências visíveis</span>
             </div>
             <div className="absolute -right-4 top-1/3 px-3 py-2 rounded-lg bg-vyr-gray-900/90 border border-vyr-gray-600/30 hidden lg:block">
-              <span className="text-xs text-vyr-gray-200 font-medium font-mono">Evolução visível</span>
+              <span className="text-xs text-vyr-gray-200 font-medium">Evolução progressiva</span>
             </div>
           </div>
         </div>
@@ -132,10 +142,10 @@ export function PlatformSection() {
         {/* Os 3 Eixos de Mensuração */}
         <div className="mb-20">
           <div className="text-center mb-10">
-            <p className="text-sm uppercase tracking-widest mb-2 text-vyr-gray-400 font-mono">
-              O que mensuramos
+            <p className="text-sm uppercase tracking-widest mb-2 text-vyr-gray-400">
+              O que registramos
             </p>
-            <h3 className="text-2xl font-bold text-vyr-white">
+            <h3 className="text-2xl font-medium text-vyr-white">
               3 Eixos do Ciclo Cognitivo
             </h3>
           </div>
@@ -147,7 +157,7 @@ export function PlatformSection() {
                 className={`relative p-6 rounded-2xl bg-vyr-gray-900/40 border ${pillar.borderColor} hover:bg-vyr-gray-900/60 transition-all duration-300`}
               >
                 {/* Period badge */}
-                <div className={`absolute -top-3 right-4 px-3 py-1 rounded-full ${pillar.bgColor} ${pillar.textColor} text-xs font-semibold font-mono border ${pillar.borderColor}`}>
+                <div className={`absolute -top-3 right-4 px-3 py-1 rounded-full ${pillar.bgColor} ${pillar.textColor} text-xs font-medium border ${pillar.borderColor}`}>
                   {pillar.period}
                 </div>
 
@@ -157,7 +167,7 @@ export function PlatformSection() {
                 </div>
 
                 {/* Title */}
-                <h4 className={`text-xl font-bold ${pillar.textColor} mb-3`}>
+                <h4 className={`text-xl font-medium ${pillar.textColor} mb-3`}>
                   {pillar.title}
                 </h4>
 
@@ -195,12 +205,15 @@ export function PlatformSection() {
         {/* Dashboard Preview Section */}
         <div className="mb-20">
           <div className="text-center mb-10">
-            <p className="text-sm uppercase tracking-widest mb-2 text-vyr-gray-400 font-mono">
-              Visualize seus dados
+            <p className="text-sm uppercase tracking-widest mb-2 text-vyr-gray-400">
+              Visualize sua evolução
             </p>
-            <h3 className="text-2xl font-bold text-vyr-white">
-              Painel de Gestão de Estados Cognitivos
+            <h3 className="text-2xl font-medium text-vyr-white">
+              Evolução que faz sentido, não barulho
             </h3>
+            <p className="text-vyr-gray-500 max-w-2xl mx-auto mt-3 text-sm">
+              O painel mostra tendências, não excesso de dados. O objetivo não é observar tudo — é entender o que muda quando o atrito diminui.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6">
@@ -208,10 +221,10 @@ export function PlatformSection() {
             <div className="lg:col-span-2 p-6 rounded-2xl bg-vyr-gray-900/40 border border-vyr-gray-600/30">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h4 className="text-vyr-white font-semibold">Variação e Evolução Semanal</h4>
+                  <h4 className="text-vyr-white font-medium">Variação e Evolução Semanal</h4>
                   <p className="text-vyr-gray-400 text-sm">Indicadores diários</p>
                 </div>
-                <div className="flex items-center gap-4 text-xs font-mono">
+                <div className="flex items-center gap-4 text-xs">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-vyr-gray-300" />
                     <span className="text-vyr-gray-400">Foco</span>
@@ -229,8 +242,8 @@ export function PlatformSection() {
               <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={performanceData}>
-                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#404040', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }} />
-                    <YAxis domain={[5, 10]} axisLine={false} tickLine={false} tick={{ fill: '#404040', fontSize: 11, fontFamily: 'JetBrains Mono, monospace' }} />
+                    <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#404040', fontSize: 11 }} />
+                    <YAxis domain={[5, 10]} axisLine={false} tickLine={false} tick={{ fill: '#404040', fontSize: 11 }} />
                     <Line type="monotone" dataKey="foco" stroke="#737373" strokeWidth={2} dot={{ fill: '#737373', r: 3, strokeWidth: 0 }} />
                     <Line type="monotone" dataKey="energia" stroke="#404040" strokeWidth={2} dot={{ fill: '#404040', r: 3, strokeWidth: 0 }} />
                     <Line type="monotone" dataKey="clareza" stroke="#3b4f63" strokeWidth={2} dot={{ fill: '#3b4f63', r: 3, strokeWidth: 0 }} />
@@ -246,8 +259,8 @@ export function PlatformSection() {
                   <Moon className="w-5 h-5 text-vyr-accent" />
                 </div>
                 <div>
-                  <h4 className="text-vyr-white font-semibold">Qualidade do Sono</h4>
-                  <p className="text-vyr-gray-400 text-xs font-mono">Últimos 7 dias</p>
+                  <h4 className="text-vyr-white font-medium">Qualidade do Sono</h4>
+                  <p className="text-vyr-gray-400 text-xs">Últimos 7 dias</p>
                 </div>
               </div>
               <div className="h-32">
@@ -264,8 +277,8 @@ export function PlatformSection() {
                 </ResponsiveContainer>
               </div>
               <div className="mt-3 flex items-center justify-between">
-                <span className="text-vyr-gray-400 text-sm font-mono">Média</span>
-                <span className="text-vyr-accent font-bold text-lg font-mono">77%</span>
+                <span className="text-vyr-gray-400 text-sm">Média</span>
+                <span className="text-vyr-accent font-medium text-lg">77%</span>
               </div>
             </div>
           </div>
@@ -275,12 +288,12 @@ export function PlatformSection() {
             {/* Plasticidade Score */}
             <div className="p-5 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-vyr-gray-400 text-sm font-mono">Plasticidade Cognitiva</span>
-                <span className="text-xs px-2 py-1 rounded-full bg-vyr-accent/15 text-vyr-accent font-mono border border-vyr-accent/30">+12%</span>
+                <span className="text-vyr-gray-400 text-sm">Constância Cognitiva</span>
+                <span className="text-xs px-2 py-1 rounded-full bg-vyr-accent/15 text-vyr-accent border border-vyr-accent/30">+12%</span>
               </div>
               <div className="flex items-end gap-2">
-                <span className="text-3xl font-bold text-vyr-white font-mono">82</span>
-                <span className="text-vyr-gray-400 text-sm mb-1 font-mono">/100</span>
+                <span className="text-3xl font-medium text-vyr-white">82</span>
+                <span className="text-vyr-gray-400 text-sm mb-1">/100</span>
               </div>
               <div className="mt-3 h-2 bg-vyr-gray-800 rounded-full overflow-hidden">
                 <div className="h-full w-[82%] bg-gradient-to-r from-vyr-gray-400 to-vyr-accent rounded-full" />
@@ -290,7 +303,7 @@ export function PlatformSection() {
             {/* Weekly Trend */}
             <div className="p-5 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-vyr-gray-400 text-sm font-mono">Tendência 6 Semanas</span>
+                <span className="text-vyr-gray-400 text-sm">Tendência 6 Semanas</span>
                 <TrendingUp className="w-4 h-4 text-vyr-accent" />
               </div>
               <div className="h-16">
@@ -310,7 +323,7 @@ export function PlatformSection() {
 
             {/* Ring Scores Preview */}
             <div className="p-5 rounded-2xl bg-vyr-graphite-dark/60 border border-vyr-gray-700/40">
-              <span className="text-vyr-gray-400 text-sm font-mono">Índices do Dia</span>
+              <span className="text-vyr-gray-400 text-sm">Índices do Dia</span>
               <div className="mt-3 flex items-center justify-around">
                 {/* Circular progress indicators */}
                 <div className="relative w-14 h-14">
@@ -318,28 +331,41 @@ export function PlatformSection() {
                     <circle cx="28" cy="28" r="24" stroke="#262626" strokeWidth="4" fill="none" />
                     <circle cx="28" cy="28" r="24" stroke="#8a8a8a" strokeWidth="4" fill="none" strokeDasharray={`${0.85 * 150.8} 150.8`} strokeLinecap="round" />
                   </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-vyr-white font-mono">85%</span>
+                  <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-vyr-white">85%</span>
                 </div>
                 <div className="relative w-14 h-14">
                   <svg className="w-14 h-14 transform -rotate-90">
                     <circle cx="28" cy="28" r="24" stroke="#262626" strokeWidth="4" fill="none" />
                     <circle cx="28" cy="28" r="24" stroke="#6b6b6b" strokeWidth="4" fill="none" strokeDasharray={`${0.72 * 150.8} 150.8`} strokeLinecap="round" />
                   </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-vyr-white font-mono">72%</span>
+                  <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-vyr-white">72%</span>
                 </div>
                 <div className="relative w-14 h-14">
                   <svg className="w-14 h-14 transform -rotate-90">
                     <circle cx="28" cy="28" r="24" stroke="#262626" strokeWidth="4" fill="none" />
                     <circle cx="28" cy="28" r="24" stroke="#4a6275" strokeWidth="4" fill="none" strokeDasharray={`${0.91 * 150.8} 150.8`} strokeLinecap="round" />
                   </svg>
-                  <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-vyr-white font-mono">91%</span>
+                  <span className="absolute inset-0 flex items-center justify-center text-xs font-medium text-vyr-white">91%</span>
                 </div>
               </div>
-              <div className="mt-2 flex items-center justify-around text-xs text-vyr-gray-400 font-mono">
+              <div className="mt-2 flex items-center justify-around text-xs text-vyr-gray-400">
                 <span>Ativação</span>
                 <span>Sustentação</span>
                 <span>Recuperação</span>
               </div>
+            </div>
+          </div>
+
+          {/* Highlights */}
+          <div className="mt-8 grid md:grid-cols-3 gap-4 text-center">
+            <div className="p-4 rounded-xl bg-vyr-gray-900/30 border border-vyr-gray-700/30">
+              <p className="text-vyr-white font-medium text-sm">Menos dias "ruins sem explicação"</p>
+            </div>
+            <div className="p-4 rounded-xl bg-vyr-gray-900/30 border border-vyr-gray-700/30">
+              <p className="text-vyr-white font-medium text-sm">Mais constância percebida</p>
+            </div>
+            <div className="p-4 rounded-xl bg-vyr-gray-900/30 border border-vyr-gray-700/30">
+              <p className="text-vyr-white font-medium text-sm">Menos esforço para manter o ritmo</p>
             </div>
           </div>
         </div>
@@ -352,7 +378,7 @@ export function PlatformSection() {
                 <feature.icon className="w-6 h-6 text-vyr-gray-200" />
               </div>
               <div>
-                <h4 className="text-vyr-white font-semibold mb-1">{feature.title}</h4>
+                <h4 className="text-vyr-white font-medium mb-1">{feature.title}</h4>
                 <p className="text-vyr-gray-400 text-sm">{feature.description}</p>
               </div>
             </div>
@@ -362,8 +388,10 @@ export function PlatformSection() {
         {/* Callout */}
         <div className="text-center">
           <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-vyr-gray-900/30 border border-vyr-gray-600/30">
-            <span className="text-vyr-gray-400">Dados de relato são poderosos, mas</span>
-            <span className="text-vyr-white font-semibold">dados fisiológicos são precisos →</span>
+            <span className="text-vyr-gray-400">Dados existem para aliviar decisões,</span>
+            <span className="text-vyr-white font-medium">
+              não para criar peso.
+            </span>
           </div>
         </div>
       </div>
