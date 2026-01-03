@@ -3,11 +3,12 @@ import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { LabsHeader, InfoBlock, StatusCard, ScrollReveal } from "@/components/labs";
-import { ArrowRight } from "lucide-react";
+import { LandingNav } from "@/components/landing/LandingNav";
+import { Footer } from "@/components/landing/Footer";
+import { InfoBlock, StatusCard, ScrollReveal } from "@/components/labs";
+import { ArrowRight, FlaskConical } from "lucide-react";
 
 export default function VYRLabs() {
   const [email, setEmail] = useState("");
@@ -111,65 +112,60 @@ export default function VYRLabs() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <LabsHeader />
+    <div className="min-h-screen bg-vyr-gray-900">
+      <LandingNav />
       
-      {/* Grid pattern background */}
-      <div 
-        className="fixed inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      {/* Subtle radial glow */}
+      <div className="fixed inset-0 vyr-gradient-radial opacity-50 pointer-events-none" />
 
       <main className="relative pt-24 pb-20">
         {/* Hero Section with Login */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left: Hero Content */}
-            <div className="space-y-6 lg:pt-8">
-              {/* Label */}
-              <span className="inline-block font-mono text-[10px] sm:text-xs tracking-[0.3em] text-muted-foreground/70 uppercase">
-                Ambiente Experimental
-              </span>
-              
-              {/* Headline */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground leading-tight tracking-tight">
-                Onde estados cognitivos são estudados antes de virarem sistema.
-              </h1>
-              
-              {/* Subheadline */}
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-lg">
-                A VYR Labs é o espaço de testes, validação e observação contínua que sustenta a evolução do VYR SYSTEM.
-              </p>
-              
-              {/* Technical note */}
-              <p className="font-mono text-xs text-muted-foreground/50 italic">
-                Nem tudo aqui é definitivo. Tudo aqui é mensurado.
-              </p>
-            </div>
+            <ScrollReveal>
+              <div className="space-y-6 lg:pt-8">
+                {/* Label */}
+                <div className="vyr-badge-accent">
+                  <FlaskConical className="w-3.5 h-3.5" />
+                  <span className="text-xs tracking-wider">AMBIENTE EXPERIMENTAL</span>
+                </div>
+                
+                {/* Headline */}
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium text-vyr-white leading-tight tracking-tight max-w-2xl">
+                  Onde estados cognitivos são estudados{" "}
+                  <span className="text-gradient-accent">antes de virarem sistema.</span>
+                </h1>
+                
+                {/* Subheadline */}
+                <p className="text-vyr-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
+                  A VYR Labs é o espaço de testes, validação e observação contínua que sustenta a evolução do VYR SYSTEM.
+                </p>
+                
+                {/* Technical note */}
+                <p className="font-mono text-xs text-vyr-gray-500 italic">
+                  Nem tudo aqui é definitivo. Tudo aqui é mensurado.
+                </p>
+              </div>
+            </ScrollReveal>
 
             {/* Right: Login Card */}
-            <div className="lg:sticky lg:top-24">
-              <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
-                <CardContent className="p-6 sm:p-8">
+            <ScrollReveal delay={100}>
+              <div className="lg:sticky lg:top-24">
+                <div className="vyr-card-graphite p-6 sm:p-8">
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <h2 className="text-lg font-medium text-foreground">
+                      <h2 className="text-lg font-medium text-vyr-white">
                         {isSignUp ? "Criar conta" : "Acessar ambiente"}
                       </h2>
-                      <p className="text-xs text-muted-foreground font-mono">
+                      <p className="text-xs text-vyr-gray-500 font-mono">
                         {isSignUp ? "Registre-se para participar do protocolo" : "Entre com suas credenciais"}
                       </p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-xs text-muted-foreground">
+                        <Label htmlFor="email" className="text-xs text-vyr-gray-400">
                           Email
                         </Label>
                         <Input
@@ -178,12 +174,12 @@ export default function VYRLabs() {
                           placeholder="seu@email.com"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="bg-background/50 border-border/50 text-sm"
+                          className="bg-vyr-graphite-dark border-vyr-graphite text-vyr-white text-sm placeholder:text-vyr-gray-600"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="password" className="text-xs text-muted-foreground">
+                        <Label htmlFor="password" className="text-xs text-vyr-gray-400">
                           Senha
                         </Label>
                         <Input
@@ -192,14 +188,14 @@ export default function VYRLabs() {
                           placeholder="••••••••"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          className="bg-background/50 border-border/50 text-sm"
+                          className="bg-vyr-graphite-dark border-vyr-graphite text-vyr-white text-sm placeholder:text-vyr-gray-600"
                         />
                       </div>
 
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-foreground hover:bg-foreground/90 text-background text-sm"
+                        className="w-full bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black text-sm font-medium"
                       >
                         {isLoading ? "Processando..." : isSignUp ? "Criar conta" : "Entrar"}
                       </Button>
@@ -209,7 +205,7 @@ export default function VYRLabs() {
                       <button
                         type="button"
                         onClick={() => setIsSignUp(!isSignUp)}
-                        className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-xs text-vyr-gray-500 hover:text-vyr-white transition-colors"
                       >
                         {isSignUp
                           ? "Já tem conta? Entrar"
@@ -217,9 +213,9 @@ export default function VYRLabs() {
                       </button>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
@@ -272,7 +268,7 @@ export default function VYRLabs() {
           {/* Block 5 - Status */}
           <ScrollReveal delay={100}>
             <div className="space-y-6">
-              <h3 className="text-lg sm:text-xl font-medium text-foreground tracking-wide">
+              <h3 className="text-lg sm:text-xl font-medium text-vyr-white tracking-wide">
                 Estado atual
               </h3>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -281,7 +277,7 @@ export default function VYRLabs() {
                 <StatusCard label="Ciclos em observação" status="active" />
                 <StatusCard label="Integração progressiva" status="pending" />
               </div>
-              <p className="text-muted-foreground/50 text-xs font-mono">
+              <p className="text-vyr-gray-500 text-xs font-mono">
                 Alguns dados ainda não são públicos.
               </p>
             </div>
@@ -290,28 +286,31 @@ export default function VYRLabs() {
 
         <ScrollReveal delay={150}>
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28 sm:mt-36">
-            <div className="border-t border-border/30 pt-12 sm:pt-16 space-y-8">
-              <p className="text-muted-foreground text-sm sm:text-base">
+            <div className="vyr-accent-line mb-12" />
+            <div className="space-y-8">
+              <p className="text-vyr-gray-400 text-sm sm:text-base">
                 Os resultados da VYR Labs se manifestam no VYR SYSTEM.
               </p>
               
               <Link to="/">
                 <Button 
                   variant="outline" 
-                  className="border-border/50 text-muted-foreground hover:text-foreground hover:bg-card/50 text-sm"
+                  className="border-vyr-gray-600 text-vyr-gray-300 hover:text-vyr-white hover:border-vyr-gray-500 text-sm"
                 >
                   Conhecer o sistema
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
 
-              <p className="text-muted-foreground/40 text-xs font-mono italic max-w-md">
+              <p className="text-vyr-gray-600 text-xs font-mono italic max-w-md">
                 Clareza mental é construída com consistência, recuperação e exigência cognitiva.
               </p>
             </div>
           </section>
         </ScrollReveal>
       </main>
+
+      <Footer />
     </div>
   );
 }
