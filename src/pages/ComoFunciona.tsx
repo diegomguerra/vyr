@@ -439,7 +439,7 @@ export default function ComoFunciona() {
             <p className="text-vyr-gray-300 leading-relaxed mb-6">
               O sistema ganha precisão ao correlacionar suas percepções ao longo do tempo, sem exigir instrumentação adicional.
             </p>
-            <div className="grid sm:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-3 gap-6 text-primary-foreground bg-primary-foreground">
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-sm bg-vyr-graphite flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-vyr-accent vyr-icon-glow" />
@@ -500,7 +500,7 @@ export default function ComoFunciona() {
               <h3 className="text-lg font-medium text-vyr-white mb-6">O VYR NODE captura:</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {ringMetrics.map((metric, i) => <div key={i} className="p-4 vyr-card-graphite">
-                    <div className="w-10 h-10 rounded-sm bg-vyr-graphite flex items-center justify-center mb-3">
+                    <div className="w-10 h-10 rounded-sm flex items-center justify-center mb-3 text-primary-foreground bg-gray-400">
                       <metric.icon className="w-5 h-5 text-vyr-coldBlue" />
                     </div>
                     <h3 className="font-medium text-vyr-white text-sm mb-1">{metric.label}</h3>
