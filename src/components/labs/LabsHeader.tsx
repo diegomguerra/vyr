@@ -17,7 +17,7 @@ export function LabsHeader() {
 
           {/* Link back to VYR System */}
           <a
-            href="https://vyr.lovable.app/#/sistema-completo"
+            href="/sistema-completo"
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-xs sm:text-sm font-mono"
           >
             <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" />
