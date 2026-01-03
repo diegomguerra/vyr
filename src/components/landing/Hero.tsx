@@ -3,27 +3,19 @@ import { Button } from "@/components/ui/button";
 import { BrainLogo } from "@/components/BrainLogo";
 import { Link } from "react-router-dom";
 import brainLogo from "@/assets/brain-logo.png";
-
 export function Hero() {
-  return (
-    <section
-      id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden vyr-gradient-bg"
-    >
+  return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden vyr-gradient-bg">
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 vyr-gradient-radial" />
 
       {/* Subtle grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+      backgroundImage: `
             linear-gradient(hsl(var(--vyr-gray-400) / 0.3) 1px, transparent 1px),
             linear-gradient(90deg, hsl(var(--vyr-gray-400) / 0.3) 1px, transparent 1px)
           `,
-          backgroundSize: "80px 80px",
-        }}
-      />
+      backgroundSize: "80px 80px"
+    }} />
 
       {/* Accent line top */}
       <div className="absolute top-0 left-0 right-0 vyr-accent-line" />
@@ -32,11 +24,7 @@ export function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
         {/* Hero Logo - Centered */}
         <div className="relative w-full mb-12 lg:mb-16 animate-fade-in flex justify-center">
-          <BrainLogo
-            src={brainLogo}
-            alt="Cérebro VYR (logo)"
-            className="w-[220px] sm:w-[280px] md:w-[360px] h-auto object-contain"
-          />
+          <BrainLogo src={brainLogo} alt="Cérebro VYR (logo)" className="w-[220px] sm:w-[280px] md:w-[360px] h-auto object-contain" />
         </div>
 
         {/* Text Content - Centered below image */}
@@ -44,7 +32,7 @@ export function Hero() {
           {/* Badge */}
           <div className="inline-flex vyr-badge-accent mb-8">
             <div className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-            <span className="uppercase">Performance Cognitiva Guiada</span>
+            <span className="uppercase text-sky-600">Performance Cognitiva Guiada</span>
           </div>
 
           {/* Main Title */}
@@ -64,18 +52,12 @@ export function Hero() {
           {/* CTA Button */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
             <Link to="/como-funciona">
-              <Button
-                size="lg"
-                className="vyr-btn-accent px-8 sm:px-10 py-6 text-base rounded-sm group"
-              >
+              <Button size="lg" className="vyr-btn-accent px-8 sm:px-10 py-6 text-base rounded-sm group">
                 Conheça o VYR SYSTEM
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link
-              to="/sistema-completo"
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center gap-2 group"
-            >
+            <Link to="/sistema-completo" className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center gap-2 group">
               Ver como funciona
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </Link>
@@ -84,7 +66,7 @@ export function Hero() {
           {/* Anchor phrase */}
           <p className="text-sm text-muted-foreground/80 tracking-wide">
             Você não força performance.{" "}
-            <span className="text-foreground">Você remove o que atrapalha.</span>
+            <span className="text-sky-600">Você remove o que atrapalha.</span>
           </p>
         </div>
 
@@ -129,6 +111,5 @@ export function Hero() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
