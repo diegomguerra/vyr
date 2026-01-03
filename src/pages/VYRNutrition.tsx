@@ -54,7 +54,7 @@ const SACHETS = [
     period: "Noite",
     icon: Moon,
     tagline: "Descompressão cognitiva",
-    benefit: "Ajuda o sistema a desacelerar para recuperar melhor. Menos resíduo mental. Mais leveza no dia seguinte.",
+    benefit: "Desaceleração inteligente. Mais clareza ao acordar. O dia seguinte começa mais leve.",
     usage: "Tomar 1-2 horas antes de dormir",
     bgColor: "bg-[#1E293B]",
     textColor: "text-vyr-white",
