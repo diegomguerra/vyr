@@ -35,7 +35,7 @@ const SACHETS = [
     icon: Sunset,
     tagline: "Constância sob carga",
     benefit: "Mantém o ritmo cognitivo quando o dia exige mais. Menos oscilação. Mais continuidade.",
-    usage: "Tomar após o almoço, antes do período de maior demanda",
+    usage: "Tomar após o almoço",
     bgColor: "bg-vyr-gray-600",
     textColor: "text-vyr-white",
     composition: [

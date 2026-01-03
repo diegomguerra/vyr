@@ -225,10 +225,7 @@ export default function VYRLabs() {
             <InfoBlock title="O que a VYR Labs não é" list={["Não é um produto comercial", "Não é um blog de conteúdo", "Não é um espaço de marketing", "Não é um manifesto"]} note="É um ambiente técnico de validação contínua." />
           </ScrollReveal>
 
-          {/* Block 5 - Status */}
-          <ScrollReveal delay={100}>
-            
-          </ScrollReveal>
+          {/* Block 5 - Status (removed empty block) */}
         </section>
 
         <ScrollReveal delay={150}>
