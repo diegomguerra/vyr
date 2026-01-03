@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Sun, Moon, Sunset, Shield, Sparkles, ArrowRight, Timer } from "lucide-react";
 import { LandingNav, Footer } from "@/components/landing";
 import { SachetMockup, Label as VYRLabel } from "@/brand";
+import brainLogo from "@/assets/brain-logo.png";
 
 const sachets = [
   {
@@ -95,15 +96,20 @@ export default function RotinaCompleta() {
         {/* Background Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
         
-        {/* Radial Glow - Brain Effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-radial from-cyan-500/8 via-cyan-600/3 to-transparent blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] rounded-full bg-gradient-radial from-blue-400/10 via-transparent to-transparent blur-2xl animate-pulse" />
-        
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-vyr-gray-900/50 via-transparent to-vyr-black/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-vyr-black via-transparent to-transparent" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Brain Logo Centered */}
+          <div className="flex justify-center mb-8 sm:mb-12">
+            <img 
+              src={brainLogo} 
+              alt="VYR Brain" 
+              className="w-48 h-auto sm:w-64 md:w-80 object-contain"
+            />
+          </div>
+
           <div className="text-center mb-8 sm:mb-12">
             <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 text-vyr-gray-300 text-xs sm:text-sm font-mono mb-6 sm:mb-8">
               <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
