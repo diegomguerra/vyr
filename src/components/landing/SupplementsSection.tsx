@@ -40,7 +40,7 @@ const supplements = [{
   tagline: "Descompressão cognitiva",
   description: "Ajuda o sistema a desacelerar para recuperar melhor. Menos resíduo mental. Mais leveza no dia seguinte.",
   benefits: ["Redução de carga acumulada", "Recuperação mais consistente", "Transição mais suave para o descanso"],
-  bgColor: "bg-vyr-coldBlue",
+  bgColor: "bg-[#1E293B]",
   borderColor: "border-vyr-gray-600",
   textColor: "text-vyr-white",
   sachets: "30 sachês",
@@ -136,7 +136,7 @@ function AllBoxesPreview() {
       <div className="relative" style={{
       perspective: "400px"
     }}>
-        <div className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-vyr-coldBlue flex flex-col items-center justify-center" style={{
+        <div className="relative w-20 sm:w-28 lg:w-36 h-28 sm:h-36 lg:h-48 rounded-sm bg-[#1E293B] flex flex-col items-center justify-center" style={{
         transform: "rotateY(8deg)",
         boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)"
       }}>

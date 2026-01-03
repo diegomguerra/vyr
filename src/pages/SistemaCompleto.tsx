@@ -103,8 +103,8 @@ function AllBoxesPreview() {
       
       {/* VYR CLEAR Box */}
       <div className="relative" style={{ perspective: "400px" }}>
-        <div 
-          className="relative w-16 sm:w-24 lg:w-28 h-22 sm:h-32 lg:h-40 rounded-sm bg-vyr-coldBlue flex flex-col items-center justify-center"
+        <div
+          className="relative w-16 sm:w-24 lg:w-28 h-22 sm:h-32 lg:h-40 rounded-sm bg-[#1E293B] flex flex-col items-center justify-center"
           style={{ transform: "rotateY(8deg)", boxShadow: "-6px 0 20px -5px rgba(0,0,0,0.5)" }}
         >
           <span className="font-mono text-[10px] sm:text-xs tracking-[0.35em] text-vyr-white font-medium">VYR</span>

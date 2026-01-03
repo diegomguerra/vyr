@@ -56,7 +56,7 @@ const SACHETS = [
     tagline: "Descompressão cognitiva",
     benefit: "Ajuda o sistema a desacelerar para recuperar melhor. Menos resíduo mental. Mais leveza no dia seguinte.",
     usage: "Tomar 1-2 horas antes de dormir",
-    bgColor: "bg-vyr-coldBlue",
+    bgColor: "bg-[#1E293B]",
     textColor: "text-vyr-white",
     composition: [
       "NAC 600mg",
