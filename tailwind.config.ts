@@ -125,8 +125,15 @@ export default {
           to: { opacity: "1", transform: "translateX(0)" },
         },
         spin3d: {
-          "0%": { transform: "rotateY(0deg)" },
-          "100%": { transform: "rotateY(360deg)" },
+          "0%": { transform: "rotateY(-15deg) rotateX(5deg)" },
+          "25%": { transform: "rotateY(15deg) rotateX(-3deg)" },
+          "50%": { transform: "rotateY(-15deg) rotateX(-5deg)" },
+          "75%": { transform: "rotateY(15deg) rotateX(3deg)" },
+          "100%": { transform: "rotateY(-15deg) rotateX(5deg)" },
+        },
+        float3d: {
+          "0%, 100%": { transform: "translateY(0) rotateY(-8deg)" },
+          "50%": { transform: "translateY(-10px) rotateY(8deg)" },
         },
       },
       animation: {
@@ -134,7 +141,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
         "slide-in": "slide-in 0.3s ease-out",
-        spin3d: "spin3d 12s linear infinite",
+        spin3d: "spin3d 8s ease-in-out infinite",
+        float3d: "float3d 6s ease-in-out infinite",
       },
     },
   },
