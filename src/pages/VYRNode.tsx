@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Activity, Moon, Heart, Thermometer, Zap, ArrowRight } from "lucide-react";
+import { ArrowLeft, Activity, Moon, Heart, Thermometer, Zap, ArrowRight, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { LandingNav } from "@/components/landing/LandingNav";
+import { Footer } from "@/components/landing/Footer";
 import { ScrollReveal } from "@/components/labs";
 
 import smartRing from "@/assets/smart-ring-transparent.png";
@@ -42,20 +42,11 @@ const METRICS = [
 
 export default function VYRNode() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-vyr-gray-900">
       <LandingNav />
       
-      {/* Grid pattern background */}
-      <div 
-        className="fixed inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      {/* Subtle radial glow */}
+      <div className="fixed inset-0 vyr-gradient-radial opacity-50 pointer-events-none" />
 
       <main className="relative pt-24 pb-20">
         {/* Hero Section */}
@@ -67,30 +58,32 @@ export default function VYRNode() {
                 {/* Back link */}
                 <Link 
                   to="/" 
-                  className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors font-mono"
+                  className="inline-flex items-center gap-2 text-xs text-vyr-gray-400 hover:text-vyr-white transition-colors font-mono"
                 >
                   <ArrowLeft className="w-3 h-3" />
                   VYR System
                 </Link>
                 
                 {/* Label */}
-                <span className="block font-mono text-[10px] sm:text-xs tracking-[0.3em] text-muted-foreground/70 uppercase">
-                  Hardware Layer
-                </span>
+                <div className="vyr-badge-accent">
+                  <Cpu className="w-3.5 h-3.5" />
+                  <span className="text-xs tracking-wider">HARDWARE LAYER</span>
+                </div>
                 
                 {/* Headline */}
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground leading-tight tracking-tight">
-                  Dados fisiológicos contínuos, integrados ao sistema.
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium text-vyr-white leading-tight tracking-tight max-w-2xl">
+                  Dados fisiológicos contínuos,{" "}
+                  <span className="text-gradient-accent">integrados ao sistema.</span>
                 </h1>
                 
                 {/* Subheadline */}
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-lg">
+                <p className="text-vyr-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
                   O VYR Node é a camada de hardware do ecossistema — um dispositivo de coleta 
                   de dados fisiológicos que alimenta o VYR Labs com sinais objetivos.
                 </p>
                 
                 {/* Technical note */}
-                <p className="font-mono text-xs text-muted-foreground/50 italic">
+                <p className="font-mono text-xs text-vyr-gray-500 italic">
                   Não é o produto principal. É sensor a serviço do sistema.
                 </p>
               </div>
@@ -100,7 +93,7 @@ export default function VYRNode() {
             <ScrollReveal delay={100}>
               <div className="flex items-center justify-center">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-radial from-muted/20 to-transparent rounded-full blur-3xl" />
+                  <div className="absolute inset-0 bg-gradient-radial from-vyr-accent/10 to-transparent rounded-full blur-3xl" />
                   <img 
                     src={smartRing}
                     alt="VYR Node Smart Ring"
@@ -116,10 +109,10 @@ export default function VYRNode() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
           <ScrollReveal>
             <div className="max-w-2xl space-y-6">
-              <h2 className="text-lg sm:text-xl font-medium text-foreground">
+              <h2 className="text-lg sm:text-xl font-medium text-vyr-white">
                 O que é o VYR Node
               </h2>
-              <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+              <div className="space-y-4 text-sm text-vyr-gray-400 leading-relaxed">
                 <p>
                   O VYR Node é um dispositivo vestível (wearable) projetado para capturar 
                   dados fisiológicos de forma contínua e não invasiva.
@@ -140,7 +133,7 @@ export default function VYRNode() {
         {/* Metrics Grid */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
           <ScrollReveal>
-            <h2 className="text-lg sm:text-xl font-medium text-foreground mb-8">
+            <h2 className="text-lg sm:text-xl font-medium text-vyr-white mb-8">
               Métricas capturadas
             </h2>
           </ScrollReveal>
@@ -148,23 +141,21 @@ export default function VYRNode() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {METRICS.map((metric, index) => (
               <ScrollReveal key={metric.label} delay={index * 50}>
-                <Card className="border-border/50 bg-card/30 backdrop-blur-sm h-full">
-                  <CardContent className="p-5">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-sm bg-muted/50 flex items-center justify-center flex-shrink-0">
-                        <metric.icon className="w-5 h-5 text-muted-foreground" />
-                      </div>
-                      <div className="space-y-1">
-                        <h3 className="font-mono text-xs tracking-wider text-foreground">
-                          {metric.label}
-                        </h3>
-                        <p className="text-xs text-muted-foreground/80 leading-relaxed">
-                          {metric.description}
-                        </p>
-                      </div>
+                <div className="vyr-card-graphite p-5 h-full">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-sm bg-vyr-graphite flex items-center justify-center flex-shrink-0">
+                      <metric.icon className="w-5 h-5 text-vyr-gray-300" />
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="space-y-1">
+                      <h3 className="font-mono text-xs tracking-wider text-vyr-white">
+                        {metric.label}
+                      </h3>
+                      <p className="text-xs text-vyr-gray-500 leading-relaxed">
+                        {metric.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -173,47 +164,45 @@ export default function VYRNode() {
         {/* Integration with Labs */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
           <ScrollReveal>
-            <Card className="border-border/50 bg-card/30 backdrop-blur-sm">
-              <CardContent className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <h2 className="text-lg font-medium text-foreground">
-                    Integração com VYR Labs
-                  </h2>
+            <div className="vyr-card-graphite p-6 sm:p-8">
+              <div className="space-y-6">
+                <h2 className="text-lg font-medium text-vyr-white">
+                  Integração com VYR Labs
+                </h2>
+                
+                <div className="grid sm:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
+                      Sincronização
+                    </span>
+                    <p className="text-sm text-vyr-gray-400">
+                      Dados sincronizam automaticamente com a plataforma VYR Labs 
+                      durante períodos de conectividade.
+                    </p>
+                  </div>
                   
-                  <div className="grid sm:grid-cols-3 gap-6">
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Sincronização
-                      </span>
-                      <p className="text-sm text-muted-foreground">
-                        Dados sincronizam automaticamente com a plataforma VYR Labs 
-                        durante períodos de conectividade.
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Correlação
-                      </span>
-                      <p className="text-sm text-muted-foreground">
-                        Algoritmos do Labs correlacionam dados objetivos do Node 
-                        com percepções subjetivas registradas pelo usuário.
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Personalização
-                      </span>
-                      <p className="text-sm text-muted-foreground">
-                        Com mais dados, o sistema refina suas inferências e 
-                        oferece insights cada vez mais precisos.
-                      </p>
-                    </div>
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
+                      Correlação
+                    </span>
+                    <p className="text-sm text-vyr-gray-400">
+                      Algoritmos do Labs correlacionam dados objetivos do Node 
+                      com percepções subjetivas registradas pelo usuário.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
+                      Personalização
+                    </span>
+                    <p className="text-sm text-vyr-gray-400">
+                      Com mais dados, o sistema refina suas inferências e 
+                      oferece insights cada vez mais precisos.
+                    </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </ScrollReveal>
         </section>
 
@@ -221,22 +210,22 @@ export default function VYRNode() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
           <ScrollReveal>
             <div className="space-y-6">
-              <h2 className="text-lg font-medium text-foreground">
+              <h2 className="text-lg font-medium text-vyr-white">
                 Status atual
               </h2>
               
               <div className="grid sm:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 p-4 border border-border/30 rounded-sm">
+                <div className="flex items-center gap-3 p-4 vyr-card-graphite">
                   <div className="w-2 h-2 rounded-full bg-amber-500/70" />
-                  <span className="text-sm text-muted-foreground">Protótipo em validação</span>
+                  <span className="text-sm text-vyr-gray-400">Protótipo em validação</span>
                 </div>
-                <div className="flex items-center gap-3 p-4 border border-border/30 rounded-sm">
-                  <div className="w-2 h-2 rounded-full bg-muted-foreground/30" />
-                  <span className="text-sm text-muted-foreground">Lançamento previsto: 2025</span>
+                <div className="flex items-center gap-3 p-4 vyr-card-graphite">
+                  <div className="w-2 h-2 rounded-full bg-vyr-gray-600" />
+                  <span className="text-sm text-vyr-gray-400">Lançamento previsto: 2025</span>
                 </div>
               </div>
               
-              <p className="text-xs text-muted-foreground/50 font-mono italic">
+              <p className="text-xs text-vyr-gray-500 font-mono italic">
                 O VYR System opera de forma completa mesmo sem o Node. 
                 O hardware é uma camada opcional de precisão.
               </p>
@@ -247,8 +236,9 @@ export default function VYRNode() {
         {/* Footer Quote */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 sm:mt-32">
           <ScrollReveal>
-            <div className="border-t border-border/30 pt-12 space-y-8">
-              <blockquote className="text-muted-foreground/60 text-sm italic max-w-lg">
+            <div className="vyr-accent-line mb-12" />
+            <div className="space-y-8">
+              <blockquote className="text-vyr-gray-500 text-sm italic max-w-lg">
                 "O Node não substitui a percepção consciente. Ele a complementa — 
                 oferecendo ao sistema uma segunda perspectiva sobre seu estado."
               </blockquote>
@@ -256,7 +246,7 @@ export default function VYRNode() {
               <Link to="/labs">
                 <Button 
                   variant="outline" 
-                  className="border-border/50 text-muted-foreground hover:text-foreground text-sm"
+                  className="border-vyr-gray-600 text-vyr-gray-300 hover:text-vyr-white hover:border-vyr-gray-500 text-sm"
                 >
                   Explorar VYR Labs
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -266,6 +256,8 @@ export default function VYRNode() {
           </ScrollReveal>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
