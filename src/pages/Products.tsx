@@ -120,98 +120,100 @@ export default function Products() {
       {/* Products Grid */}
       <section className="py-12 sm:py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch">
             {products.map((product) => (
-              <div 
+              <div
                 key={product.id}
-                className="relative rounded-2xl sm:rounded-3xl vyr-card-graphite overflow-hidden group hover:scale-[1.02] transition-all duration-500"
+                className="relative rounded-2xl sm:rounded-3xl vyr-card-graphite overflow-hidden group hover:scale-[1.02] transition-all duration-500 h-full flex flex-col"
               >
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-vyr-accent/5 opacity-0 group-hover:opacity-100 blur-3xl transition-opacity duration-500" />
-                
+
                 {/* Content */}
-                <div className="relative z-10 p-4 sm:p-6">
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-3 sm:mb-4">
-                    <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-vyr-graphite border border-vyr-gray-600/50 text-vyr-gray-300">
-                      {product.period}
-                    </span>
-                    <product.icon className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-accent vyr-icon-glow" />
-                  </div>
-                  
-                  {/* Sachet Mockup */}
-                  <div className="relative h-56 sm:h-72 mb-4 sm:mb-6 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-vyr-accent/5 blur-2xl opacity-50" />
-                    <div className="relative z-10 transform scale-110 sm:scale-125 group-hover:scale-115 sm:group-hover:scale-130 transition-transform duration-500">
-                      <SachetMockup variant={product.variant} />
+                <div className="relative z-10 p-4 sm:p-6 h-full flex flex-col">
+                  <div className="flex flex-col h-full">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <span className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-vyr-graphite border border-vyr-gray-600/50 text-vyr-gray-300">
+                        {product.period}
+                      </span>
+                      <product.icon className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-accent vyr-icon-glow" />
                     </div>
-                  </div>
-                  
-                  {/* Info */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-vyr-white mb-0.5 sm:mb-1 font-mono tracking-tight">{product.name}</h3>
-                  <p className="text-xs sm:text-sm font-medium text-vyr-accent mb-2 sm:mb-3">{product.tagline}</p>
-                  <p className="text-vyr-gray-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{product.description}</p>
-                  
-                  {/* Benefits */}
-                  <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
-                    {product.benefits.map((benefit, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-accent flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-vyr-gray-300">{benefit}</span>
+
+                    {/* Sachet Mockup */}
+                    <div className="relative h-56 sm:h-72 mb-4 sm:mb-6 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-vyr-accent/5 blur-2xl opacity-50" />
+                      <div className="relative z-10 transform scale-110 sm:scale-125 group-hover:scale-115 sm:group-hover:scale-130 transition-transform duration-500">
+                        <SachetMockup variant={product.variant} />
                       </div>
-                    ))}
-                  </div>
-                  
-                  {/* Ingredients */}
-                  <div className="mb-4 sm:mb-6">
-                    <h4 className="text-[10px] sm:text-xs font-semibold text-vyr-gray-500 uppercase tracking-wider mb-2 sm:mb-3">Composição Principal</h4>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {product.ingredients.slice(0, 3).map((ing, index) => (
-                        <span key={index} className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-vyr-graphite text-[10px] sm:text-xs text-vyr-gray-400 border border-vyr-gray-700/50">
-                          {ing}
-                        </span>
+                    </div>
+
+                    {/* Info */}
+                    <h3 className="text-xl sm:text-2xl font-bold text-vyr-white mb-0.5 sm:mb-1 font-mono tracking-tight">{product.name}</h3>
+                    <p className="text-xs sm:text-sm font-medium text-vyr-accent mb-2 sm:mb-3">{product.tagline}</p>
+                    <p className="text-vyr-gray-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{product.description}</p>
+
+                    {/* Benefits */}
+                    <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+                      {product.benefits.map((benefit, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-accent flex-shrink-0" />
+                          <span className="text-xs sm:text-sm text-vyr-gray-300">{benefit}</span>
+                        </div>
                       ))}
-                      <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-vyr-graphite text-[10px] sm:text-xs text-vyr-gray-500 border border-vyr-gray-700/50">
-                        +{product.ingredients.length - 3} mais
+                    </div>
+
+                    {/* Ingredients */}
+                    <div className="mb-4 sm:mb-6">
+                      <h4 className="text-[10px] sm:text-xs font-semibold text-vyr-gray-500 uppercase tracking-wider mb-2 sm:mb-3">Composição Principal</h4>
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {product.ingredients.slice(0, 3).map((ing, index) => (
+                          <span key={index} className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-vyr-graphite text-[10px] sm:text-xs text-vyr-gray-400 border border-vyr-gray-700/50">
+                            {ing}
+                          </span>
+                        ))}
+                        <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-vyr-graphite text-[10px] sm:text-xs text-vyr-gray-500 border border-vyr-gray-700/50">
+                          +{product.ingredients.length - 3} mais
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Usage */}
+                    <div className="flex items-start gap-2 p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-vyr-graphite-dark border border-vyr-gray-700/30 mb-4 sm:mb-6">
+                      <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-[10px] sm:text-xs text-vyr-gray-400">{product.usage}</p>
+                    </div>
+
+                    {/* Price and CTA */}
+                    <div className="flex items-center justify-between mb-3 sm:mb-4">
+                      <div>
+                        <span className="text-xs sm:text-sm text-vyr-gray-500 line-through">{product.priceOld}</span>
+                        <span className="text-xl sm:text-2xl font-bold text-vyr-white ml-2">{product.price}</span>
+                        <span className="text-xs sm:text-sm text-vyr-gray-400 ml-1">/mês</span>
+                      </div>
+                      <span className="px-2 py-0.5 sm:py-1 rounded-md bg-vyr-accent/10 text-vyr-accent text-[10px] sm:text-xs font-semibold">
+                        -25% OFF
                       </span>
                     </div>
-                  </div>
-                  
-                  {/* Usage */}
-                  <div className="flex items-start gap-2 p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-vyr-graphite-dark border border-vyr-gray-700/30 mb-4 sm:mb-6">
-                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-500 mt-0.5 flex-shrink-0" />
-                    <p className="text-[10px] sm:text-xs text-vyr-gray-400">{product.usage}</p>
-                  </div>
-                  
-                  {/* Price and CTA */}
-                  <div className="flex items-center justify-between mb-3 sm:mb-4">
-                    <div>
-                      <span className="text-xs sm:text-sm text-vyr-gray-500 line-through">{product.priceOld}</span>
-                      <span className="text-xl sm:text-2xl font-bold text-vyr-white ml-2">{product.price}</span>
-                      <span className="text-xs sm:text-sm text-vyr-gray-400 ml-1">/mês</span>
+
+                    <div className="mt-6 flex flex-col gap-3">
+                      <Link to={`/produtos/${product.id}`} className="flex-1">
+                        <Button
+                          variant="outline"
+                          className="w-full justify-center py-4 sm:py-6 text-xs sm:text-base font-semibold rounded-lg sm:rounded-xl border-vyr-gray-600 text-vyr-gray-300 hover:bg-vyr-graphite hover:text-vyr-white hover:border-vyr-accent/50 transition-all duration-300"
+                        >
+                          Saiba Mais
+                        </Button>
+                      </Link>
+                      <Link to="/login?signup=true" className="flex-1">
+                        <Button
+                          className="w-full justify-center py-4 sm:py-6 text-xs sm:text-base font-semibold rounded-lg sm:rounded-xl vyr-btn-accent shadow-lg transition-all duration-300"
+                        >
+                          <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
+                          Comprar
+                        </Button>
+                      </Link>
                     </div>
-                    <span className="px-2 py-0.5 sm:py-1 rounded-md bg-vyr-accent/10 text-vyr-accent text-[10px] sm:text-xs font-semibold">
-                      -25% OFF
-                    </span>
-                  </div>
-                  
-                  <div className="flex gap-2 sm:gap-3">
-                    <Link to={`/produtos/${product.id}`} className="flex-1">
-                      <Button 
-                        variant="outline"
-                        className="w-full py-4 sm:py-6 text-xs sm:text-base font-semibold rounded-lg sm:rounded-xl border-vyr-gray-600 text-vyr-gray-300 hover:bg-vyr-graphite hover:text-vyr-white hover:border-vyr-accent/50 transition-all duration-300"
-                      >
-                        Saiba Mais
-                      </Button>
-                    </Link>
-                    <Link to="/login?signup=true" className="flex-1">
-                      <Button 
-                        className="w-full py-4 sm:py-6 text-xs sm:text-base font-semibold rounded-lg sm:rounded-xl vyr-btn-accent shadow-lg transition-all duration-300"
-                      >
-                        <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
-                        Comprar
-                      </Button>
-                    </Link>
                   </div>
                 </div>
               </div>

@@ -53,9 +53,9 @@ function SupplementBox({
 }: {
   supplement: typeof supplements[0];
 }) {
-  return <div className="relative group">
+  return <div className="relative group h-full">
       {/* Caixa do suplemento */}
-      <div className={`relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px]`}>
+      <div className={`relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px] h-full flex flex-col`}>
         {/* Visual da caixa com mockup do sachê */}
         <div className="relative mb-6 sm:mb-8">
           {/* Caixa simulada com borda do produto */}
@@ -79,25 +79,31 @@ function SupplementBox({
         </div>
         
         {/* Conteúdo */}
-        
-        <p className="text-vyr-gray-300 font-medium text-xs sm:text-sm mb-1.5 sm:mb-2">{supplement.tagline}</p>
-        <p className="text-vyr-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">{supplement.description}</p>
-        
-        {/* Benefícios */}
-        <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
-          {supplement.benefits.map(benefit => <li key={benefit} className="flex items-center gap-2 text-xs sm:text-sm text-vyr-gray-300">
-              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-vyr-accent vyr-icon-glow flex-shrink-0" />
-              {benefit}
-            </li>)}
-        </ul>
 
-        {/* Botão Saiba Mais */}
-        <Link to={supplement.link}>
-          <Button variant="outline" className="w-full py-2.5 text-xs sm:text-sm font-medium rounded-sm transition-all duration-300 bg-transparent hover:bg-vyr-gray-800 text-vyr-gray-300 hover:text-vyr-white border border-vyr-gray-700 hover:border-vyr-gray-500">
-            Saiba Mais
-            <ArrowRight className="w-3.5 h-3.5 ml-2" />
-          </Button>
-        </Link>
+        <div className="flex flex-col h-full">
+          <div className="flex-1">
+            <p className="text-vyr-gray-300 font-medium text-xs sm:text-sm mb-1.5 sm:mb-2">{supplement.tagline}</p>
+            <p className="text-vyr-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">{supplement.description}</p>
+
+            {/* Benefícios */}
+            <ul className="space-y-1.5 sm:space-y-2">
+              {supplement.benefits.map(benefit => <li key={benefit} className="flex items-center gap-2 text-xs sm:text-sm text-vyr-gray-300">
+                  <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-vyr-accent vyr-icon-glow flex-shrink-0" />
+                  {benefit}
+                </li>)}
+            </ul>
+          </div>
+
+          {/* Botão Saiba Mais */}
+          <div className="mt-6">
+            <Link to={supplement.link}>
+              <Button variant="outline" className="w-full justify-center py-2.5 text-xs sm:text-sm font-medium rounded-sm transition-all duration-300 bg-transparent hover:bg-vyr-gray-800 text-vyr-gray-300 hover:text-vyr-white border border-vyr-gray-700 hover:border-vyr-gray-500">
+                Saiba Mais
+                <ArrowRight className="w-3.5 h-3.5 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>;
 }
@@ -173,7 +179,7 @@ export function SupplementsSection() {
         </div>
 
         {/* Grid de suplementos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 sm:mb-16 items-stretch">
           {supplements.map(supplement => <SupplementBox key={supplement.id} supplement={supplement} />)}
         </div>
 

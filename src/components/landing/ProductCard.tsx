@@ -67,9 +67,9 @@ export function ProductCard() {
         </div>
 
         {/* Offers Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16 items-stretch">
           {/* VYR SYSTEM Card */}
-          <div className="relative rounded-sm p-[1px] bg-vyr-gray-700">
+          <div className="relative rounded-sm p-[1px] bg-vyr-gray-700 h-full">
             <div className="relative bg-vyr-gray-900 rounded-sm p-8 h-full flex flex-col">
               {/* Tier Badge */}
               <div className="mb-6">
@@ -78,70 +78,74 @@ export function ProductCard() {
                 </span>
               </div>
 
-              {/* Name & Description */}
-              <h3 className="text-3xl font-medium mb-3 tracking-wider text-vyr-white">
-                {offers[0].name}
-              </h3>
-              <p className="text-vyr-gray-400 text-sm mb-2 leading-relaxed">
-                {offers[0].description}
-              </p>
-              <p className="text-vyr-gray-500 text-xs mb-8 italic">
-                {offers[0].shortText}
-              </p>
+              <div className="flex flex-col h-full">
+                {/* Name & Description */}
+                <h3 className="text-3xl font-medium mb-3 tracking-wider text-vyr-white">
+                  {offers[0].name}
+                </h3>
+                <p className="text-vyr-gray-400 text-sm mb-2 leading-relaxed">
+                  {offers[0].description}
+                </p>
+                <p className="text-vyr-gray-500 text-xs mb-8 italic">
+                  {offers[0].shortText}
+                </p>
 
-              {/* Plans */}
-              <div className="space-y-3 mb-8">
-                {offers[0].plans.map((plan, index) => (
-                  <div 
-                    key={index} 
-                    className={`flex items-center justify-between p-4 rounded-sm border ${
-                      plan.highlight 
-                        ? "border-vyr-gray-500 bg-vyr-gray-800" 
-                        : "border-vyr-gray-700 bg-vyr-gray-800/50"
-                    }`}
-                  >
-                    <div>
-                      <span className="text-vyr-white font-medium">{plan.label}</span>
-                      <span className="text-vyr-gray-500 text-sm ml-2">— {plan.note}</span>
+                {/* Plans */}
+                <div className="space-y-3 mb-8">
+                  {offers[0].plans.map((plan, index) => (
+                    <div
+                      key={index}
+                      className={`flex items-center justify-between p-4 rounded-sm border ${
+                        plan.highlight
+                          ? "border-vyr-gray-500 bg-vyr-gray-800"
+                          : "border-vyr-gray-700 bg-vyr-gray-800/50"
+                      }`}
+                    >
+                      <div>
+                        <span className="text-vyr-white font-medium">{plan.label}</span>
+                        <span className="text-vyr-gray-500 text-sm ml-2">— {plan.note}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {plan.discount && (
+                          <span className="text-xs text-vyr-gray-300 bg-vyr-gray-700 px-2 py-0.5 rounded-sm">
+                            {plan.discount}
+                          </span>
+                        )}
+                        <span className="text-vyr-white font-medium">{plan.price}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      {plan.discount && (
-                        <span className="text-xs text-vyr-gray-300 bg-vyr-gray-700 px-2 py-0.5 rounded-sm">
-                          {plan.discount}
-                        </span>
-                      )}
-                      <span className="text-vyr-white font-medium">{plan.price}</span>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Includes */}
+                <ul className="space-y-3 mb-8 flex-1">
+                  {offers[0].includes.map((item, index) => (
+                    <li key={index} className="flex items-start gap-3 text-sm">
+                      <Check className="w-4 h-4 mt-0.5 text-vyr-gray-400" />
+                      <span className="text-vyr-gray-300">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <div className="mt-6">
+                  <Link to={offers[0].link}>
+                    <Button className="w-full justify-center py-6 text-base font-medium rounded-sm transition-all duration-300 bg-vyr-gray-800 hover:bg-vyr-gray-700 text-vyr-white border border-vyr-gray-700">
+                      {offers[0].cta}
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Microcopy */}
+                <p className="text-xs text-vyr-gray-500 mt-4 text-center italic">
+                  {offers[0].microcopy}
+                </p>
               </div>
-
-              {/* Includes */}
-              <ul className="space-y-3 mb-8 flex-grow">
-                {offers[0].includes.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3 text-sm">
-                    <Check className="w-4 h-4 mt-0.5 text-vyr-gray-400" />
-                    <span className="text-vyr-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <Link to={offers[0].link}>
-                <Button className="w-full py-6 text-base font-medium rounded-sm transition-all duration-300 bg-vyr-gray-800 hover:bg-vyr-gray-700 text-vyr-white border border-vyr-gray-700">
-                  {offers[0].cta}
-                </Button>
-              </Link>
-
-              {/* Microcopy */}
-              <p className="text-xs text-vyr-gray-500 mt-4 text-center italic">
-                {offers[0].microcopy}
-              </p>
             </div>
           </div>
 
           {/* VYR SYSTEM Node Card */}
-          <div className="relative rounded-sm p-[1px] bg-vyr-white">
+          <div className="relative rounded-sm p-[1px] bg-vyr-white h-full">
             <div className="relative bg-vyr-gray-900 rounded-sm p-8 h-full flex flex-col">
               {/* Tier Badge */}
               <div className="mb-6">
@@ -151,64 +155,68 @@ export function ProductCard() {
                 </span>
               </div>
 
-              {/* Name & Description */}
-              <h3 className="text-3xl font-medium mb-3 tracking-wider text-vyr-white">
-                {offers[1].name}
-              </h3>
-              <p className="text-vyr-gray-400 text-sm mb-2 leading-relaxed">
-                {offers[1].description}
-              </p>
-              <p className="text-vyr-gray-500 text-xs mb-4 italic">
-                {offers[1].shortText}
-              </p>
+              <div className="flex flex-col h-full">
+                {/* Name & Description */}
+                <h3 className="text-3xl font-medium mb-3 tracking-wider text-vyr-white">
+                  {offers[1].name}
+                </h3>
+                <p className="text-vyr-gray-400 text-sm mb-2 leading-relaxed">
+                  {offers[1].description}
+                </p>
+                <p className="text-vyr-gray-500 text-xs mb-4 italic">
+                  {offers[1].shortText}
+                </p>
 
-              {/* Plan Note */}
-              <p className="text-xs text-vyr-gray-500 uppercase tracking-wider mb-6">
-                {offers[1].planNote}
-              </p>
+                {/* Plan Note */}
+                <p className="text-xs text-vyr-gray-500 uppercase tracking-wider mb-6">
+                  {offers[1].planNote}
+                </p>
 
-              {/* Pricing */}
-              <div className="mb-8 p-4 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700">
-                <div className="flex items-center gap-3">
-                  <Cpu className="w-6 h-6 text-vyr-white" />
-                  <div>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-medium text-vyr-white">{offers[1].price}</span>
-                      <span className="text-vyr-gray-500 text-sm">{offers[1].priceNote}</span>
+                {/* Pricing */}
+                <div className="mb-8 p-4 rounded-sm bg-vyr-gray-800 border border-vyr-gray-700">
+                  <div className="flex items-center gap-3">
+                    <Cpu className="w-6 h-6 text-vyr-white" />
+                    <div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-medium text-vyr-white">{offers[1].price}</span>
+                        <span className="text-vyr-gray-500 text-sm">{offers[1].priceNote}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Includes */}
+                <ul className="space-y-3 mb-8 flex-1">
+                  {offers[1].includes.map((item, index) => (
+                    <li key={index} className={`flex items-start gap-3 text-sm ${item.startsWith("•") ? "pl-4" : ""}`}>
+                      {!item.startsWith("•") && <Check className="w-4 h-4 mt-0.5 text-vyr-white" />}
+                      <span className={item.startsWith("•") ? "text-vyr-gray-400" : "text-vyr-gray-300"}>
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA */}
+                <div className="mt-6">
+                  <Link to={offers[1].link}>
+                    <Button className="w-full justify-center py-6 text-base font-medium rounded-sm transition-all duration-300 bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black">
+                      {offers[1].cta}
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Microcopy */}
+                <p className="text-xs text-vyr-gray-500 mt-4 text-center italic">
+                  {offers[1].microcopy}
+                </p>
+
+                {/* Security note */}
+                <p className="text-xs text-vyr-gray-500 mt-4 flex items-center justify-center gap-1.5">
+                  <Shield className="w-3.5 h-3.5" />
+                  Compra 100% segura • Garantia de 30 dias
+                </p>
               </div>
-
-              {/* Includes */}
-              <ul className="space-y-3 mb-8 flex-grow">
-                {offers[1].includes.map((item, index) => (
-                  <li key={index} className={`flex items-start gap-3 text-sm ${item.startsWith("•") ? "pl-4" : ""}`}>
-                    {!item.startsWith("•") && <Check className="w-4 h-4 mt-0.5 text-vyr-white" />}
-                    <span className={item.startsWith("•") ? "text-vyr-gray-400" : "text-vyr-gray-300"}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <Link to={offers[1].link}>
-                <Button className="w-full py-6 text-base font-medium rounded-sm transition-all duration-300 bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black">
-                  {offers[1].cta}
-                </Button>
-              </Link>
-
-              {/* Microcopy */}
-              <p className="text-xs text-vyr-gray-500 mt-4 text-center italic">
-                {offers[1].microcopy}
-              </p>
-
-              {/* Security note */}
-              <p className="text-xs text-vyr-gray-500 mt-4 flex items-center justify-center gap-1.5">
-                <Shield className="w-3.5 h-3.5" />
-                Compra 100% segura • Garantia de 30 dias
-              </p>
             </div>
           </div>
         </div>
