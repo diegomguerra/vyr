@@ -71,9 +71,9 @@ const SACHETS = [
 
 function SachetCard({ sachet }: { sachet: typeof SACHETS[0] }) {
   const Icon = sachet.icon;
-  
+
   return (
-    <div className="relative group">
+    <div className="relative group h-full">
       <div className="relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px] h-full flex flex-col">
         {/* Visual da caixa com mockup do sachê */}
         <div className="relative mb-6 sm:mb-8">
@@ -125,7 +125,7 @@ function SachetCard({ sachet }: { sachet: typeof SACHETS[0] }) {
           </div>
 
           {/* Botão Saiba Mais */}
-          <Link to={sachet.link} className="mt-6">
+          <Link to={sachet.link} className="mt-6 block">
             <Button
               variant="outline"
               className="w-full justify-center py-2.5 text-xs sm:text-sm font-medium rounded-sm transition-all duration-300 bg-transparent hover:bg-vyr-gray-800 text-vyr-gray-300 hover:text-vyr-white border border-vyr-gray-700 hover:border-vyr-gray-500"
@@ -187,7 +187,7 @@ export default function VYRNutrition() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-24">
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {SACHETS.map((sachet, index) => (
-              <ScrollReveal key={sachet.id} delay={index * 100}>
+              <ScrollReveal key={sachet.id} delay={index * 100} className="h-full">
                 <SachetCard sachet={sachet} />
               </ScrollReveal>
             ))}
