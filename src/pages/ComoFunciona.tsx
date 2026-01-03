@@ -37,8 +37,8 @@ const sachets = [
     accentColor: "text-vyr-gray-600",
     borderColor: "border-vyr-gray-300",
     periodo: "Manhã",
-    objetivo: "Estado inicial de ativação cognitiva",
-    descricao: "Indução do estado cognitivo inicial do dia, com suporte à atenção, memória operacional e clareza decisória. Atua prioritariamente em circuitos associados ao controle executivo e início da carga cognitiva.",
+    objetivo: "Início com energia limpa.",
+    descricao: "Início com energia limpa. Clareza para começar sem peso mental.",
     areas: [
       { name: "Córtex Pré-Frontal", funcao: "Controle executivo" },
       { name: "Hipocampo", funcao: "Memória de trabalho" },
@@ -67,8 +67,8 @@ const sachets = [
     accentColor: "text-vyr-gray-300",
     borderColor: "border-vyr-gray-500",
     periodo: "Tarde",
-    objetivo: "Manutenção de estado cognitivo sob carga",
-    descricao: "Manutenção do desempenho cognitivo ao longo do dia, com foco na sustentação do estado mental e redução da variabilidade cognitiva sob carga prolongada.",
+    objetivo: "Sustentação sem desgaste.",
+    descricao: "Sustentação sem desgaste. Energia estável para manter foco e decisão.",
     areas: [
       { name: "Córtex Pré-Frontal", funcao: "Sustentação" },
       { name: "Tronco Encefálico", funcao: "Vigília" },
@@ -92,8 +92,8 @@ const sachets = [
     accentColor: "text-vyr-gray-300",
     borderColor: "border-[#1E293B]/50",
     periodo: "Noite",
-    objetivo: "Redução de carga e recuperação neural",
-    descricao: "Redução progressiva da carga cognitiva e suporte a processos associados à recuperação neural, consolidação de memória e arquitetura do sono.",
+    objetivo: "Desaceleração inteligente.",
+    descricao: "Desaceleração inteligente. Menos resíduo mental. Mais leveza no dia seguinte.",
     areas: [
       { name: "Hipotálamo", funcao: "Ritmo circadiano" },
       { name: "Sistema Límbico", funcao: "Regulação emocional" },
@@ -157,18 +157,17 @@ export default function ComoFunciona() {
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="absolute inset-0 vyr-gradient-radial" />
-        
+
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <span className="vyr-badge-accent mb-4 sm:mb-6">
             <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="text-xs sm:text-sm font-mono tracking-wider">COGNITIVE PERFORMANCE SYSTEM</span>
+            <span className="text-xs sm:text-sm font-mono tracking-wider">OPERAÇÃO VYR</span>
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-vyr-white mb-4 sm:mb-6">
-            Como Funciona o{" "}
-            <span className="font-mono tracking-wider text-gradient-accent">VYR SYSTEM</span>
+            Como o VYR remove o esforço invisível do seu dia
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-vyr-gray-400 max-w-3xl mx-auto leading-relaxed px-2">
-            O VYR é um sistema integrado de gestão do estado cognitivo. Ele opera a partir da combinação de modulação neurofuncional, registro consciente de estados e, opcionalmente, mensuração fisiológica contínua.
+            O VYR não força performance. Ele organiza energia, reduz ruído e sustenta constância — aprendendo com você ao longo do tempo.
           </p>
         </div>
       </section>
@@ -181,7 +180,7 @@ export default function ComoFunciona() {
               Arquitetura do Sistema
             </h2>
             <p className="text-lg sm:text-xl text-vyr-gray-300 font-medium">
-              O VYR SYSTEM é estruturado em três camadas independentes e integráveis.
+              O VYR funciona porque organiza o que normalmente está disperso: o que você sente, o que você faz e como seu corpo responde.
             </p>
           </div>
           
@@ -191,26 +190,26 @@ export default function ComoFunciona() {
                 <span className="w-8 h-8 rounded-sm bg-vyr-gray-100/10 flex items-center justify-center text-vyr-gray-100 font-mono font-bold text-sm">1</span>
                 <Zap className="w-5 h-5 text-vyr-gray-100" />
               </div>
-              <h3 className="font-mono text-vyr-white font-medium mb-2">Modulação Cognitiva</h3>
-              <p className="text-sm text-vyr-gray-400">Sachês nootrópicos estruturados por período do dia</p>
+              <h3 className="font-mono text-vyr-white font-medium mb-2">Organização do Estado</h3>
+              <p className="text-sm text-vyr-gray-400">Ajusta o estado certo para o momento certo do dia, sem picos artificiais.</p>
             </div>
-            
+
             <div className="p-6 vyr-card-graphite border-l-2 border-l-vyr-accent">
               <div className="flex items-center gap-3 mb-3">
                 <span className="w-8 h-8 rounded-sm bg-vyr-accent/10 flex items-center justify-center text-vyr-accent font-mono font-bold text-sm">2</span>
                 <Smartphone className="w-5 h-5 text-vyr-accent" />
               </div>
-              <h3 className="font-mono text-vyr-white font-medium mb-2">Registro de Estado</h3>
-              <p className="text-sm text-vyr-gray-400">Plataforma digital para percepção consciente</p>
+              <h3 className="font-mono text-vyr-white font-medium mb-2">Consciência Operacional</h3>
+              <p className="text-sm text-vyr-gray-400">Transforma percepção difusa em clareza acionável.</p>
             </div>
-            
+
             <div className="p-6 vyr-card-graphite border-l-2 border-l-vyr-coldBlue">
               <div className="flex items-center gap-3 mb-3">
                 <span className="w-8 h-8 rounded-sm bg-vyr-coldBlue/10 flex items-center justify-center text-vyr-coldBlue font-mono font-bold text-sm">3</span>
                 <Watch className="w-5 h-5 text-vyr-coldBlue" />
               </div>
-              <h3 className="font-mono text-vyr-white font-medium mb-2">Mensuração Fisiológica</h3>
-              <p className="text-sm text-vyr-gray-400">VYR NODE — opcional</p>
+              <h3 className="font-mono text-vyr-white font-medium mb-2">Validação Fisiológica (opcional)</h3>
+              <p className="text-sm text-vyr-gray-400">Confirma padrões, reduz viés e acelera o aprendizado do sistema.</p>
             </div>
           </div>
           
@@ -260,10 +259,10 @@ export default function ComoFunciona() {
               Modulação <span className="text-gradient-accent">Cognitiva</span>
             </h2>
             <p className="text-vyr-gray-400 max-w-2xl mx-auto mb-4">
-              A primeira camada do VYR atua na modulação direta do estado cognitivo por meio de sachês nootrópicos estruturados por período do dia.
+              O VYR organiza o dia em estados cognitivos naturais. Não estimula. Não força. Não acelera artificialmente.
             </p>
             <p className="text-vyr-gray-300 max-w-2xl mx-auto font-medium">
-              Cada sachê corresponde a um estado operacional específico do ciclo cognitivo. Essa camada é suficiente para operar o sistema.
+              BOOT, HOLD e CLEAR mantêm o fluxo com mais fluidez e menos esforço invisível.
             </p>
           </div>
 
@@ -354,10 +353,10 @@ export default function ComoFunciona() {
               <span className="text-lg sm:text-xl text-vyr-gray-500 font-normal ml-3">(Sem VYR NODE)</span>
             </h2>
             <p className="text-vyr-gray-400 max-w-2xl mx-auto mb-4">
-              Na ausência do VYR NODE, o sistema opera a partir do registro consciente dos estados cognitivos percebidos pelo usuário.
+              Antes de medir com sensores, o VYR aprende com você. Registrar o estado não é controle — é tirar o peso de interpretar tudo sozinho.
             </p>
             <p className="text-vyr-gray-300 max-w-2xl mx-auto font-medium">
-              Esta é a forma mais direta de entrada no sistema e representa o núcleo funcional do VYR.
+              Quanto mais alinhamento, menos esforço invisível.
             </p>
           </div>
 
@@ -375,7 +374,7 @@ export default function ComoFunciona() {
 
           <div className="vyr-card-graphite p-8 border-l-2 border-l-vyr-accent">
             <p className="text-vyr-gray-300 leading-relaxed mb-6">
-              Essa camada permite operar o VYR de forma completa, com análise baseada em percepção consciente e histórico de estados.
+              O sistema ganha precisão ao correlacionar suas percepções ao longo do tempo, sem exigir instrumentação adicional.
             </p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div className="flex items-start gap-3">
@@ -423,10 +422,10 @@ export default function ComoFunciona() {
               <span className="text-lg sm:text-xl text-vyr-gray-500 font-normal ml-3">(VYR NODE)</span>
             </h2>
             <p className="text-vyr-gray-400 max-w-2xl mx-auto mb-4">
-              O VYR NODE é um instrumento técnico de mensuração fisiológica contínua. Não é um acessório. Não substitui o registro consciente.
+              O VYR Node não cria performance. Ele reduz incerteza.
             </p>
             <p className="text-vyr-gray-300 max-w-2xl mx-auto font-medium">
-              Ele complementa e valida os estados registrados com dados fisiológicos objetivos.
+              Ao conectar dados fisiológicos à sua percepção, o sistema aprende mais rápido — e com menos erro.
             </p>
           </div>
 
@@ -452,7 +451,7 @@ export default function ComoFunciona() {
 
           <div className="vyr-card-graphite p-8 border-l-2 border-l-vyr-coldBlue max-w-4xl mx-auto">
             <p className="text-vyr-gray-300 leading-relaxed">
-              Essa camada amplia a precisão do sistema e permite correlação entre estado percebido e resposta fisiológica real.
+              O Node não substitui percepção consciente. Ele confirma, ajusta e refina — ampliando a precisão do sistema com menos viés.
             </p>
           </div>
         </div>
@@ -493,7 +492,7 @@ export default function ComoFunciona() {
               </div>
               
               <p className="text-vyr-gray-400 leading-relaxed">
-                O usuário opera o sistema com base na própria percepção, construindo uma linha de base subjetiva.
+                O sistema aprende no seu ritmo, a partir da sua percepção. Ideal para começar com clareza, sem fricção.
               </p>
             </div>
 
@@ -517,14 +516,14 @@ export default function ComoFunciona() {
               </div>
               
               <p className="text-vyr-gray-400 leading-relaxed">
-                O sistema passa a operar com validação objetiva, reduzindo viés perceptivo e ampliando capacidade analítica.
+                O sistema acelera o aprendizado, reduz viés e aumenta confiança antes de agir.
               </p>
             </div>
           </div>
 
           <div className="text-center">
             <p className="text-vyr-gray-400 text-lg">
-              Nenhum modo invalida o outro. <span className="text-vyr-white font-medium">O NODE expande o sistema. Não o redefine.</span>
+              Nenhum modo invalida o outro. <span className="text-vyr-white font-medium">O Node expande o sistema. Não o redefine.</span>
             </p>
           </div>
         </div>
@@ -604,11 +603,13 @@ export default function ComoFunciona() {
       <section className="py-20 px-4 border-t border-vyr-graphite/50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-medium text-vyr-white mb-6">
-            Pronto para Estruturar sua <span className="text-gradient-accent">Gestão Cognitiva</span>?
+            No VYR, evolução não vem de fazer mais. Vem de remover o que atrapalha.
           </h2>
-          <p className="text-vyr-gray-400 mb-8 max-w-xl mx-auto">
-            O VYR não entrega estados ideais. Ele fornece estrutura, dados e histórico para gestão consciente do estado cognitivo.
-          </p>
+          <div className="text-vyr-gray-300 mb-8 max-w-xl mx-auto space-y-1 text-lg">
+            <p>Mais fluidez.</p>
+            <p>Mais leveza.</p>
+            <p>Menos esforço invisível.</p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/rotina-completa">
               <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono vyr-card-graphite hover:border-vyr-accent/50 text-vyr-white rounded-sm transition-all">
