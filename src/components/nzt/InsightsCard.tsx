@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Lightbulb, TrendingUp, AlertTriangle, Sparkles, RefreshCw } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_URL } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import type { Participante } from "@/lib/types";
@@ -65,31 +65,28 @@ export function InsightsCard({ participante, metrics }: InsightsCardProps) {
         throw new Error("Sessão não encontrada");
       }
 
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-insights`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${session.session.access_token}`,
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/generate-insights`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.session.access_token}`,
+        },
+        body: JSON.stringify({
+          participante: {
+            objetivo_principal: participante.objetivo_principal,
+            perfil_atividade: participante.perfil_atividade,
+            rotina_trabalho: participante.rotina_trabalho,
+            qualidade_sono_geral: participante.qualidade_sono_geral,
+            nivel_estresse_geral: participante.nivel_estresse_geral,
+            horas_sono_media: participante.horas_sono_media,
+            consumo_cafeina: participante.consumo_cafeina,
+            consumo_alcool: participante.consumo_alcool,
+            frequencia_exercicio: participante.frequencia_exercicio,
+            condicoes_saude: participante.condicoes_saude,
           },
-          body: JSON.stringify({
-            participante: {
-              objetivo_principal: participante.objetivo_principal,
-              perfil_atividade: participante.perfil_atividade,
-              rotina_trabalho: participante.rotina_trabalho,
-              qualidade_sono_geral: participante.qualidade_sono_geral,
-              nivel_estresse_geral: participante.nivel_estresse_geral,
-              horas_sono_media: participante.horas_sono_media,
-              consumo_cafeina: participante.consumo_cafeina,
-              consumo_alcool: participante.consumo_alcool,
-              frequencia_exercicio: participante.frequencia_exercicio,
-              condicoes_saude: participante.condicoes_saude,
-            },
-            metrics,
-          }),
-        }
-      );
+          metrics,
+        }),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
