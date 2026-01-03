@@ -9,7 +9,6 @@ import { LandingNav } from "@/components/landing/LandingNav";
 import { Footer } from "@/components/landing/Footer";
 import { InfoBlock, StatusCard, ScrollReveal } from "@/components/labs";
 import { ArrowRight, FlaskConical } from "lucide-react";
-
 export default function VYRLabs() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +16,9 @@ export default function VYRLabs() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   useEffect(() => {
     if (searchParams.get("signup") === "true") {
       setIsSignUp(true);
@@ -28,52 +28,55 @@ export default function VYRLabs() {
   // Check if already authenticated
   useEffect(() => {
     const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: {
+          session
+        }
+      } = await supabase.auth.getSession();
       if (session) {
-        navigate("/app", { replace: true });
+        navigate("/app", {
+          replace: true
+        });
       }
     };
     checkAuth();
   }, [navigate]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!email || !password) {
       toast({
         title: "Campos obrigatórios",
         description: "Por favor, preencha email e senha.",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
-
     if (password.length < 6) {
       toast({
         title: "Senha muito curta",
         description: "A senha deve ter pelo menos 6 caracteres.",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
-
     setIsLoading(true);
-
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
+        const {
+          error
+        } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/app`,
-          },
+            emailRedirectTo: `${window.location.origin}/app`
+          }
         });
         if (error) {
           if (error.message.includes("already registered")) {
             toast({
               title: "Email já cadastrado",
               description: "Este email já está em uso. Tente fazer login.",
-              variant: "destructive",
+              variant: "destructive"
             });
           } else {
             throw error;
@@ -81,38 +84,43 @@ export default function VYRLabs() {
         } else {
           toast({
             title: "Conta criada",
-            description: "Verifique seu email para confirmar o cadastro.",
+            description: "Verifique seu email para confirmar o cadastro."
           });
         }
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const {
+          error
+        } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
         if (error) {
           if (error.message.includes("Invalid login credentials")) {
             toast({
               title: "Credenciais inválidas",
               description: "Email ou senha incorretos.",
-              variant: "destructive",
+              variant: "destructive"
             });
           } else {
             throw error;
           }
         } else {
-          navigate("/app", { replace: true });
+          navigate("/app", {
+            replace: true
+          });
         }
       }
     } catch (error: any) {
       toast({
         title: "Erro",
         description: error.message || "Ocorreu um erro. Tente novamente.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsLoading(false);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-vyr-gray-900">
+  return <div className="min-h-screen bg-vyr-gray-900">
       <LandingNav />
       
       {/* Subtle radial glow */}
@@ -168,48 +176,24 @@ export default function VYRLabs() {
                         <Label htmlFor="email" className="text-xs text-vyr-gray-400">
                           Email
                         </Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="seu@email.com"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="bg-vyr-graphite-dark border-vyr-graphite text-vyr-white text-sm placeholder:text-vyr-gray-600"
-                        />
+                        <Input id="email" type="email" placeholder="seu@email.com" value={email} onChange={e => setEmail(e.target.value)} className="bg-vyr-graphite-dark border-vyr-graphite text-vyr-white text-sm placeholder:text-vyr-gray-600" />
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="password" className="text-xs text-vyr-gray-400">
                           Senha
                         </Label>
-                        <Input
-                          id="password"
-                          type="password"
-                          placeholder="••••••••"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          className="bg-vyr-graphite-dark border-vyr-graphite text-vyr-white text-sm placeholder:text-vyr-gray-600"
-                        />
+                        <Input id="password" type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} className="bg-vyr-graphite-dark border-vyr-graphite text-vyr-white text-sm placeholder:text-vyr-gray-600" />
                       </div>
 
-                      <Button
-                        type="submit"
-                        disabled={isLoading}
-                        className="w-full bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black text-sm font-medium"
-                      >
+                      <Button type="submit" disabled={isLoading} className="w-full bg-vyr-white hover:bg-vyr-gray-100 text-vyr-black text-sm font-medium">
                         {isLoading ? "Processando..." : isSignUp ? "Criar conta" : "Entrar"}
                       </Button>
                     </form>
 
                     <div className="pt-2 text-center">
-                      <button
-                        type="button"
-                        onClick={() => setIsSignUp(!isSignUp)}
-                        className="text-xs text-vyr-gray-500 hover:text-vyr-white transition-colors"
-                      >
-                        {isSignUp
-                          ? "Já tem conta? Entrar"
-                          : "Não tem conta? Criar"}
+                      <button type="button" onClick={() => setIsSignUp(!isSignUp)} className="text-xs text-vyr-gray-500 hover:text-vyr-white transition-colors">
+                        {isSignUp ? "Já tem conta? Entrar" : "Não tem conta? Criar"}
                       </button>
                     </div>
                   </div>
@@ -223,64 +207,27 @@ export default function VYRLabs() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 sm:mt-32 space-y-20 sm:space-y-28">
           {/* Block 1 */}
           <ScrollReveal>
-            <InfoBlock
-              title="Sistemas confiáveis não nascem prontos."
-              text="Antes de um protocolo ser entregue como sistema, ele passa por ciclos de observação, registro e correlação. A VYR Labs existe para testar hipóteses sobre estados cognitivos reais, em contextos reais, com usuários reais — sem simplificações artificiais."
-            />
+            <InfoBlock title="Sistemas confiáveis não nascem prontos." text="Antes de um protocolo ser entregue como sistema, ele passa por ciclos de observação, registro e correlação. A VYR Labs existe para testar hipóteses sobre estados cognitivos reais, em contextos reais, com usuários reais — sem simplificações artificiais." />
           </ScrollReveal>
 
           {/* Block 2 */}
           <ScrollReveal delay={100}>
-            <InfoBlock
-              title="O que observamos"
-              list={[
-                "Modulação de estados cognitivos ao longo do dia",
-                "Relação entre percepção subjetiva e sinais fisiológicos",
-                "Variabilidade individual de resposta",
-                "Estabilidade vs flutuação cognitiva sob carga",
-                "Efeitos acumulativos de ciclos prolongados",
-              ]}
-            />
+            <InfoBlock title="O que observamos" list={["Modulação de estados cognitivos ao longo do dia", "Relação entre percepção subjetiva e sinais fisiológicos", "Variabilidade individual de resposta", "Estabilidade vs flutuação cognitiva sob carga", "Efeitos acumulativos de ciclos prolongados"]} />
           </ScrollReveal>
 
           {/* Block 3 */}
           <ScrollReveal delay={100}>
-            <InfoBlock
-              title="Da observação ao sistema"
-              text="Os achados da VYR Labs não são publicados como promessas. Eles são incorporados ao VYR SYSTEM apenas quando atingem consistência suficiente para operação contínua. Tudo o que o VYR SYSTEM entrega hoje passou antes por este ambiente."
-            />
+            <InfoBlock title="Da observação ao sistema" text="Os achados da VYR Labs não são publicados como promessas. Eles são incorporados ao VYR SYSTEM apenas quando atingem consistência suficiente para operação contínua. Tudo o que o VYR SYSTEM entrega hoje passou antes por este ambiente." />
           </ScrollReveal>
 
           {/* Block 4 */}
           <ScrollReveal delay={100}>
-            <InfoBlock
-              title="O que a VYR Labs não é"
-              list={[
-                "Não é um produto comercial",
-                "Não é um blog de conteúdo",
-                "Não é um espaço de marketing",
-                "Não é um manifesto",
-              ]}
-              note="É um ambiente técnico de validação contínua."
-            />
+            <InfoBlock title="O que a VYR Labs não é" list={["Não é um produto comercial", "Não é um blog de conteúdo", "Não é um espaço de marketing", "Não é um manifesto"]} note="É um ambiente técnico de validação contínua." />
           </ScrollReveal>
 
           {/* Block 5 - Status */}
           <ScrollReveal delay={100}>
-            <div className="space-y-6">
-              <h3 className="text-lg sm:text-xl font-medium text-vyr-white tracking-wide">
-                Estado atual
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                <StatusCard label="Protocolos em teste" status="active" />
-                <StatusCard label="Instrumentação ativa" status="active" />
-                <StatusCard label="Ciclos em observação" status="active" />
-                <StatusCard label="Integração progressiva" status="pending" />
-              </div>
-              <p className="text-vyr-gray-500 text-xs font-mono">
-                Alguns dados ainda não são públicos.
-              </p>
-            </div>
+            
           </ScrollReveal>
         </section>
 
@@ -293,16 +240,13 @@ export default function VYRLabs() {
               </p>
               
               <Link to="/">
-                <Button 
-                  variant="outline" 
-                  className="border-vyr-gray-600 text-vyr-gray-300 hover:text-vyr-white hover:border-vyr-gray-500 text-sm"
-                >
+                <Button variant="outline" className="border-vyr-gray-600 text-vyr-gray-300 hover:text-vyr-white hover:border-vyr-gray-500 text-sm">
                   Conhecer o sistema
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
 
-              <p className="text-vyr-gray-600 text-xs font-mono italic max-w-md">
+              <p className="text-xs font-mono italic max-w-md text-primary-foreground">
                 Clareza mental é construída com consistência, recuperação e exigência cognitiva.
               </p>
             </div>
@@ -311,6 +255,5 @@ export default function VYRLabs() {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 }
