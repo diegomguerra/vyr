@@ -250,6 +250,159 @@ export type Database = {
           },
         ]
       }
+      ring_daily_data: {
+        Row: {
+          created_at: string
+          day: string
+          id: string
+          metrics: Json
+          source_provider: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          day: string
+          id?: string
+          metrics?: Json
+          source_provider?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          day?: string
+          id?: string
+          metrics?: Json
+          source_provider?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_consents: {
+        Row: {
+          accepted_privacy: boolean
+          accepted_terms: boolean
+          consent_version: string
+          created_at: string
+          id: string
+          legal_basis: string
+          scope: Json
+          user_id: string
+        }
+        Insert: {
+          accepted_privacy?: boolean
+          accepted_terms?: boolean
+          consent_version: string
+          created_at?: string
+          id?: string
+          legal_basis?: string
+          scope?: Json
+          user_id: string
+        }
+        Update: {
+          accepted_privacy?: boolean
+          accepted_terms?: boolean
+          consent_version?: string
+          created_at?: string
+          id?: string
+          legal_basis?: string
+          scope?: Json
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_integrations: {
+        Row: {
+          access_token: string | null
+          created_at: string
+          external_user_id: string | null
+          id: string
+          last_error: string | null
+          last_sync_at: string | null
+          meta: Json
+          provider: string
+          refresh_token: string | null
+          scopes: string[]
+          status: string
+          token_expires_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          access_token?: string | null
+          created_at?: string
+          external_user_id?: string | null
+          id?: string
+          last_error?: string | null
+          last_sync_at?: string | null
+          meta?: Json
+          provider: string
+          refresh_token?: string | null
+          scopes?: string[]
+          status?: string
+          token_expires_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          access_token?: string | null
+          created_at?: string
+          external_user_id?: string | null
+          id?: string
+          last_error?: string | null
+          last_sync_at?: string | null
+          meta?: Json
+          provider?: string
+          refresh_token?: string | null
+          scopes?: string[]
+          status?: string
+          token_expires_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      webhook_logs: {
+        Row: {
+          created_at: string
+          error: string | null
+          event_type: string | null
+          id: string
+          idempotency_key: string | null
+          payload_hash: string | null
+          provider: string
+          signature_valid: boolean
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          error?: string | null
+          event_type?: string | null
+          id?: string
+          idempotency_key?: string | null
+          payload_hash?: string | null
+          provider: string
+          signature_valid?: boolean
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          error?: string | null
+          event_type?: string | null
+          id?: string
+          idempotency_key?: string | null
+          payload_hash?: string | null
+          provider?: string
+          signature_valid?: boolean
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
