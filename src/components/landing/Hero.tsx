@@ -32,7 +32,7 @@ export function Hero() {
           {/* Badge */}
           <div className="inline-flex vyr-badge-accent mb-8">
             <div className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-            <span className="uppercase text-sky-600">Performance Cognitiva Guiada</span>
+            <span className="uppercase text-cyan-700">Performance Cognitiva Guiada</span>
           </div>
 
           {/* Main Title */}
@@ -66,7 +66,7 @@ export function Hero() {
           {/* Anchor phrase */}
           <p className="text-sm text-muted-foreground/80 tracking-wide">
             Você não força performance.{" "}
-            <span className="text-sky-600">Você remove o que atrapalha.</span>
+            <span className="text-cyan-700">Você remove o que atrapalha.</span>
           </p>
         </div>
 
