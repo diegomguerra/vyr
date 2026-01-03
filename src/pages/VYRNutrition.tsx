@@ -1,25 +1,23 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Sun, Sunset, Moon, Package } from "lucide-react";
+import { ArrowLeft, Sun, Sunset, Moon, Package, Beaker, Zap, Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { LandingNav } from "@/components/landing/LandingNav";
+import { Footer } from "@/components/landing/Footer";
 import { ScrollReveal } from "@/components/labs";
-
-import sachetDia from "@/assets/sachet-dia-vertical.png";
-import sachetTarde from "@/assets/sachet-tarde-vertical.png";
-import sachetNoite from "@/assets/sachet-noite-vertical.png";
+import { Label as VYRLabel, SachetMockup } from "@/brand";
 
 const SACHETS = [
   {
     id: "boot",
     name: "VYR BOOT",
+    variant: "BOOT" as const,
     period: "Manhã",
     icon: Sun,
-    image: sachetDia,
-    color: "bg-vyr-gray-100",
-    textColor: "text-vyr-graphite-dark",
-    benefit: "Ativação cognitiva para início do ciclo diário",
+    tagline: "Ativação com leveza",
+    benefit: "Ajuda a iniciar o dia com clareza, sem aceleração excessiva. Menos inércia mental. Mais prontidão limpa.",
     usage: "Tomar ao acordar, em jejum ou com café",
+    bgColor: "bg-vyr-gray-100",
+    textColor: "text-vyr-black",
     composition: [
       "Citicolina 250mg",
       "Fosfatidilserina 100mg",
@@ -27,17 +25,19 @@ const SACHETS = [
       "Rhodiola rosea 200mg",
       "Vitaminas do complexo B",
     ],
+    link: "/produtos/dia",
   },
   {
     id: "hold",
     name: "VYR HOLD",
+    variant: "HOLD" as const,
     period: "Tarde",
     icon: Sunset,
-    image: sachetTarde,
-    color: "bg-vyr-graphite",
-    textColor: "text-vyr-white",
-    benefit: "Manutenção de foco sob carga cognitiva prolongada",
+    tagline: "Constância sob carga",
+    benefit: "Mantém o ritmo cognitivo quando o dia exige mais. Menos oscilação. Mais continuidade.",
     usage: "Tomar após o almoço, antes do período de maior demanda",
+    bgColor: "bg-vyr-gray-600",
+    textColor: "text-vyr-white",
     composition: [
       "Teacrina 100mg",
       "L-Teanina 200mg",
@@ -45,17 +45,19 @@ const SACHETS = [
       "Tirosina 500mg",
       "Vitamina B6",
     ],
+    link: "/produtos/tarde",
   },
   {
     id: "clear",
     name: "VYR CLEAR",
+    variant: "CLEAR" as const,
     period: "Noite",
     icon: Moon,
-    image: sachetNoite,
-    color: "bg-vyr-cold-blue",
-    textColor: "text-vyr-white",
-    benefit: "Preparação para recuperação noturna e consolidação",
+    tagline: "Descompressão cognitiva",
+    benefit: "Ajuda o sistema a desacelerar para recuperar melhor. Menos resíduo mental. Mais leveza no dia seguinte.",
     usage: "Tomar 1-2 horas antes de dormir",
+    bgColor: "bg-vyr-coldBlue",
+    textColor: "text-vyr-white",
     composition: [
       "NAC 600mg",
       "Ashwagandha 300mg",
@@ -63,25 +65,84 @@ const SACHETS = [
       "Glicina 3g",
       "L-Triptofano 250mg",
     ],
+    link: "/produtos/noite",
   },
 ];
 
+function SachetCard({ sachet }: { sachet: typeof SACHETS[0] }) {
+  const Icon = sachet.icon;
+  
+  return (
+    <div className="relative group">
+      <div className="relative p-4 sm:p-6 rounded-sm vyr-card-graphite transition-all duration-300 group-hover:translate-y-[-4px] h-full flex flex-col">
+        {/* Visual da caixa com mockup do sachê */}
+        <div className="relative mb-6 sm:mb-8">
+          <div className={`relative w-full aspect-[4/3] rounded-sm ${sachet.bgColor} p-[2px]`}>
+            <div className="w-full h-full rounded-sm bg-vyr-graphite-dark flex flex-col items-center justify-center p-3 sm:p-4">
+              <VYRLabel variant={sachet.variant} />
+              <span className="text-[10px] sm:text-xs text-vyr-gray-500 mt-2">30 sachês</span>
+              <div className="mt-3 sm:mt-4 scale-90 sm:scale-100">
+                <SachetMockup variant={sachet.variant} />
+              </div>
+            </div>
+          </div>
+          
+          {/* Período badge */}
+          <div className={`absolute -top-2 sm:-top-3 -right-2 sm:-right-3 px-2 sm:px-3 py-0.5 sm:py-1 rounded-sm ${sachet.bgColor} ${sachet.textColor} text-[10px] sm:text-xs tracking-wider flex items-center gap-1`}>
+            <Icon className="w-3 h-3" />
+            {sachet.period}
+          </div>
+        </div>
+        
+        {/* Conteúdo */}
+        <p className="text-vyr-gray-300 font-medium text-xs sm:text-sm mb-1.5 sm:mb-2">{sachet.tagline}</p>
+        <p className="text-vyr-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">{sachet.benefit}</p>
+        
+        {/* Como usar */}
+        <div className="pt-3 border-t border-vyr-graphite/50 mb-4">
+          <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
+            Como usar
+          </span>
+          <p className="text-xs text-vyr-gray-400 mt-1">{sachet.usage}</p>
+        </div>
+        
+        {/* Composição */}
+        <div className="pt-3 border-t border-vyr-graphite/50 mb-6 flex-1">
+          <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
+            Composição
+          </span>
+          <ul className="mt-2 space-y-1">
+            {sachet.composition.map((item, i) => (
+              <li key={i} className="flex items-center gap-2 text-xs text-vyr-gray-400">
+                <Zap className="w-2.5 h-2.5 text-vyr-accent vyr-icon-glow flex-shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Botão Saiba Mais */}
+        <Link to={sachet.link} className="mt-auto">
+          <Button 
+            variant="outline" 
+            className="w-full py-2.5 text-xs sm:text-sm font-medium rounded-sm transition-all duration-300 bg-transparent hover:bg-vyr-gray-800 text-vyr-gray-300 hover:text-vyr-white border border-vyr-gray-700 hover:border-vyr-gray-500"
+          >
+            Saiba Mais
+            <ArrowRight className="w-3.5 h-3.5 ml-2" />
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 export default function VYRNutrition() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-vyr-gray-900">
       <LandingNav />
       
-      {/* Grid pattern background */}
-      <div 
-        className="fixed inset-0 opacity-[0.02] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      {/* Subtle radial glow */}
+      <div className="fixed inset-0 vyr-gradient-radial opacity-50 pointer-events-none" />
 
       <main className="relative pt-24 pb-20">
         {/* Hero Section */}
@@ -91,24 +152,26 @@ export default function VYRNutrition() {
               {/* Back link */}
               <Link 
                 to="/" 
-                className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors font-mono"
+                className="inline-flex items-center gap-2 text-xs text-vyr-gray-400 hover:text-vyr-white transition-colors font-mono"
               >
                 <ArrowLeft className="w-3 h-3" />
                 VYR System
               </Link>
               
               {/* Label */}
-              <span className="block font-mono text-[10px] sm:text-xs tracking-[0.3em] text-muted-foreground/70 uppercase">
-                Modulação Nutricional
-              </span>
+              <div className="vyr-badge-accent">
+                <Beaker className="w-3.5 h-3.5" />
+                <span className="text-xs tracking-wider">MODULAÇÃO NUTRICIONAL</span>
+              </div>
               
               {/* Headline */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground leading-tight tracking-tight max-w-2xl">
-                Três momentos do dia. Três formulações específicas.
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium text-vyr-white leading-tight tracking-tight max-w-2xl">
+                Três momentos do dia.{" "}
+                <span className="text-gradient-accent">Três formulações específicas.</span>
               </h1>
               
               {/* Subheadline */}
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-xl">
+              <p className="text-vyr-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
                 A VYR Nutrition estrutura a modulação nutricional por períodos do ciclo circadiano, 
                 respeitando as demandas fisiológicas de cada momento.
               </p>
@@ -121,97 +184,75 @@ export default function VYRNutrition() {
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {SACHETS.map((sachet, index) => (
               <ScrollReveal key={sachet.id} delay={index * 100}>
-                <Card className="border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden h-full">
-                  <CardContent className="p-0">
-                    {/* Sachet Image */}
-                    <div className={`${sachet.color} p-6 flex items-center justify-center`}>
-                      <img 
-                        src={sachet.image} 
-                        alt={sachet.name}
-                        className="h-48 object-contain"
-                      />
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="p-5 space-y-4">
-                      {/* Header */}
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="font-mono text-sm tracking-wider text-foreground">
-                            {sachet.name}
-                          </h3>
-                          <span className="text-xs text-muted-foreground">
-                            {sachet.period}
-                          </span>
-                        </div>
-                        <sachet.icon className="w-5 h-5 text-muted-foreground" />
-                      </div>
-                      
-                      {/* Benefit */}
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {sachet.benefit}
-                      </p>
-                      
-                      {/* Usage */}
-                      <div className="pt-3 border-t border-border/30">
-                        <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                          Como usar
-                        </span>
-                        <p className="text-xs text-muted-foreground mt-1">
-                          {sachet.usage}
-                        </p>
-                      </div>
-                      
-                      {/* Composition */}
-                      <div className="pt-3 border-t border-border/30">
-                        <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                          Composição
-                        </span>
-                        <ul className="mt-2 space-y-1">
-                          {sachet.composition.map((item, i) => (
-                            <li key={i} className="text-xs text-muted-foreground/80">
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <SachetCard sachet={sachet} />
               </ScrollReveal>
             ))}
           </div>
         </section>
 
-        {/* Complete Routine */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
+        {/* Info bar */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
           <ScrollReveal>
-            <Card className="border-border/50 bg-card/30 backdrop-blur-sm">
-              <CardContent className="p-6 sm:p-8">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <Package className="w-5 h-5 text-muted-foreground" />
-                      <h3 className="font-mono text-sm tracking-wider text-foreground">
-                        VYR SYSTEM — Rotina Completa
-                      </h3>
-                    </div>
-                    <p className="text-sm text-muted-foreground max-w-lg">
-                      Os três sachês funcionam como sistema integrado. 
-                      O ciclo completo oferece cobertura das principais janelas cognitivas do dia.
-                    </p>
-                  </div>
-                  <Link to="/rotina-completa">
-                    <Button 
-                      variant="outline" 
-                      className="border-border/50 text-muted-foreground hover:text-foreground text-sm whitespace-nowrap"
-                    >
-                      Ver rotina completa
-                    </Button>
-                  </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="flex items-center gap-3 p-3 sm:p-4 vyr-card-graphite">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-sm bg-vyr-graphite flex items-center justify-center flex-shrink-0">
+                  <Beaker className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-gray-300" />
                 </div>
-              </CardContent>
-            </Card>
+                <div className="min-w-0">
+                  <p className="text-vyr-white font-medium text-xs sm:text-sm">Composição Funcional</p>
+                  <p className="text-vyr-gray-500 text-[10px] sm:text-xs">Ingredientes de alta pureza</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 sm:p-4 vyr-card-graphite">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-sm bg-vyr-graphite flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-gray-300" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-vyr-white font-medium text-xs sm:text-sm">Dosagem Calibrada</p>
+                  <p className="text-vyr-gray-500 text-[10px] sm:text-xs">Para uso diário consistente</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 sm:p-4 vyr-card-graphite">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-sm bg-vyr-graphite flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-vyr-gray-300" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-vyr-white font-medium text-xs sm:text-sm">Sachês Individuais</p>
+                  <p className="text-vyr-gray-500 text-[10px] sm:text-xs">30 doses por caixa</p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </section>
+
+        {/* Complete Routine */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
+          <ScrollReveal>
+            <div className="vyr-card-graphite p-6 sm:p-8">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <Package className="w-5 h-5 text-vyr-gray-400" />
+                    <h3 className="font-mono text-sm tracking-wider text-vyr-white">
+                      VYR SYSTEM — Rotina Completa
+                    </h3>
+                  </div>
+                  <p className="text-sm text-vyr-gray-400 max-w-lg">
+                    Os três sachês funcionam como sistema integrado. 
+                    O ciclo completo oferece cobertura das principais janelas cognitivas do dia.
+                  </p>
+                </div>
+                <Link to="/rotina-completa">
+                  <Button 
+                    variant="outline" 
+                    className="border-vyr-gray-600 text-vyr-gray-300 hover:text-vyr-white hover:border-vyr-gray-500 text-sm whitespace-nowrap"
+                  >
+                    Ver rotina completa
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </ScrollReveal>
         </section>
 
@@ -219,36 +260,36 @@ export default function VYRNutrition() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
           <ScrollReveal>
             <div className="space-y-8">
-              <h2 className="text-lg font-medium text-foreground">
+              <h2 className="text-lg font-medium text-vyr-white">
                 Informações práticas
               </h2>
               
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
                     Conservação
                   </span>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-vyr-gray-400">
                     Manter em local fresco e seco. Não refrigerar. 
                     Evitar exposição direta ao sol.
                   </p>
                 </div>
                 
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
                     Validade
                   </span>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-vyr-gray-400">
                     24 meses a partir da data de fabricação. 
                     Verificar na embalagem.
                   </p>
                 </div>
                 
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-vyr-gray-500 uppercase tracking-wider">
                     Preparo
                   </span>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-vyr-gray-400">
                     Dissolver o conteúdo em 200ml de água. 
                     Pode ser misturado com café ou chá.
                   </p>
@@ -261,14 +302,15 @@ export default function VYRNutrition() {
         {/* Footer CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 sm:mt-32">
           <ScrollReveal>
-            <div className="border-t border-border/30 pt-12">
-              <p className="text-muted-foreground text-sm">
+            <div className="vyr-accent-line mb-12" />
+            <div className="text-center">
+              <p className="text-vyr-gray-400 text-sm mb-4">
                 Quer entender a base científica por trás de cada formulação?
               </p>
-              <Link to="/science" className="inline-block mt-4">
+              <Link to="/science">
                 <Button 
                   variant="ghost" 
-                  className="text-muted-foreground hover:text-foreground text-sm px-0"
+                  className="text-vyr-gray-300 hover:text-vyr-white text-sm"
                 >
                   Acessar VYR Science →
                 </Button>
@@ -277,6 +319,8 @@ export default function VYRNutrition() {
           </ScrollReveal>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
