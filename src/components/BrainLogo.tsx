@@ -77,13 +77,18 @@ export function BrainLogo({
   }, [src, cutoff, softness]);
 
   return (
-    <img
-      src={dataUrl ?? src}
-      alt={alt}
-      className={cn("select-none", className)}
-      loading="eager"
-      decoding="async"
-      draggable={false}
-    />
+    <div className="[perspective:1000px]">
+      <img
+        src={dataUrl ?? src}
+        alt={alt}
+        className={cn("select-none animate-spin3d", className)}
+        style={{
+          transformStyle: "preserve-3d",
+        }}
+        loading="eager"
+        decoding="async"
+        draggable={false}
+      />
+    </div>
   );
 }
