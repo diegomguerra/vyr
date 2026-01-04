@@ -326,7 +326,10 @@ export default function RotinaCompleta() {
             O VYR SYSTEM inclui VYR NODE para monitoramento biométrico contínuo, correlações inteligentes entre suas métricas e insights personalizados por AI.
           </p>
           <Link to="/sistema-completo">
-            <Button variant="outline" className="w-full sm:w-auto border-vyr-gray-600 text-vyr-white hover:bg-vyr-gray-800 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-mono rounded-sm">
+            <Button
+              variant="outline"
+              className="w-full sm:w-auto border-vyr-gray-600 bg-vyr-black text-vyr-white hover:bg-vyr-gray-800 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-mono rounded-sm"
+            >
               Conhecer VYR SYSTEM
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
