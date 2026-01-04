@@ -38,7 +38,7 @@ const supplements = [{
   icon: Moon,
   period: "Noite",
   tagline: "Descompressão cognitiva",
-  description: "Ajuda o sistema a desacelerar para recuperar melhor. Menos resíduo mental. Mais leveza no dia seguinte.",
+  description: "Ajuda o sistema a desacelerar para recuperar melhor. Mais leveza no dia seguinte.",
   benefits: ["Redução de carga acumulada", "Recuperação mais consistente", "Transição mais suave para o descanso"],
   bgColor: "bg-[#1E293B]",
   borderColor: "border-vyr-gray-600",
