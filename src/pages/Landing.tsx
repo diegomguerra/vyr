@@ -5,7 +5,6 @@ import {
   PlatformSection,
   SmartRingSection,
   ProductCard,
-  HowItWorks,
   FAQ,
   Footer,
   GradientBanner,
@@ -28,10 +27,9 @@ export default function Landing() {
       <AppShowcase />
       {/* 5. Pacotes/Ofertas */}
       <ProductCard />
-      <GradientBanner variant="newsletter" />
-      <HowItWorks />
       <Testimonials />
       <GradientBanner variant="info" />
+      <GradientBanner variant="newsletter" />
       <GradientBanner variant="cta" />
       <FAQ />
       <Footer />
