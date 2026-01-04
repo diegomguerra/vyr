@@ -18,6 +18,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import RotinaCompleta from "./pages/RotinaCompleta";
 import SistemaCompleto from "./pages/SistemaCompleto";
+import VYRSystem from "./pages/VYRSystem";
 import ComoFunciona from "./pages/ComoFunciona";
 import Dashboard from "./pages/Dashboard";
 import Onboarding from "./pages/Onboarding";
@@ -226,6 +227,7 @@ const App = () => {
               <Route path="/produtos/:id" element={<ProductDetail />} />
               <Route path="/rotina-completa" element={<RotinaCompleta />} />
               <Route path="/sistema-completo" element={<SistemaCompleto />} />
+              <Route path="/sistema" element={<VYRSystem />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/labs" element={user ? <Navigate to="/app" replace /> : <VYRLabs />} />
               <Route path="/login" element={<Navigate to="/labs" replace />} />

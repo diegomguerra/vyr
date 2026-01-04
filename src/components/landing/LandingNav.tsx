@@ -6,7 +6,8 @@ import { VYRLogo } from "@/brand";
 import { NavDropdown, MobileNavDropdown } from "./NavDropdown";
 
 const VYR_SUBMENU_ITEMS = [
-  { label: "VYR SYSTEM", href: "/sistema-completo", description: "Conceito integrador" },
+  { label: "VYR SYSTEM", href: "/sistema", description: "Sachês + Plataforma" },
+  { label: "VYR SYSTEM NODE", href: "/sistema-completo", description: "Sistema com biometria" },
   { label: "VYR NUTRITION", href: "/nutrition", description: "Modulação nutricional" },
   { label: "VYR LABS", href: "/labs", description: "Plataforma experimental" },
   { label: "VYR NODE", href: "/node", description: "Hardware layer" },
