@@ -49,15 +49,15 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className="flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span>{trigger}</span>
+        <span className="leading-none">{trigger}</span>
         <ChevronDown
           className={cn(
-            "w-3.5 h-3.5 transition-transform duration-200",
+            "w-4 h-4 transition-transform duration-200",
             isOpen && "rotate-180"
           )}
         />
@@ -79,10 +79,10 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
               <Link
                 key={item.href}
                 to={item.href}
-                className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+                className="block px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                <span className="text-sm">{item.label}</span>
+                <span className="text-base font-medium">{item.label}</span>
                 {item.description && (
                   <span className="block text-[10px] text-muted-foreground/60 mt-0.5">
                     {item.description}
@@ -114,10 +114,10 @@ export function MobileNavDropdown({ trigger, items, onItemClick }: MobileNavDrop
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <span className="text-sm">{trigger}</span>
+        <span className="text-lg font-mono tracking-wide leading-none">{trigger}</span>
         <ChevronDown
           className={cn(
-            "w-4 h-4 transition-transform duration-200",
+            "w-5 h-5 transition-transform duration-200",
             isOpen && "rotate-180"
           )}
         />
@@ -134,13 +134,13 @@ export function MobileNavDropdown({ trigger, items, onItemClick }: MobileNavDrop
             <Link
               key={item.href}
               to={item.href}
-              className="block py-2 text-sm text-muted-foreground/80 hover:text-foreground transition-colors"
+              className="block py-2 text-base text-muted-foreground/80 hover:text-foreground transition-colors"
               onClick={() => {
                 setIsOpen(false);
                 onItemClick?.();
               }}
             >
-              <span className="text-sm">{item.label}</span>
+              <span className="text-base font-medium">{item.label}</span>
             </Link>
           ))}
         </div>
