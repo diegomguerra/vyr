@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowLeft, Check, X, ShoppingCart, Sun, Zap, Moon, Clock, Shield, Sparkles, Brain } from "lucide-react";
+import { ArrowLeft, Check, X, Sun, Zap, Moon, Clock, Shield, Sparkles, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LandingNav } from "@/components/landing";
 import { SachetMockup } from "@/brand/ProductMockups";
@@ -42,8 +42,6 @@ const products = {
       { nutrient: "PQQ (Pirroloquinolina quinona)", amount: "10 mg", vd: "*" },
       { nutrient: "Creatina", amount: "3 g", vd: "*" },
     ],
-    price: "R$ 147",
-    priceOld: "R$ 197",
   },
   tarde: {
     id: "tarde",
@@ -77,8 +75,6 @@ const products = {
       { nutrient: "Cafeína", amount: "25 mg", vd: "*" },
       { nutrient: "Bicarbonato de sódio", amount: "1,4 g", vd: "*" },
     ],
-    price: "R$ 147",
-    priceOld: "R$ 197",
   },
   noite: {
     id: "noite",
@@ -110,8 +106,6 @@ const products = {
       { nutrient: "Ashwagandha", amount: "300 mg", vd: "*" },
       { nutrient: "Magnésio quelato", amount: "200 mg", vd: "*" },
     ],
-    price: "R$ 147",
-    priceOld: "R$ 197",
   },
 };
 
@@ -164,31 +158,40 @@ export default function ProductDetail() {
                 </span>
                 <span className="text-vyr-accent font-medium">{product.tagline}</span>
               </div>
-              
+
               <p className="text-lg text-vyr-gray-300 mb-8">{product.heroDescription}</p>
-              
-              {/* Price */}
-              <div className="flex items-center gap-4 mb-6">
-                <div>
-                  <span className="text-sm text-vyr-gray-500 line-through block">{product.priceOld}</span>
-                  <span className="text-3xl font-bold text-vyr-white">{product.price}</span>
-                  <span className="text-vyr-gray-400 ml-2">/mês</span>
+
+              <p className="text-sm text-vyr-gray-500 mb-4">Informações técnicas para orientar o uso do suplemento.</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="flex items-start gap-3 p-4 rounded-xl vyr-card-graphite border border-vyr-gray-800/60">
+                  <Clock className="w-5 h-5 text-vyr-accent vyr-icon-glow mt-0.5" />
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-vyr-gray-500 font-semibold">Período ideal</p>
+                    <p className="text-sm text-vyr-gray-200 mt-1">{product.period}</p>
+                  </div>
                 </div>
-                <span className="px-3 py-1 rounded-md bg-vyr-accent/10 text-vyr-accent text-sm font-semibold">
-                  -25% OFF
-                </span>
-              </div>
-              
-              {/* CTA */}
-              <div className="flex gap-4">
-                <Link to="/login?signup=true" className="flex-1">
-                  <Button 
-                    className="w-full py-6 text-base font-semibold rounded-xl vyr-btn-accent shadow-lg shadow-vyr-accent/20 transition-all duration-300"
-                  >
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Adicionar ao Carrinho
-                  </Button>
-                </Link>
+                <div className="flex items-start gap-3 p-4 rounded-xl vyr-card-graphite border border-vyr-gray-800/60">
+                  <Sparkles className="w-5 h-5 text-vyr-cyan vyr-icon-glow mt-0.5" />
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-vyr-gray-500 font-semibold">Modo de uso</p>
+                    <p className="text-sm text-vyr-gray-200 mt-1">{product.usage.recommendation}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-xl vyr-card-graphite border border-vyr-gray-800/60">
+                  <Shield className="w-5 h-5 text-vyr-gray-300 mt-0.5" />
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-vyr-gray-500 font-semibold">Livre de</p>
+                    <p className="text-sm text-vyr-gray-200 mt-1">{product.doesNotContain.join(", ")}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 rounded-xl vyr-card-graphite border border-vyr-gray-800/60">
+                  <Check className="w-5 h-5 text-vyr-accent mt-0.5" />
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-vyr-gray-500 font-semibold">Principais ativos</p>
+                    <p className="text-sm text-vyr-gray-200 mt-1">{product.contains.slice(0, 3).join(" • ")}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
