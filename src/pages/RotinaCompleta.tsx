@@ -292,7 +292,7 @@ export default function RotinaCompleta() {
             <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
               <p className="text-xs sm:text-sm text-vyr-gray-400">
                 <span className="text-vyr-gray-300 font-medium">Nota:</span> Para recursos avançados como Correlações Inteligentes e Insights de AI, confira o{" "}
-                <Link to="/sistema-completo" className="text-vyr-white hover:underline font-mono">
+                <Link to="/vyr-system-node" className="text-vyr-white hover:underline font-mono">
                   VYR SYSTEM
                 </Link>
                 .
@@ -325,7 +325,7 @@ export default function RotinaCompleta() {
           <p className="text-sm sm:text-base text-vyr-gray-400 mb-5 sm:mb-6 max-w-2xl mx-auto px-2">
             O VYR SYSTEM inclui VYR NODE para monitoramento biométrico contínuo, correlações inteligentes entre suas métricas e insights personalizados por AI.
           </p>
-          <Link to="/sistema-completo">
+          <Link to="/vyr-system-node">
             <Button
               variant="outline"
               className="w-full sm:w-auto border-vyr-gray-600 bg-vyr-black text-vyr-white hover:bg-vyr-gray-800 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-mono rounded-sm"

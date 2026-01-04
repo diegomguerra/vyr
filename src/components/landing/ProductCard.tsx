@@ -1,48 +1,68 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, Shield, Star, Cpu } from "lucide-react";
-const offers = [{
-  id: "vyr-system",
-  tier: "Ponto de Partida",
-  name: "VYR SYSTEM",
-  description: "Para quem quer começar com estrutura, clareza e consistência.",
-  shortText: "O essencial para reduzir atrito mental e criar constância diária.",
-  plans: [{
-    label: "Mensal",
-    note: "1 caixa (30 unidades)",
-    price: "R$ 397"
-  }, {
-    label: "Trimestral",
-    note: "3 caixas",
-    price: "R$ 1.071",
-    discount: "10% OFF"
-  }, {
-    label: "Anual",
-    note: "12 caixas",
-    price: "R$ 3.576",
-    discount: "25% OFF",
-    highlight: true
-  }],
-  includes: ["Protocolo VYR completo (BOOT + HOLD + CLEAR)", "Plataforma VYR (registro, histórico e evolução)", "Rotina guiada de uso", "Entrega expressa"],
-  cta: "Escolher VYR SYSTEM",
-  microcopy: "O sistema funciona desde o primeiro dia. A evolução acontece com o tempo.",
-  highlight: false,
-  link: "/rotina-completa"
-}, {
-  id: "vyr-system-node",
-  tier: "Experiência Completa",
-  name: "VYR SYSTEM Node",
-  description: "Para quem quer aprofundar a leitura e acelerar o aprendizado do sistema.",
-  shortText: "Quando o sistema deixa de ser fixo e passa a se adaptar a você.",
-  planNote: "Plano exclusivamente anual",
-  price: "R$ 5.976",
-  priceNote: "12 meses",
-  includes: ["VYR SYSTEM — 12 meses", "VYR Node (Smart Ring) — monitoramento contínuo", "Plataforma Avançada", "• Correlações inteligentes", "• Insights com AI", "• Leitura integrada entre fisiologia e suplementação", "Entrega expressa completa"],
-  cta: "Escolher o VYR SYSTEM Node",
-  microcopy: "Com o Node, o VYR deixa de seguir um protocolo fixo e passa a se adaptar a você.",
-  premium: true,
-  link: "/sistema-completo"
-}];
+const offers = [
+  {
+    id: "vyr-system",
+    tier: "Ponto de Partida",
+    name: "VYR SYSTEM",
+    description: "Para quem quer começar com estrutura, clareza e consistência.",
+    shortText: "O essencial para reduzir atrito mental e criar constância diária.",
+    plans: [
+      {
+        label: "Mensal",
+        note: "1 caixa (30 unidades)",
+        price: "R$ 397",
+      },
+      {
+        label: "Trimestral",
+        note: "3 caixas",
+        price: "R$ 1.071",
+        discount: "10% OFF",
+      },
+      {
+        label: "Anual",
+        note: "12 caixas",
+        price: "R$ 3.576",
+        discount: "25% OFF",
+        highlight: true,
+      },
+    ],
+    includes: [
+      "Protocolo VYR completo (BOOT + HOLD + CLEAR)",
+      "Plataforma VYR (registro, histórico e evolução)",
+      "Rotina guiada de uso",
+      "Entrega expressa",
+    ],
+    cta: "Escolher VYR SYSTEM",
+    microcopy: "O sistema funciona desde o primeiro dia. A evolução acontece com o tempo.",
+    highlight: false,
+    link: "/vyr-system",
+  },
+  {
+    id: "vyr-system-node",
+    tier: "Experiência Completa",
+    name: "VYR SYSTEM NODE",
+    description: "Para quem quer aprofundar a leitura e acelerar o aprendizado do sistema.",
+    shortText: "Quando o sistema deixa de ser fixo e passa a se adaptar a você.",
+    planNote: "Plano exclusivamente anual",
+    price: "R$ 5.976",
+    priceNote: "12 meses",
+    includes: [
+      "VYR SYSTEM — 12 meses",
+      "VYR Node (Smart Ring) — monitoramento contínuo",
+      "Plataforma Avançada",
+      "• Correlações inteligentes",
+      "• Insights com AI",
+      "• Leitura integrada entre fisiologia e suplementação",
+      "Entrega expressa completa",
+    ],
+    cta: "Escolher o VYR SYSTEM NODE",
+    microcopy: "Com o Node, o VYR deixa de seguir um protocolo fixo e passa a se adaptar a você.",
+    premium: true,
+    link: "/vyr-system-node",
+  },
+];
 export function ProductCard() {
   return <section id="produto" className="py-24 bg-vyr-gray-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
