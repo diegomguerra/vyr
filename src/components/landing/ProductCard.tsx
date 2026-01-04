@@ -38,7 +38,7 @@ const offers = [{
   price: "R$ 5.976",
   priceNote: "12 meses",
   includes: ["VYR SYSTEM — 12 meses", "VYR Node (Smart Ring) — monitoramento contínuo", "Plataforma Avançada", "• Correlações inteligentes", "• Insights com AI", "• Leitura integrada entre fisiologia e suplementação", "Entrega expressa completa"],
-  cta: "Quero o VYR SYSTEM Node",
+  cta: "Escolher o VYR SYSTEM Node",
   microcopy: "Com o Node, o VYR deixa de seguir um protocolo fixo e passa a se adaptar a você.",
   premium: true,
   link: "/sistema-completo"
