@@ -424,7 +424,10 @@ export default function SistemaCompleto() {
                 </Button>
               </Link>
               <Link to="/rotina-completa">
-                <Button variant="outline" className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-mono border-vyr-gray-600 text-vyr-white hover:bg-vyr-gray-800 rounded-sm">
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-mono border-vyr-gray-600 bg-vyr-white text-vyr-black hover:bg-vyr-gray-100 rounded-sm"
+                >
                   Ver Rotina Completa
                 </Button>
               </Link>
