@@ -94,34 +94,26 @@ export default function VYRSystem() {
             <div>
               <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-vyr-gray-800/50 border border-vyr-gray-700/50 text-vyr-gray-300 text-xs sm:text-sm font-mono mb-4 sm:mb-6">
                 <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                Sistema Cognitivo Estruturado
+                Sachês + Plataforma VYR Labs
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-vyr-white mb-4 sm:mb-6">
-                Dados Precisos.
+                Rotina Cognitiva
                 <span className="block font-mono tracking-wider text-vyr-gray-300">
-                  Decisões Inteligentes.
+                  Estruturada.
                 </span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-vyr-gray-400 mb-6 sm:mb-8 leading-relaxed">
-                Suplementação cognitiva estruturada e inteligência de dados para orientar sua rotina — sem necessidade de dispositivos.
+                Ciclo completo de suplementação para foco, sustentação e recuperação — com plataforma para acompanhar sua evolução.
               </p>
 
               <div className="flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8">
                 <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
-                  <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-100" />
-                  <span className="text-xs sm:text-sm text-vyr-gray-300 font-mono">BOOT</span>
-                </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
-                  <Sunset className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
-                  <span className="text-xs sm:text-sm text-vyr-gray-300 font-mono">HOLD</span>
-                </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
-                  <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-cold-blue" />
-                  <span className="text-xs sm:text-sm text-vyr-gray-300 font-mono">CLEAR</span>
+                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-300" />
+                  <span className="text-xs sm:text-sm text-vyr-gray-300">1.080 sachês/ano</span>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
                   <BarChart3 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-vyr-gray-400" />
-                  <span className="text-xs sm:text-sm text-vyr-gray-300">Plataforma</span>
+                  <span className="text-xs sm:text-sm text-vyr-gray-300">VYR Labs</span>
                 </div>
               </div>
 
@@ -182,8 +174,11 @@ export default function VYRSystem() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-vyr-white mb-3 sm:mb-4">
-              Os 3 Sachês do Ciclo Cognitivo
+              Ciclo Cognitivo Diário
             </h2>
+            <p className="text-sm sm:text-base text-vyr-gray-400 max-w-2xl mx-auto">
+              Três fórmulas sincronizadas com seu ritmo natural para otimizar cada fase do dia.
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
@@ -246,8 +241,11 @@ export default function VYRSystem() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-vyr-white mb-3 sm:mb-4">
-              Plataforma VYR Labs
+              Acompanhe sua Evolução
             </h2>
+            <p className="text-sm sm:text-base text-vyr-gray-400 max-w-2xl mx-auto">
+              Plataforma VYR Labs para registrar, visualizar e entender seu progresso cognitivo ao longo do tempo.
+            </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
@@ -267,15 +265,29 @@ export default function VYRSystem() {
         </div>
       </section>
 
-      {/* Como Funciona Sem Node */}
+      {/* Simples e Direto */}
       <section className="py-12 sm:py-20 bg-gradient-to-b from-vyr-gray-900 to-vyr-black">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-vyr-white mb-6 sm:mb-8">
-            Como Funciona
+            Simples e Direto
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-vyr-gray-400 leading-relaxed">
-            O VYR SYSTEM opera sem dispositivos externos. A plataforma organiza o ciclo cognitivo a partir do uso dos sachês e de registros estruturados, entregando clareza, previsibilidade e direção.
+          <p className="text-sm sm:text-base md:text-lg text-vyr-gray-400 leading-relaxed mb-6">
+            Tome os sachês no horário certo. Registre como se sente. Veja padrões emergirem.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 text-xs sm:text-sm text-vyr-gray-500">
+            <span className="flex items-center gap-2">
+              <Sun className="w-4 h-4 text-vyr-gray-100" />
+              Manhã: BOOT
+            </span>
+            <span className="flex items-center gap-2">
+              <Sunset className="w-4 h-4 text-vyr-gray-400" />
+              Tarde: HOLD
+            </span>
+            <span className="flex items-center gap-2">
+              <Moon className="w-4 h-4 text-vyr-cold-blue" />
+              Noite: CLEAR
+            </span>
+          </div>
         </div>
       </section>
 
@@ -304,21 +316,20 @@ export default function VYRSystem() {
         </div>
       </section>
 
-      {/* Comparação Ultra Minimal */}
+      {/* Quer ir além? */}
       <section className="py-12 sm:py-20 bg-vyr-gray-900">
         <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="p-6 sm:p-8 rounded-sm bg-vyr-gray-900/80 border border-vyr-gray-700/50">
-            <h3 className="text-xl sm:text-2xl font-mono font-bold text-vyr-white mb-2">
-              VYR SYSTEM
+            <h3 className="text-lg sm:text-xl font-bold text-vyr-white mb-2">
+              Quer dados ainda mais precisos?
             </h3>
             <p className="text-sm text-vyr-gray-400 mb-6">
-              Sachês + Plataforma<br />
-              <span className="text-vyr-gray-500">Sem dispositivo</span>
+              Adicione o VYR NODE para correlações automáticas entre seus dados fisiológicos e o ciclo cognitivo.
             </p>
             
             <Link to="/sistema-completo">
               <Button variant="outline" className="border-vyr-gray-600 text-vyr-gray-300 hover:bg-vyr-gray-800 hover:text-vyr-white">
-                Ver VYR SYSTEM com biometria
+                Conhecer VYR SYSTEM NODE
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
