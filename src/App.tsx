@@ -13,11 +13,12 @@ import Login from "./pages/Login";
 import VYRLabs from "./pages/VYRLabs";
 import VYRNutrition from "./pages/VYRNutrition";
 import VYRNode from "./pages/VYRNode";
+import VYRSystemCore from "./pages/VYRSystemCore";
+import VYRSystemNode from "./pages/VYRSystemNode";
 import VYRScience from "./pages/VYRScience";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import RotinaCompleta from "./pages/RotinaCompleta";
-import SistemaCompleto from "./pages/SistemaCompleto";
 import ComoFunciona from "./pages/ComoFunciona";
 import Dashboard from "./pages/Dashboard";
 import Onboarding from "./pages/Onboarding";
@@ -221,11 +222,14 @@ const App = () => {
               <Route path="/brand-export" element={<BrandExport />} />
               <Route path="/nutrition" element={<VYRNutrition />} />
               <Route path="/node" element={<VYRNode />} />
+              <Route path="/vyr-system" element={<VYRSystemNode />} />
+              <Route path="/vyr-system-node" element={<VYRSystemNode />} />
+              <Route path="/vyr-system-core" element={<VYRSystemCore />} />
               <Route path="/science" element={<VYRScience />} />
               <Route path="/produtos" element={<Products />} />
               <Route path="/produtos/:id" element={<ProductDetail />} />
               <Route path="/rotina-completa" element={<RotinaCompleta />} />
-              <Route path="/sistema-completo" element={<SistemaCompleto />} />
+              <Route path="/sistema-completo" element={<Navigate to="/vyr-system-node" replace />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/labs" element={user ? <Navigate to="/app" replace /> : <VYRLabs />} />
               <Route path="/login" element={<Navigate to="/labs" replace />} />

@@ -5,12 +5,9 @@ import { Menu, X } from "lucide-react";
 import { VYRLogo } from "@/brand";
 import { NavDropdown, MobileNavDropdown } from "./NavDropdown";
 
-const VYR_SUBMENU_ITEMS = [
-  { label: "VYR SYSTEM", href: "/sistema-completo", description: "Conceito integrador" },
-  { label: "VYR NUTRITION", href: "/nutrition", description: "Modulação nutricional" },
-  { label: "VYR LABS", href: "/labs", description: "Plataforma experimental" },
-  { label: "VYR NODE", href: "/node", description: "Hardware layer" },
-  { label: "VYR SCIENCE", href: "/science", description: "Base científica" },
+const SYSTEM_ITEMS = [
+  { label: "VYR SYSTEM", href: "/vyr-system-core" },
+  { label: "VYR SYSTEM NODE", href: "/vyr-system" },
 ];
 
 export function LandingNav() {
@@ -27,18 +24,12 @@ export function LandingNav() {
 
           {/* Nav Links - Desktop */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            <NavDropdown trigger="VYR" items={VYR_SUBMENU_ITEMS} />
+            <NavDropdown trigger="VYR SYSTEM" items={SYSTEM_ITEMS} triggerHref="/vyr-system-core" />
             <Link
-              to="/como-funciona"
+              to="/vyr-system"
               className="text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide leading-none"
             >
-              Como Funciona
-            </Link>
-            <Link
-              to="/science"
-              className="text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide leading-none"
-            >
-              VYR Science
+              VYR SYSTEM NODE
             </Link>
           </div>
 
@@ -78,24 +69,13 @@ export function LandingNav() {
       {mobileMenuOpen && (
         <div className="sm:hidden bg-background/98 backdrop-blur-xl border-t border-border">
           <div className="px-4 py-4 space-y-1">
-            <MobileNavDropdown
-              trigger="VYR"
-              items={VYR_SUBMENU_ITEMS}
-              onItemClick={() => setMobileMenuOpen(false)}
-            />
+            <MobileNavDropdown trigger="VYR SYSTEM" items={SYSTEM_ITEMS} onItemClick={() => setMobileMenuOpen(false)} />
             <Link
-              to="/como-funciona"
+              to="/vyr-system"
               className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-lg font-mono tracking-wide leading-none border-b border-border/30"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Como Funciona
-            </Link>
-            <Link
-              to="/science"
-              className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-lg font-mono tracking-wide leading-none border-b border-border/30"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              VYR Science
+              VYR SYSTEM NODE
             </Link>
             <div className="pt-4 flex gap-2">
               <Link to="/labs" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
