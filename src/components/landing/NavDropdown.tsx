@@ -49,7 +49,7 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-2xl font-mono tracking-wide"
+        className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -114,7 +114,7 @@ export function MobileNavDropdown({ trigger, items, onItemClick }: MobileNavDrop
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <span className="text-xl font-mono tracking-wide leading-none">{trigger}</span>
+        <span className="text-lg font-mono tracking-wide leading-none">{trigger}</span>
         <ChevronDown
           className={cn(
             "w-5 h-5 transition-transform duration-200",
