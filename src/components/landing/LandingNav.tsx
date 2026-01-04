@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { VYRLogo } from "@/brand";
+import { NavDropdown, MobileNavDropdown } from "./NavDropdown";
 
-const NAV_ITEMS = [
-  { label: "VYR SYSTEM", href: "/vyr-system" },
-  { label: "VYR SYSTEM NODE", href: "/vyr-system-node" },
+const SYSTEM_ITEMS = [
+  { label: "VYR SYSTEM", href: "/vyr-system-core" },
+  { label: "VYR SYSTEM NODE", href: "/vyr-system" },
 ];
 
 export function LandingNav() {
@@ -23,15 +24,13 @@ export function LandingNav() {
 
           {/* Nav Links - Desktop */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide leading-none"
-              >
-                {item.label}
-              </Link>
-            ))}
+            <NavDropdown trigger="VYR SYSTEM" items={SYSTEM_ITEMS} triggerHref="/vyr-system-core" />
+            <Link
+              to="/vyr-system"
+              className="text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide leading-none"
+            >
+              VYR SYSTEM NODE
+            </Link>
           </div>
 
           {/* Auth Buttons - Desktop */}
@@ -70,16 +69,14 @@ export function LandingNav() {
       {mobileMenuOpen && (
         <div className="sm:hidden bg-background/98 backdrop-blur-xl border-t border-border">
           <div className="px-4 py-4 space-y-1">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-lg font-mono tracking-wide leading-none border-b border-border/30"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <MobileNavDropdown trigger="VYR SYSTEM" items={SYSTEM_ITEMS} onItemClick={() => setMobileMenuOpen(false)} />
+            <Link
+              to="/vyr-system"
+              className="block py-3 text-muted-foreground hover:text-foreground transition-colors text-lg font-mono tracking-wide leading-none border-b border-border/30"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              VYR SYSTEM NODE
+            </Link>
             <div className="pt-4 flex gap-2">
               <Link to="/labs" className="flex-1" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="outline" size="sm" className="w-full text-lg font-mono tracking-wide h-12">

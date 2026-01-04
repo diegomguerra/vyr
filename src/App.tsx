@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 import VYRLabs from "./pages/VYRLabs";
 import VYRNutrition from "./pages/VYRNutrition";
 import VYRNode from "./pages/VYRNode";
-import VYRSystem from "./pages/VYRSystem";
+import VYRSystemCore from "./pages/VYRSystemCore";
 import VYRSystemNode from "./pages/VYRSystemNode";
 import VYRScience from "./pages/VYRScience";
 import Products from "./pages/Products";
@@ -222,8 +222,9 @@ const App = () => {
               <Route path="/brand-export" element={<BrandExport />} />
               <Route path="/nutrition" element={<VYRNutrition />} />
               <Route path="/node" element={<VYRNode />} />
-              <Route path="/vyr-system" element={<VYRSystem />} />
+              <Route path="/vyr-system" element={<VYRSystemNode />} />
               <Route path="/vyr-system-node" element={<VYRSystemNode />} />
+              <Route path="/vyr-system-core" element={<VYRSystemCore />} />
               <Route path="/science" element={<VYRScience />} />
               <Route path="/produtos" element={<Products />} />
               <Route path="/produtos/:id" element={<ProductDetail />} />

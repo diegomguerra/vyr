@@ -292,8 +292,8 @@ export default function RotinaCompleta() {
             <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-sm bg-vyr-gray-800/50 border border-vyr-gray-700/50">
               <p className="text-xs sm:text-sm text-vyr-gray-400">
                 <span className="text-vyr-gray-300 font-medium">Nota:</span> Para recursos avançados como Correlações Inteligentes e Insights de AI, confira o{" "}
-                <Link to="/vyr-system-node" className="text-vyr-white hover:underline font-mono">
-                  VYR SYSTEM
+                <Link to="/vyr-system" className="text-vyr-white hover:underline font-mono">
+                  VYR SYSTEM NODE
                 </Link>
                 .
               </p>
@@ -323,14 +323,14 @@ export default function RotinaCompleta() {
             Quer expandir sua capacidade funcional?
           </h3>
           <p className="text-sm sm:text-base text-vyr-gray-400 mb-5 sm:mb-6 max-w-2xl mx-auto px-2">
-            O VYR SYSTEM inclui VYR NODE para monitoramento biométrico contínuo, correlações inteligentes entre suas métricas e insights personalizados por AI.
+            O VYR SYSTEM NODE inclui VYR NODE para monitoramento biométrico contínuo, correlações inteligentes entre suas métricas e insights personalizados por AI.
           </p>
-          <Link to="/vyr-system-node">
+          <Link to="/vyr-system">
             <Button
               variant="outline"
               className="w-full sm:w-auto border-vyr-gray-600 bg-vyr-black text-vyr-white hover:bg-vyr-gray-800 px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-mono rounded-sm"
             >
-              Conhecer VYR SYSTEM
+              Conhecer VYR SYSTEM NODE
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>

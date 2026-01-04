@@ -13,9 +13,10 @@ interface NavDropdownProps {
   trigger: string;
   items: NavDropdownItem[];
   className?: string;
+  triggerHref?: string;
 }
 
-export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
+export function NavDropdown({ trigger, items, className, triggerHref }: NavDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -48,9 +49,9 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button
+      <Link
+        to={triggerHref ?? items[0]?.href ?? "#"}
         className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-xl font-mono tracking-wide"
-        onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -61,7 +62,7 @@ export function NavDropdown({ trigger, items, className }: NavDropdownProps) {
             isOpen && "rotate-180"
           )}
         />
-      </button>
+      </Link>
 
       {/* Dropdown Menu */}
       <div

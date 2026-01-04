@@ -56,7 +56,7 @@ export default function VYRSystemNode() {
                     Quero o VYR SYSTEM NODE
                   </Button>
                 </Link>
-                <Link to="/vyr-system" className="w-full sm:w-auto">
+                <Link to="/vyr-system-core" className="w-full sm:w-auto">
                   <Button
                     variant="outline"
                     className="w-full sm:w-auto px-6 sm:px-8 py-4 text-base font-mono rounded-sm border-vyr-gray-700 bg-transparent text-vyr-white hover:bg-vyr-gray-900"
@@ -147,7 +147,7 @@ export default function VYRSystemNode() {
               <p>Sachês + Plataforma + Node</p>
               <p>Monitoramento contínuo</p>
             </div>
-            <Link to="/vyr-system">
+            <Link to="/vyr-system-core">
               <Button className="px-6 py-3 text-sm sm:text-base font-mono rounded-sm bg-vyr-white text-vyr-black hover:bg-vyr-gray-100">
                 Ver VYR SYSTEM
               </Button>

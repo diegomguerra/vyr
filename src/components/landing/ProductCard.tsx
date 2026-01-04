@@ -37,7 +37,7 @@ const offers = [
     cta: "Escolher VYR SYSTEM",
     microcopy: "O sistema funciona desde o primeiro dia. A evolução acontece com o tempo.",
     highlight: false,
-    link: "/vyr-system",
+    link: "/vyr-system-core",
   },
   {
     id: "vyr-system-node",
@@ -60,7 +60,7 @@ const offers = [
     cta: "Escolher o VYR SYSTEM NODE",
     microcopy: "Com o Node, o VYR deixa de seguir um protocolo fixo e passa a se adaptar a você.",
     premium: true,
-    link: "/vyr-system-node",
+    link: "/vyr-system",
   },
 ];
 export function ProductCard() {

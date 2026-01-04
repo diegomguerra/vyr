@@ -617,7 +617,7 @@ export default function ComoFunciona() {
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <Link to="/vyr-system">
+            <Link to="/vyr-system-core">
               <Button className="w-full sm:w-auto px-8 py-6 text-base font-mono vyr-btn-accent rounded-sm transition-all">
                 VYR SYSTEM
                 <ArrowRight className="w-4 h-4 ml-2" />
