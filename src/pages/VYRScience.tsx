@@ -168,19 +168,8 @@ export default function VYRScience() {
         </section>
 
         {/* 3 PILARES */}
-        <section className="py-24 sm:py-32 relative overflow-hidden">
-          {/* Background gradient effect */}
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              background: `radial-gradient(ellipse 80% 50% at 50% 50%, 
-                hsl(var(--vyr-cold-blue) / 0.15) 0%, 
-                hsl(var(--vyr-graphite) / 0.08) 40%,
-                transparent 70%)`
-            }}
-          />
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-16">
                 <h2 className="text-2xl sm:text-3xl font-medium text-foreground">
@@ -189,89 +178,27 @@ export default function VYRScience() {
               </div>
             </ScrollReveal>
             
-            {/* Connecting line - animated */}
-            <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-px z-0">
-              <div 
-                className="h-full w-full opacity-0 animate-[expand-line_1s_ease-out_0.6s_forwards]"
-                style={{
-                  background: `linear-gradient(90deg, 
-                    transparent 0%,
-                    hsl(var(--vyr-gray-600) / 0.3) 10%,
-                    hsl(var(--vyr-cold-blue) / 0.5) 30%,
-                    hsl(var(--vyr-accent) / 0.6) 50%,
-                    hsl(var(--vyr-cold-blue) / 0.5) 70%,
-                    hsl(var(--vyr-gray-600) / 0.3) 90%,
-                    transparent 100%)`
-                }}
-              />
-              {/* Animated glow pulse on line */}
-              <div 
-                className="absolute top-0 left-0 h-full w-full opacity-0 animate-[pulse-glow_3s_ease-in-out_1.5s_infinite]"
-                style={{
-                  background: `linear-gradient(90deg, 
-                    transparent 0%,
-                    transparent 40%,
-                    hsl(var(--vyr-accent-glow) / 0.4) 50%,
-                    transparent 60%,
-                    transparent 100%)`
-                }}
-              />
-            </div>
-            
-            {/* Node dots on line */}
-            <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] justify-between z-10 pointer-events-none">
-              {[0, 1, 2].map((i) => (
-                <div 
-                  key={i}
-                  className="w-2 h-2 rounded-full opacity-0 animate-[fade-scale-in_0.4s_ease-out_forwards]"
-                  style={{
-                    animationDelay: `${0.8 + i * 0.15}s`,
-                    background: `linear-gradient(135deg, 
-                      hsl(var(--vyr-gray-400)) 0%, 
-                      hsl(var(--vyr-cold-blue)) 100%)`,
-                    boxShadow: `0 0 12px hsl(var(--vyr-cold-blue) / 0.5), 
-                                0 0 24px hsl(var(--vyr-accent) / 0.3)`
-                  }}
-                />
-              ))}
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8 relative z-20">
+            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
               {PILLARS.map((pillar, i) => (
                 <div 
                   key={i}
-                  className="group h-full rounded-sm p-6 sm:p-8 space-y-5 
+                  className="group h-full bg-card/20 border border-border/30 rounded-sm p-6 sm:p-8 space-y-5 
                     opacity-0 translate-y-6 
                     animate-[fade-in_0.6s_ease-out_forwards,slide-up_0.6s_ease-out_forwards]
-                    transition-all duration-500 relative"
+                    hover:bg-card/30 hover:border-border/50 
+                    transition-all duration-500"
                   style={{ 
                     animationDelay: `${i * 200}ms`,
-                    background: `linear-gradient(145deg, 
-                      hsl(var(--vyr-gray-800) / 0.4) 0%, 
-                      hsl(var(--vyr-graphite-dark) / 0.3) 50%,
-                      hsl(var(--vyr-cold-blue) / 0.08) 100%)`,
-                    border: '1px solid hsl(var(--vyr-gray-600) / 0.25)',
                   }}
                 >
-                  {/* Hover glow effect */}
-                  <div 
-                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(ellipse at 50% 0%, 
-                        hsl(var(--vyr-cold-blue) / 0.1) 0%, 
-                        transparent 70%)`,
-                      boxShadow: `inset 0 1px 0 hsl(var(--vyr-gray-400) / 0.1)`
-                    }}
-                  />
-                  
                   <pillar.icon 
-                    className="w-6 h-6 text-muted-foreground/60 group-hover:text-vyr-coldBlue transition-colors duration-300 relative z-10" 
+                    className="w-6 h-6 text-muted-foreground/60 group-hover:text-muted-foreground transition-colors duration-300" 
                     strokeWidth={1.5} 
                   />
-                  <h3 className="text-lg font-medium text-foreground leading-tight group-hover:text-foreground/90 transition-colors duration-300 relative z-10">
+                  <h3 className="text-lg font-medium text-foreground leading-tight group-hover:text-foreground/90 transition-colors duration-300">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground/80 leading-relaxed whitespace-pre-line relative z-10">
+                  <p className="text-sm text-muted-foreground/80 leading-relaxed whitespace-pre-line">
                     {pillar.description}
                   </p>
                 </div>

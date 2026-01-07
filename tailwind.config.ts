@@ -128,18 +128,6 @@ export default {
           from: { opacity: "0", transform: "translateX(-10px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
-        "expand-line": {
-          from: { opacity: "0", transform: "scaleX(0)" },
-          to: { opacity: "1", transform: "scaleX(1)" },
-        },
-        "fade-scale-in": {
-          from: { opacity: "0", transform: "scale(0)" },
-          to: { opacity: "1", transform: "scale(1)" },
-        },
-        "pulse-glow": {
-          "0%, 100%": { opacity: "0", transform: "translateX(-100%)" },
-          "50%": { opacity: "1", transform: "translateX(100%)" },
-        },
         spin3d: {
           "0%": { transform: "rotateY(-15deg) rotateX(5deg)" },
           "25%": { transform: "rotateY(15deg) rotateX(-3deg)" },
@@ -166,9 +154,6 @@ export default {
         "fade-in": "fade-in 0.3s ease-out",
         "slide-up": "slide-up 0.6s ease-out forwards",
         "slide-in": "slide-in 0.3s ease-out",
-        "expand-line": "expand-line 1s ease-out forwards",
-        "fade-scale-in": "fade-scale-in 0.4s ease-out forwards",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         spin3d: "spin3d 8s ease-in-out infinite",
         float3d: "float3d 6s ease-in-out infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
