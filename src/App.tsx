@@ -26,6 +26,7 @@ import Profile from "./pages/Profile";
 import Welcome from "./pages/Welcome";
 import BrandPreview from "./pages/BrandPreview";
 import BrandExport from "./pages/BrandExport";
+import Contact from "./pages/Contact";
 import { NavSidebar } from "./components/nzt";
 import { signOut, getParticipante, createParticipante } from "./lib/api";
 import { ThemeProvider, useTheme } from "./hooks/use-theme";
@@ -229,6 +230,7 @@ const App = () => {
               <Route path="/sistema-completo" element={<SistemaCompleto />} />
               <Route path="/sistema" element={<VYRSystem />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
+              <Route path="/contato" element={<Contact />} />
               <Route path="/labs" element={user ? <Navigate to="/app" replace /> : <VYRLabs />} />
               <Route path="/login" element={<Navigate to="/labs" replace />} />
 

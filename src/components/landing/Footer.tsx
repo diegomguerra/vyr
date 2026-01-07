@@ -91,6 +91,11 @@ export function Footer() {
                   FAQ
                 </a>
               </li>
+              <li>
+                <Link to="/contato" className="text-vyr-gray-400 hover:text-vyr-white transition-colors">
+                  Contato
+                </Link>
+              </li>
             </ul>
           </div>
 
