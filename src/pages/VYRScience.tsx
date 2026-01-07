@@ -127,7 +127,7 @@ const COMPARISON = [
 
 export default function VYRScience() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-300">
       <LandingNav />
       
       {/* Floating particles */}
