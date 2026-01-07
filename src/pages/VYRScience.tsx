@@ -1,111 +1,68 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, FlaskConical, FileText, CheckCircle2, XCircle } from "lucide-react";
+import { ArrowRight, Brain, Activity, BarChart3, Waves, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { LandingNav } from "@/components/landing/LandingNav";
+import { Footer } from "@/components/landing/Footer";
 import { ScrollReveal } from "@/components/labs";
 
-const BOOT_COMPOUNDS = [
+const PILLARS = [
   {
-    name: "Citicolina (CDP-Colina)",
-    dose: "250mg",
-    mechanism: "Precursor de acetilcolina e fosfatidilcolina. Suporta síntese de membranas neuronais e neurotransmissão colinérgica.",
-    references: ["Secades, 2016", "Grieb, 2014"],
+    icon: Brain,
+    title: "Carga cognitiva é o problema central",
+    description: `Fadiga mental raramente vem da falta de estímulo.
+Ela surge do acúmulo de carga mal recuperada ao longo do dia.
+
+Decisão, foco e energia não colapsam de uma vez.
+Eles se degradam silenciosamente.
+
+A ciência da VYR começa aqui.`,
   },
   {
-    name: "Fosfatidilserina",
-    dose: "100mg",
-    mechanism: "Fosfolipídio estrutural das membranas neuronais. Modula fluidez de membrana e sinalização celular.",
-    references: ["Glade & Smith, 2015"],
+    icon: Waves,
+    title: "Ritmo importa mais do que intensidade",
+    description: `Sistemas biológicos funcionam melhor com constância do que com picos.
+
+Em vez de empurrar o cérebro,
+trabalhamos com ciclos de ativação, sustentação e recuperação
+alinhados ao funcionamento natural do sistema nervoso.
+
+Menos ruído.
+Mais fluidez.`,
   },
   {
-    name: "Bacopa monnieri",
-    dose: "300mg",
-    mechanism: "Adaptógeno com bacosídeos que modulam vias serotoninérgicas e colinérgicas. Efeitos observados em memória e atenção.",
-    references: ["Kongkeaw et al., 2014"],
-  },
-  {
-    name: "Rhodiola rosea",
-    dose: "200mg",
-    mechanism: "Adaptógeno que modula resposta ao estresse via eixo HPA. Suporta resistência à fadiga mental.",
-    references: ["Panossian & Wikman, 2010"],
+    icon: Activity,
+    title: "Percepção + fisiologia constroem entendimento real",
+    description: `A experiência subjetiva importa.
+Mas ela se torna mais confiável quando observada ao longo do tempo.
+
+A VYR cruza percepção consciente com sinais fisiológicos
+para identificar padrões individuais — não para rotular pessoas.
+
+O sistema aprende com você.`,
   },
 ];
 
-const HOLD_COMPOUNDS = [
-  {
-    name: "Teacrina",
-    dose: "100mg",
-    mechanism: "Análogo da cafeína com menor tolerância. Atua em receptores de adenosina sem habituação rápida.",
-    references: ["Taylor et al., 2016"],
-  },
-  {
-    name: "L-Teanina",
-    dose: "200mg",
-    mechanism: "Aminoácido do chá verde. Modula GABA e ondas alfa cerebrais, promovendo foco relaxado.",
-    references: ["Nobre et al., 2008"],
-  },
-  {
-    name: "Cafeína",
-    dose: "50mg",
-    mechanism: "Antagonista de adenosina. Dose baixa para sinergia com teanina sem hiperestimulação.",
-    references: ["Haskell et al., 2008"],
-  },
-  {
-    name: "L-Tirosina",
-    dose: "500mg",
-    mechanism: "Precursor de dopamina e noradrenalina. Suporta performance sob estresse e depleção de catecolaminas.",
-    references: ["Jongkees et al., 2015"],
-  },
+const NOT_PROMISES = [
+  "aumento de QI",
+  "performance extrema",
+  "causalidade clínica",
+  "resultados universais",
 ];
 
-const CLEAR_COMPOUNDS = [
-  {
-    name: "NAC (N-Acetilcisteína)",
-    dose: "600mg",
-    mechanism: "Precursor de glutationa. Modula glutamato e oferece suporte antioxidante ao SNC.",
-    references: ["Dean et al., 2011"],
-  },
-  {
-    name: "Ashwagandha (KSM-66)",
-    dose: "300mg",
-    mechanism: "Adaptógeno que reduz cortisol e modula eixo HPA. Suporta qualidade do sono e recuperação.",
-    references: ["Chandrasekhar et al., 2012"],
-  },
-  {
-    name: "Magnésio bisglicinato",
-    dose: "200mg",
-    mechanism: "Forma quelada de alta biodisponibilidade. Cofator em 300+ reações enzimáticas, incluindo síntese de GABA.",
-    references: ["Abbasi et al., 2012"],
-  },
-  {
-    name: "Glicina",
-    dose: "3g",
-    mechanism: "Neurotransmissor inibitório. Melhora qualidade subjetiva do sono e reduz latência.",
-    references: ["Yamadera et al., 2007"],
-  },
-  {
-    name: "L-Triptofano",
-    dose: "250mg",
-    mechanism: "Precursor de serotonina e melatonina. Suporta iniciação do ciclo do sono.",
-    references: ["Hartmann, 1982"],
-  },
+const WHAT_WE_MEASURE = [
+  "variabilidade de energia mental",
+  "estabilidade ao longo do dia",
+  "qualidade de recuperação",
+  "prontidão percebida",
+  "consistência ao longo do tempo",
 ];
 
-const INCLUSION_CRITERIA = [
-  "Evidência em humanos (preferencialmente RCTs ou meta-análises)",
-  "Mecanismo de ação compreendido",
-  "Perfil de segurança estabelecido",
-  "Sinergia potencial com outros compostos da formulação",
-  "Relevância para a janela circadiana específica",
-];
-
-const EXCLUSION_CRITERIA = [
-  "Evidência apenas pré-clínica (in vitro ou animal)",
-  "Compostos com interações medicamentosas significativas",
-  "Substâncias com potencial de dependência",
-  "Ingredientes com marketing maior que evidência",
-  "Doses subterapêuticas ou simbólicas",
+const FOUNDATIONS = [
+  "neurociência da carga cognitiva",
+  "fisiologia do estresse e recuperação",
+  "ritmos circadianos",
+  "variabilidade autonômica",
+  "metabolismo energético neural",
 ];
 
 export default function VYRScience() {
@@ -115,293 +72,276 @@ export default function VYRScience() {
       
       {/* Grid pattern background */}
       <div 
-        className="fixed inset-0 opacity-[0.02] pointer-events-none"
+        className="fixed inset-0 opacity-[0.015] pointer-events-none"
         style={{
           backgroundImage: `
             linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px'
+          backgroundSize: '80px 80px'
         }}
       />
 
-      <main className="relative pt-24 pb-20">
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="space-y-6 max-w-2xl">
-              {/* Back link */}
-              <Link 
-                to="/" 
-                className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors font-mono"
-              >
-                <ArrowLeft className="w-3 h-3" />
-                VYR System
-              </Link>
-              
-              {/* Label */}
-              <span className="block font-mono text-[10px] sm:text-xs tracking-[0.3em] text-muted-foreground/70 uppercase">
-                Scientific Foundation
-              </span>
-              
-              {/* Headline */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground leading-tight tracking-tight">
-                Base científica do VYR System
-              </h1>
-              
-              {/* Subheadline */}
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                Este repositório documenta a fundamentação científica das formulações VYR — 
-                compostos, mecanismos, dosagens e literatura de suporte.
-              </p>
-              
-              {/* Disclaimer */}
-              <div className="p-4 border border-border/30 rounded-sm bg-muted/10">
-                <p className="text-xs text-muted-foreground/70">
-                  <strong className="text-muted-foreground">Nota:</strong> Este conteúdo é informativo e educacional. 
-                  Não constitui aconselhamento médico. Consulte um profissional de saúde antes de usar qualquer suplemento.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </section>
-
-        {/* Philosophy */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
-          <ScrollReveal>
-            <div className="space-y-8">
-              <div className="flex items-center gap-3">
-                <FlaskConical className="w-5 h-5 text-muted-foreground" />
-                <h2 className="text-lg sm:text-xl font-medium text-foreground">
-                  Filosofia de formulação
-                </h2>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Inclusion */}
-                <div className="space-y-4">
-                  <h3 className="text-sm font-medium text-foreground flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-500/70" />
-                    Critérios de inclusão
-                  </h3>
-                  <ul className="space-y-2">
-                    {INCLUSION_CRITERIA.map((item, i) => (
-                      <li key={i} className="text-sm text-muted-foreground/80 flex items-start gap-2">
-                        <span className="text-muted-foreground/40 mt-1">•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+      <main className="relative">
+        {/* HERO */}
+        <section className="min-h-[85vh] flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <ScrollReveal>
+              <div className="max-w-3xl space-y-8">
+                {/* Label */}
+                <span className="block font-mono text-[10px] sm:text-xs tracking-[0.3em] text-muted-foreground/60 uppercase">
+                  VYR Science
+                </span>
+                
+                {/* H1 */}
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-foreground leading-[1.1] tracking-tight">
+                  Ciência aplicada à redução de fricção cognitiva
+                </h1>
+                
+                {/* Subtitle */}
+                <div className="space-y-4 text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl">
+                  <p>
+                    A ciência da VYR não busca picos artificiais de desempenho.
+                  </p>
+                  <p>
+                    Ela existe para sustentar fluidez mental, reduzir esforço invisível
+                    e permitir que o sistema funcione melhor ao longo do tempo.
+                  </p>
                 </div>
                 
-                {/* Exclusion */}
-                <div className="space-y-4">
-                  <h3 className="text-sm font-medium text-foreground flex items-center gap-2">
-                    <XCircle className="w-4 h-4 text-red-500/70" />
-                    Critérios de exclusão
-                  </h3>
-                  <ul className="space-y-2">
-                    {EXCLUSION_CRITERIA.map((item, i) => (
-                      <li key={i} className="text-sm text-muted-foreground/80 flex items-start gap-2">
-                        <span className="text-muted-foreground/40 mt-1">•</span>
+                {/* Statement */}
+                <div className="pt-4 border-l-2 border-muted-foreground/20 pl-6">
+                  <p className="text-foreground text-sm sm:text-base font-medium">
+                    Não prometemos atalhos.
+                  </p>
+                  <p className="text-foreground text-sm sm:text-base font-medium">
+                    Construímos método.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* O QUE É / O QUE NÃO É */}
+        <section className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-4xl mx-auto">
+                {/* Header */}
+                <div className="space-y-4 mb-12">
+                  <h2 className="text-2xl sm:text-3xl font-medium text-foreground">
+                    O que a ciência da VYR é — e o que ela não é
+                  </h2>
+                  <p className="text-muted-foreground text-base sm:text-lg">
+                    A ciência orienta tudo o que construímos.<br />
+                    Mas ela não é usada como argumento de venda.
+                  </p>
+                </div>
+                
+                {/* Not promises */}
+                <div className="bg-card/30 border border-border/30 rounded-sm p-6 sm:p-8 space-y-6">
+                  <p className="text-muted-foreground font-medium">
+                    Nós não prometemos:
+                  </p>
+                  <ul className="grid sm:grid-cols-2 gap-3">
+                    {NOT_PROMISES.map((item, i) => (
+                      <li 
+                        key={i} 
+                        className="flex items-center gap-3 text-muted-foreground/70"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
                         {item}
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </section>
-
-        {/* BOOT Compounds */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
-          <ScrollReveal>
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-vyr-gray-100 rounded-sm flex items-center justify-center">
-                  <span className="font-mono text-xs text-vyr-graphite-dark">B</span>
-                </div>
-                <div>
-                  <h2 className="text-lg font-medium text-foreground">VYR BOOT</h2>
-                  <span className="text-xs text-muted-foreground">Manhã — Ativação</span>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                {BOOT_COMPOUNDS.map((compound, i) => (
-                  <CompoundCard key={i} compound={compound} />
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        </section>
-
-        {/* HOLD Compounds */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
-          <ScrollReveal>
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-vyr-graphite rounded-sm flex items-center justify-center">
-                  <span className="font-mono text-xs text-vyr-white">H</span>
-                </div>
-                <div>
-                  <h2 className="text-lg font-medium text-foreground">VYR HOLD</h2>
-                  <span className="text-xs text-muted-foreground">Tarde — Sustentação</span>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                {HOLD_COMPOUNDS.map((compound, i) => (
-                  <CompoundCard key={i} compound={compound} />
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        </section>
-
-        {/* CLEAR Compounds */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
-          <ScrollReveal>
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-vyr-cold-blue rounded-sm flex items-center justify-center">
-                  <span className="font-mono text-xs text-vyr-white">C</span>
-                </div>
-                <div>
-                  <h2 className="text-lg font-medium text-foreground">VYR CLEAR</h2>
-                  <span className="text-xs text-muted-foreground">Noite — Recuperação</span>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                {CLEAR_COMPOUNDS.map((compound, i) => (
-                  <CompoundCard key={i} compound={compound} />
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        </section>
-
-        {/* Methodology */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
-          <ScrollReveal>
-            <Card className="border-border/50 bg-card/30 backdrop-blur-sm">
-              <CardContent className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-muted-foreground" />
-                    <h2 className="text-lg font-medium text-foreground">
-                      Metodologia de validação
-                    </h2>
-                  </div>
-                  
-                  <div className="grid sm:grid-cols-2 gap-6 text-sm text-muted-foreground">
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Coleta de dados
-                      </span>
-                      <p>
-                        Dados subjetivos (check-ins VYR Labs) e objetivos (VYR Node) 
-                        são coletados ao longo de ciclos de uso.
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Análise
-                      </span>
-                      <p>
-                        Correlações são calculadas entre doses, timing, confundidores 
-                        (sono, estresse, cafeína) e métricas de resultado.
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Iteração
-                      </span>
-                      <p>
-                        Achados consistentes podem informar ajustes de formulação. 
-                        Mudanças são implementadas gradualmente.
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-muted-foreground/60 uppercase tracking-wider">
-                        Limitações
-                      </span>
-                      <p>
-                        Dados observacionais, não experimentais. Confundidores não são 
-                        controlados. Resultados são indicativos, não definitivos.
-                      </p>
-                    </div>
+                  <div className="pt-4 border-t border-border/30">
+                    <p className="text-sm text-muted-foreground/60">
+                      A ciência séria começa quando se reconhecem os limites.<br />
+                      O nosso trabalho acontece dentro deles.
+                    </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </ScrollReveal>
+              </div>
+            </ScrollReveal>
+          </div>
         </section>
 
-        {/* Footer */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 sm:mt-32">
-          <ScrollReveal>
-            <div className="border-t border-border/30 pt-12 space-y-6">
-              <p className="text-muted-foreground/60 text-sm italic max-w-lg">
-                "A ciência evolui. O VYR System também."
-              </p>
-              
-              <div className="flex items-center gap-4">
-                <Link to="/nutrition">
-                  <Button 
-                    variant="outline" 
-                    className="border-border/50 text-muted-foreground hover:text-foreground text-sm"
-                  >
-                    Ver produtos
-                  </Button>
-                </Link>
-                <Link to="/labs">
-                  <Button 
-                    variant="ghost" 
-                    className="text-muted-foreground hover:text-foreground text-sm"
-                  >
-                    Acessar VYR Labs →
-                  </Button>
-                </Link>
+        {/* 3 PILARES */}
+        <section className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center mb-16">
+                <h2 className="text-2xl sm:text-3xl font-medium text-foreground">
+                  Nosso modelo científico se apoia em três pilares
+                </h2>
               </div>
+            </ScrollReveal>
+            
+            <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+              {PILLARS.map((pillar, i) => (
+                <ScrollReveal key={i}>
+                  <div className="h-full bg-card/20 border border-border/30 rounded-sm p-6 sm:p-8 space-y-5">
+                    <pillar.icon className="w-6 h-6 text-muted-foreground/60" strokeWidth={1.5} />
+                    <h3 className="text-lg font-medium text-foreground leading-tight">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground/80 leading-relaxed whitespace-pre-line">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
-          </ScrollReveal>
+          </div>
+        </section>
+
+        {/* O QUE MEDIMOS */}
+        <section className="py-24 sm:py-32 bg-card/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-3xl mx-auto text-center space-y-8">
+                <div className="space-y-4">
+                  <h2 className="text-2xl sm:text-3xl font-medium text-foreground">
+                    Medimos sinais. Observamos padrões. Reduzimos fricção.
+                  </h2>
+                  <div className="space-y-1 text-muted-foreground">
+                    <p>Não medimos "inteligência".</p>
+                    <p>Não medimos "performance cognitiva absoluta".</p>
+                  </div>
+                </div>
+                
+                <div className="pt-4">
+                  <p className="text-muted-foreground mb-6 font-medium">Observamos:</p>
+                  <div className="grid sm:grid-cols-2 gap-3 text-left max-w-xl mx-auto">
+                    {WHAT_WE_MEASURE.map((item, i) => (
+                      <div 
+                        key={i} 
+                        className="flex items-center gap-3 text-muted-foreground/80"
+                      >
+                        <BarChart3 className="w-4 h-4 text-muted-foreground/40 flex-shrink-0" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="pt-8 border-t border-border/30 max-w-lg mx-auto">
+                  <p className="text-sm text-muted-foreground/60">
+                    Esses sinais não definem quem você é.<br />
+                    Eles mostram onde o sistema encontra resistência.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* CIÊNCIA ≠ PROMESSA */}
+        <section className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-2xl mx-auto text-center space-y-8">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground">
+                  Ciência não é promessa. É método.
+                </h2>
+                
+                <div className="space-y-6 text-muted-foreground text-base sm:text-lg leading-relaxed">
+                  <p>
+                    A ciência da VYR não entrega respostas prontas.<br />
+                    Ela constrói <span className="text-foreground">referências individuais</span>.
+                  </p>
+                  <p>
+                    O objetivo não é prever comportamento.<br />
+                    É reduzir o que atrapalha o funcionamento natural do sistema.
+                  </p>
+                </div>
+                
+                <div className="pt-6 space-y-1 text-foreground font-medium">
+                  <p>Mais fluidez para funcionar bem.</p>
+                  <p>Menos esforço invisível.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* FUNDAMENTOS */}
+        <section className="py-24 sm:py-32 bg-card/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-3xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl sm:text-3xl font-medium text-foreground mb-4">
+                    Áreas que fundamentam nosso modelo
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Nosso trabalho é orientado por evidências consolidadas nas áreas de:
+                  </p>
+                </div>
+                
+                <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+                  {FOUNDATIONS.map((item, i) => (
+                    <div 
+                      key={i} 
+                      className="flex items-center gap-3 text-muted-foreground/80 bg-card/30 border border-border/20 rounded-sm px-4 py-3"
+                    >
+                      <Zap className="w-4 h-4 text-muted-foreground/40 flex-shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                
+                <p className="text-center text-xs text-muted-foreground/50 mt-8">
+                  Referências científicas são usadas como base metodológica,
+                  não como promessa de resultado.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* BLOCO FINAL */}
+        <section className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-2xl mx-auto text-center space-y-8">
+                <h2 className="text-2xl sm:text-3xl font-medium text-foreground">
+                  Ciência aplicada. Sistema em evolução.
+                </h2>
+                
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    A VYR Science não existe isolada.
+                  </p>
+                  <p>
+                    Ela orienta o VYR System, o Labs e o Node<br />
+                    como partes de um único processo:
+                  </p>
+                </div>
+                
+                <p className="text-foreground font-medium text-lg">
+                  reduzir fricção → sustentar fluidez → permitir constância.
+                </p>
+                
+                <div className="pt-8">
+                  <Link to="/system">
+                    <Button 
+                      variant="outline" 
+                      className="border-border/50 text-muted-foreground hover:text-foreground hover:border-border"
+                    >
+                      Conheça o VYR System
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </section>
       </main>
-    </div>
-  );
-}
 
-// Compound Card Component
-function CompoundCard({ compound }: { compound: { name: string; dose: string; mechanism: string; references: string[] } }) {
-  return (
-    <Card className="border-border/30 bg-card/20">
-      <CardContent className="p-4 sm:p-5">
-        <div className="space-y-3">
-          <div className="flex items-start justify-between gap-4">
-            <h4 className="font-mono text-sm text-foreground">{compound.name}</h4>
-            <span className="text-xs text-muted-foreground/60 font-mono whitespace-nowrap">
-              {compound.dose}
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground/80 leading-relaxed">
-            {compound.mechanism}
-          </p>
-          <div className="flex items-center gap-2 flex-wrap">
-            <BookOpen className="w-3 h-3 text-muted-foreground/40" />
-            {compound.references.map((ref, i) => (
-              <span key={i} className="text-[10px] text-muted-foreground/50 font-mono">
-                {ref}{i < compound.references.length - 1 && ","}
-              </span>
-            ))}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+      <Footer />
+    </div>
   );
 }
