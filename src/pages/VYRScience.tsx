@@ -182,14 +182,20 @@ export default function VYRScience() {
               {PILLARS.map((pillar, i) => (
                 <div 
                   key={i}
-                  className="h-full bg-card/20 border border-border/30 rounded-sm p-6 sm:p-8 space-y-5 opacity-0 animate-fade-in"
+                  className="group h-full bg-card/20 border border-border/30 rounded-sm p-6 sm:p-8 space-y-5 
+                    opacity-0 translate-y-6 
+                    animate-[fade-in_0.6s_ease-out_forwards,slide-up_0.6s_ease-out_forwards]
+                    hover:bg-card/30 hover:border-border/50 
+                    transition-all duration-500"
                   style={{ 
-                    animationDelay: `${i * 150}ms`,
-                    animationFillMode: 'forwards'
+                    animationDelay: `${i * 200}ms`,
                   }}
                 >
-                  <pillar.icon className="w-6 h-6 text-muted-foreground/60" strokeWidth={1.5} />
-                  <h3 className="text-lg font-medium text-foreground leading-tight">
+                  <pillar.icon 
+                    className="w-6 h-6 text-muted-foreground/60 group-hover:text-muted-foreground transition-colors duration-300" 
+                    strokeWidth={1.5} 
+                  />
+                  <h3 className="text-lg font-medium text-foreground leading-tight group-hover:text-foreground/90 transition-colors duration-300">
                     {pillar.title}
                   </h3>
                   <p className="text-sm text-muted-foreground/80 leading-relaxed whitespace-pre-line">
