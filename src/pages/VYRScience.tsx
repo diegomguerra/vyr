@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Brain, Activity, BarChart3, Waves, Zap } from "lucide-react";
+import { ArrowRight, Brain, Activity, BarChart3, Waves, Zap, X, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LandingNav } from "@/components/landing/LandingNav";
 import { Footer } from "@/components/landing/Footer";
@@ -63,40 +63,35 @@ function SectionDivider({ variant = "default" }: { variant?: "default" | "accent
     </div>
   );
 }
+
 const PILLARS = [
   {
     icon: Brain,
-    title: "Carga cognitiva é o problema central",
-    description: `Fadiga mental raramente vem da falta de estímulo.
-Ela surge do acúmulo de carga mal recuperada ao longo do dia.
+    title: "Neurofisiologia da carga cognitiva",
+    description: `Atenção, decisão e energia mental não falham por falta de estímulo.
+Elas se degradam pelo acúmulo de carga mal recuperada.
 
-Decisão, foco e energia não colapsam de uma vez.
-Eles se degradam silenciosamente.
-
+Fadiga, estresse, variabilidade — sinais de fricção acumulada.
 A ciência da VYR começa aqui.`,
   },
   {
     icon: Waves,
-    title: "Ritmo importa mais do que intensidade",
+    title: "Ritmo, não intensidade",
     description: `Sistemas biológicos funcionam melhor com constância do que com picos.
 
-Em vez de empurrar o cérebro,
-trabalhamos com ciclos de ativação, sustentação e recuperação
-alinhados ao funcionamento natural do sistema nervoso.
+Ciclo circadiano. Modular manhã, tarde, noite.
+Em vez de empurrar o cérebro, trabalhamos com o fluxo natural.
 
-Menos ruído.
-Mais fluidez.`,
+Isso conecta diretamente com BOOT / HOLD / CLEAR.`,
   },
   {
     icon: Activity,
-    title: "Percepção + fisiologia constroem entendimento real",
+    title: "Percepção + fisiologia",
     description: `A experiência subjetiva importa.
-Mas ela se torna mais confiável quando observada ao longo do tempo.
+Mas ela fica mais poderosa quando observada ao longo do tempo.
 
 A VYR cruza percepção consciente com sinais fisiológicos
-para identificar padrões individuais — não para rotular pessoas.
-
-O sistema aprende com você.`,
+para identificar padrões — não para rotular pessoas.`,
   },
 ];
 
@@ -108,19 +103,26 @@ const NOT_PROMISES = [
 ];
 
 const WHAT_WE_MEASURE = [
-  "variabilidade de energia mental",
-  "estabilidade ao longo do dia",
-  "qualidade de recuperação",
+  "variabilidade de energia",
+  "recuperação",
+  "estabilidade",
   "prontidão percebida",
-  "consistência ao longo do tempo",
+  "coerência ao longo dos dias",
 ];
 
 const FOUNDATIONS = [
-  "neurociência da carga cognitiva",
-  "fisiologia do estresse e recuperação",
-  "ritmos circadianos",
-  "variabilidade autonômica",
-  "metabolismo energético neural",
+  "Neurociência do esforço mental",
+  "Fisiologia do estresse e recuperação",
+  "Ritmo circadiano e performance",
+  "Variabilidade autonômica",
+];
+
+const COMPARISON = [
+  { them: "Ciência como vitrine", us: "Ciência como método" },
+  { them: "Acúmulo de informação", us: "Clareza estrutural" },
+  { them: "Tentativa de provar", us: "Compromisso com limites" },
+  { them: "Ciência genérica", us: "Ciência aplicada ao indivíduo" },
+  { them: "Promessa implícita", us: "Honestidade explícita" },
 ];
 
 export default function VYRScience() {
@@ -162,22 +164,26 @@ export default function VYRScience() {
                 {/* Subtitle */}
                 <div className="space-y-4 text-muted-foreground text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl">
                   <p>
-                    A ciência da VYR não busca picos artificiais de desempenho.
+                    Não buscamos picos artificiais de desempenho.
                   </p>
-                  <p>
-                    Ela existe para sustentar fluidez mental, reduzir esforço invisível
-                    e permitir que o sistema funcione melhor ao longo do tempo.
+                  <p className="text-foreground/90 font-medium">
+                    Buscamos fluidez, constância e recuperação real.
                   </p>
                 </div>
                 
-                {/* Statement */}
-                <div className="pt-4 border-l-2 border-muted-foreground/20 pl-6">
-                  <p className="text-foreground text-sm sm:text-base font-medium">
-                    Não prometemos atalhos.
+                {/* Core question */}
+                <div className="pt-6 space-y-4">
+                  <p className="text-muted-foreground text-sm sm:text-base">
+                    A ciência da VYR não começa no produto.
                   </p>
-                  <p className="text-foreground text-sm sm:text-base font-medium">
-                    Construímos método.
+                  <p className="text-muted-foreground text-sm sm:text-base">
+                    Ela começa na pergunta certa:
                   </p>
+                  <blockquote className="border-l-2 border-foreground/30 pl-6 py-2">
+                    <p className="text-foreground text-lg sm:text-xl font-medium italic">
+                      O que atrapalha o funcionamento natural do sistema nervoso ao longo do dia?
+                    </p>
+                  </blockquote>
                 </div>
               </div>
             </ScrollReveal>
@@ -389,8 +395,48 @@ export default function VYRScience() {
         {/* DIVIDER 6 */}
         <SectionDivider variant="accent" />
 
-        {/* BLOCO FINAL */}
+        {/* COMPARATIVO - O QUE NOS DIFERENCIA */}
         <section className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="max-w-3xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-2xl sm:text-3xl font-medium text-foreground mb-4">
+                    O que nos diferencia
+                  </h2>
+                  <p className="text-muted-foreground text-sm sm:text-base">
+                    Usamos ciência para reduzir promessas, não para inflá-las.
+                  </p>
+                </div>
+                
+                <div className="space-y-3">
+                  {COMPARISON.map((item, i) => (
+                    <div 
+                      key={i}
+                      className="grid grid-cols-2 gap-4 opacity-0 animate-fade-in"
+                      style={{ animationDelay: `${i * 100}ms`, animationFillMode: 'forwards' }}
+                    >
+                      <div className="flex items-center gap-3 text-muted-foreground/50 bg-card/20 border border-border/20 rounded-sm px-4 py-3 text-sm">
+                        <X className="w-4 h-4 text-muted-foreground/30 flex-shrink-0" />
+                        <span className="line-through">{item.them}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-foreground/80 bg-card/40 border border-border/40 rounded-sm px-4 py-3 text-sm">
+                        <Check className="w-4 h-4 text-foreground/50 flex-shrink-0" />
+                        {item.us}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* DIVIDER 7 */}
+        <SectionDivider />
+
+        {/* BLOCO FINAL */}
+        <section className="py-24 sm:py-32 bg-card/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="max-w-2xl mx-auto text-center space-y-8">
@@ -412,13 +458,22 @@ export default function VYRScience() {
                   reduzir fricção → sustentar fluidez → permitir constância.
                 </p>
                 
-                <div className="pt-8">
+                <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/system">
                     <Button 
                       variant="outline" 
                       className="border-border/50 text-muted-foreground hover:text-foreground hover:border-border"
                     >
                       Conheça o VYR System
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/labs">
+                    <Button 
+                      variant="ghost" 
+                      className="text-muted-foreground/70 hover:text-foreground"
+                    >
+                      Explorar o Labs
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
