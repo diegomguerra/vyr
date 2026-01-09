@@ -1,16 +1,14 @@
-export type FluidezState = "REDUZIDA" | "ESTAVEL" | "ELEVADA";
-export type DayDirection = "REDUZIR_CARGA" | "SUSTENTAR" | "AVANCAR_COM_LEVEZA";
+export type FluidezState = "BAIXA" | "ESTAVEL" | "ALTA";
+export type DayDirection = "SUSTENTAR" | "SIMPLIFICAR" | "PROTEGER" | "RECUPERAR";
 
 export type DailyGuidanceDTO = {
   fluidez: FluidezState;
   direction: DayDirection;
+  action: string;
   confirmation?: string;
 };
 
-export type ObservationDTO = {
-  fluidezTrend: string;
-  constancySummary: string;
-  weekBars: Array<"alinhado" | "falta">;
-  signals: string[];
-  context?: string;
+export type InsightDTO = {
+  title: string;
+  body: string;
 };

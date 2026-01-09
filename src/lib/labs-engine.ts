@@ -1,43 +1,55 @@
-import type { DailyGuidanceDTO, DayDirection, FluidezState, ObservationDTO } from "./labs-dtos";
+import type { DailyGuidanceDTO, DayDirection, FluidezState, InsightDTO } from "./labs-dtos";
 
 type RitualInput = {
-  mentalEnergy: "baixa" | "media" | "alta";
-  decisionFeel: "pesada" | "neutra" | "clara";
+  mentalEase: "baixa" | "media" | "alta";
+  decisionClarity: "baixa" | "media" | "alta";
+  dayLoad: "baixa" | "media" | "alta";
   nodeEnabled: boolean;
 };
 
 type RitualEntry = {
   dateISO: string;
   guidance: DailyGuidanceDTO;
+  checklistComplete: boolean;
 };
 
 const fluidezByInput = (input: RitualInput): FluidezState => {
-  if (input.mentalEnergy === "baixa" || input.decisionFeel === "pesada") {
-    return "REDUZIDA";
-  }
-  if (input.mentalEnergy === "alta" && input.decisionFeel === "clara") {
-    return "ELEVADA";
+  if (input.mentalEase === "baixa" || input.decisionClarity === "baixa") return "BAIXA";
+  if (input.mentalEase === "alta" && input.decisionClarity === "alta" && input.dayLoad === "baixa") {
+    return "ALTA";
   }
   return "ESTAVEL";
 };
 
 const directionByInput = (input: RitualInput): DayDirection => {
-  if (input.mentalEnergy === "baixa" || input.decisionFeel === "pesada") {
-    return "REDUZIR_CARGA";
+  if (input.dayLoad === "alta" && input.mentalEase === "baixa") {
+    return "RECUPERAR";
   }
-  if (input.mentalEnergy === "alta" && input.decisionFeel === "clara") {
-    return "AVANCAR_COM_LEVEZA";
+  if (input.dayLoad === "alta") {
+    return "PROTEGER";
+  }
+  if (input.mentalEase === "baixa" || input.decisionClarity === "baixa") {
+    return "SIMPLIFICAR";
   }
   return "SUSTENTAR";
 };
 
+const actionByDirection: Record<DayDirection, string> = {
+  SUSTENTAR: "Feche um pequeno ciclo agora (20–60s).",
+  SIMPLIFICAR: "Reduza para uma prioridade e avance só nela.",
+  PROTEGER: "Crie um bloco curto sem interrupções.",
+  RECUPERAR: "Respire em 4 ciclos e recupere espaço mental.",
+};
+
 const confirmationByInput = (input: RitualInput, direction: DayDirection): string => {
   const base =
-    direction === "REDUZIR_CARGA"
-      ? "Você já percebe o peso. Vamos reduzir e proteger o foco."
-      : direction === "AVANCAR_COM_LEVEZA"
-        ? "A percepção está favorável. Avance com leveza e margem."
-        : "O ritmo parece estável. Sustente com constância.";
+    direction === "RECUPERAR"
+      ? "Vamos recuperar leveza antes de avançar."
+      : direction === "PROTEGER"
+        ? "Hoje vale proteger espaço e reduzir pressão."
+        : direction === "SIMPLIFICAR"
+          ? "Hoje vale simplificar para manter fluidez."
+          : "O ritmo parece estável. Sustente com constância.";
 
   if (!input.nodeEnabled) return base;
   return `${base} Sinais do sistema seguem compatíveis com sua leitura.`;
@@ -49,75 +61,44 @@ export const buildDailyGuidance = (input: RitualInput): DailyGuidanceDTO => {
   return {
     fluidez,
     direction,
+    action: actionByDirection[direction],
     confirmation: confirmationByInput(input, direction),
   };
 };
 
-const fluidezScore: Record<FluidezState, number> = {
-  REDUZIDA: 0,
-  ESTAVEL: 1,
-  ELEVADA: 2,
-};
+const fluidezScore: Record<FluidezState, number> = { BAIXA: 0, ESTAVEL: 1, ALTA: 2 };
 
-export const buildObservationDTO = (rituals: RitualEntry[]): ObservationDTO => {
-  const recent = [...rituals].slice(0, 10);
-  const avg =
-    recent.reduce((acc, entry) => acc + fluidezScore[entry.guidance.fluidez], 0) / (recent.length || 1);
-  const fluidezTrend =
-    avg >= 1.5
-      ? "Tendência mais leve nos últimos dias."
-      : avg <= 0.5
-        ? "Tendência mais densa nos últimos dias."
-        : "Tendência estável, sem mudanças bruscas.";
+export const buildWeeklyInsight = (rituals: RitualEntry[]): InsightDTO => {
+  const recent = rituals.slice(0, 7);
+  if (recent.length === 0) {
+    return {
+      title: "Ainda sem padrão",
+      body: "Quando houver mais registros, o sistema resume seus padrões semanais.",
+    };
+  }
 
-  const now = new Date();
-  const weekBars = Array.from({ length: 7 }).map((_, idx) => {
-    const date = new Date(now);
-    date.setDate(now.getDate() - (6 - idx));
-    const dateISO = date.toISOString().slice(0, 10);
-    return rituals.some((r) => r.dateISO === dateISO) ? "alinhado" : "falta";
-  });
+  const completionRate = recent.filter((entry) => entry.checklistComplete).length / recent.length;
+  const avgScore =
+    recent.reduce((acc, entry) => acc + fluidezScore[entry.guidance.fluidez], 0) / recent.length;
 
-  const alignedCount = weekBars.filter((bar) => bar === "alinhado").length;
-  const constancySummary =
-    alignedCount >= 5
-      ? "Constância sólida. Ritmo consistente."
-      : alignedCount >= 3
-        ? "Constância moderada. Espaços para sustentar."
-        : "Constância baixa. Retomar alinhamentos curtos ajuda.";
+  if (completionRate >= 0.7 && avgScore >= 1.3) {
+    return {
+      title: "Ritmo consistente",
+      body: "A constância está ajudando a manter a fluidez estável.",
+    };
+  }
 
-  const directionCounts = rituals.reduce<Record<DayDirection, number>>(
-    (acc, entry) => {
-      acc[entry.guidance.direction] += 1;
-      return acc;
-    },
-    {
-      REDUZIR_CARGA: 0,
-      SUSTENTAR: 0,
-      AVANCAR_COM_LEVEZA: 0,
-    }
-  );
-
-  const topDirection = Object.entries(directionCounts).sort((a, b) => b[1] - a[1])[0]?.[0] as
-    | DayDirection
-    | undefined;
-
-  const signals = [
-    topDirection === "REDUZIR_CARGA"
-      ? "Mais carga observada nos últimos alinhamentos."
-      : topDirection === "AVANCAR_COM_LEVEZA"
-        ? "Sinais compatíveis com avanço leve."
-        : "Sinais compatíveis com sustentação.",
-    alignedCount >= 4 ? "Ritmo com constância percebida." : "Constância oscilando.",
-  ];
-
-  const context = rituals.length >= 4 ? "Mais movimento percebido em dias de alinhamento." : undefined;
+  if (completionRate < 0.4) {
+    return {
+      title: "Espaço para retomar",
+      body: "Retomar alinhamentos curtos pode reduzir esforço invisível.",
+    };
+  }
 
   return {
-    fluidezTrend,
-    constancySummary,
-    weekBars,
-    signals,
-    context,
+    title: "Padrões emergindo",
+    body: "Os registros já mostram um ritmo mais claro nos próximos dias.",
   };
 };
+
+export const fluidezToScore = (fluidez: FluidezState) => fluidezScore[fluidez];

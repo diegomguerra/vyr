@@ -1,0 +1,27 @@
+import { useEffect, useState } from "react";
+import type { RitualEntry } from "@/lib/labs-types";
+
+const STORAGE_KEY = "vyr.labs.rituals";
+
+const readEntries = (): RitualEntry[] => {
+  if (typeof window === "undefined") return [];
+  const raw = window.localStorage.getItem(STORAGE_KEY);
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw) as RitualEntry[];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+export const useLabsEntries = () => {
+  const [entries, setEntries] = useState<RitualEntry[]>(() => readEntries());
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  }, [entries]);
+
+  return { entries, setEntries };
+};
