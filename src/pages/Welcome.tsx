@@ -112,7 +112,7 @@ export default function Welcome() {
           title: "Configuração completa",
           description: "Sua plataforma está pronta. Boas análises!",
         });
-        navigate("/app/hoje");
+        window.location.assign("/#/app/hoje");
       } else {
         setStep(nextStep);
       }
