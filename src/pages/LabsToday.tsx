@@ -1,15 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { PrimaryCard } from "@/components/labs";
 import { useLabsEntries } from "@/hooks/use-labs-entries";
-import { buildDailyGuidance } from "@/lib/labs-engine";
-import { FEATURES } from "@/lib/flags";
+import { buildDailyState } from "@/lib/labs-engine";
 import type { RitualChecklist } from "@/lib/labs-types";
-
-const defaultInputs = {
-  mentalEase: "media",
-  decisionClarity: "media",
-  dayLoad: "media",
-} as const;
 
 export default function LabsToday() {
   const navigate = useNavigate();
@@ -17,12 +10,22 @@ export default function LabsToday() {
   const todayISO = new Date().toISOString().slice(0, 10);
   const todayEntry = entries.find((entry) => entry.dateISO === todayISO);
 
-  const guidance =
-    todayEntry?.guidance ??
-    buildDailyGuidance({
-      ...defaultInputs,
-      nodeEnabled: FEATURES.FEATURE_NODE_ENABLED,
-    });
+  const dailyState = buildDailyState(entries);
+  const latestInputs = todayEntry?.inputs;
+  const cargaPercebida =
+    latestInputs?.dayLoad === "alta" ? "Alta" : latestInputs?.dayLoad === "baixa" ? "Baixa" : "Média";
+  const clarezaMental =
+    latestInputs?.decisionClarity === "alta"
+      ? "Fluida"
+      : latestInputs?.decisionClarity === "baixa"
+        ? "Em recuperação"
+        : "Estável";
+  const consistencia7 =
+    entries.filter((entry) => {
+      const date = new Date(entry.dateISO);
+      const diff = (new Date().getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
+      return diff <= 7;
+    }).length ?? 0;
 
   const checklist = todayEntry?.checklist ?? {
     tookSachet: false,
@@ -39,7 +42,22 @@ export default function LabsToday() {
 
   return (
     <div className="space-y-5">
-      <PrimaryCard guidance={guidance} onRitual={() => navigate("/app/ritual")} />
+      <PrimaryCard state={dailyState} onRitual={() => navigate("/app/ritual")} />
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div className="vyr-card-graphite p-4">
+          <p className="text-xs font-mono text-vyr-gray-500">Carga percebida</p>
+          <p className="text-lg font-semibold text-vyr-white">{cargaPercebida}</p>
+        </div>
+        <div className="vyr-card-graphite p-4">
+          <p className="text-xs font-mono text-vyr-gray-500">Clareza mental</p>
+          <p className="text-lg font-semibold text-vyr-white">{clarezaMental}</p>
+        </div>
+        <div className="vyr-card-graphite p-4">
+          <p className="text-xs font-mono text-vyr-gray-500">Consistência (7 dias)</p>
+          <p className="text-lg font-semibold text-vyr-white">{consistencia7} / 7 dias</p>
+        </div>
+      </div>
 
       <div className="vyr-card-graphite p-5 sm:p-6 space-y-3">
         <h3 className="text-sm font-mono text-vyr-gray-400">Ritual de hoje</h3>
@@ -73,10 +91,6 @@ export default function LabsToday() {
           </p>
         )}
       </div>
-
-      <p className="text-xs text-vyr-gray-500 font-mono">
-        Estado → direção → ação leve. Sem promessas, só alinhamento.
-      </p>
     </div>
   );
 }

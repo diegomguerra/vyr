@@ -24,6 +24,7 @@ import LabsToday from "./pages/LabsToday";
 import LabsRitual from "./pages/LabsRitual";
 import LabsProgress from "./pages/LabsProgress";
 import LabsMenu from "./pages/LabsMenu";
+import LabsInsights from "./pages/LabsInsights";
 import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import Welcome from "./pages/Welcome";
@@ -149,6 +150,7 @@ function AuthenticatedApp() {
             <Route path="/painel" element={<Navigate to="/app/hoje" replace />} />
             <Route path="/hoje" element={<LabsToday />} />
             <Route path="/ritual" element={<LabsRitual />} />
+            <Route path="/insights" element={<LabsInsights />} />
             <Route path="/progresso" element={<LabsProgress />} />
             <Route path="/menu" element={<LabsMenu />} />
             <Route path="/anamnese" element={<Onboarding />} />

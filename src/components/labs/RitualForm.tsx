@@ -20,12 +20,14 @@ type RitualFormProps = {
 export function RitualForm({ inputs, guidance, onChange, onSubmit }: RitualFormProps) {
   const renderOptions = (
     label: string,
+    helper: string,
     value: RitualInputs[keyof RitualInputs],
     options: Array<{ value: RitualInputs[keyof RitualInputs]; label: string }>,
     onSelect: (value: RitualInputs[keyof RitualInputs]) => void
   ) => (
     <div>
       <p className="text-xs font-mono text-vyr-gray-400 mb-2">{label}</p>
+      <p className="text-[11px] text-vyr-gray-500 mb-2">{helper}</p>
       <div className="grid grid-cols-3 gap-2">
         {options.map((opt) => (
           <button
@@ -55,9 +57,10 @@ export function RitualForm({ inputs, guidance, onChange, onSubmit }: RitualFormP
         </p>
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-4">
         {renderOptions(
           "Leveza mental",
+          "Esse registro ajuda o sistema a identificar padrões ao longo do tempo.",
           inputs.mentalEase,
           [
             { value: "baixa", label: "Baixa" },
@@ -68,6 +71,7 @@ export function RitualForm({ inputs, guidance, onChange, onSubmit }: RitualFormP
         )}
         {renderOptions(
           "Clareza para decidir",
+          "Use sua percepção de agora, sem esforço extra.",
           inputs.decisionClarity,
           [
             { value: "baixa", label: "Baixa" },
@@ -78,6 +82,7 @@ export function RitualForm({ inputs, guidance, onChange, onSubmit }: RitualFormP
         )}
         {renderOptions(
           "Carga do dia",
+          "Ajuda a calibrar a direção do dia.",
           inputs.dayLoad,
           [
             { value: "baixa", label: "Baixa" },

@@ -1,4 +1,4 @@
-import type { DailyGuidanceDTO, DayDirection, FluidezState, InsightDTO } from "./labs-dtos";
+import type { DailyGuidanceDTO, DayDirection, DailyState, FluidezState, InsightDTO, WeeklySummary } from "./labs-dtos";
 
 type RitualInput = {
   mentalEase: "baixa" | "media" | "alta";
@@ -102,3 +102,89 @@ export const buildWeeklyInsight = (rituals: RitualEntry[]): InsightDTO => {
 };
 
 export const fluidezToScore = (fluidez: FluidezState) => fluidezScore[fluidez];
+
+export const buildDailyState = (rituals: RitualEntry[]): DailyState => {
+  if (rituals.length === 0) {
+    return {
+      estado: "Estável",
+      direcao: "Sustentar",
+    };
+  }
+
+  const latest = rituals[0];
+  const estado =
+    latest.guidance.fluidez === "ALTA"
+      ? "Fluido"
+      : latest.guidance.fluidez === "BAIXA"
+        ? "Em recuperação"
+        : "Estável";
+
+  const direcao =
+    latest.guidance.direction === "SUSTENTAR"
+      ? "Sustentar"
+      : latest.guidance.direction === "PROTEGER"
+        ? "Consolidar"
+        : "Reduzir carga";
+
+  return { estado, direcao };
+};
+
+const summariesOrderLabel = (index: number) => index + 1;
+
+const getWeekKey = (dateISO: string) => {
+  const date = new Date(dateISO);
+  const day = date.getDay();
+  const diff = (day === 0 ? -6 : 1) - day;
+  const monday = new Date(date);
+  monday.setDate(date.getDate() + diff);
+  const year = monday.getFullYear();
+  const weekStart = monday.toISOString().slice(0, 10);
+  return `${year}-${weekStart}`;
+};
+
+export const buildWeeklySummaries = (rituals: RitualEntry[]): WeeklySummary[] => {
+  const grouped = new Map<string, RitualEntry[]>();
+  rituals.forEach((entry) => {
+    const key = getWeekKey(entry.dateISO);
+    const list = grouped.get(key) ?? [];
+    list.push(entry);
+    grouped.set(key, list);
+  });
+
+  return Array.from(grouped.entries())
+    .sort((a, b) => (a[0] < b[0] ? 1 : -1))
+    .slice(0, 6)
+    .map(([key, entries], idx) => {
+      const ritualsDone = entries.length;
+      const ritualsTotal = 7;
+      const variabilityScore =
+        entries.reduce((sum, entry) => sum + fluidezToScore(entry.guidance.fluidez), 0) / entries.length;
+      const variabilityLabel =
+        variabilityScore >= 1.5 ? "Baixa" : variabilityScore >= 0.9 ? "Moderada" : "Alta";
+      return {
+        weekLabel: `Semana ${summariesOrderLabel(idx)}`,
+        ritualsDone,
+        ritualsTotal,
+        variabilityLabel,
+      };
+    });
+};
+
+export const buildConsistencyInsight = (rituals: RitualEntry[]): string => {
+  const count = rituals.length;
+  if (count === 0) return "Sem registros ainda. O sistema aprende com repetição.";
+  if (count < 3) return "Constância inicial. Mais alguns dias ajudam a definir padrão.";
+  if (count < 7) return "Ritmo em construção. Continue sustentando os registros.";
+  return "Constância sólida. O padrão começa a ficar claro.";
+};
+
+export const buildVariationInsight = (rituals: RitualEntry[]): string => {
+  if (rituals.length < 2) return "Variabilidade baixa por falta de registros.";
+  const scores = rituals.slice(0, 7).map((entry) => fluidezToScore(entry.guidance.fluidez));
+  const mean = scores.reduce((sum, value) => sum + value, 0) / scores.length;
+  const variance = scores.reduce((sum, value) => sum + Math.pow(value - mean, 2), 0) / scores.length;
+  const stdDev = Math.sqrt(variance);
+  if (stdDev < 0.4) return "Baixa variabilidade nos últimos 7 dias.";
+  if (stdDev < 0.8) return "Variabilidade moderada nos últimos 7 dias.";
+  return "Alta variabilidade nos últimos 7 dias.";
+};

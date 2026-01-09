@@ -1,14 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-import { CalendarDays, Sparkles, TrendingUp, ClipboardList, User } from "lucide-react";
+import { CalendarDays, Sparkles, TrendingUp, ClipboardList, User, Lightbulb } from "lucide-react";
 
 const PRIMARY_ITEMS = [
   { to: "/app/hoje", label: "Hoje", icon: CalendarDays },
   { to: "/app/ritual", label: "Ritual", icon: Sparkles },
+  { to: "/app/insights", label: "Insights", icon: Lightbulb },
   { to: "/app/progresso", label: "Progresso", icon: TrendingUp },
+  { to: "/app/perfil", label: "Perfil", icon: User },
 ];
 
 const SECONDARY_ITEMS = [
-  { to: "/app/perfil", label: "Perfil", icon: User },
   { to: "/app/anamnese", label: "Anamnese", icon: ClipboardList },
 ];
 

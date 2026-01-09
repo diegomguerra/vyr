@@ -12,3 +12,15 @@ export type InsightDTO = {
   title: string;
   body: string;
 };
+
+export type DailyState = {
+  estado: "Estável" | "Em recuperação" | "Fluido";
+  direcao: "Sustentar" | "Reduzir carga" | "Consolidar";
+};
+
+export type WeeklySummary = {
+  weekLabel: string;
+  ritualsDone: number;
+  ritualsTotal: number;
+  variabilityLabel: "Baixa" | "Moderada" | "Alta";
+};

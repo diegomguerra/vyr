@@ -15,13 +15,23 @@ const readEntries = (): RitualEntry[] => {
   }
 };
 
+const sortEntries = (list: RitualEntry[]) =>
+  [...list].sort((a, b) => (a.dateISO < b.dateISO ? 1 : -1));
+
 export const useLabsEntries = () => {
-  const [entries, setEntries] = useState<RitualEntry[]>(() => readEntries());
+  const [entries, setEntries] = useState<RitualEntry[]>(() => sortEntries(readEntries()));
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
   }, [entries]);
 
-  return { entries, setEntries };
+  const setSortedEntries = (next: RitualEntry[] | ((prev: RitualEntry[]) => RitualEntry[])) => {
+    setEntries((prev) => {
+      const resolved = typeof next === "function" ? next(prev) : next;
+      return sortEntries(resolved);
+    });
+  };
+
+  return { entries, setEntries: setSortedEntries };
 };
