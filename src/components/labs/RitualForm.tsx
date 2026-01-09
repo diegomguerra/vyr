@@ -49,7 +49,7 @@ export function RitualForm({ inputs, guidance, onChange, onSubmit }: RitualFormP
   return (
     <div className="vyr-card-graphite p-5 sm:p-6 space-y-5">
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold text-vyr-white">Ritual (<=60s)</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-vyr-white">Ritual (≤60s)</h2>
         <p className="text-xs sm:text-sm text-vyr-gray-400 mt-1">
           Check-in rápido para reduzir esforço invisível.
         </p>
