@@ -27,10 +27,10 @@ export function StepSaude({ condicoes, medicamentos, onCondicoesChange, onMedica
     <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
       <div>
         <h3 className="text-lg font-bold text-foreground mb-2">
-          Você possui alguma condição de saúde relevante?
+          Existe alguma condição que impacta seu ritmo?
         </h3>
         <p className="text-sm text-muted-foreground mb-4">
-          Selecione todas que se aplicam. Esta informação ajuda a personalizar recomendações.
+          Opcional. Isso ajuda a evitar sugestões inadequadas. Não substitui orientação profissional.
         </p>
         
         <div className="grid gap-2 sm:grid-cols-2">
@@ -70,13 +70,13 @@ export function StepSaude({ condicoes, medicamentos, onCondicoesChange, onMedica
           Usa algum medicamento regularmente?
         </h3>
         <p className="text-sm text-muted-foreground mb-4">
-          Opcional. Pode ser útil para entender possíveis interações.
+          Opcional. Serve apenas como contexto para evitar recomendações inadequadas.
         </p>
         
         <textarea
           value={medicamentos}
           onChange={(e) => onMedicamentosChange(e.target.value)}
-          placeholder="Ex: Antidepressivo, anti-hipertensivo, etc. (deixe em branco se não usar)"
+          placeholder="Ex: medicamento diário (deixe em branco se não usar)"
           className="w-full p-4 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
           rows={3}
         />

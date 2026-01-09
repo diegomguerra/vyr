@@ -1,4 +1,9 @@
 export { LabsHeader } from "./LabsHeader";
+export { BottomNav } from "./BottomNav";
+export { SidebarNav } from "./SidebarNav";
+export { PrimaryCard } from "./PrimaryCard";
+export { RitualForm } from "./RitualForm";
+export { ProgressCards } from "./ProgressCards";
 export { InfoBlock } from "./InfoBlock";
 export { StatusCard } from "./StatusCard";
 export { ScrollReveal } from "./ScrollReveal";

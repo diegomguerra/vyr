@@ -6,6 +6,5 @@ export { Field } from "./Field";
 export { InsightsCard } from "./InsightsCard";
 export { KpiRow } from "./KpiRow";
 export { MiniLine } from "./MiniLine";
-export { NavSidebar } from "./NavSidebar";
 export { ProfileSummary } from "./ProfileSummary";
 export { ScaleBlock } from "./ScaleBlock";

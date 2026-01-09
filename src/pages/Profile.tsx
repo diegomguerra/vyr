@@ -96,6 +96,21 @@ export default function Profile() {
           />
         </Field>
       </div>
+
+      <div className="mt-8 space-y-4 text-sm text-muted-foreground">
+        <div className="rounded-lg border border-border p-4">
+          <h3 className="text-foreground font-medium mb-2">Como o sistema funciona</h3>
+          <p>O VYR registra sua percepção diária, organiza sinais e aprende padrões com o tempo.</p>
+        </div>
+        <div className="rounded-lg border border-border p-4">
+          <h3 className="text-foreground font-medium mb-2">O que o sistema faz</h3>
+          <p>Ajuda a sustentar leveza e constância com direção prática baseada em registros.</p>
+        </div>
+        <div className="rounded-lg border border-border p-4">
+          <h3 className="text-foreground font-medium mb-2">O que o sistema NÃO faz</h3>
+          <p>Não diagnostica, não trata e não substitui acompanhamento profissional.</p>
+        </div>
+      </div>
     </Card>
   );
 }

@@ -107,7 +107,7 @@ export default function Onboarding() {
           title: "Anamnese completa!",
           description: "Suas informações foram salvas. Bom acompanhamento!",
         });
-        navigate("/");
+        window.location.assign("/#/app/hoje");
       }
     } catch (error) {
       console.error("Erro ao salvar:", error);

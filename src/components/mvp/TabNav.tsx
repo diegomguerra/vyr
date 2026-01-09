@@ -1,21 +1,16 @@
-import { Home, TrendingUp, Lightbulb, Settings, Activity } from "lucide-react";
+import type { ComponentType } from "react";
 
-type Tab = "home" | "cognitive" | "progress" | "insights" | "settings";
+type Tab = "home" | "ritual" | "progress" | "insights";
+
+type TabConfig = { key: Tab; label: string; Icon: ComponentType<{ className?: string }> };
 
 interface TabNavProps {
   active: Tab;
   onChange: (tab: Tab) => void;
+  tabs: TabConfig[];
 }
 
-const tabs: { key: Tab; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [
-  { key: "home", label: "Início", Icon: Home },
-  { key: "cognitive", label: "Cognitivo", Icon: Activity },
-  { key: "progress", label: "Progresso", Icon: TrendingUp },
-  { key: "insights", label: "Insights", Icon: Lightbulb },
-  { key: "settings", label: "Config", Icon: Settings },
-];
-
-export function TabNav({ active, onChange }: TabNavProps) {
+export function TabNav({ active, onChange, tabs }: TabNavProps) {
   return (
     <div className="flex flex-wrap gap-1.5 sm:gap-2">
       {tabs.map(({ key, label, Icon }) => (
@@ -37,4 +32,4 @@ export function TabNav({ active, onChange }: TabNavProps) {
   );
 }
 
-export type { Tab };
+export type { Tab, TabConfig };
