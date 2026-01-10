@@ -5,6 +5,7 @@ type FeatureFlags = {
   nodeTrendsProgress: boolean;
   insightsEnabled: boolean;
   progressWeeklyEnabled: boolean;
+  isDemoMode: boolean;
 };
 
 const parseFlag = (value: string | undefined, fallback: boolean) => {
@@ -31,6 +32,7 @@ export const getFeatureFlags = (): FeatureFlags => {
     import.meta.env.VITE_FF_PROGRESS_WEEKLY_ENABLED,
     true,
   );
+  const isDemoMode = parseFlag(import.meta.env.VITE_DEMO_MODE, true);
 
   return {
     nodeEnabled,
@@ -39,5 +41,6 @@ export const getFeatureFlags = (): FeatureFlags => {
     nodeTrendsProgress,
     insightsEnabled,
     progressWeeklyEnabled,
+    isDemoMode,
   };
 };

@@ -3,6 +3,7 @@ import { Card } from "@/components/nzt";
 import { getFeatureFlags } from "@/lib/feature-flags";
 import { buildInsights } from "@/lib/labs-engine";
 import type { RitualEntryDTO } from "@/lib/labs-types";
+import { getDemoInsights, getDemoRitualEntries } from "@/lib/demo-data";
 import { getRitualEntries } from "@/lib/ritual-storage";
 
 export default function LabsInsights() {
@@ -10,10 +11,17 @@ export default function LabsInsights() {
   const [entries, setEntries] = useState<RitualEntryDTO[]>([]);
 
   useEffect(() => {
+    if (flags.isDemoMode) {
+      setEntries(getDemoRitualEntries());
+      return;
+    }
     setEntries(getRitualEntries());
-  }, []);
+  }, [flags.isDemoMode]);
 
-  const insights = useMemo(() => buildInsights(entries), [entries]);
+  const insights = useMemo(
+    () => (flags.isDemoMode ? getDemoInsights() : buildInsights(entries)),
+    [entries, flags.isDemoMode],
+  );
 
   if (!flags.insightsEnabled) {
     return (
@@ -34,6 +42,11 @@ export default function LabsInsights() {
         <p className="text-xs text-vyr-gray-400">
           Inferências observacionais. Não usadas para decisão clínica.
         </p>
+        {flags.isDemoMode && (
+          <p className="text-xs text-vyr-accent uppercase tracking-[0.2em]">
+            Dados simulados para demonstração
+          </p>
+        )}
       </header>
 
       <div className="grid gap-4 md:grid-cols-3">

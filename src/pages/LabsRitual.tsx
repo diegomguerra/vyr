@@ -32,21 +32,22 @@ export default function LabsRitual() {
   const [perceivedLoad, setPerceivedLoad] = useState<"LOW" | "MEDIUM" | "HIGH">("MEDIUM");
 
   useEffect(() => {
+    if (flags.isDemoMode) return;
     const existing = getRitualEntryByDate(todayISO);
     if (existing) {
       setMentalLightness(existing.mentalLightness);
       setDecisionClarity(existing.decisionClarity);
       setPerceivedLoad(existing.perceivedLoad);
     }
-  }, [todayISO]);
+  }, [flags.isDemoMode, todayISO]);
 
   useEffect(() => {
-    if (!flags.nodeEnabled) return;
+    if (!flags.nodeEnabled || flags.isDemoMode) return;
     getNodeDailySummary(todayISO).then(setNodeSummary);
-  }, [flags.nodeEnabled, todayISO]);
+  }, [flags.nodeEnabled, flags.isDemoMode, todayISO]);
 
   useEffect(() => {
-    if (!flags.nodePrefillRitual || !nodeSummary) return;
+    if (!flags.nodePrefillRitual || !nodeSummary || flags.isDemoMode) return;
     const existing = getRitualEntryByDate(todayISO);
     if (existing) return;
     const suggestion = buildPrefillFromNode(nodeSummary);
@@ -59,6 +60,13 @@ export default function LabsRitual() {
   const suggestion = useMemo(() => buildPrefillFromNode(nodeSummary), [nodeSummary]);
 
   const handleSave = () => {
+    if (flags.isDemoMode) {
+      toast({
+        title: "Modo demo ativo",
+        description: "Dados simulados para demonstração. O ritual não foi salvo.",
+      });
+      return;
+    }
     const entry: RitualEntryDTO = {
       dateISO: todayISO,
       mentalLightness,
@@ -83,6 +91,11 @@ export default function LabsRitual() {
         <p className="text-xs text-vyr-gray-400">
           Três inputs. Registro local. Sem fricção.
         </p>
+        {flags.isDemoMode && (
+          <p className="text-xs text-vyr-accent uppercase tracking-[0.2em]">
+            Dados simulados para demonstração
+          </p>
+        )}
       </header>
 
       {flags.nodePrefillRitual && suggestion && (
@@ -153,8 +166,12 @@ export default function LabsRitual() {
       </Card>
 
       <div className="flex justify-end">
-        <Button onClick={handleSave} className="bg-vyr-white text-vyr-black hover:bg-vyr-gray-100">
-          Salvar ritual
+        <Button
+          onClick={handleSave}
+          disabled={flags.isDemoMode}
+          className="bg-vyr-white text-vyr-black hover:bg-vyr-gray-100"
+        >
+          {flags.isDemoMode ? "Modo demo ativo" : "Salvar ritual"}
         </Button>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Card } from "@/components/nzt";
 import { getFeatureFlags } from "@/lib/feature-flags";
 import { buildWeeklySummaries } from "@/lib/labs-engine";
 import type { NodeDailySummaryDTO, RitualEntryDTO } from "@/lib/labs-types";
+import { getDemoRitualEntries, getDemoWeeklyMetrics } from "@/lib/demo-data";
 import { getNodeDailySummary } from "@/lib/node-provider";
 import { getRitualEntries } from "@/lib/ritual-storage";
 
@@ -32,15 +33,20 @@ export default function LabsProgress() {
   const [nodeSummary, setNodeSummary] = useState<NodeDailySummaryDTO | undefined>(undefined);
 
   useEffect(() => {
+    if (flags.isDemoMode) {
+      setEntries(getDemoRitualEntries());
+      return;
+    }
     setEntries(getRitualEntries());
-  }, []);
+  }, [flags.isDemoMode]);
 
   useEffect(() => {
-    if (!flags.nodeEnabled) return;
+    if (!flags.nodeEnabled || flags.isDemoMode) return;
     getNodeDailySummary(todayISO).then(setNodeSummary);
-  }, [flags.nodeEnabled, todayISO]);
+  }, [flags.nodeEnabled, flags.isDemoMode, todayISO]);
 
   const weeklyCards = useMemo(() => buildWeeklySummaries(todayISO, entries, 4), [todayISO, entries]);
+  const demoWeekly = useMemo(() => getDemoWeeklyMetrics(), []);
   const trends = trendCopy(nodeSummary, entries);
 
   if (!flags.progressWeeklyEnabled) {
@@ -62,23 +68,83 @@ export default function LabsProgress() {
         <p className="text-xs text-vyr-gray-400">
           Inferências observacionais. Não usadas para decisão clínica.
         </p>
+        {flags.isDemoMode && (
+          <p className="text-xs text-vyr-accent uppercase tracking-[0.2em]">
+            Dados simulados para demonstração
+          </p>
+        )}
       </header>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {weeklyCards.map((card) => (
-          <Card key={card.weekLabel} title={card.weekLabel} subtitle="Ritual e variabilidade">
-            <div className="space-y-2 text-sm text-vyr-gray-300">
-              <p>
-                Rituais: <span className="text-vyr-white">{card.ritualsDone}</span> / {card.ritualsTarget}
-              </p>
-              <p>Variabilidade: {card.variabilityTag}</p>
-              <p>{card.note}</p>
+      {flags.isDemoMode ? (
+        <div className="space-y-4">
+          <Card title="Clareza média semanal" subtitle="Linha simples dos últimos 90 dias">
+            <div className="space-y-2">
+              {demoWeekly.map((week) => (
+                <div key={week.weekLabel} className="flex items-center gap-3 text-xs text-vyr-gray-300">
+                  <span className="w-16 text-vyr-gray-400">{week.weekLabel}</span>
+                  <div className="flex-1 h-2 rounded-full bg-vyr-graphite/50">
+                    <div
+                      className="h-2 rounded-full bg-vyr-accent/70"
+                      style={{ width: `${(week.clarityAvg / 5) * 100}%` }}
+                    />
+                  </div>
+                  <span className="w-10 text-right text-vyr-white">{week.clarityAvg}</span>
+                </div>
+              ))}
             </div>
           </Card>
-        ))}
-      </div>
 
-      {flags.nodeTrendsProgress && (
+          <Card title="Carga mental média semanal" subtitle="Linha simples dos últimos 90 dias">
+            <div className="space-y-2">
+              {demoWeekly.map((week) => (
+                <div key={week.weekLabel} className="flex items-center gap-3 text-xs text-vyr-gray-300">
+                  <span className="w-16 text-vyr-gray-400">{week.weekLabel}</span>
+                  <div className="flex-1 h-2 rounded-full bg-vyr-graphite/50">
+                    <div
+                      className="h-2 rounded-full bg-vyr-gray-300/70"
+                      style={{ width: `${(week.loadAvg / 5) * 100}%` }}
+                    />
+                  </div>
+                  <span className="w-10 text-right text-vyr-white">{week.loadAvg}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card title="Reducao de variabilidade" subtitle="Indicador semanal">
+            <div className="space-y-2">
+              {demoWeekly.map((week) => (
+                <div key={week.weekLabel} className="flex items-center gap-3 text-xs text-vyr-gray-300">
+                  <span className="w-16 text-vyr-gray-400">{week.weekLabel}</span>
+                  <div className="flex-1 h-2 rounded-full bg-vyr-graphite/50">
+                    <div
+                      className="h-2 rounded-full bg-vyr-white/70"
+                      style={{ width: `${(week.variability / 5) * 100}%` }}
+                    />
+                  </div>
+                  <span className="w-10 text-right text-vyr-white">{week.variability}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2">
+          {weeklyCards.map((card) => (
+            <Card key={card.weekLabel} title={card.weekLabel} subtitle="Ritual e variabilidade">
+              <div className="space-y-2 text-sm text-vyr-gray-300">
+                <p>
+                  Rituais: <span className="text-vyr-white">{card.ritualsDone}</span> / {card.ritualsTarget}
+                </p>
+                <p>Variabilidade: {card.variabilityTag}</p>
+                <p>{card.note}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
+
+      {!flags.isDemoMode && flags.nodeTrendsProgress && (
         <Card title="Tendências observacionais" subtitle="Node como suporte opcional">
           <ul className="list-disc space-y-2 pl-5 text-sm text-vyr-gray-300">
             {trends.map((trend) => (
