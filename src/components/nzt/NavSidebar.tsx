@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, ClipboardList, User } from "lucide-react";
+import { Compass, LineChart, Settings, Sun, Timer } from "lucide-react";
 
 const NAV_ITEMS = [
-  { to: "/app/painel", label: "Painel", icon: LayoutDashboard },
-  { to: "/app/anamnese", label: "Anamnese", icon: ClipboardList },
-  { to: "/app/perfil", label: "Perfil", icon: User },
+  { to: "/app/hoje", label: "Hoje", icon: Sun },
+  { to: "/app/ritual", label: "Ritual", icon: Timer },
+  { to: "/app/insights", label: "Insights", icon: LineChart },
+  { to: "/app/progresso", label: "Progresso", icon: Compass },
+  { to: "/app/perfil", label: "Perfil", icon: Settings },
 ];
 
 export function NavSidebar() {
