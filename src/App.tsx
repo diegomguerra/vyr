@@ -20,9 +20,11 @@ import RotinaCompleta from "./pages/RotinaCompleta";
 import SistemaCompleto from "./pages/SistemaCompleto";
 import VYRSystem from "./pages/VYRSystem";
 import ComoFunciona from "./pages/ComoFunciona";
-import Dashboard from "./pages/Dashboard";
-import Onboarding from "./pages/Onboarding";
-import Profile from "./pages/Profile";
+import LabsToday from "./pages/LabsToday";
+import LabsRitual from "./pages/LabsRitual";
+import LabsInsights from "./pages/LabsInsights";
+import LabsProgress from "./pages/LabsProgress";
+import LabsSettings from "./pages/LabsSettings";
 import Welcome from "./pages/Welcome";
 import BrandPreview from "./pages/BrandPreview";
 import BrandExport from "./pages/BrandExport";
@@ -82,9 +84,11 @@ function Header({ codigo }: { codigo?: string }) {
 }
 
 const NAV_ITEMS = [
-  { to: "/app/painel", label: "Painel", icon: "📊" },
-  { to: "/app/anamnese", label: "Anamnese", icon: "📋" },
-  { to: "/app/perfil", label: "Perfil", icon: "👤" },
+  { to: "/app/hoje", label: "Hoje", icon: "☀️" },
+  { to: "/app/ritual", label: "Ritual", icon: "⏱️" },
+  { to: "/app/insights", label: "Insights", icon: "📈" },
+  { to: "/app/progresso", label: "Progresso", icon: "🧭" },
+  { to: "/app/perfil", label: "Perfil", icon: "⚙️" },
 ];
 
 function MobileNav() {
@@ -161,11 +165,13 @@ function AuthenticatedApp() {
         </div>
         <main className="flex flex-col gap-4 animate-fade-in min-w-0">
           <Routes>
-            <Route path="/" element={<Navigate to="/app/painel" replace />} />
-            <Route path="/painel" element={<Dashboard />} />
-            <Route path="/anamnese" element={<Onboarding />} />
-            <Route path="/perfil" element={<Profile />} />
-            <Route path="*" element={<Navigate to="/app/painel" replace />} />
+            <Route path="/" element={<Navigate to="/app/hoje" replace />} />
+            <Route path="/hoje" element={<LabsToday />} />
+            <Route path="/ritual" element={<LabsRitual />} />
+            <Route path="/insights" element={<LabsInsights />} />
+            <Route path="/progresso" element={<LabsProgress />} />
+            <Route path="/perfil" element={<LabsSettings />} />
+            <Route path="*" element={<Navigate to="/app/hoje" replace />} />
           </Routes>
         </main>
       </div>
