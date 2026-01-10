@@ -30,45 +30,81 @@ export default function LabsToday() {
   const recentDays = getRecentDays(todayISO, 7);
   const entryByDate = new Set(entries.map((entry) => entry.dateISO));
 
+  const estadoLabel =
+    readout.stateTag === "FLUIDA"
+      ? "FLUIDA"
+      : readout.stateTag === "EM_RECUPERACAO"
+        ? "EM RECUPERAÇÃO"
+        : "ESTÁVEL";
+  const estadoSubfrase =
+    readout.stateTag === "FLUIDA"
+      ? "Constância alta para avançar sem fricção."
+      : readout.stateTag === "EM_RECUPERACAO"
+        ? "Ritmo pede redução de carga e foco no essencial."
+        : "Ritmo estável para manter continuidade.";
+
+  const bullets = (() => {
+    const base = readout.bullets.slice(0, 3);
+    if (flags.nodeEnabled && readout.nodeSignals && readout.nodeSignals.length > 0) {
+      const signals = readout.nodeSignals
+        .map((signal) => `${signal.label} ${signal.value}`)
+        .join(", ");
+      base[2] = `Sinais do Node: ${signals}.`;
+    }
+    while (base.length < 3) {
+      base.push("Registro do ritual sustenta a leitura operacional.");
+    }
+    return base.slice(0, 3);
+  })();
+
+  const comparisonText =
+    readout.deltas.clarityDelta === 0 && readout.deltas.loadDelta === 0
+      ? "Sem variação relevante desde ontem."
+      : `Desde ontem: clareza ${readout.deltas.clarityDelta >= 0 ? "+" : ""}${readout.deltas.clarityDelta}, carga ${readout.deltas.loadDelta >= 0 ? "+" : ""}${readout.deltas.loadDelta}.`;
+
   return (
     <div className="space-y-4 sm:space-y-6">
       <header className="space-y-2">
         <p className="text-xs uppercase tracking-[0.2em] text-vyr-gray-500">Hoje</p>
-        <h1 className="text-xl sm:text-2xl font-semibold text-vyr-white">{readout.headline}</h1>
+        <h1 className="text-xl sm:text-2xl font-semibold text-vyr-white">Leitura diária acionável</h1>
         <p className="text-xs text-vyr-gray-400">
           Inferências observacionais. Não usadas para decisão clínica.
         </p>
       </header>
 
-      <Card title="Leitura do dia" subtitle="Leitura densa com contexto operacional">
+      <Card title="Estado do dia" subtitle="Como você está hoje">
+        <div className="flex flex-col gap-3 text-sm text-vyr-gray-200">
+          <div className="inline-flex w-fit rounded-full border border-vyr-accent/40 px-3 py-1 text-xs uppercase tracking-[0.15em] text-vyr-accent">
+            {estadoLabel}
+          </div>
+          <h2 className="text-base font-semibold text-vyr-white">{readout.headline}</h2>
+          <p className="text-sm text-vyr-gray-300">{estadoSubfrase}</p>
+        </div>
+      </Card>
+
+      <Card title="Por que estou assim" subtitle="Hoje você está assim porque:">
         <ul className="space-y-2 text-sm text-vyr-gray-200">
-          {readout.bullets.map((bullet) => (
+          {bullets.map((bullet) => (
             <li key={bullet} className="flex items-start gap-2">
               <span className="mt-1 h-1.5 w-1.5 rounded-full bg-vyr-accent" />
               <span>{bullet}</span>
             </li>
           ))}
         </ul>
-        <div className="mt-4 rounded-md border border-vyr-graphite/60 bg-vyr-graphite/40 px-4 py-3 text-xs text-vyr-gray-300">
-          {readout.deltas.note}
-        </div>
+        <p className="mt-3 text-xs text-vyr-gray-400">
+          Inferências observacionais. Não usadas para decisão clínica.
+        </p>
       </Card>
 
-      <Card title="Direção do dia" subtitle="Operacionalmente recomendado">
-        <div className="flex flex-col gap-3 text-sm text-vyr-gray-200">
-          <div className="inline-flex w-fit rounded-full border border-vyr-accent/40 px-3 py-1 text-xs uppercase tracking-[0.15em] text-vyr-accent">
-            {readout.direction.replace("_", " ")}
-          </div>
-          <h3 className="text-base font-semibold text-vyr-white">{readout.microAction.title}</h3>
-          <ol className="list-decimal space-y-1 pl-5 text-sm text-vyr-gray-300">
-            {readout.microAction.steps.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-        </div>
+      <Card title="Comparado a você mesmo" subtitle="Variação diária sem gráficos">
+        <p className="text-sm text-vyr-gray-200">{comparisonText}</p>
       </Card>
 
-      <Card title="Mini timeline (7 dias)" subtitle="Registro diário do ritual">
+      <Card title="Ação do dia" subtitle="Uma única ação operacional">
+        <p className="text-sm text-vyr-gray-200">{readout.microAction.title}</p>
+      </Card>
+
+      <Card title="Linha de consistência" subtitle="Últimos 7 dias (feito / não feito)">
         <div className="grid grid-cols-7 gap-2">
           {recentDays.map((dayISO) => {
             const active = entryByDate.has(dayISO);
@@ -90,24 +126,6 @@ export default function LabsToday() {
           })}
         </div>
       </Card>
-
-      {flags.nodeSignalsCard && readout.nodeSignals && readout.nodeSignals.length > 0 && (
-        <Card title="Sinais do Node (24h)" subtitle="Suporte opcional, sem protagonismo">
-          <div className="flex flex-wrap gap-2">
-            {readout.nodeSignals.map((signal) => (
-              <div
-                key={signal.label}
-                className="rounded-full border border-vyr-graphite/60 px-3 py-1 text-xs text-vyr-gray-200"
-              >
-                <span className="text-vyr-gray-400">{signal.label}:</span> {signal.value}
-              </div>
-            ))}
-          </div>
-          <p className="mt-3 text-xs text-vyr-gray-400">
-            Inferências observacionais. Não usadas para decisão clínica.
-          </p>
-        </Card>
-      )}
     </div>
   );
 }
