@@ -20,14 +20,18 @@ import RotinaCompleta from "./pages/RotinaCompleta";
 import SistemaCompleto from "./pages/SistemaCompleto";
 import VYRSystem from "./pages/VYRSystem";
 import ComoFunciona from "./pages/ComoFunciona";
-import Dashboard from "./pages/Dashboard";
+import LabsToday from "./pages/LabsToday";
+import LabsRitual from "./pages/LabsRitual";
+import LabsProgress from "./pages/LabsProgress";
+import LabsMenu from "./pages/LabsMenu";
+import LabsInsights from "./pages/LabsInsights";
 import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import Welcome from "./pages/Welcome";
 import BrandPreview from "./pages/BrandPreview";
 import BrandExport from "./pages/BrandExport";
 import Contact from "./pages/Contact";
-import { NavSidebar } from "./components/nzt";
+import { BottomNav, SidebarNav } from "./components/labs";
 import { signOut, getParticipante, createParticipante } from "./lib/api";
 import { ThemeProvider, useTheme } from "./hooks/use-theme";
 import type { Participante } from "./lib/types";
@@ -68,6 +72,12 @@ function Header({ codigo }: { codigo?: string }) {
           </div>
         </div>
         <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          <Link
+            to="/app/menu"
+            className="lg:hidden px-3 py-2 rounded-sm text-xs sm:text-sm font-medium text-vyr-gray-300 hover:text-vyr-white hover:bg-vyr-graphite/50 border border-vyr-graphite/50 transition-all"
+          >
+            Menu
+          </Link>
           <ThemeToggle />
           <button
             className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-sm text-xs sm:text-sm font-medium text-vyr-gray-300 hover:text-vyr-white hover:bg-vyr-graphite/50 border border-vyr-graphite/50 transition-all"
@@ -78,31 +88,6 @@ function Header({ codigo }: { codigo?: string }) {
         </div>
       </div>
     </header>
-  );
-}
-
-const NAV_ITEMS = [
-  { to: "/app/painel", label: "Painel", icon: "📊" },
-  { to: "/app/anamnese", label: "Anamnese", icon: "📋" },
-  { to: "/app/perfil", label: "Perfil", icon: "👤" },
-];
-
-function MobileNav() {
-  return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-vyr-graphite-dark/95 backdrop-blur-xl border-t border-vyr-graphite/50">
-      <div className="flex items-center justify-around py-2 px-1 safe-area-inset-bottom">
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.to}
-            to={item.to}
-            className="flex flex-col items-center gap-0.5 px-4 py-2 rounded-sm text-vyr-gray-400 hover:text-vyr-white hover:bg-vyr-graphite/50 transition-all min-w-0"
-          >
-            <span className="text-lg">{item.icon}</span>
-            <span className="text-[10px] font-medium">{item.label}</span>
-          </Link>
-        ))}
-      </div>
-    </nav>
   );
 }
 
@@ -157,20 +142,25 @@ function AuthenticatedApp() {
       <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-[220px_1fr] gap-4 p-3 sm:p-4 pb-24 lg:pb-4">
         {/* Sidebar - hidden on mobile, shown on desktop */}
         <div className="hidden lg:block">
-          <NavSidebar />
+          <SidebarNav />
         </div>
         <main className="flex flex-col gap-4 animate-fade-in min-w-0">
           <Routes>
-            <Route path="/" element={<Navigate to="/app/painel" replace />} />
-            <Route path="/painel" element={<Dashboard />} />
+            <Route path="/" element={<Navigate to="/app/hoje" replace />} />
+            <Route path="/painel" element={<Navigate to="/app/hoje" replace />} />
+            <Route path="/hoje" element={<LabsToday />} />
+            <Route path="/ritual" element={<LabsRitual />} />
+            <Route path="/insights" element={<LabsInsights />} />
+            <Route path="/progresso" element={<LabsProgress />} />
+            <Route path="/menu" element={<LabsMenu />} />
             <Route path="/anamnese" element={<Onboarding />} />
             <Route path="/perfil" element={<Profile />} />
-            <Route path="*" element={<Navigate to="/app/painel" replace />} />
+            <Route path="*" element={<Navigate to="/app/hoje" replace />} />
           </Routes>
         </main>
       </div>
       {/* Mobile bottom navigation */}
-      <MobileNav />
+      <BottomNav />
     </div>
   );
 }
